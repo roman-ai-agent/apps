@@ -1,0 +1,330 @@
+{
+  "schema_version": 3,
+  "revision_id": "VT-VIRTUALTUTOR-PROTOTYPE-R11-RC6",
+  "id_migrations": [],
+  "targets": [
+    {
+      "target_id": "mac-wide",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "target_id": "iphone-16",
+      "width": 393,
+      "height": 852
+    },
+    {
+      "target_id": "pixel-8",
+      "width": 412,
+      "height": 915
+    },
+    {
+      "target_id": "galaxy-s20",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "target_id": "iphone-16-pro-max",
+      "width": 440,
+      "height": 956
+    }
+  ],
+  "states": [
+    {
+      "state_id": "welcome",
+      "fixture_id": "fx-welcome"
+    },
+    {
+      "state_id": "characters",
+      "fixture_id": "fx-characters"
+    },
+    {
+      "state_id": "wizard-choose-variant",
+      "fixture_id": "fx-wizard-choose-variant"
+    },
+    {
+      "state_id": "wizard-mic-intro",
+      "fixture_id": "fx-wizard-mic-intro"
+    },
+    {
+      "state_id": "wizard-mic-active",
+      "fixture_id": "fx-wizard-mic-active"
+    },
+    {
+      "state_id": "wizard-mic-quiet-live",
+      "fixture_id": "fx-wizard-mic-quiet-live"
+    },
+    {
+      "state_id": "wizard-mic-result",
+      "fixture_id": "fx-wizard-mic-result"
+    },
+    {
+      "state_id": "wizard-mic-error",
+      "fixture_id": "fx-wizard-mic-error"
+    },
+    {
+      "state_id": "wizard-mic-error-device",
+      "fixture_id": "fx-wizard-mic-error-device"
+    },
+    {
+      "state_id": "wizard-mic-error-no-signal",
+      "fixture_id": "fx-wizard-mic-error-no-signal"
+    },
+    {
+      "state_id": "wizard-mic-error-too-quiet",
+      "fixture_id": "fx-wizard-mic-error-too-quiet"
+    },
+    {
+      "state_id": "wizard-stt-intro",
+      "fixture_id": "fx-wizard-stt-intro"
+    },
+    {
+      "state_id": "wizard-stt-active",
+      "fixture_id": "fx-wizard-stt-active"
+    },
+    {
+      "state_id": "wizard-stt-result-success",
+      "fixture_id": "fx-wizard-stt-result-success"
+    },
+    {
+      "state_id": "wizard-stt-result-mismatch",
+      "fixture_id": "fx-wizard-stt-result-mismatch"
+    },
+    {
+      "state_id": "wizard-stt-error",
+      "fixture_id": "fx-wizard-stt-error"
+    },
+    {
+      "state_id": "wizard-stt-error-permission",
+      "fixture_id": "fx-wizard-stt-error-permission"
+    },
+    {
+      "state_id": "wizard-stt-error-empty",
+      "fixture_id": "fx-wizard-stt-error-empty"
+    },
+    {
+      "state_id": "wizard-voice-f",
+      "fixture_id": "fx-wizard-voice-f"
+    },
+    {
+      "state_id": "wizard-voice-sample-playing",
+      "fixture_id": "fx-wizard-voice-sample-playing"
+    },
+    {
+      "state_id": "wizard-voice-sample-error",
+      "fixture_id": "fx-wizard-voice-sample-error"
+    },
+    {
+      "state_id": "wizard-voice-unavailable-with-fallbacks",
+      "fixture_id": "fx-wizard-voice-unavailable-with-fallbacks"
+    },
+    {
+      "state_id": "wizard-voice-unavailable-empty",
+      "fixture_id": "fx-wizard-voice-unavailable-empty"
+    },
+    {
+      "state_id": "wizard-voice-m",
+      "fixture_id": "fx-wizard-voice-m"
+    },
+    {
+      "state_id": "wizard-summary",
+      "fixture_id": "fx-wizard-summary"
+    },
+    {
+      "state_id": "variant-gate",
+      "fixture_id": "fx-variant-gate"
+    },
+    {
+      "state_id": "profile-name",
+      "fixture_id": "fx-profile-name"
+    },
+    {
+      "state_id": "profile-name-recording",
+      "fixture_id": "fx-profile-name-recording"
+    },
+    {
+      "state_id": "profile-name-processing",
+      "fixture_id": "fx-profile-name-processing"
+    },
+    {
+      "state_id": "profile-name-transcribed",
+      "fixture_id": "fx-profile-name-transcribed"
+    },
+    {
+      "state_id": "profile-name-error",
+      "fixture_id": "fx-profile-name-error"
+    },
+    {
+      "state_id": "profile-age",
+      "fixture_id": "fx-profile-age"
+    },
+    {
+      "state_id": "profile-age-recording",
+      "fixture_id": "fx-profile-age-recording"
+    },
+    {
+      "state_id": "profile-age-processing",
+      "fixture_id": "fx-profile-age-processing"
+    },
+    {
+      "state_id": "profile-age-transcribed",
+      "fixture_id": "fx-profile-age-transcribed"
+    },
+    {
+      "state_id": "profile-age-error",
+      "fixture_id": "fx-profile-age-error"
+    },
+    {
+      "state_id": "profile-level",
+      "fixture_id": "fx-profile-level"
+    },
+    {
+      "state_id": "profile-edit-name",
+      "fixture_id": "fx-profile-edit-name"
+    },
+    {
+      "state_id": "profile-edit-name-recording",
+      "fixture_id": "fx-profile-edit-name-recording"
+    },
+    {
+      "state_id": "profile-edit-name-processing",
+      "fixture_id": "fx-profile-edit-name-processing"
+    },
+    {
+      "state_id": "profile-edit-name-transcribed",
+      "fixture_id": "fx-profile-edit-name-transcribed"
+    },
+    {
+      "state_id": "profile-edit-name-error",
+      "fixture_id": "fx-profile-edit-name-error"
+    },
+    {
+      "state_id": "profile-edit-age",
+      "fixture_id": "fx-profile-edit-age"
+    },
+    {
+      "state_id": "profile-edit-age-recording",
+      "fixture_id": "fx-profile-edit-age-recording"
+    },
+    {
+      "state_id": "profile-edit-age-processing",
+      "fixture_id": "fx-profile-edit-age-processing"
+    },
+    {
+      "state_id": "profile-edit-age-transcribed",
+      "fixture_id": "fx-profile-edit-age-transcribed"
+    },
+    {
+      "state_id": "profile-edit-age-error",
+      "fixture_id": "fx-profile-edit-age-error"
+    },
+    {
+      "state_id": "profile-edit-level",
+      "fixture_id": "fx-profile-edit-level"
+    },
+    {
+      "state_id": "chat-idle",
+      "fixture_id": "fx-chat-idle"
+    },
+    {
+      "state_id": "chat-recording",
+      "fixture_id": "fx-chat-recording"
+    },
+    {
+      "state_id": "chat-processing",
+      "fixture_id": "fx-chat-processing"
+    },
+    {
+      "state_id": "chat-transcribed",
+      "fixture_id": "fx-chat-transcribed"
+    },
+    {
+      "state_id": "chat-ad-active",
+      "fixture_id": "fx-chat-ad-active"
+    },
+    {
+      "state_id": "chat-typing",
+      "fixture_id": "fx-chat-typing"
+    },
+    {
+      "state_id": "chat-reply-plain",
+      "fixture_id": "fx-chat-reply-plain"
+    },
+    {
+      "state_id": "chat-reply-plain-translation-loading",
+      "fixture_id": "fx-chat-reply-plain-translation-loading"
+    },
+    {
+      "state_id": "chat-reply-plain-translation-ready",
+      "fixture_id": "fx-chat-reply-plain-translation-ready"
+    },
+    {
+      "state_id": "chat-reply-plain-translation-error",
+      "fixture_id": "fx-chat-reply-plain-translation-error"
+    },
+    {
+      "state_id": "chat-reply-correction",
+      "fixture_id": "fx-chat-reply-correction"
+    },
+    {
+      "state_id": "chat-reply-dialect",
+      "fixture_id": "fx-chat-reply-dialect"
+    },
+    {
+      "state_id": "chat-reply-both",
+      "fixture_id": "fx-chat-reply-both"
+    },
+    {
+      "state_id": "chat-reply-error",
+      "fixture_id": "fx-chat-reply-error"
+    },
+    {
+      "state_id": "chat-new-conversation-confirm",
+      "fixture_id": "fx-chat-new-conversation-confirm"
+    },
+    {
+      "state_id": "characters-returning",
+      "fixture_id": "fx-characters-returning"
+    },
+    {
+      "state_id": "chat-profile-popover",
+      "fixture_id": "fx-chat-profile-popover"
+    },
+    {
+      "state_id": "variant-popover-open",
+      "fixture_id": "fx-variant-popover-open"
+    },
+    {
+      "state_id": "wizard-voice-change-only",
+      "fixture_id": "fx-wizard-voice-change-only"
+    },
+    {
+      "state_id": "chat-variant-switched",
+      "fixture_id": "fx-chat-variant-switched"
+    },
+    {
+      "state_id": "wizard-voice-change-only-selected",
+      "fixture_id": "fx-wizard-voice-change-only-selected"
+    },
+    {
+      "state_id": "training-active",
+      "fixture_id": "fx-training-active"
+    },
+    {
+      "state_id": "training-recording",
+      "fixture_id": "fx-training-recording"
+    },
+    {
+      "state_id": "training-processing",
+      "fixture_id": "fx-training-processing"
+    },
+    {
+      "state_id": "training-transcribed",
+      "fixture_id": "fx-training-transcribed"
+    },
+    {
+      "state_id": "training-tutor-reply-error",
+      "fixture_id": "fx-training-tutor-reply-error"
+    }
+  ]
+}

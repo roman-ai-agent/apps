@@ -1,0 +1,6766 @@
+{
+  "fixtures": {
+    "fx-welcome": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "welcome",
+        "appConfig": {
+          "variant": null,
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        }
+      }
+    },
+    "fx-characters": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "characters",
+        "appConfig": {
+          "variant": null,
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        }
+      }
+    },
+    "fx-wizard-choose-variant": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": null,
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 0,
+          "variant": null,
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-intro": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 1,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-active": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 2,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-quiet-live": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 2,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "micTooQuiet",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-result": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 3,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 1,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "micPermission",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-error-device": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 1,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "deviceUnsupported",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-error-no-signal": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 3,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "micNoSignal",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-mic-error-too-quiet": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": false,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 3,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "micTooQuiet",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-intro": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 4,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-active": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 5,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-result-success": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 6,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": "success",
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-result-mismatch": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 6,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": true,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": "mismatch",
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 4,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "sttNoModel",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-error-permission": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 4,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "sttPermission",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-stt-error-empty": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": false,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 6,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": "sttEmpty",
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-f": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 7,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-sample-playing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": "us-f-samantha",
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 7,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": "us-f-samantha",
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-sample-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": "us-f-ava",
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 7,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": "us-f-ava",
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-unavailable-with-fallbacks": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 7,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": true,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {
+            "US_F": true
+          },
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-unavailable-empty": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 7,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": true,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {
+            "US_F": true,
+            "UK_F": true,
+            "OTHER_F": true
+          },
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-voice-m": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": null,
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 8,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": "us-m-evan",
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-wizard-summary": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "chooseVariant"
+            },
+            {
+              "kind": "micIntro"
+            },
+            {
+              "kind": "micActive"
+            },
+            {
+              "kind": "micResult"
+            },
+            {
+              "kind": "sttIntro"
+            },
+            {
+              "kind": "sttActive"
+            },
+            {
+              "kind": "sttResult"
+            },
+            {
+              "kind": "voice",
+              "gender": "F"
+            },
+            {
+              "kind": "voice",
+              "gender": "M"
+            },
+            {
+              "kind": "summary"
+            }
+          ],
+          "step": 9,
+          "variant": "US",
+          "isSwitch": false,
+          "returnTo": null,
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": null,
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": false
+        }
+      }
+    },
+    "fx-variant-gate": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": {
+          "target": "UK",
+          "missing": [
+            {
+              "key": "stt",
+              "label": "Rozpoznawanie mowy — English UK"
+            },
+            {
+              "key": "voiceF",
+              "label": "Głos kobiecy — English UK"
+            },
+            {
+              "key": "voiceM",
+              "label": "Głos męski — English UK"
+            }
+          ],
+          "returnTo": {
+            "screen": "chat",
+            "selectedIdx": 1,
+            "chatStep": 0,
+            "correctionOpen": true,
+            "chatFreshStart": false
+          }
+        },
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "variantGate",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null
+      }
+    },
+    "fx-profile-name": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "name",
+        "learner": {
+          "name": null,
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-name-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "name",
+        "learner": {
+          "name": null,
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-name-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "name",
+        "learner": {
+          "name": null,
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-name-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "My name is Anna",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "name",
+        "learner": {
+          "name": null,
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-name-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": "name",
+        "composerMode": "transcribed",
+        "composerText": "A",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "name",
+        "learner": {
+          "name": null,
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-age": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-age-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-age-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-age-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "I am 34 years old",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-age-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": "age",
+        "composerMode": "transcribed",
+        "composerText": "I am 150 years old",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": null,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-level": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": true,
+        "profileStep": "level",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": null
+        }
+      }
+    },
+    "fx-profile-edit-name": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "Anna",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "name",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "name",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-name-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "Anna",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "name",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "name",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-name-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "Anna",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "name",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "name",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-name-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "My name is Marek",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "name",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "name",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-name-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": "name",
+        "composerMode": "transcribed",
+        "composerText": "A",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "name",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "name",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-age": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "34",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "age",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-age-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "34",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "age",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-age-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "34",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "age",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-age-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "I am 41 years old",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "age",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-age-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": "age",
+        "composerMode": "transcribed",
+        "composerText": "I am 150 years old",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "age",
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "age",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-profile-edit-level": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": true,
+        "learnerBeforeEdit": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": "level",
+        "levelDraft": "intermediate",
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "chatStep": 2,
+        "chatOpenedViaContinue": true,
+        "chatFreshStart": false,
+        "profileStep": "level",
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        }
+      }
+    },
+    "fx-chat-idle": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "Yesterday I go to the park with my sister.",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-ad-active": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": "active",
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": "Yesterday I go to the park with my sister.",
+        "turnsDone": 10,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-typing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": "Yesterday I go to the park with my sister.",
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 1,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-reply-plain": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "plain",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-reply-plain-translation-loading": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "plain",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false,
+        "translationPanel": {
+          "state": "loading",
+          "target": "chat-bubble-reply (ostatnia wypowiedź tutora)"
+        }
+      }
+    },
+    "fx-chat-reply-plain-translation-ready": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "plain",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false,
+        "translationPanel": {
+          "state": "ready",
+          "target": "chat-bubble-reply (ostatnia wypowiedź tutora)"
+        }
+      }
+    },
+    "fx-chat-reply-plain-translation-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "plain",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false,
+        "translationPanel": {
+          "state": "error",
+          "target": "chat-bubble-reply (ostatnia wypowiedź tutora)"
+        }
+      }
+    },
+    "fx-chat-reply-correction": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-reply-dialect": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "dialect",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-reply-both": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "both",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-reply-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "error",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 3,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-chat-new-conversation-confirm": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": true,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-characters-returning": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "characters",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "savedOrder": [
+          1
+        ]
+      }
+    },
+    "fx-chat-profile-popover": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": true,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-variant-popover-open": {
+      "data": {
+        "variantPopoverOpen": true,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 0,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-wizard-voice-change-only": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "voice",
+              "gender": "F"
+            }
+          ],
+          "step": 0,
+          "variant": "US",
+          "isSwitch": true,
+          "returnTo": {
+            "screen": "chat",
+            "selectedIdx": 1,
+            "chatStep": 2,
+            "correctionOpen": true,
+            "chatFreshStart": false
+          },
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": "us-f-ava",
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": true
+        }
+      }
+    },
+    "fx-chat-variant-switched": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": "UK",
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "plain",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "UK",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": true
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": {
+              "id": "uk-f-kate",
+              "name": "Kate"
+            },
+            "UK_M": {
+              "id": "uk-m-daniel",
+              "name": "Daniel"
+            }
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-wizard-voice-change-only-selected": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": "us-f-samantha",
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": null,
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "wizard",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": null,
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "wizard": {
+          "plan": [
+            {
+              "kind": "voice",
+              "gender": "F"
+            }
+          ],
+          "step": 0,
+          "variant": "US",
+          "isSwitch": true,
+          "returnTo": {
+            "screen": "chat",
+            "selectedIdx": 1,
+            "chatStep": 2,
+            "correctionOpen": true,
+            "chatFreshStart": false
+          },
+          "errorKind": null,
+          "waiting": false,
+          "forceMismatch": false,
+          "demoOpen": false,
+          "voiceUnavailable": false,
+          "micElapsed": 0,
+          "micLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "sttElapsed": 0,
+          "sttLevels": [
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6
+          ],
+          "resultStatus": null,
+          "voiceStepSelectedId": "us-f-samantha",
+          "listenedVoiceIds": {},
+          "voiceSettingsHandoff": false,
+          "voiceMissing": {},
+          "isVoiceChangeOnly": true
+        }
+      }
+    },
+    "fx-training-active": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": {
+          "source": "correction",
+          "english": "Yesterday I went to the park with my sister.",
+          "attempts": [],
+          "error": false
+        },
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-training-recording": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "recording",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": {
+          "source": "correction",
+          "english": "Yesterday I went to the park with my sister.",
+          "attempts": [],
+          "error": false
+        },
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-training-processing": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "processing",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": {
+          "source": "correction",
+          "english": "Yesterday I went to the park with my sister.",
+          "attempts": [],
+          "error": false
+        },
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-training-transcribed": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "transcribed",
+        "composerText": "Yesterday I went to the park with my sister.",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": {
+          "source": "correction",
+          "english": "Yesterday I went to the park with my sister.",
+          "attempts": [],
+          "error": false
+        },
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    },
+    "fx-training-tutor-reply-error": {
+      "data": {
+        "variantPopoverOpen": false,
+        "newConvoConfirmOpen": false,
+        "adStage": null,
+        "profileError": null,
+        "composerMode": "idle",
+        "composerText": "",
+        "sampleVoiceId": null,
+        "sampleFailedId": null,
+        "ttsPlaying": null,
+        "variantGate": null,
+        "chatVariantNote": null,
+        "correctionOpen": true,
+        "chatFlow": "happy",
+        "pendingCharIdx": null,
+        "learnerPopoverOpen": false,
+        "profileEdit": false,
+        "learnerBeforeEdit": null,
+        "feedbackKind": "correction",
+        "sentText": null,
+        "turnsDone": 0,
+        "profileEditField": null,
+        "levelDraft": null,
+        "tr": {},
+        "finishConfirmOpen": false,
+        "moreOpen": false,
+        "training": {
+          "source": "correction",
+          "english": "Yesterday I went to the park with my sister.",
+          "attempts": [
+            "Yesterday I went to the park with my sister."
+          ],
+          "error": true
+        },
+        "trainingReturn": null,
+        "addVoicesOpen": null,
+        "screen": "chat",
+        "appConfig": {
+          "variant": "US",
+          "micDone": true,
+          "sttDone": {
+            "US": true,
+            "UK": false
+          },
+          "voices": {
+            "US_F": {
+              "id": "us-f-ava",
+              "name": "Ava"
+            },
+            "US_M": {
+              "id": "us-m-evan",
+              "name": "Evan"
+            },
+            "UK_F": null,
+            "UK_M": null
+          }
+        },
+        "selectedIdx": 1,
+        "learner": {
+          "name": "Anna",
+          "age": 34,
+          "level": "intermediate"
+        },
+        "profileStep": null,
+        "chatStep": 2,
+        "chatOpenedViaContinue": false,
+        "chatFreshStart": false
+      }
+    }
+  }
+}
