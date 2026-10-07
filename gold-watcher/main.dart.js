@@ -26261,13 +26261,12 @@ if(q){o=A.X(new A.at(a,new A.avH(r),s),s.h("u.E"))
 o.$flags=1
 n=o}else n=a
 m=A.b([],t.Qa)
-o=t.EY
+if(n.length!==0){o=t.EY
 l=A.b([B.b.gO(n)],o)
 for(k=A.fy(n,1,c,A.P(n).c),j=k.$ti,k=new A.b_(k,k.gD(0),j.h("b_<a7.E>")),j=j.h("a7.E");k.p();){i=k.d
 if(i==null)i=j.a(i)
 if(i.c-B.b.gZ(l).c>1){m.push(l)
-l=A.b([i],o)}else l.push(i)}m.push(l)
-o=t.EU
+l=A.b([i],o)}else l.push(i)}m.push(l)}o=t.EU
 h=A.X(new A.O(m,new A.avI(),o),o.h("a7.E"))
 o=b.h("dp<1,bA>")
 s=A.X(new A.dp(new A.at(a,new A.avJ(),s),new A.avK(),o),o.h("u.E"))
