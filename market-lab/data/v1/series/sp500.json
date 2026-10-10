@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^GSPC",
     "description": "Indeks S&P 500",
-    "retrieved_at": "2026-10-10T15:00:25.996Z"
+    "retrieved_at": "2026-10-10T15:10:09.969Z"
   },
   "bars": [
     {
