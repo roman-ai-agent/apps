@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-10T12:22:06.666Z",
+  "instruments": [
+    {
+      "instrument_id": "gold",
+      "name": "Złoto (COMEX GC=F)",
+      "currency": "USD",
+      "unit": "USD/oz t",
+      "first_date": "2000-08-30",
+      "last_date": "2026-10-09",
+      "bar_count": 6553,
+      "series_path": "series/gold.json"
+    },
+    {
+      "instrument_id": "sp500",
+      "name": "S&P 500",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "2000-01-03",
+      "last_date": "2026-10-09",
+      "bar_count": 6733,
+      "series_path": "series/sp500.json"
+    }
+  ]
+}
