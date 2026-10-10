@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "GC=F",
     "description": "Kontrakt terminowy COMEX na złoto (ciągły, najbliższa seria) — nie cena spot",
-    "retrieved_at": "2026-10-10T14:36:03.256Z"
+    "retrieved_at": "2026-10-10T15:00:25.996Z"
   },
   "bars": [
     {
