@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "silver",
-  "name": "Srebro (COMEX SI=F)",
+  "name": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
   "currency": "USD",
   "unit": "USD/oz t",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "SI=F",
-    "description": "Kontrakt terminowy COMEX na srebro (ciągły, najbliższa seria) — nie cena spot",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

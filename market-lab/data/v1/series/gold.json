@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "gold",
-  "name": "Złoto (COMEX GC=F)",
+  "name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
   "currency": "USD",
   "unit": "USD/oz t",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "GC=F",
-    "description": "Kontrakt terminowy COMEX na złoto (ciągły, najbliższa seria) — nie cena spot",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

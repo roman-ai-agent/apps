@@ -1,0 +1,1502 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-10T21:54:45.351Z",
+  "instruments": [
+    {
+      "instrument_id": "sp500",
+      "display_name": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
+      "qualitative": [
+        "S&P 500 to wskaźnik pokazujący, jak zmienia się łączna wartość około 500 dużych amerykańskich spółek giełdowych. Dostawca, S&P Dow Jones Indices, opisuje go jako najlepszy pojedynczy miernik dużych spółek USA, obejmujący około 80% wartości rynkowej dostępnych akcji. Gdy indeks rośnie, to w uproszczeniu wartość tych firm jako całości rośnie.",
+        "Spółki wchodzą do indeksu z wagą proporcjonalną do ich wartości rynkowej (liczby akcji dostępnych w wolnym obrocie razy cena). Dlatego największe firmy poruszają indeksem znacznie mocniej niż małe: ruch o 1% kilkunastu największych spółek znaczy więcej niż ruch o 1% setek najmniejszych.",
+        "Indeks jest często używany jako miara ogólnej kondycji rynku akcji w USA i punkt odniesienia dla funduszy. Jego wartość nie jest ceną, za którą można coś kupić: to liczba punktów obliczana wzorem. Spadek lub wzrost indeksu mówi, co działo się z wycenami, ale sam z siebie nie wyjaśnia przyczyny ani nie przesądza o dalszym kierunku.",
+        "Bywa mylony z indeksem Dow Jones (30 spółek, ważony ceną akcji) oraz z indeksem Nasdaq (inny zbiór spółek). Ten szereg jest wersją cenową: nie uwzględnia wypłacanych dywidend, więc długoterminowo pokazuje mniejszy wzrost niż wersja dochodowa (total return)."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return) — bez reinwestowanych dywidend. Wersja dochodowa (total return) to osobny indeks i nie jest tu używana."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją rynkową skorygowaną o akcje w wolnym obrocie (float-adjusted). Wartość = suma takich kapitalizacji podzielona przez dzielnik, który zapewnia ciągłość po zdarzeniach korporacyjnych. Skład wybiera komitet S&P Dow Jones Indices według kryteriów (m.in. wielkość, płynność, free float, rentowność); składników jest ok. 500 spółek, ale akcji — ponad 500, bo część spółek ma kilka klas akcji."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^GSPC. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Giełdy USA (NYSE, Nasdaq): sesja zwykła 9:30–16:00 czasu wschodniego USA (America/New_York), dni robocze; dni szeregu to daty sesji w tej strefie."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1927-12-30. Indeks w obecnej formie (500 spółek) wprowadzono 4 marca 1957; wcześniejsza historia pochodzi z jego poprzednich wersji (np. indeksu 90 spółek) i dostawcy danych."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Od 2005 r. waga spółek uwzględnia tylko akcje w wolnym obrocie (wcześniej pełna kapitalizacja). Skład zmienia się na bieżąco (spółki wchodzą i wychodzą), więc szereg nie opisuje stałego zbioru firm."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do końca 1961 r. dostępna jest wyłącznie cena zamknięcia (w danych otwarcie = maksimum = minimum = zamknięcie), więc wykres świecowy dla tego okresu nie niesie informacji o zakresie dnia. Brak notowań w dniach zamknięcia giełdy, m.in. przerwa 4–14 marca 1933 i 11–14 września 2001."
+        }
+      ],
+      "sources": [
+        {
+          "title": "S&P Dow Jones Indices — S&P 500 (opis indeksu)",
+          "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — S&P 500 (historia i metodologia)",
+          "url": "https://en.wikipedia.org/wiki/S%26P_500",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "NYSE — godziny i kalendarz sesji",
+          "url": "https://www.nyse.com/markets/hours-calendars",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "dji",
+      "display_name": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
+      "qualitative": [
+        "Dow Jones Industrial Average, zwany krótko Dow, to jeden z najstarszych wskaźników giełdy w USA. Obejmuje 30 dużych amerykańskich spółek ze wszystkich branż z wyjątkiem transportu i usług użyteczności publicznej, więc nazwa „industrial” (przemysłowy) ma dziś znaczenie historyczne.",
+        "Najważniejsza cecha: Dow jest ważony ceną pojedynczej akcji, a nie wartością spółki. Spółka o wysokiej cenie akcji porusza indeksem mocniej niż spółka o niskiej cenie, nawet jeśli ta druga jest o wiele większa. Skutek jest taki, że Dow mówi o wycenie tych 30 firm inaczej niż S&P 500, który waży wartością rynkową.",
+        "Dow bywa używany jako szybki, powszechnie znany sygnał nastroju na Wall Street, ale obejmuje tylko 30 firm, więc nie oddaje szerokiego rynku. Skład wybiera komitet, a nie sztywna reguła, więc zmiana składu bywa wynikiem decyzji, a nie samego rynku.",
+        "Ten szereg jest wersją cenową bez dywidend. Dow bywa mylony ze średnimi Dow Jones dla transportu i usług użyteczności publicznej, które są osobnymi indeksami."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony ceną: suma cen 30 akcji podzielona przez dzielnik. Dzielnik jest korygowany po splitach akcji i zmianach składu, by indeks nie „skakał”; jest dziś znacznie mniejszy od 1 (Wikipedia podaje ok. 0,168 w czerwcu 2026), więc zmiana ceny o 1 USD jednej spółki to kilka punktów indeksu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^DJI. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w USD (cena akcji w USD)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Giełdy USA: 9:30–16:00 czasu wschodniego USA (America/New_York)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1992-01-02. Indeks istnieje od 26 maja 1896 r., ale MarketLab ma tylko historię od 1992 r."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Skład ma stałą liczbę 30 spółek, wymieniane decyzją komitetu (np. czerwiec 2026: dołączenie Alphabet). Zmiany składu i splity zmieniają dzielnik, ale nie wartość indeksu w dniu zmiany."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Pełne dane otwarcia, maksimum i minimum od początku historii w MarketLab. Brak notowań w dni zamknięcia giełdy (np. 11–14 września 2001)."
+        }
+      ],
+      "sources": [
+        {
+          "title": "S&P Dow Jones Indices — Dow Jones Industrial Average",
+          "url": "https://www.spglobal.com/spdji/en/indices/equity/dow-jones-industrial-average/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Dow Jones Industrial Average",
+          "url": "https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "nasdaq-composite",
+      "display_name": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
+      "qualitative": [
+        "Nasdaq Composite pokazuje, jak zmienia się wartość wszystkich zwykłych akcji notowanych na giełdzie Nasdaq — zarówno amerykańskich, jak i zagranicznych. Według metodologii Nasdaq nie ma tu progu wielkości, płynności ani branży: do indeksu trafia każda spółka spełniająca podstawowe warunki notowania.",
+        "Spółki są ważone swoją wartością rynkową (cena razy liczba wszystkich akcji), więc największe firmy technologiczne decydują o ruchu indeksu. Z tego powodu Nasdaq Composite jest często traktowany jako wskaźnik nastrojów wokół technologii, choć obejmuje też wiele innych branż i bardzo małe spółki.",
+        "Indeks jest szerszy niż Nasdaq-100, który zawiera tylko 100 największych spółek niefinansowych. Jest też czymś innym niż Nasdaq jako giełda: to liczba punktów obliczana z cen akcji, a nie cena, którą można zapłacić. Ten szereg nie uwzględnia dywidend."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją rynkową (cena razy łączna liczba akcji, TSO); wagi i skład aktualizowane codziennie według metodologii Nasdaq. Kwalifikują się zwykłe akcje, ADR-y i podobne papiery notowane wyłącznie na Nasdaq; fundusze ETF, akcje uprzywilejowane, warranty i prawa poboru są wyłączone."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^IXIC. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Sesja zwykła 9:30–16:00 czasu wschodniego USA (America/New_York); Nasdaq przelicza indeks co sekundę w godzinach 9:30:01–17:16 ET, a wartość zamknięcia może zostać skorygowana do 17:15 ET."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1971-02-05 — dzień startu indeksu (wartość bazowa 100)."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Skład rekonstytuowany codziennie (nowe spółki wchodzą, niespełniające warunków wychodzą). Od 21 maja 2021 spółki wydzielone (spin-off) pozostają w indeksie, jeśli spełniają kryteria."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do września 1984 r. dostępna jest głównie cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie); później pojedyncze dni (do kwietnia 1990 r.) też nie mają rozstępu cen. Indeks obejmuje zmienną liczbę spółek (kilka tysięcy składników), więc nie opisuje stałego zbioru firm."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nasdaq — metodologia Nasdaq Composite Index (PDF)",
+          "url": "https://indexes.nasdaq.com/docs/Methodology_COMP.pdf",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Nasdaq Global Indexes — COMP, informacje o indeksie",
+          "url": "https://indexes.nasdaq.com/Index/Overview/COMP",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Nasdaq Composite",
+          "url": "https://en.wikipedia.org/wiki/Nasdaq_Composite",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "nasdaq100",
+      "display_name": "Nasdaq-100 (100 największych spółek niefinansowych z giełdy Nasdaq)",
+      "qualitative": [
+        "Nasdaq-100 obejmuje 100 największych krajowych i zagranicznych spółek niefinansowych notowanych na giełdzie Nasdaq. Banki, ubezpieczyciele i inne firmy finansowe są z założenia poza indeksem, dlatego jest on mocno związany z sektorem technologicznym i pokrewnymi branżami.",
+        "Indeks jest ważony zmodyfikowaną wartością rynkową: większe spółki mają większy udział, ale metodologia ogranicza zbyt duży udział największych firm. Dzięki temu kilka gigantów nie zdominuje całkowicie wyniku, choć ich wpływ pozostaje bardzo wyraźny.",
+        "Nie należy mylić go z Nasdaq Composite (wszystkie spółki giełdy, bez filtra) ani z S&P 500 (500 spółek z różnych giełd, w tym z sektorem finansowym). Wartość jest liczbą punktów, nie ceną; ten szereg jest wersją cenową bez dywidend."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony zmodyfikowaną kapitalizacją rynkową z ograniczeniami udziału największych spółek (szczegóły limitów w metodologii Nasdaq). Wartość = suma ważonych kapitalizacji podzielona przez dzielnik. Skład (100 firm, w danych dostawcy 101 papierów wartościowych, bo część firm ma kilka klas akcji) jest odświeżany corocznie w grudniu, a wagi korygowane kwartalnie."
+        },
+        {
+          "label": "Kryteria i ograniczenia wag",
+          "value": "Kwalifikują się akcje zwykłe i ADR-y notowane na Nasdaq o średniej dziennej wartości obrotu z trzech miesięcy co najmniej 5 mln USD. Według metodologii Nasdaq (2026) jeśli suma wag pięciu największych papierów wynosi co najmniej 40%, ich łączna waga jest obniżana do 38,5%, a pozostałe papiery mają wagę nie większą niż 4,4% albo niż waga piątego co do wielkości (mniejsza z tych wartości). Rekonstytucja następuje corocznie w grudniu, a rebalans wag kwartalnie (marzec, czerwiec, wrzesień, grudzień)."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^NDX. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Sesja zwykła 9:30–16:00 czasu wschodniego USA (America/New_York)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1985-10-01. Indeks wystartował 31 stycznia 1985 r. z wartością 250, a w styczniu 1994 r. podzielono jego wartość bazową przez 2 (obecnie wartość bazowa 125 wg Nasdaq); dane w MarketLab obejmują okres od 1 października 1985 r."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Od 1998 r. dopuszczono spółki zagraniczne; w 1998 r. zmieniono wagi z czystej kapitalizacji na zmodyfikowaną; w kolejnych latach zmieniano limity udziałów największych spółek (metodologia przewiduje m.in. rebalans specjalny po przekroczeniu limitów wag). Skład corocznie przebudowywany, więc szereg nie opisuje stałego zbioru firm."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Pełne dane OHLC od początku historii w MarketLab (jeden dzień 1986-09-25 bez rozstępu cen). Brak notowań w dni zamknięcia giełdy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nasdaq Global Indexes — NDX, informacje o indeksie",
+          "url": "https://indexes.nasdaq.com/Index/Overview/NDX",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Nasdaq — metodologia Nasdaq-100 (PDF)",
+          "url": "https://indexes.nasdaq.com/docs/Methodology_NDX.pdf",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Nasdaq-100",
+          "url": "https://en.wikipedia.org/wiki/Nasdaq-100",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "russell2000",
+      "display_name": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
+      "qualitative": [
+        "Russell 2000 pokazuje zachowanie małych amerykańskich spółek giełdowych. Obejmuje około 2000 firm — te, które w rankingu 3000 największych notowanych spółek USA (indeks Russell 3000) zajmują miejsca od 1001 do 3000, czyli leżą poniżej największego tysiąca spółek.",
+        "Każda spółka jest ważona wartością rynkową tej części akcji, która jest w wolnym obrocie. Ponieważ spółki są małe, indeks jest bardziej rozproszony niż S&P 500: pojedyncza spółka rzadko ma udział większy niż ułamek procenta (np. 0,55% największa pozycja w grudniu 2024 r.).",
+        "Indeks jest często używany jako miara kondycji mniejszych, silniej związanych z krajową gospodarką firm. Nie jest ceną żadnego pojedynczego papieru; skład zmienia się regularnie, więc jest to ruchomy zbiór firm. Ten szereg jest wersją cenową bez dywidend."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend (FTSE Russell publikuje też wersję dochodową)."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją rynkową z uwzględnieniem akcji w wolnym obrocie. Skład to spółki z rankingu Russell 3000 na pozycjach 1001–3000 wg kapitalizacji. W grudniu 2024 r. indeks liczył 1 966 składników (FTSE Russell)."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^RUT. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Giełdy USA: 9:30–16:00 czasu wschodniego USA (America/New_York)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1987-09-10. Indeks wprowadzono 1 stycznia 1984 r.; MarketLab ma dane od września 1987 r."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Skład corocznie przebudowywany w czerwcu (rekonstytucja); wg Wikipedii od 2026 r. zapowiedziano rekonstytucję półroczną — szczegóły u FTSE Russell. Spółki wypadają lub wchodzą w miarę zmian wielkości, więc nie jest to stały zbiór."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Pełne dane OHLC od początku historii w MarketLab. Brak notowań w dni zamknięcia giełdy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "FTSE Russell — Russell 2000 Index factsheet (PDF)",
+          "url": "https://www.lseg.com/content/dam/ftse-russell/en_us/documents/policy-documents/russell-2000-reg-871-factsheet.pdf",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "FTSE Russell — indeksy Russell US",
+          "url": "https://www.lseg.com/en/ftse-russell/indices/russell-us",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Russell 2000 Index",
+          "url": "https://en.wikipedia.org/wiki/Russell_2000_Index",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "dax",
+      "display_name": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
+      "qualitative": [
+        "DAX pokazuje wartość 40 największych i najbardziej płynnych spółek notowanych na giełdzie we Frankfurcie, wybieranych według wartości akcji w wolnym obrocie i spełniających wymogi jakości i rentowności. Od września 2021 r. ma 40 składników; wcześniej miał 30.",
+        "Kluczowa różnica wobec większości znanych indeksów: DAX w swojej najpopularniejszej wersji jest indeksem dochodowym (performance / total return). Zakłada, że dywidendy wypłacane przez spółki są od razu reinwestowane w indeks. Dlatego jego wzrost w czasie jest zwykle większy niż wzrost analogicznego indeksu cenowego i nie wolno bezpośrednio porównywać go z indeksami cenowymi, takimi jak S&P 500 czy FTSE 100.",
+        "Udział pojedynczej spółki jest ograniczony (od marca 2024 r. do 15%). DAX często służy jako skrótowy miernik niemieckiej gospodarki, choć wiele spółek zarabia głównie poza Niemcami. Wartość jest liczbą punktów, nie ceną."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks dochodowy (performance / total return, brutto) — dywidendy zakładane jako reinwestowane. Istnieje też wersja cenowa (price return), której ten szereg nie jest."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją akcji w wolnym obrocie, z limitem udziału spółki 15% (podniesiony z 10% od 18 marca 2024). Skład: 40 spółek (od 20 września 2021; wcześniej 30), przeglądany kwartalnie. Operatorem jest STOXX we współpracy z Deutsche Börse."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^GDAXI. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w EUR."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Handel Xetra we Frankfurcie, zwykle 9:00–17:30 czasu środkowoeuropejskiego (Europe/Berlin); dostawca przelicza indeks co sekundę."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1987-12-30, dzień bazowy z wartością 1 000. Deutsche Börse oblicza indeks na bieżąco od 1 lipca 1988 r.; wcześniejsze wartości są policzone wstecz."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Rozszerzenie z 30 do 40 spółek (20 września 2021), zaostrzenie kryteriów po sprawie Wirecard, podniesienie limitu udziału do 15% (marzec 2024). Zmiany nie są w szeregu korygowane wstecz."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do listopada 1993 r. dane to głównie cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie); pełne dane świecowe od końca 1993 r. Ponieważ wartość to indeks dochodowy, ruchy dywidendowe nie są widoczne jako spadki w dniu odcięcia dywidendy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "STOXX — DAX, opis i wersje indeksu",
+          "url": "https://www.stoxx.com/index-details?symbol=DAX",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — DAX",
+          "url": "https://en.wikipedia.org/wiki/DAX",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "ftse100",
+      "display_name": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
+      "qualitative": [
+        "FTSE 100 to indeks 100 spółek o najwyższej wartości rynkowej notowanych na Londyńskiej Giełdzie Papierów Wartościowych. Jest głównym wskaźnikiem brytyjskiego rynku akcji, prowadzonym przez FTSE Russell (grupa LSEG).",
+        "Wagą spółki jest wartość rynkowa jej akcji w wolnym obrocie, więc największe firmy mają największy wpływ. W składzie jest wiele koncernów surowcowych, energetycznych, bankowych i farmaceutycznych, które znaczną część przychodów osiągają poza Wielką Brytanią. Dlatego indeks reaguje zarówno na gospodarkę brytyjską, jak i na ceny surowców i kurs funta.",
+        "Nie należy mylić go z FTSE 250 ani z indeksem FTSE All-Share (szerszy zbiór). Ten szereg jest wersją cenową bez dywidend; wersja dochodowa (total return) rośnie szybciej."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją rynkową akcji w wolnym obrocie (współczynnik free float zaokrąglany w górę do 5%). Skład (100 spółek) jest przeglądany co kwartał."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^FTSE. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w GBP (funt szterling)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Londyńska giełda, sesja zwykle 8:00–16:30 czasu londyńskiego (Europe/London)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1984-01-03 — dzień startu z wartością 1 000."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Skład zmienia się kwartalnie (spółki wchodzą i wychodzą), więc szereg nie opisuje stałego zbioru firm. Indeks pierwotnie powstał jako wspólne przedsięwzięcie Financial Times i giełdy londyńskiej."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Pełne dane OHLC od początku historii w MarketLab (5 dni w 1984 r. bez rozstępu cen). Brak notowań w dni zamknięcia giełdy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "FTSE Russell — FTSE 100 i indeksy UK",
+          "url": "https://www.lseg.com/en/ftse-russell/indices/uk",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — FTSE 100 Index",
+          "url": "https://en.wikipedia.org/wiki/FTSE_100_Index",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "London Stock Exchange — godziny handlu",
+          "url": "https://www.londonstockexchange.com/equities-trading/trading-times",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "nikkei225",
+      "display_name": "Nikkei 225 (225 dużych spółek Japonii, ważone ceną akcji)",
+      "qualitative": [
+        "Nikkei 225, czyli Nikkei Stock Average, to najczęściej cytowany wskaźnik japońskiego rynku akcji. Obejmuje 225 spółek z segmentu Prime Tokijskiej Giełdy Papierów Wartościowych, a prowadzi go gazeta Nikkei (Nikkei Inc.). Jest liczony od 1950 r., więc pokazuje także powojenną historię japońskiej gospodarki.",
+        "Podobnie jak Dow Jones, jest ważony ceną akcji, a nie wartością spółki: akcje o wysokiej cenie mają większy wpływ na indeks. Skład wybiera się według płynności i równowagi sektorów, a nie wielkości, dlatego nie jest to ranking 225 największych firm.",
+        "Indeks jest wyrażony w jenach i zależy od kursu jena wobec walut obcych: dla inwestora zagranicznego dochodzi więc efekt waluty. Nie należy mylić go z TOPIX (indeksem ważonym wartością). Ten szereg jest wersją cenową bez dywidend."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend. Nikkei publikuje osobny indeks dochodowy (Nikkei 225 Total Return Index)."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony ceną: suma skorygowanych cen 225 akcji podzielona przez dzielnik (ok. 29,66 według Nikkei na 9 października 2026 r.). Skład: akcje zwykłe z segmentu Prime TSE; przegląd półroczny (kwiecień i październik) według płynności i równowagi sektorów; nadzwyczajne zmiany po wykluczeniu spółki."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^N225. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w JPY."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Tokijska giełda, sesja z przerwą południową; zamknięcie o 15:30 czasu japońskiego (Asia/Tokyo; do listopada 2024 o 15:00). Indeks liczony co 5 sekund."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1965-01-05. Nikkei liczy indeks od 7 września 1950 r. (wartości wsteczne od 16 maja 1949 r.)."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Dzielnik regularnie korygowany po zmianach składu i splitach. Zmiana składu dwa razy w roku. W 2017 r. częstotliwość obliczeń zwiększono do co 5 sekund."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do marca 1988 r. szereg to praktycznie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie; ponad 5 700 dni), więc świece dla tego okresu nie niosą informacji o zakresie dnia. Przerwy noworoczne (japońskie wolne dni giełdy) dają kilkudniowe luki."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Nikkei Indexes — Nikkei Stock Average (Nikkei 225), profil",
+          "url": "https://indexes.nikkei.co.jp/en/nkave/index/profile?idx=nk225",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Nikkei 225",
+          "url": "https://en.wikipedia.org/wiki/Nikkei_225",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "hang-seng",
+      "display_name": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
+      "qualitative": [
+        "Hang Seng Index to główny wskaźnik giełdy w Hongkongu, jeden z najstarszych w Azji. Został opublikowany 24 listopada 1969 r. i jest prowadzony przez Hang Seng Indexes Company. Składa się z najważniejszych spółek notowanych w Hongkongu: banków, firm technologicznych, nieruchomości i przemysłu.",
+        "Spółki ważone są wartością rynkową uwzględniającą akcje w wolnym obrocie, więc największe mają największy wpływ na indeks. Wiele składników to chińskie firmy notowane w Hongkongu, dlatego indeks często odzwierciedla nastroje wokół gospodarki Chin, nie tylko samego Hongkongu.",
+        "Indeks jest wyrażony w dolarach hongkońskich, które są sztywno powiązane z dolarem USA. Nie jest tożsamy z indeksami giełd chińskich (Szanghaj, Shenzhen). Ten szereg jest wersją cenową bez dywidend."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks cenowy (price return), bez dywidend. Hang Seng Indexes publikuje też wersje dochodowe brutto i netto."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Ważony kapitalizacją rynkową z uwzględnieniem akcji w wolnym obrocie; według oficjalnej strony 95 składników (stan: październik 2026), grupowanych w cztery sektory: finanse, usługi użyteczności publicznej, nieruchomości oraz handel i przemysł. Liczba składników rosła z czasem; reguły limitów wag opisuje metodologia dostawcy."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^HSI. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu; wartości opisane w HKD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Giełda w Hongkongu (Asia/Hong_Kong): sesja poranna 9:30–12:00, popołudniowa 13:00–16:00, potem aukcja zamknięcia."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1986-12-31. Wartość bazowa 100 odpowiada dniowi 31 lipca 1964 r., a indeks opublikowano w 1969 r."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Liczba składników była zwiększana w czasie (dziś 95), a zasady ważenia i limity wag były reformowane — szczegóły historii zmian publikuje Hang Seng Indexes."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do 22 września 1989 r. dane to w większości tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 20–23 października 1987 r. (zamknięcie giełdy po krachu) i w dni wolne od handlu."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hang Seng Indexes — Hang Seng Index, szczegóły",
+          "url": "https://www.hsi.com.hk/eng/indexes/all-indexes/hsi",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Hang Seng Index",
+          "url": "https://en.wikipedia.org/wiki/Hang_Seng_Index",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "HKEX — godziny handlu na rynku akcji",
+          "url": "https://www.hkex.com.hk/Services/Trading-hours-and-Severe-Weather-Arrangements/Trading-Hours/Securities-Market?sc_lang=en",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "us-13w",
+      "display_name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
+      "qualitative": [
+        "Ten szereg pokazuje, ile rząd USA płaci za pożyczenie pieniędzy na 13 tygodni (około trzech miesięcy), czyli oprocentowanie bonów skarbowych o tym terminie. Bon skarbowy nie ma kuponu: sprzedaje się go poniżej wartości nominalnej, a różnica między ceną zakupu a nominałem jest zyskiem. Wyrażona w procentach rocznych, to właśnie stopa dyskontowa.",
+        "Rentowność krótkich bonów jest silnie związana z bieżącą polityką pieniężną banku centralnego (w USA z Fed), bo inwestorzy porównują ją z tym, ile mogliby zarobić na stopie podstawowej. Dlatego bywa używana jako przybliżenie „stopy wolnej od ryzyka”, a jej różnica wobec rentowności obligacji 10-letnich (kształt krzywej rentowności) jest często omawiana jako wskaźnik oczekiwań wobec gospodarki.",
+        "Warto pamiętać, że to nie cena, tylko oprocentowanie: gdy wartość szeregu rośnie, bony są tańsze (dają wyższy zysk), a gdy spada — droższe. Stopa dyskontowa różni się od „rentowności równoważnej obligacji” (bond-equivalent yield) liczonej inaczej, więc jej wartość jest nieco niższa od tej drugiej. Wykres pokazuje poziom stopy w danym dniu, a nie wynik inwestycji."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Rentowność w procentach rocznych, liczona jako stopa dyskontowa 13-tygodniowego bonu skarbowego USA (nie cena, nie rentowność równoważna obligacji)."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Stopa dyskontowa = (nominał − cena) / nominał, przeliczona na rok 360-dniowy. Departament Skarbu przyjmuje do własnej krzywej rentowności bid-side notowania ostatnio aukcjonowanych bonów 13-tygodniowych, zebrane przez Fed Nowy Jork około 15:30 czasu NY."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^IRX (indeks stóp Cboe). Notowania pochodzą z Yahoo Finance (symbol z grupy indeksów stóp procentowych Cboe), nie z oficjalnej tabeli Departamentu Skarbu USA; starsza część historii (od lat 60. i 70.) ma pochodzenie, którego dostawca nie opisuje."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Procent rocznie (%), USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek pozagiełdowy bonów skarbowych USA; w danych MarketLab daty w strefie America/Chicago (strefa giełdy Cboe), dni robocze."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1960-01-04. Starsze notowania mają pochodzenie niedokumentowane przez dostawcę."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Departament Skarbu USA zastrzega sobie prawo zmiany metody krzywej (aktualny opis z 18 lutego 2025 r.)."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Zdarzają się skoki i błędne wartości w dostawcy. W MarketLab pomijane są dni, w których którekolwiek z pól otwarcie/maksimum/minimum/zamknięcie ma wartość ≤ 0. Dotyczy to m.in. 18–30 marca 2020 r., gdy rentowność krótkich bonów była bliska zera lub ujemna — tych dni brak w szeregu. Do października 1993 r. w danych zwykle tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 11–14 września 2001 r."
+        }
+      ],
+      "sources": [
+        {
+          "title": "U.S. Department of the Treasury — Daily Treasury Bill Rates",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates&field_tdr_date_value_month=202610",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "U.S. Department of the Treasury — metodologia krzywej rentowności",
+          "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Treasury bill",
+          "url": "https://en.wikipedia.org/wiki/Treasury_bill",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "us-10y",
+      "display_name": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
+      "qualitative": [
+        "Ten szereg pokazuje rentowność 10-letnich obligacji skarbowych USA, czyli roczny zysk, jaki dostaje ktoś, kto kupuje taką obligację po bieżącej cenie i trzyma ją do terminu wykupu. To jedna z najczęściej śledzonych stóp na świecie: wpływa na koszt kredytów hipotecznych, wyceny akcji i firmowych obligacji.",
+        "Rentowność i cena obligacji poruszają się w przeciwnych kierunkach: gdy cena spada, rentowność rośnie, i odwrotnie. Wzrost rentowności oznacza więc, że rynek żąda wyższego oprocentowania za pożyczanie rządowi na 10 lat, ale sam wykres nie wyjaśnia dlaczego — mogą za tym stać oczekiwania inflacji, polityki banku centralnego, podaży obligacji lub popytu na bezpieczne aktywa.",
+        "Rentowność 10-letnia bywa porównywana z rentownością 13-tygodniowych bonów lub obligacji 30-letnich: różnica tworzy krzywą rentowności. Nie mylić jej z ceną ani z oprocentowaniem kredytów, które mają dodatkową marżę. Wartość szeregu to poziom stopy w danym dniu."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Rentowność do wykupu w procentach rocznych dla 10-letnich obligacji (notes) skarbowych USA — nie cena."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Departament Skarbu USA wyznacza rentowności o stałym terminie zapadalności (constant maturity) z krzywej rentowności par, wyliczanej metodą monotone convex z ofert kupna (bid-side) ostatnio aukcjonowanych papierów, zebranych przez Fed Nowy Jork około 15:30 czasu NY. Dla 10 lat wejściem jest ostatnia aukcjonowana 10-letnia obligacja."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^TNX (indeks rentowności Cboe). Notowania pochodzą z Yahoo Finance (symbol z grupy indeksów stóp procentowych Cboe), nie z oficjalnej tabeli Departamentu Skarbu USA; starsza część historii (od lat 60. i 70.) ma pochodzenie, którego dostawca nie opisuje."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Procent rocznie (%), USD. Wartość 4,50 oznacza 4,50% rocznie (historycznie Cboe publikowało ją jako wartość ×10, Yahoo podaje w procentach)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek pozagiełdowy obligacji USA; w danych MarketLab daty w strefie America/Chicago, dni robocze."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1962-01-02. Starsze notowania mają pochodzenie niedokumentowane przez dostawcę."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Departament Skarbu zmieniał metodę krzywej (m.in. przed powrotem 20-letnich obligacji w maju 2020 r. stosowano inne inputy); opis aktualny z 18 lutego 2025 r."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do października 1993 r. w danych przeważnie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie); także w późniejszych latach część dni do listopada 2025 r. ma wartości jednakowe w czterech polach. Brak notowań 11–14 września 2001 r. W MarketLab pomijane są dni, w których którekolwiek z pól otwarcie/maksimum/minimum/zamknięcie ma wartość ≤ 0."
+        }
+      ],
+      "sources": [
+        {
+          "title": "U.S. Department of the Treasury — Daily Treasury Par Yield Curve Rates",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "U.S. Department of the Treasury — metodologia krzywej rentowności",
+          "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Federal Reserve — H.15 Selected Interest Rates",
+          "url": "https://www.federalreserve.gov/releases/h15/default.htm",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "us-30y",
+      "display_name": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
+      "qualitative": [
+        "Ten szereg pokazuje rentowność najdłuższych obligacji skarbowych USA, 30-letnich, czyli roczny zysk dla kogoś, kto kupuje taką obligację po bieżącej cenie i trzyma ją do wykupu. Odzwierciedla oczekiwania rynku co do stóp procentowych i inflacji w bardzo długim horyzoncie.",
+        "Podobnie jak dla innych obligacji: gdy cena obligacji spada, rentowność rośnie, i odwrotnie. Rentowność 30-letnia jest zwykle bardziej wrażliwa na zmianę oczekiwań co do inflacji i podaży długu niż rentowność krótkich bonów. Wykres pokazuje poziom stopy, a nie wynik inwestycji.",
+        "Bywa mylona z oprocentowaniem 30-letnich kredytów hipotecznych: kredyty mają własną marżę i zwykle śledzą rentowność obligacji 10-letnich. Seria nie jest ciągła pod względem dostępności papierów: Departament Skarbu nie publikował swojej serii 30-letniej od lutego 2002 do lutego 2006 r., więc ten okres w danych należy traktować ostrożnie."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Rentowność do wykupu w procentach rocznych dla 30-letnich obligacji (bonds) skarbowych USA — nie cena."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Rentowność o stałym terminie zapadalności z krzywej rentowności par Departamentu Skarbu USA (metoda monotone convex, oferty kupna ostatnio aukcjonowanych papierów, zebrane o ok. 15:30 czasu NY). Seria 30-letnia Skarbu została wstrzymana 18 lutego 2002 r. i przywrócona 9 lutego 2006 r."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^TYX (indeks rentowności Cboe). Notowania pochodzą z Yahoo Finance (symbol z grupy indeksów stóp procentowych Cboe), nie z oficjalnej tabeli Departamentu Skarbu USA; starsza część historii (od lat 60. i 70.) ma pochodzenie, którego dostawca nie opisuje."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Procent rocznie (%), USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek pozagiełdowy obligacji USA; daty w strefie America/Chicago, dni robocze."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1977-02-15."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Zawieszenie i przywrócenie serii 30-letniej (2002–2006) oraz zmiany metody krzywej Skarbu (opis z 18 lutego 2025 r.). W MarketLab brak luki w tym okresie, ale pochodzenie danych dostawcy z tych lat nie jest opisane."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do października 1993 r. w danych przeważnie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 11–14 września 2001 r. W MarketLab pomijane są dni, w których którekolwiek z pól otwarcie/maksimum/minimum/zamknięcie ma wartość ≤ 0."
+        }
+      ],
+      "sources": [
+        {
+          "title": "U.S. Department of the Treasury — Daily Treasury Par Yield Curve Rates",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Federal Reserve — H.15 Selected Interest Rates",
+          "url": "https://www.federalreserve.gov/releases/h15/default.htm",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "U.S. Department of the Treasury — metodologia krzywej rentowności",
+          "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "vix",
+      "display_name": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
+      "qualitative": [
+        "VIX, zwany „indeksem strachu”, mierzy, jak duże wahania indeksu S&P 500 rynek spodziewa się w ciągu najbliższych 30 dni. Nie jest ceną akcji ani średnią z przeszłych wahań: jest liczony z cen opcji na S&P 500, czyli z tego, ile uczestnicy rynku płacą za zabezpieczenie przed ruchami indeksu.",
+        "Im wyższa wartość VIX, tym większe wahania rynek „wycenia” na najbliższy miesiąc; im niższa, tym spokojniejszy rynek. Wartość podawana jest w punktach odpowiadających rocznej zmienności w procentach, więc VIX równy 20 oznacza, że rynek wycenia roczną zmienność około 20%. Wzrosty VIX często towarzyszą spadkom akcji, ale sam VIX nie wskazuje kierunku ruchu ani nie przewiduje go.",
+        "Częsty błąd to traktowanie VIX jak „ceny strachu” do kupienia: sam indeks nie jest papierem wartościowym, a instrumenty na niego (kontrakty terminowe, fundusze) zachowują się inaczej niż sam indeks. Ten szereg to wartość indeksu, nie cena takiego instrumentu."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks zmienności implikowanej (z cen opcji) — oczekiwana zmienność S&P 500 na 30 dni, w rocznych punktach procentowych. Nie jest ceną ani rentownością."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cboe liczy go ze środkowych kwotowań kupna i sprzedaży opcji na indeks S&P 500 (SPX): używa opcji standardowych i tygodniowych z piątkowym wygaśnięciem, o terminie od 23 do 37 dni, i ważąc je tak, by uzyskać stały 30-dniowy horyzont. Wartości śróddzienne aktualizowane co 15 sekund."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol ^VIX. Notowania pochodzą z Yahoo Finance; mogą różnić się od oficjalnych wartości Cboe."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu (roczna zmienność w %), USD jako waluta nominalna bez znaczenia."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Cboe, America/Chicago w danych MarketLab; wartość zamknięcia dnia pochodzi z sesji opcji na SPX."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1990-01-02. Cboe wprowadziło VIX w 1993 r.; wartości z lat 1990–1993 zostały policzone wstecz."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "W 2003 r. Cboe zmieniło metodę: pierwotny VIX (1993) opierał się na opcjach na indeks S&P 100, nowa wersja korzysta z szerokiego zbioru opcji na S&P 500. Dane historyczne w Yahoo są przeliczone wg nowej metody.  W obliczeniach używane są dziś także tygodniowe opcje SPX z piątkowym wygaśnięciem."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do grudnia 1991 r. dane to głównie cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 11–14 września 2001 r. Wartość zamknięcia VIX różni się od wartości rozliczeniowej kontraktów terminowych na VIX."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cboe — VIX Index",
+          "url": "https://www.cboe.com/tradable_products/vix/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Cboe — VIX FAQs",
+          "url": "https://www.cboe.com/tradable_products/vix/faqs/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — VIX",
+          "url": "https://en.wikipedia.org/wiki/VIX",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "usd-index",
+      "display_name": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
+      "qualitative": [
+        "Indeks dolara amerykańskiego (U.S. Dollar Index, DXY) pokazuje, ile wart jest dolar USA w porównaniu z koszykiem sześciu walut innych krajów. Gdy indeks rośnie, dolar się umacnia wobec tego koszyka; gdy spada — osłabia się. Jest to wskaźnik względny, nie cena dolara w złotych ani w żadnej konkretnej walucie.",
+        "Koszyk ma sztywne wagi: euro stanowi około 57,6%, jen 13,6%, funt 11,9%, dolar kanadyjski 9,1%, korona szwedzka 4,2% i frank szwajcarski 3,6%. Dlatego DXY w największej mierze odzwierciedla kurs EUR/USD, a nie zmianę wartości dolara wobec wszystkich walut świata.",
+        "Wagi pochodzą z 1973 r. i zmieniły się tylko raz (w 1999 r., gdy powstało euro), więc nie odpowiadają dzisiejszemu handlowi USA: w koszyku nie ma m.in. Chin, Meksyku ani Korei. Nie należy go mylić z szerokim indeksem dolara Fed (Broad Dollar Index) ani z kursem USD/PLN."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Indeks walutowy — średnia geometryczna ważona kursów dolara USA wobec sześciu walut; wartość bazowa 100 w marcu 1973 r."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Wagi: EUR 57,6%, JPY 13,6%, GBP 11,9%, CAD 9,1%, SEK 4,2%, CHF 3,6% (Wikipedia). Metodologia należy do ICE Data Indices, LLC; ICE publikuje też kontrakty terminowe na ten indeks (symbol DX). W 1999 r. waluty europejskie (m.in. marka niemiecka, frank francuski) zastąpiono euro."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol DX-Y.NYB (indeks spot, nie kontrakt DX). Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "Punkty indeksu (bezwymiarowa miara względna, nie waluta)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Handel globalny, indeks liczony niemal całą dobę od niedzielnego wieczoru do piątku po południu czasu NY; daty w danych MarketLab w strefie America/New_York. Kontrakty na DX handlowane elektronicznie na ICE Futures US."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1971-01-04; indeks wystartował w marcu 1973 r., wcześniejsza część jest policzona wstecz."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Jedyna zmiana koszyka: wprowadzenie euro w 1999 r. Wagi nie były aktualizowane do zmian w handlu."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Do listopada 1985 r. w danych głównie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 11–14 września 2001 r. Wartość z Yahoo może różnić się nieco od oficjalnej wartości ICE."
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICE — U.S. Dollar Index Futures (opis kontraktu i koszyka)",
+          "url": "https://www.ice.com/products/194/US-Dollar-Index-Futures",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — U.S. Dollar Index",
+          "url": "https://en.wikipedia.org/wiki/U.S._Dollar_Index",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "gold",
+      "display_name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na złoto notowanego na giełdzie COMEX (część CME Group), a nie cenę złota spot. Kontrakt to umowa na dostawę 100 uncji trojańskich złota w określonym miesiącu w przyszłości. Cena kontraktu zwykle różni się od ceny natychmiastowej, bo uwzględnia koszt utrzymania złota i oprocentowanie pieniądza do dnia dostawy.",
+        "Dla wykresu oznacza to dwie rzeczy. Po pierwsze, obok kontraktów o różnych terminach istnieje wiele cen „złota” jednocześnie; ten szereg łączy kolejne najbliższe serie w jedną linię, więc przy przejściu na następną serię cena może „skoczyć” bez żadnej zmiany na rynku. Po drugie, wartość nie jest identyczna z ceną spot (cena natychmiastowa), z którą często bywa mylona.",
+        "Złoto jest szeroko śledzone jako surowiec o roli „bezpiecznego aktywa” i wskaźnik nastrojów wobec ryzyka, inflacji i realnych stóp procentowych. Wykres pokazuje przeszłe ceny i nie wskazuje, co będzie dalej."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot. Cena rozliczeniowa/zamknięcia kontraktu COMEX."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego; brak ważenia. Rozmiar kontraktu: 100 uncji trojańskich; rozliczenie przez dostawę fizyczną złota o próbie min. 995; wygaśnięcie handlu w trzecim od końca dniu roboczym miesiąca dostawy. Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol GC=F. Notowania pochodzą od Yahoo, nie bezpośrednio z CME."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za uncję trojańską (≈ 31,1035 g), notowane w dolarach i centach."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "COMEX / CME Globex, CME Globex: niedziela–piątek, 18:00–17:00 czasu wschodniego USA (czas NY) z godzinną przerwą dzienną od 17:00. Daty w danych MarketLab w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2000-08-30."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Zmieniały się specyfikacje i godziny handlu kontraktu; dostawca nie dokumentuje dokładnych dat przełączania serii."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Luki cenowe przy rolowaniu serii; do września 2007 r. wiele dni ma tylko cenę zamknięcia (otwarcie = maksimum = minimum = zamknięcie). W danych MarketLab różnica zamknięcia GC=F i ceny spot (gold-spot) w dniach wspólnych wynosiła od −150 do +124 USD (średnio ok. +6 USD) według stanu na 10 października 2026 r. — to normalne przy porównywaniu dwóch różnych instrumentów w różnych momentach dnia."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Gold Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/metals/precious/gold.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "LBMA — LBMA Gold Price (cena referencyjna złota)",
+          "url": "https://www.lbma.org.uk/prices-and-data/lbma-gold-price",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Futures contract",
+          "url": "https://en.wikipedia.org/wiki/Futures_contract",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "gold-spot",
+      "display_name": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę spot złota, czyli cenę transakcji z natychmiastową dostawą (rozliczenie zwykle w ciągu dwóch dni roboczych), wyrażoną w dolarach za uncję trojańską (XAU/USD). To nie jest cena kontraktu terminowego, który dotyczy dostawy w przyszłości i ma własną cenę zależną od kosztu utrzymania złota.",
+        "Cena spot jest podstawą wielu wycen w świecie złota. Rynek spot to głównie handel pozagiełdowy (OTC) w Londynie, Nowym Jorku i Azji, dlatego nie ma jednej „oficjalnej” ceny w dowolnym momencie: istnieją ceny referencyjne, np. LBMA Gold Price ustalane dwa razy dziennie w aukcjach.",
+        "Ta seria pochodzi z Gold Watcher, źródła publikującego jedną wartość na dzień. Kontrakt terminowy (instrument „Złoto — kontrakt terminowy”) pokazuje otwarcie, maksimum, minimum i zamknięcie, a ta seria tylko jedną wartość dziennie, więc wykres jest zawsze linią. Nie traktuj jej jak prognozy ani jak gwarancji ceny, po której można kupić lub sprzedać złoto."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Cena spot złota XAU/USD, jedna wartość dziennie (nie kontrakt terminowy, bez rolowania)."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Jedna wartość dnia publikowana przez Gold Watcher, który korzysta z danych Metals.Dev. Źródło nie podaje godziny, do której odnosi się wartość dnia, więc nie należy zakładać, że odpowiada cenie zamknięcia konkretnej giełdy."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Gold Watcher (publiczne dokumenty JSON), seria gold/xau-usd, symbol XAU/USD; pobierane z publicznych dokumentów JSON."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za uncję trojańską (≈ 31,1035 g)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Dni kalendarzowe UTC (strefa UTC), także soboty i niedziele; rynek spot jest prawie całodobowy od niedzielnego wieczoru do piątkowego wieczoru, więc wartości weekendowe nie są notowaniami giełdowymi (w danych często powtarzają piątek)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2017-01-01."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Starsze wartości mają cztery miejsca po przecinku, nowsze często dwa lub trzy — to cecha źródła, nie zmiana ceny."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Jedna wartość dziennie (otwarcie = maksimum = minimum = zamknięcie, więc brak zakresu dnia). Wartości weekendowe bywają powtórzeniem piątku (w danych sobota = piątek w ok. 29% przypadków). Brak dni 25 grudnia 2024 – 1 stycznia 2025 r. Wartość w dniu bieżącym pojawia się dopiero po zamknięciu okresu przez źródło."
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gold Watcher — dokument dostępności serii (źródło danych MarketLab)",
+          "url": "https://goldwatcher-publisher.goldwatcher.workers.dev/data/v1/availability.json",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "LBMA — LBMA Gold Price (cena referencyjna złota)",
+          "url": "https://www.lbma.org.uk/prices-and-data/lbma-gold-price",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "World Gold Council — Goldhub, ceny złota",
+          "url": "https://www.gold.org/goldhub/data/gold-prices",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Spot contract",
+          "url": "https://en.wikipedia.org/wiki/Spot_contract",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "silver",
+      "display_name": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na srebro z giełdy COMEX, a nie cenę srebra spot. Kontrakt dotyczy dostawy 5 000 uncji trojańskich srebra w przyszłym miesiącu; ten szereg łączy kolejne najbliższe serie w jedną linię.",
+        "Srebro jest jednocześnie metalem inwestycyjnym i przemysłowym (m.in. elektronika, panele fotowoltaiczne), dlatego jego cena reaguje zarówno na nastroje wobec bezpiecznych aktywów, jak i na koniunkturę w przemyśle. Zwykle jest bardziej zmienne niż złoto.",
+        "Przy rolowaniu na następną serię cena może się nieco przesunąć bez zmiany na rynku; to cecha ciągłego kontraktu, nie błąd danych. Wykres pokazuje przeszłe ceny i nie sugeruje przyszłych."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego, brak ważenia. Rozmiar: 5 000 uncji trojańskich; rozliczenie przez dostawę fizyczną srebra o próbie min. 999; wygaśnięcie handlu w trzecim od końca dniu roboczym miesiąca dostawy. Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol SI=F."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za uncję trojańską."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "COMEX / CME Globex, CME Globex: niedziela–piątek, 18:00–17:00 czasu wschodniego USA (czas NY) z godzinną przerwą dzienną od 17:00. Daty w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2000-08-30."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Dostawca nie dokumentuje dat przełączania serii; specyfikacja kontraktu może być zmieniana przez giełdę."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Skoki przy rolowaniu serii. Do sierpnia 2010 r. wiele dni ma tylko cenę zamknięcia, a po 2010 r. ok. 640 dni ma identyczne wartości w czterech polach (słaba aktywność lub brak transakcji w dniu)."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Silver Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/metals/precious/silver.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Silver",
+          "url": "https://en.wikipedia.org/wiki/Silver",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Troy ounce",
+          "url": "https://en.wikipedia.org/wiki/Troy_ounce",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "platinum",
+      "display_name": "Platyna — kontrakt terminowy (cena umowy na przyszłą dostawę platyny, uncja trojańska)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na platynę z giełdy NYMEX (CME Group). Kontrakt dotyczy dostawy 50 uncji trojańskich platyny, a szereg łączy kolejne najbliższe serie w jedną linię. To nie jest cena spot.",
+        "Platyna jest metalem szlachetnym używanym głównie w przemyśle (m.in. katalizatory w samochodach, przemysł chemiczny i szklarski) oraz w jubilerstwie i jako lokata. Rynek platyny jest znacznie mniejszy i mniej płynny niż rynek złota, więc jej ceny bywają bardziej nieregularne.",
+        "Mała płynność ma skutek dla wykresu: w danych są okresy, gdy nie ma notowań przez całe tygodnie, a wiele dni ma identyczne wartości otwarcia, maksimum, minimum i zamknięcia. Nie należy tego odczytywać jako stabilności ceny, tylko jako ograniczenie danych."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego, brak ważenia. Rozmiar: 50 uncji trojańskich; rozliczenie przez dostawę fizyczną platyny o czystości min. 99,95%; handel wygasa w trzecim od końca dniu roboczym miesiąca dostawy; miesiące notowań: m.in. styczeń, kwiecień, lipiec, październik. Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol PL=F."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za uncję trojańską."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "NYMEX / CME Globex, CME Globex: niedziela–piątek, 18:00–17:00 czasu wschodniego USA (czas NY) z godzinną przerwą dzienną od 17:00. Daty w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1997-10-29."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Dostawca nie dokumentuje dat przełączania serii."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Częste luki, np. 28 stycznia – 26 marca 2002 r. oraz 27 kwietnia – 14 lipca 2004 r. (kilkutygodniowe przerwy); około połowy dni (ponad 3 000) ma identyczne cztery wartości — wskazuje to na słabą płynność lub brak transakcji w danym dniu. Skoki przy rolowaniu serii."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Platinum Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/metals/precious/platinum.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Platinum",
+          "url": "https://en.wikipedia.org/wiki/Platinum",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "copper",
+      "display_name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na miedź z giełdy COMEX (CME Group), podawaną w dolarach za funt (≈ 453,6 g). Kontrakt dotyczy 25 000 funtów miedzi, a szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
+        "Miedź jest metalem przemysłowym używanym w budownictwie, sieciach elektrycznych, elektronice i transporcie, dlatego jej cena bywa traktowana jako miernik koniunktury przemysłowej. Wykres pokazuje ceny z przeszłości i nie przesądza o przyszłych.",
+        "Nie należy mylić tej serii z ceną miedzi na Londyńskiej Giełdzie Metali (LME), która jest notowana w dolarach za tonę i dotyczy innych kontraktów."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego, brak ważenia. Rozmiar: 25 000 funtów; notowanie w dolarach i centach za funt; rozliczenie przez dostawę miedzi katodowej Grade 1; wygaśnięcie handlu o 12:00 czasu centralnego USA w trzecim od końca dniu roboczym miesiąca dostawy. Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol HG=F."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za funt (lb)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "COMEX / CME Globex, CME Globex: niedziela–piątek, 18:00–17:00 czasu wschodniego USA (czas NY) z godzinną przerwą dzienną od 17:00. Daty w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2000-08-30."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Dostawca nie dokumentuje dat przełączania serii; giełda może zmieniać parametry kontraktu."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Skoki przy rolowaniu serii. 125 dni (od 2000 do września 2026 r.) ma identyczne wartości w czterech polach, co wskazuje na dni bez aktywnego handlu lub braki danych dostawcy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Copper Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/metals/base/copper.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Copper",
+          "url": "https://en.wikipedia.org/wiki/Copper",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "crude-oil",
+      "display_name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na ropę naftową gatunku WTI (West Texas Intermediate) z giełdy NYMEX (CME Group), w dolarach za baryłkę. Kontrakt dotyczy 1 000 baryłek ropy, dostarczanej fizycznie w Cushing w stanie Oklahoma. Szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
+        "WTI jest jednym z głównych punktów odniesienia cen ropy na świecie, obok brent z Morza Północnego. Cena ropy wpływa na koszty paliw, inflację i wyniki spółek energetycznych, ale ten szereg to tylko cena jednego typu kontraktu, nie „cena benzyny”.",
+        "Ważna cecha danych: 20 kwietnia 2020 r. cena kontraktu najbliższej serii spadła poniżej zera (zamknięcie −37,63 USD), przy niemal pełnych magazynach w Cushing i zbliżającym się wygaśnięciu kontraktu. Takie notowania są w MarketLab pomijane (filtr wartości ≤ 0), więc dni 20 i 21 kwietnia 2020 r. nie ma na wykresie."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego, brak ważenia. Rozmiar: 1 000 baryłek; notowanie w dolarach i centach za baryłkę; rozliczenie przez dostawę fizyczną w Cushing (Oklahoma); handel wygasa 3 dni robocze przed 25. dniem miesiąca poprzedzającego miesiąc dostawy (4 dni, jeśli 25. nie jest dniem roboczym). Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol CL=F."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za baryłkę (bbl, ≈ 159 l)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "NYMEX / CME Globex: niedziela–piątek 17:00–16:00 czasu centralnego USA z godzinną przerwą od 16:00. Daty w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2000-08-23."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Na początku kwietnia 2020 r. giełda zapowiedziała obsługę ujemnych cen kontraktów; dostawca nie dokumentuje dat przełączania serii."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Skoki przy rolowaniu serii (zmiana serii zmienia też poziom ceny z powodu różnicy między terminami). Dni 20 i 21 kwietnia 2020 r. są pominięte, bo notowania zawierały wartości ujemne (20 kwietnia: zamknięcie −37,63 USD; 21 kwietnia: otwarcie −14,00 USD, minimum −16,74 USD)."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Crude Oil (WTI) Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/energy/crude-oil/light-sweet-crude.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — West Texas Intermediate",
+          "url": "https://en.wikipedia.org/wiki/West_Texas_Intermediate",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "natural-gas",
+      "display_name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
+      "qualitative": [
+        "Ten szereg pokazuje cenę kontraktu terminowego na gaz ziemny w punkcie Henry Hub w Luizjanie (USA), notowanego na giełdzie NYMEX (CME Group) w dolarach za MMBtu (milion brytyjskich jednostek ciepła, miara energii). Kontrakt dotyczy 10 000 MMBtu, a szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
+        "Henry Hub jest głównym punktem odniesienia cen gazu w USA. Cena jest wyraźnie sezonowa i zależy od pogody (ogrzewanie zimą, klimatyzacja latem), poziomu zapasów w magazynach i produkcji. Nie odpowiada bezpośrednio cenom gazu w Europie ani w Polsce, które mają własne punkty odniesienia i koszty transportu.",
+        "Wykres pokazuje przeszłe ceny; nie jest prognozą. Przy rolowaniu na następną serię cena może się znacznie przesunąć, bo ceny kolejnych miesięcy dostawy potrafią się wyraźnie różnić (np. lato kontra zima)."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Ciągły kontrakt terminowy najbliższej serii (front month), z rolowaniem; nie spot."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Cena jednego kontraktu giełdowego, brak ważenia. Rozmiar: 10 000 MMBtu; notowanie w dolarach za MMBtu; rozliczenie przez dostawę fizyczną gazu spełniającego wymagania taryfy Sabine Pipe Line (Henry Hub); handel wygasa w trzecim od końca dniu roboczym miesiąca poprzedzającego miesiąc dostawy. Szereg jest ciągłym kontraktem najbliższej serii (front month) z Yahoo Finance: w miarę zbliżania się terminu wygaśnięcia dostawca przechodzi na następną serię, a ceny nie są korygowane o różnicę między seriami, więc w dniu zmiany serii mogą pojawić się skoki (luki przy rolowaniu), które nie są zmianą ceny żadnego jednego kontraktu."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol NG=F."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za MMBtu."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "NYMEX / CME Globex, CME Globex: niedziela–piątek, 18:00–17:00 czasu wschodniego USA (czas NY) z godzinną przerwą dzienną od 17:00. Daty w strefie America/New_York."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2000-08-30."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Dostawca nie dokumentuje dat przełączania serii; giełda może zmieniać parametry kontraktu."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Skoki przy rolowaniu serii i silna sezonowość cen kolejnych miesięcy. Jeden dzień (23 lutego 2001 r.) ma identyczne cztery wartości."
+        }
+      ],
+      "sources": [
+        {
+          "title": "CME Group — Henry Hub Natural Gas Futures, specyfikacja kontraktu",
+          "url": "https://www.cmegroup.com/markets/energy/natural-gas/natural-gas.contractSpecs.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Henry Hub",
+          "url": "https://en.wikipedia.org/wiki/Henry_Hub",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "usd-jpy",
+      "display_name": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
+      "qualitative": [
+        "USD/JPY pokazuje, ile jenów japońskich kosztuje jeden dolar amerykański. Gdy wartość rośnie, dolar jest droższy w jenach (jen słabszy); gdy spada, jen się umacnia. To jedna z najczęściej handlowanych par walutowych na świecie.",
+        "Para jest silnie związana z różnicą stóp procentowych między USA i Japonią oraz z postrzeganiem jena jako waluty „bezpiecznej” w okresach niepewności na rynkach. Wartość szeregu to poziom kursu, nie wynik inwestycji; sam wykres nie wyjaśnia przyczyny zmiany.",
+        "Należy pamiętać, że ta seria jest wyrażona w jenach za 1 dolar, odwrotnie niż EUR/USD (dolary za 1 euro). Wzrost USD/JPY oznacza umocnienie dolara, a wzrost EUR/USD — osłabienie dolara."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Kurs walutowy spot (rynkowy) pary USD/JPY: ile JPY za 1 USD."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Notowanie międzybankowe z rynku pozagiełdowego (OTC); brak ważenia ani składu. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol USDJPY=X."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "JPY za 1 USD (jenów za dolara)."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "1996-10-30."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Brak formalnej metodologii: kurs jest kwotowaniem rynkowym; dostawca może zmieniać agregację źródeł."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Brak notowań 1 sierpnia – 25 sierpnia 2008 r. (kilkutygodniowa luka w danych dostawcy). Pojedyncze dni z błędnymi wartościami dostawcy (zbyt wysokie lub niskie maksimum, minimum lub zamknięcie). Znane przypadki: 8 października i 8 grudnia 2008 r. (nagłe odbicia o kilka–kilkanaście jenów, które wracają następnego dnia)."
+        }
+      ],
+      "sources": [
+        {
+          "title": "BIS — Triennial Central Bank Survey: rynek walutowy 2025",
+          "url": "https://www.bis.org/statistics/rpfx25.htm",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "ECB — kursy referencyjne euro (m.in. EUR/JPY)",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Foreign exchange market",
+          "url": "https://en.wikipedia.org/wiki/Foreign_exchange_market",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "eur-usd",
+      "display_name": "EUR/USD (kurs euro w dolarach amerykańskich)",
+      "qualitative": [
+        "EUR/USD pokazuje, ile dolarów amerykańskich kosztuje jedno euro. Gdy wartość rośnie, euro jest droższe w dolarach (dolar słabszy); gdy spada, dolar się umacnia. To najczęściej handlowana para walutowa na świecie.",
+        "Kurs jest powiązany m.in. z polityką pieniężną Europejskiego Banku Centralnego i amerykańskiego Fed, różnicą stóp procentowych oraz kondycją gospodarek strefy euro i USA. Euro stanowi także około 58% koszyka indeksu dolara DXY, więc EUR/USD jest głównym czynnikiem jego ruchu (w odwrotnym kierunku).",
+        "Wartość podawana jest w dolarach za 1 euro, a nie odwrotnie: wzrost oznacza umocnienie euro. To kurs rynkowy, a nie kurs walutowy w kantorze (z marżą) ani oficjalny kurs referencyjny EBC."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Kurs walutowy spot (rynkowy) pary EUR/USD: ile USD za 1 EUR."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. EBC publikuje osobny kurs referencyjny, ustalany około 14:10 CET i publikowany około 16:00 CET."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol EURUSD=X."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "USD za 1 EUR."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2003-12-01. Euro istnieje od 1999 r., ale dostawca ma dane dla tej pary od grudnia 2003 r."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Brak notowań 1–25 sierpnia 2008 r. Pojedyncze dni z błędnymi wartościami dostawcy (zbyt wysokie lub niskie maksimum, minimum lub zamknięcie). Znane przypadki jednodniowych skoków w danych: m.in. 8 stycznia, 8 lutego, 8 października i 8 grudnia 2008 r. (np. 1,5571 w sąsiedztwie wartości ok. 1,45–1,47)."
+        }
+      ],
+      "sources": [
+        {
+          "title": "ECB — kursy referencyjne euro (m.in. EUR/USD)",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "BIS — Triennial Central Bank Survey: rynek walutowy 2025",
+          "url": "https://www.bis.org/statistics/rpfx25.htm",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Foreign exchange market",
+          "url": "https://en.wikipedia.org/wiki/Foreign_exchange_market",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "eur-pln",
+      "display_name": "EUR/PLN (kurs euro w złotych polskich)",
+      "qualitative": [
+        "EUR/PLN pokazuje, ile złotych kosztuje jedno euro. Gdy wartość rośnie, euro jest droższe w złotych (złoty słabszy); gdy spada, złoty się umacnia. Strefa euro jest największym partnerem handlowym Polski, dlatego ten kurs jest ważny dla firm importujących i eksportujących.",
+        "Kurs zależy m.in. od różnicy stóp procentowych, kondycji polskiej gospodarki, napływu kapitału i nastrojów wobec rynków wschodzących. Wartość szeregu to poziom kursu rynkowego, nie wynik inwestycji.",
+        "Nie należy mylić go z kursem w kantorze (zawiera marżę), z oficjalnym kursem średnim NBP (tabela A ogłaszana raz dziennie) ani z kursem referencyjnym EBC. Wszystkie te wartości są zbliżone, ale się różnią."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Kurs walutowy spot (rynkowy) pary EUR/PLN: ile PLN za 1 EUR."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. NBP publikuje kurs średni w tabeli A raz w dniu roboczym; EBC publikuje kurs referencyjny około 16:00 CET."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol EURPLN=X."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "PLN za 1 EUR."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2002-04-01."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym. Polska nie należy do strefy euro i zachowuje własną walutę."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Wyraźne błędy dostawcy w latach 2002–2003, m.in. 5 grudnia 2002 r. (zamknięcie 0,825), 31 grudnia 2002 r. (7,14), 7 stycznia 2003 r. (minimum 0,082) — wartości nierealistyczne, które mogą zniekształcać wykres i skale. Luki w danych: 6 września – 7 października 2002 r., 29 lipca – 6 sierpnia 2003 r. oraz 1–26 sierpnia 2008 r."
+        }
+      ],
+      "sources": [
+        {
+          "title": "NBP — kursy średnie walut obcych, tabela A",
+          "url": "https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "ECB — kursy referencyjne euro (m.in. EUR/PLN)",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Polish złoty",
+          "url": "https://en.wikipedia.org/wiki/Polish_z%C5%82oty",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    },
+    {
+      "instrument_id": "usd-pln",
+      "display_name": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
+      "qualitative": [
+        "USD/PLN pokazuje, ile złotych kosztuje jeden dolar amerykański. Gdy wartość rośnie, dolar jest droższy w złotych (złoty słabszy); gdy spada, złoty się umacnia. Dolar jest główną walutą rozliczeń surowców, więc kurs ma znaczenie dla cen paliw i towarów wyrażanych w USD.",
+        "Na kurs wpływają m.in. polityka pieniężna Fed i NBP, koniunktura w Polsce i USA oraz ogólne nastroje wobec ryzyka. Częściowo jest też pochodną EUR/USD i EUR/PLN: ruch jednego z nich zmienia USD/PLN. Wartość szeregu to poziom kursu, nie rekomendacja.",
+        "Nie należy mylić go z kursem sprzedaży dolara w kantorze (z marżą) ani z kursem średnim NBP z tabeli A, który jest ogłaszany raz dziennie i nieco różni się od kursu rynkowego."
+      ],
+      "technical": [
+        {
+          "label": "Rodzaj danych",
+          "value": "Kurs walutowy spot (rynkowy) pary USD/PLN: ile PLN za 1 USD."
+        },
+        {
+          "label": "Sposób liczenia / ważenia",
+          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. NBP publikuje kurs średni w tabeli A raz w dniu roboczym."
+        },
+        {
+          "label": "Źródło i symbol w MarketLab",
+          "value": "Yahoo Finance, symbol USDPLN=X."
+        },
+        {
+          "label": "Jednostka i waluta",
+          "value": "PLN za 1 USD."
+        },
+        {
+          "label": "Strefa i godziny notowań",
+          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów. W danych występuje jeden dzień weekendowy (ostatnia data szeregu to sobota 10 października 2026 r.)."
+        },
+        {
+          "label": "Początek historii w MarketLab",
+          "value": "2003-12-01."
+        },
+        {
+          "label": "Znane zmiany metodologii",
+          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym."
+        },
+        {
+          "label": "Luki i ograniczenia danych",
+          "value": "Brak notowań 1–25 sierpnia 2008 r. (w tym okresie kurs zmienił się w danych z ok. 2,06 do ok. 2,27). Okresowo pojedyncze dni z błędnymi wartościami dostawcy."
+        }
+      ],
+      "sources": [
+        {
+          "title": "NBP — kursy średnie walut obcych, tabela A",
+          "url": "https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "BIS — Triennial Central Bank Survey: rynek walutowy 2025",
+          "url": "https://www.bis.org/statistics/rpfx25.htm",
+          "accessed": "2026-10-10"
+        },
+        {
+          "title": "Wikipedia — Polish złoty",
+          "url": "https://en.wikipedia.org/wiki/Polish_z%C5%82oty",
+          "accessed": "2026-10-10"
+        }
+      ],
+      "reviewed_at": "2026-10-10"
+    }
+  ]
+}

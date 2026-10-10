@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "hang-seng",
-  "name": "Hang Seng",
+  "name": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
   "currency": "HKD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^HSI",
-    "description": "Indeks Hang Seng (Hongkong)",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

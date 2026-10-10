@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "us-13w",
-  "name": "Bony USA 13 tyg. — rentowność",
+  "name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
   "currency": "USD",
   "unit": "%",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^IRX",
-    "description": "Rentowność 13-tygodniowych bonów skarbowych USA",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

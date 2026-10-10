@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "copper",
-  "name": "Miedź (COMEX HG=F)",
+  "name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
   "currency": "USD",
   "unit": "USD/lb",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "HG=F",
-    "description": "Kontrakt terminowy COMEX na miedź (ciągły, najbliższa seria)",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

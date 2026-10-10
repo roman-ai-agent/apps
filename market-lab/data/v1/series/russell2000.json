@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "russell2000",
-  "name": "Russell 2000",
+  "name": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^RUT",
-    "description": "Indeks Russell 2000",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

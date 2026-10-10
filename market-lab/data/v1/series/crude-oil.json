@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "crude-oil",
-  "name": "Ropa WTI (NYMEX CL=F)",
+  "name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
   "currency": "USD",
   "unit": "USD/bbl",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "CL=F",
-    "description": "Kontrakt terminowy NYMEX na ropę WTI (ciągły, najbliższa seria)",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

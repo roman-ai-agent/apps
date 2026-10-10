@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "us-30y",
-  "name": "Obligacje USA 30 lat — rentowność",
+  "name": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
   "currency": "USD",
   "unit": "%",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^TYX",
-    "description": "Rentowność 30-letnich obligacji skarbowych USA",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

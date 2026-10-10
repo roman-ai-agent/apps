@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "sp500",
-  "name": "S&P 500",
+  "name": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^GSPC",
-    "description": "Indeks S&P 500",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

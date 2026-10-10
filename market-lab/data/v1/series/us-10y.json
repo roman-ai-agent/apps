@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "us-10y",
-  "name": "Obligacje USA 10 lat — rentowność",
+  "name": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
   "currency": "USD",
   "unit": "%",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^TNX",
-    "description": "Rentowność 10-letnich obligacji skarbowych USA",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

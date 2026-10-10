@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T17:06:42.913Z",
+  "generated_at": "2026-10-10T21:54:45.351Z",
   "instruments": [
     {
       "instrument_id": "sp500",
-      "name": "S&P 500",
+      "name": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1927-12-30",
@@ -14,7 +14,7 @@
     },
     {
       "instrument_id": "dji",
-      "name": "Dow Jones Industrial Average",
+      "name": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1992-01-02",
@@ -24,7 +24,7 @@
     },
     {
       "instrument_id": "nasdaq-composite",
-      "name": "NASDAQ Composite",
+      "name": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-02-05",
@@ -34,7 +34,7 @@
     },
     {
       "instrument_id": "nasdaq100",
-      "name": "NASDAQ-100",
+      "name": "Nasdaq-100 (100 największych spółek niefinansowych z giełdy Nasdaq)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1985-10-01",
@@ -44,7 +44,7 @@
     },
     {
       "instrument_id": "russell2000",
-      "name": "Russell 2000",
+      "name": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1987-09-10",
@@ -54,7 +54,7 @@
     },
     {
       "instrument_id": "dax",
-      "name": "DAX",
+      "name": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
       "currency": "EUR",
       "unit": "pkt indeksu",
       "first_date": "1987-12-30",
@@ -64,7 +64,7 @@
     },
     {
       "instrument_id": "ftse100",
-      "name": "FTSE 100",
+      "name": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
       "currency": "GBP",
       "unit": "pkt indeksu",
       "first_date": "1984-01-03",
@@ -74,7 +74,7 @@
     },
     {
       "instrument_id": "nikkei225",
-      "name": "Nikkei 225",
+      "name": "Nikkei 225 (225 dużych spółek Japonii, ważone ceną akcji)",
       "currency": "JPY",
       "unit": "pkt indeksu",
       "first_date": "1965-01-05",
@@ -84,7 +84,7 @@
     },
     {
       "instrument_id": "hang-seng",
-      "name": "Hang Seng",
+      "name": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
       "currency": "HKD",
       "unit": "pkt indeksu",
       "first_date": "1986-12-31",
@@ -94,7 +94,7 @@
     },
     {
       "instrument_id": "us-13w",
-      "name": "Bony USA 13 tyg. — rentowność",
+      "name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1960-01-04",
@@ -104,7 +104,7 @@
     },
     {
       "instrument_id": "us-10y",
-      "name": "Obligacje USA 10 lat — rentowność",
+      "name": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1962-01-02",
@@ -114,7 +114,7 @@
     },
     {
       "instrument_id": "us-30y",
-      "name": "Obligacje USA 30 lat — rentowność",
+      "name": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1977-02-15",
@@ -124,7 +124,7 @@
     },
     {
       "instrument_id": "vix",
-      "name": "VIX",
+      "name": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1990-01-02",
@@ -134,7 +134,7 @@
     },
     {
       "instrument_id": "usd-index",
-      "name": "Indeks dolara (DXY)",
+      "name": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-01-04",
@@ -144,7 +144,7 @@
     },
     {
       "instrument_id": "gold",
-      "name": "Złoto (COMEX GC=F)",
+      "name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
@@ -153,8 +153,19 @@
       "series_path": "series/gold.json"
     },
     {
+      "instrument_id": "gold-spot",
+      "name": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
+      "currency": "USD",
+      "unit": "USD/oz t",
+      "first_date": "2017-01-01",
+      "last_date": "2026-10-08",
+      "bar_count": 3558,
+      "series_path": "series/gold-spot.json",
+      "bar_kind": "close"
+    },
+    {
       "instrument_id": "silver",
-      "name": "Srebro (COMEX SI=F)",
+      "name": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
@@ -164,7 +175,7 @@
     },
     {
       "instrument_id": "platinum",
-      "name": "Platyna (NYMEX PL=F)",
+      "name": "Platyna — kontrakt terminowy (cena umowy na przyszłą dostawę platyny, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "1997-10-29",
@@ -174,7 +185,7 @@
     },
     {
       "instrument_id": "copper",
-      "name": "Miedź (COMEX HG=F)",
+      "name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
       "currency": "USD",
       "unit": "USD/lb",
       "first_date": "2000-08-30",
@@ -184,7 +195,7 @@
     },
     {
       "instrument_id": "crude-oil",
-      "name": "Ropa WTI (NYMEX CL=F)",
+      "name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
       "currency": "USD",
       "unit": "USD/bbl",
       "first_date": "2000-08-23",
@@ -194,7 +205,7 @@
     },
     {
       "instrument_id": "natural-gas",
-      "name": "Gaz ziemny (NYMEX NG=F)",
+      "name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
       "currency": "USD",
       "unit": "USD/MMBtu",
       "first_date": "2000-08-30",
@@ -204,7 +215,7 @@
     },
     {
       "instrument_id": "usd-jpy",
-      "name": "USD/JPY",
+      "name": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
       "currency": "JPY",
       "unit": "JPY za 1 USD",
       "first_date": "1996-10-30",
@@ -214,7 +225,7 @@
     },
     {
       "instrument_id": "eur-usd",
-      "name": "EUR/USD",
+      "name": "EUR/USD (kurs euro w dolarach amerykańskich)",
       "currency": "USD",
       "unit": "USD za 1 EUR",
       "first_date": "2003-12-01",
@@ -224,7 +235,7 @@
     },
     {
       "instrument_id": "eur-pln",
-      "name": "EUR/PLN",
+      "name": "EUR/PLN (kurs euro w złotych polskich)",
       "currency": "PLN",
       "unit": "PLN za 1 EUR",
       "first_date": "2002-04-01",
@@ -234,7 +245,7 @@
     },
     {
       "instrument_id": "usd-pln",
-      "name": "USD/PLN",
+      "name": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
       "currency": "PLN",
       "unit": "PLN za 1 USD",
       "first_date": "2003-12-01",

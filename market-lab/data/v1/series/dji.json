@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "dji",
-  "name": "Dow Jones Industrial Average",
+  "name": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^DJI",
-    "description": "Indeks Dow Jones Industrial Average",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

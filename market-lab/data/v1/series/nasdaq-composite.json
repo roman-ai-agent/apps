@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "nasdaq-composite",
-  "name": "NASDAQ Composite",
+  "name": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^IXIC",
-    "description": "Indeks NASDAQ Composite",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {

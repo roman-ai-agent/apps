@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "eur-pln",
-  "name": "EUR/PLN",
+  "name": "EUR/PLN (kurs euro w złotych polskich)",
   "currency": "PLN",
   "unit": "PLN za 1 EUR",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "EURPLN=X",
-    "description": "Kurs euro w złotych",
-    "retrieved_at": "2026-10-10T17:06:42.913Z"
+    "description": "EUR/PLN (kurs euro w złotych polskich)",
+    "retrieved_at": "2026-10-10T21:54:45.351Z"
   },
   "bars": [
     {
