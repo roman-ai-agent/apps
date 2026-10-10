@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "dax",
-  "name": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
+  "name": "DAX (40 największych firm Niemiec, liczony razem z wypłatami zysku dla właścicieli akcji)",
   "currency": "EUR",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^GDAXI",
-    "description": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "DAX (40 największych firm Niemiec, liczony razem z wypłatami zysku dla właścicieli akcji)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

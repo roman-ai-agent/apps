@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "usd-index",
-  "name": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
+  "name": "Indeks dolara (czy dolar jest mocny, czy słaby wobec sześciu innych walut)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "DX-Y.NYB",
-    "description": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Indeks dolara (czy dolar jest mocny, czy słaby wobec sześciu innych walut)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

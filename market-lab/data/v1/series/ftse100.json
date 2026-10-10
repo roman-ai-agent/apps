@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "ftse100",
-  "name": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
+  "name": "FTSE 100 (100 największych firm Wielkiej Brytanii)",
   "currency": "GBP",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^FTSE",
-    "description": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "FTSE 100 (100 największych firm Wielkiej Brytanii)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

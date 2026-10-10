@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "copper",
-  "name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
+  "name": "Miedź — kontrakt terminowy (cena miedzi ustalona dziś, a dostawa później, funt)",
   "currency": "USD",
   "unit": "USD/lb",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "HG=F",
-    "description": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Miedź — kontrakt terminowy (cena miedzi ustalona dziś, a dostawa później, funt)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

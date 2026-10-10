@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "us-13w",
-  "name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
+  "name": "Rentowność bonów skarbowych USA 13-tygodniowych (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
   "currency": "USD",
   "unit": "%",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^IRX",
-    "description": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Rentowność bonów skarbowych USA 13-tygodniowych (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

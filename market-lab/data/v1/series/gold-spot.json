@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "gold-spot",
-  "name": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
+  "name": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
   "currency": "USD",
   "unit": "USD/oz t",
   "interval": "1d",
@@ -10,8 +10,8 @@
   "source": {
     "provider": "goldwatcher",
     "symbol": "XAU/USD",
-    "description": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "gold",
-  "name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
+  "name": "Złoto — kontrakt terminowy (cena złota ustalona dziś, a dostawa później, uncja trojańska)",
   "currency": "USD",
   "unit": "USD/oz t",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "GC=F",
-    "description": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Złoto — kontrakt terminowy (cena złota ustalona dziś, a dostawa później, uncja trojańska)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "usd-jpy",
-  "name": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
+  "name": "USD/JPY (ile jenów kosztuje 1 dolar)",
   "currency": "JPY",
   "unit": "JPY za 1 USD",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "USDJPY=X",
-    "description": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "USD/JPY (ile jenów kosztuje 1 dolar)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

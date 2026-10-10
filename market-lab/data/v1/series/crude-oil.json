@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "crude-oil",
-  "name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
+  "name": "Ropa naftowa WTI — kontrakt terminowy (cena ropy ustalona dziś, a dostawa później, baryłka)",
   "currency": "USD",
   "unit": "USD/bbl",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "CL=F",
-    "description": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Ropa naftowa WTI — kontrakt terminowy (cena ropy ustalona dziś, a dostawa później, baryłka)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

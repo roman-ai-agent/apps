@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T21:54:45.351Z",
+  "generated_at": "2026-10-10T22:35:19.810Z",
   "instruments": [
     {
       "instrument_id": "sp500",
-      "display_name": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
+      "display_name": "S&P 500 (500 największych firm USA)",
       "qualitative": [
-        "S&P 500 to wskaźnik pokazujący, jak zmienia się łączna wartość około 500 dużych amerykańskich spółek giełdowych. Dostawca, S&P Dow Jones Indices, opisuje go jako najlepszy pojedynczy miernik dużych spółek USA, obejmujący około 80% wartości rynkowej dostępnych akcji. Gdy indeks rośnie, to w uproszczeniu wartość tych firm jako całości rośnie.",
-        "Spółki wchodzą do indeksu z wagą proporcjonalną do ich wartości rynkowej (liczby akcji dostępnych w wolnym obrocie razy cena). Dlatego największe firmy poruszają indeksem znacznie mocniej niż małe: ruch o 1% kilkunastu największych spółek znaczy więcej niż ruch o 1% setek najmniejszych.",
-        "Indeks jest często używany jako miara ogólnej kondycji rynku akcji w USA i punkt odniesienia dla funduszy. Jego wartość nie jest ceną, za którą można coś kupić: to liczba punktów obliczana wzorem. Spadek lub wzrost indeksu mówi, co działo się z wycenami, ale sam z siebie nie wyjaśnia przyczyny ani nie przesądza o dalszym kierunku.",
-        "Bywa mylony z indeksem Dow Jones (30 spółek, ważony ceną akcji) oraz z indeksem Nasdaq (inny zbiór spółek). Ten szereg jest wersją cenową: nie uwzględnia wypłacanych dywidend, więc długoterminowo pokazuje mniejszy wzrost niż wersja dochodowa (total return)."
+        "Wyobraź sobie koszyk z akcjami 500 dużych amerykańskich firm (akcja to maleńki kawałek firmy: kto ją ma, jest jej drobnym współwłaścicielem). S&P 500 to jedna liczba, która mówi, ile ten koszyk jest dziś wart w porównaniu z dawniej. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym (giełda to miejsce, gdzie kupuje się i sprzedaje akcje). Te 500 firm to około 80% wartości całego amerykańskiego rynku akcji.",
+        "Gdy liczba rośnie, akcje tych firm średnio drożeją; gdy spada, tanieją. Wielu ludzi patrzy na nią jak na ogólny nastrój amerykańskiej giełdy. Sama liczba nie mówi jednak, dlaczego się zmieniła, ani co będzie dalej.",
+        "Im firma więcej warta, tym mocniej wpływa na wynik. Gdy kilka największych firm zdrożeje o 1%, liczba ruszy się bardziej, niż gdy o 1% zdrożeją setki najmniejszych.",
+        "Łatwo pomylić z Dow Jones (tylko 30 firm, liczony inaczej) i z Nasdaq (inny zestaw firm, mocno technologiczny). To są punkty, nie dolary: za tę liczbę niczego nie kupisz. Nie uwzględnia ona wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -66,12 +66,12 @@
     },
     {
       "instrument_id": "dji",
-      "display_name": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
+      "display_name": "Dow Jones Industrial Average (30 dużych firm USA, liczone według ceny akcji)",
       "qualitative": [
-        "Dow Jones Industrial Average, zwany krótko Dow, to jeden z najstarszych wskaźników giełdy w USA. Obejmuje 30 dużych amerykańskich spółek ze wszystkich branż z wyjątkiem transportu i usług użyteczności publicznej, więc nazwa „industrial” (przemysłowy) ma dziś znaczenie historyczne.",
-        "Najważniejsza cecha: Dow jest ważony ceną pojedynczej akcji, a nie wartością spółki. Spółka o wysokiej cenie akcji porusza indeksem mocniej niż spółka o niskiej cenie, nawet jeśli ta druga jest o wiele większa. Skutek jest taki, że Dow mówi o wycenie tych 30 firm inaczej niż S&P 500, który waży wartością rynkową.",
-        "Dow bywa używany jako szybki, powszechnie znany sygnał nastroju na Wall Street, ale obejmuje tylko 30 firm, więc nie oddaje szerokiego rynku. Skład wybiera komitet, a nie sztywna reguła, więc zmiana składu bywa wynikiem decyzji, a nie samego rynku.",
-        "Ten szereg jest wersją cenową bez dywidend. Dow bywa mylony ze średnimi Dow Jones dla transportu i usług użyteczności publicznej, które są osobnymi indeksami."
+        "Wyobraź sobie koszyk z akcjami 30 dużych amerykańskich firm (akcja to maleńki kawałek firmy: kto ją ma, jest jej drobnym współwłaścicielem). Dow Jones, zwany krótko Dow, to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym (giełda to miejsce, gdzie kupuje się i sprzedaje akcje). To jedna z najstarszych takich liczb w USA, a mimo nazwy „industrial” (przemysłowy) są w niej firmy z wielu branż.",
+        "Gdy liczba rośnie, akcje tych 30 firm średnio drożeją; gdy spada, tanieją. Ma to dziwną cechę: o wpływie firmy decyduje cena jednej jej akcji, a nie to, jak duża jest firma. Firma z drogą akcją porusza wynikiem mocniej niż o wiele większa firma z tanią akcją. Dlatego Dow opowiada o giełdzie inaczej niż S&P 500, w którym liczy się wartość całej firmy.",
+        "Firm jest tylko 30, więc Dow nie pokazuje całej giełdy, choć jest bardzo znany jako szybki sygnał nastroju na Wall Street (ulicy w Nowym Jorku, przy której mieści się główna amerykańska giełda). Skład wybiera komitet, a nie sztywna reguła, więc zmiana składu może wynikać z decyzji ludzi, a nie z rynku.",
+        "Łatwo pomylić z innymi „średnimi Dow Jones”, dla firm transportowych oraz dostarczających prąd, gaz i wodę: to osobne wskaźniki. Ta liczba nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -123,11 +123,11 @@
     },
     {
       "instrument_id": "nasdaq-composite",
-      "display_name": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
+      "display_name": "Nasdaq Composite (prawie wszystkie firmy z giełdy Nasdaq)",
       "qualitative": [
-        "Nasdaq Composite pokazuje, jak zmienia się wartość wszystkich zwykłych akcji notowanych na giełdzie Nasdaq — zarówno amerykańskich, jak i zagranicznych. Według metodologii Nasdaq nie ma tu progu wielkości, płynności ani branży: do indeksu trafia każda spółka spełniająca podstawowe warunki notowania.",
-        "Spółki są ważone swoją wartością rynkową (cena razy liczba wszystkich akcji), więc największe firmy technologiczne decydują o ruchu indeksu. Z tego powodu Nasdaq Composite jest często traktowany jako wskaźnik nastrojów wokół technologii, choć obejmuje też wiele innych branż i bardzo małe spółki.",
-        "Indeks jest szerszy niż Nasdaq-100, który zawiera tylko 100 największych spółek niefinansowych. Jest też czymś innym niż Nasdaq jako giełda: to liczba punktów obliczana z cen akcji, a nie cena, którą można zapłacić. Ten szereg nie uwzględnia dywidend."
+        "Nasdaq to amerykańska giełda (miejsce, gdzie kupuje się i sprzedaje akcje, czyli maleńkie kawałki firm), na której notowane są zwłaszcza firmy technologiczne. Nasdaq Composite to jedna liczba, która pokazuje, jak razem radzą sobie prawie wszystkie firmy z tej giełdy, i dlatego nazywa się indeksem. Wyobraź sobie ogromny koszyk z akcjami bardzo wielu firm, amerykańskich i zagranicznych, dużych i bardzo małych. Gdy liczba rośnie, to w uproszczeniu te firmy razem są dziś więcej warte niż wcześniej.",
+        "Im firma więcej warta, tym mocniej wpływa na wynik. Dlatego największe firmy technologiczne decydują o jego ruchu i często patrzy się na niego jak na nastrój wokół technologii, choć są w nim też inne branże. Gdy liczba spada, akcje tych firm średnio tanieją.",
+        "Nie mylić z Nasdaq-100, który obejmuje tylko 100 największych firm (bez banków i innych firm finansowych), ani z samą giełdą. To też nie jest cena, za którą coś kupisz: to punkty. Liczba nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -184,11 +184,11 @@
     },
     {
       "instrument_id": "nasdaq100",
-      "display_name": "Nasdaq-100 (100 największych spółek niefinansowych z giełdy Nasdaq)",
+      "display_name": "Nasdaq-100 (100 największych firm z giełdy Nasdaq, poza bankami i ubezpieczycielami)",
       "qualitative": [
-        "Nasdaq-100 obejmuje 100 największych krajowych i zagranicznych spółek niefinansowych notowanych na giełdzie Nasdaq. Banki, ubezpieczyciele i inne firmy finansowe są z założenia poza indeksem, dlatego jest on mocno związany z sektorem technologicznym i pokrewnymi branżami.",
-        "Indeks jest ważony zmodyfikowaną wartością rynkową: większe spółki mają większy udział, ale metodologia ogranicza zbyt duży udział największych firm. Dzięki temu kilka gigantów nie zdominuje całkowicie wyniku, choć ich wpływ pozostaje bardzo wyraźny.",
-        "Nie należy mylić go z Nasdaq Composite (wszystkie spółki giełdy, bez filtra) ani z S&P 500 (500 spółek z różnych giełd, w tym z sektorem finansowym). Wartość jest liczbą punktów, nie ceną; ten szereg jest wersją cenową bez dywidend."
+        "Nasdaq to amerykańska giełda (miejsce, gdzie kupuje się i sprzedaje akcje, czyli maleńkie kawałki firm), na której notowane są zwłaszcza firmy technologiczne. Nasdaq-100 to jedna liczba, która pokazuje, jak radzi sobie 100 największych firm z tej giełdy, i dlatego nazywa się indeksem. Wyobraź sobie koszyk z akcjami tych firm. Gdy liczba rośnie, to w uproszczeniu te firmy razem są dziś więcej warte niż wcześniej. Banków, ubezpieczycieli i podobnych firm w koszyku nie ma, więc mocno liczą się technologie i pokrewne branże.",
+        "Im firma więcej warta, tym mocniej wpływa na wynik, ale są limity, żeby kilka gigantów nie przesądzało o wszystkim. Ich wpływ i tak pozostaje bardzo duży. Gdy liczba spada, akcje tych firm średnio tanieją.",
+        "Nie mylić z Nasdaq Composite (prawie wszystkie firmy z tej giełdy, także małe i banki) ani z S&P 500 (500 firm z różnych giełd, razem z bankami). To punkty, nie cena, za którą coś kupisz. Liczba nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -249,11 +249,11 @@
     },
     {
       "instrument_id": "russell2000",
-      "display_name": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
+      "display_name": "Russell 2000 (około 2000 małych firm USA)",
       "qualitative": [
-        "Russell 2000 pokazuje zachowanie małych amerykańskich spółek giełdowych. Obejmuje około 2000 firm — te, które w rankingu 3000 największych notowanych spółek USA (indeks Russell 3000) zajmują miejsca od 1001 do 3000, czyli leżą poniżej największego tysiąca spółek.",
-        "Każda spółka jest ważona wartością rynkową tej części akcji, która jest w wolnym obrocie. Ponieważ spółki są małe, indeks jest bardziej rozproszony niż S&P 500: pojedyncza spółka rzadko ma udział większy niż ułamek procenta (np. 0,55% największa pozycja w grudniu 2024 r.).",
-        "Indeks jest często używany jako miara kondycji mniejszych, silniej związanych z krajową gospodarką firm. Nie jest ceną żadnego pojedynczego papieru; skład zmienia się regularnie, więc jest to ruchomy zbiór firm. Ten szereg jest wersją cenową bez dywidend."
+        "Wyobraź sobie koszyk z akcjami około 2000 małych amerykańskich firm (akcja to maleńki kawałek firmy: kto ją ma, jest jej drobnym współwłaścicielem). Russell 2000 to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym (giełda to miejsce, gdzie kupuje się i sprzedaje akcje). Chodzi o firmy mniejsze od tysiąca największych firm USA.",
+        "Gdy liczba rośnie, akcje tych małych firm średnio drożeją; gdy spada, tanieją. Małe firmy są zwykle mocniej związane z gospodarką samych USA niż wielkie koncerny, które sprzedają na całym świecie, więc liczba bywa używana jako miara kondycji takich „krajowych” firm.",
+        "Żadna pojedyncza firma nie ma tu dużego wpływu, bo koszyk jest bardzo rozdrobniony. Skład zmienia się regularnie, więc to nie stały zestaw firm. To punkty, nie cena, za którą coś kupisz. Liczba nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -310,11 +310,11 @@
     },
     {
       "instrument_id": "dax",
-      "display_name": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
+      "display_name": "DAX (40 największych firm Niemiec, liczony razem z wypłatami zysku dla właścicieli akcji)",
       "qualitative": [
-        "DAX pokazuje wartość 40 największych i najbardziej płynnych spółek notowanych na giełdzie we Frankfurcie, wybieranych według wartości akcji w wolnym obrocie i spełniających wymogi jakości i rentowności. Od września 2021 r. ma 40 składników; wcześniej miał 30.",
-        "Kluczowa różnica wobec większości znanych indeksów: DAX w swojej najpopularniejszej wersji jest indeksem dochodowym (performance / total return). Zakłada, że dywidendy wypłacane przez spółki są od razu reinwestowane w indeks. Dlatego jego wzrost w czasie jest zwykle większy niż wzrost analogicznego indeksu cenowego i nie wolno bezpośrednio porównywać go z indeksami cenowymi, takimi jak S&P 500 czy FTSE 100.",
-        "Udział pojedynczej spółki jest ograniczony (od marca 2024 r. do 15%). DAX często służy jako skrótowy miernik niemieckiej gospodarki, choć wiele spółek zarabia głównie poza Niemcami. Wartość jest liczbą punktów, nie ceną."
+        "Wyobraź sobie koszyk z akcjami 40 największych niemieckich firm, notowanych na giełdzie we Frankfurcie (akcja to maleńki kawałek firmy, giełda to miejsce, gdzie kupuje się i sprzedaje akcje). DAX to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym. Do września 2021 r. w koszyku było 30 firm.",
+        "Ważna różnica: DAX liczy się tak, jakby wypłaty z zysku, które firmy dają właścicielom akcji (dywidendy), od razu szły z powrotem do koszyka na zakup kolejnych akcji. Dlatego z czasem rośnie szybciej niż taka sama liczba policzona dla tej samej grupy firm bez doliczania wypłat. To po prostu inna metoda liczenia. Uważaj więc przy porównaniach: S&P 500 czy FTSE 100 liczone są bez wypłat, więc wprost z DAX-em się ich nie porównuje.",
+        "Gdy liczba rośnie, wartość tych firm razem rośnie (a część wzrostu pochodzi z dołożonych wypłat); gdy spada, maleje. Jedna firma nie może mieć w koszyku więcej niż 15% wpływu. DAX bywa traktowany jako skrót stanu niemieckiej gospodarki, ale wiele z tych firm zarabia głównie poza Niemcami. To punkty, nie cena."
       ],
       "technical": [
         {
@@ -366,11 +366,11 @@
     },
     {
       "instrument_id": "ftse100",
-      "display_name": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
+      "display_name": "FTSE 100 (100 największych firm Wielkiej Brytanii)",
       "qualitative": [
-        "FTSE 100 to indeks 100 spółek o najwyższej wartości rynkowej notowanych na Londyńskiej Giełdzie Papierów Wartościowych. Jest głównym wskaźnikiem brytyjskiego rynku akcji, prowadzonym przez FTSE Russell (grupa LSEG).",
-        "Wagą spółki jest wartość rynkowa jej akcji w wolnym obrocie, więc największe firmy mają największy wpływ. W składzie jest wiele koncernów surowcowych, energetycznych, bankowych i farmaceutycznych, które znaczną część przychodów osiągają poza Wielką Brytanią. Dlatego indeks reaguje zarówno na gospodarkę brytyjską, jak i na ceny surowców i kurs funta.",
-        "Nie należy mylić go z FTSE 250 ani z indeksem FTSE All-Share (szerszy zbiór). Ten szereg jest wersją cenową bez dywidend; wersja dochodowa (total return) rośnie szybciej."
+        "Wyobraź sobie koszyk z akcjami 100 największych firm notowanych na giełdzie w Londynie (akcja to maleńki kawałek firmy, giełda to miejsce, gdzie kupuje się i sprzedaje akcje). FTSE 100 to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym. To główny wskaźnik brytyjskiej giełdy.",
+        "Gdy liczba rośnie, akcje tych firm średnio drożeją; gdy spada, tanieją. Im firma więcej warta, tym mocniej wpływa na wynik. W koszyku jest dużo firm wydobywających surowce, energetycznych, banków i producentów leków, a wiele z nich zarabia głównie poza Wielką Brytanią. Dlatego liczba reaguje nie tylko na brytyjską gospodarkę, ale też na ceny surowców i kurs funta.",
+        "Nie mylić z FTSE 250 (mniejsze firmy) ani z FTSE All-Share (szerszy zestaw firm). To punkty, nie cena, za którą coś kupisz. Liczba nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -427,11 +427,11 @@
     },
     {
       "instrument_id": "nikkei225",
-      "display_name": "Nikkei 225 (225 dużych spółek Japonii, ważone ceną akcji)",
+      "display_name": "Nikkei 225 (225 dużych firm Japonii, liczone według ceny akcji)",
       "qualitative": [
-        "Nikkei 225, czyli Nikkei Stock Average, to najczęściej cytowany wskaźnik japońskiego rynku akcji. Obejmuje 225 spółek z segmentu Prime Tokijskiej Giełdy Papierów Wartościowych, a prowadzi go gazeta Nikkei (Nikkei Inc.). Jest liczony od 1950 r., więc pokazuje także powojenną historię japońskiej gospodarki.",
-        "Podobnie jak Dow Jones, jest ważony ceną akcji, a nie wartością spółki: akcje o wysokiej cenie mają większy wpływ na indeks. Skład wybiera się według płynności i równowagi sektorów, a nie wielkości, dlatego nie jest to ranking 225 największych firm.",
-        "Indeks jest wyrażony w jenach i zależy od kursu jena wobec walut obcych: dla inwestora zagranicznego dochodzi więc efekt waluty. Nie należy mylić go z TOPIX (indeksem ważonym wartością). Ten szereg jest wersją cenową bez dywidend."
+        "Wyobraź sobie koszyk z akcjami 225 dużych japońskich firm z głównej tokijskiej giełdy (akcja to maleńki kawałek firmy, giełda to miejsce, gdzie kupuje się i sprzedaje akcje). Nikkei 225 to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym. To najczęściej cytowany wskaźnik japońskiej giełdy, liczony od 1950 r.",
+        "Gdy liczba rośnie, akcje tych firm średnio drożeją; gdy spada, tanieją. Podobnie jak w Dow Jones, o wpływie firmy decyduje cena jednej jej akcji, a nie wielkość firmy: firma z drogą akcją porusza wynikiem mocniej. Skład dobiera się tak, by było dużo handlu i różne branże, więc to nie lista 225 największych firm.",
+        "Liczba jest podana w jenach. Kto kupuje japońskie akcje za granicą, odczuwa więc też zmianę kursu jena. Nie mylić z TOPIX, innym wskaźnikiem japońskiej giełdy, liczonym według wartości firm. To punkty, nie cena, i nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -483,11 +483,11 @@
     },
     {
       "instrument_id": "hang-seng",
-      "display_name": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
+      "display_name": "Hang Seng (95 największych firm z giełdy w Hongkongu)",
       "qualitative": [
-        "Hang Seng Index to główny wskaźnik giełdy w Hongkongu, jeden z najstarszych w Azji. Został opublikowany 24 listopada 1969 r. i jest prowadzony przez Hang Seng Indexes Company. Składa się z najważniejszych spółek notowanych w Hongkongu: banków, firm technologicznych, nieruchomości i przemysłu.",
-        "Spółki ważone są wartością rynkową uwzględniającą akcje w wolnym obrocie, więc największe mają największy wpływ na indeks. Wiele składników to chińskie firmy notowane w Hongkongu, dlatego indeks często odzwierciedla nastroje wokół gospodarki Chin, nie tylko samego Hongkongu.",
-        "Indeks jest wyrażony w dolarach hongkońskich, które są sztywno powiązane z dolarem USA. Nie jest tożsamy z indeksami giełd chińskich (Szanghaj, Shenzhen). Ten szereg jest wersją cenową bez dywidend."
+        "Wyobraź sobie koszyk z akcjami największych firm notowanych na giełdzie w Hongkongu (akcja to maleńki kawałek firmy, giełda to miejsce, gdzie kupuje się i sprzedaje akcje): banków, firm technologicznych, deweloperów i przemysłu. Hang Seng to jedna liczba, która pokazuje, jak ten koszyk zmienia wartość. Taką liczbę podsumowującą grupę firm nazywa się indeksem giełdowym. Jest liczona od 1969 r., więc to jeden z najstarszych wskaźników w Azji.",
+        "Gdy liczba rośnie, akcje tych firm średnio drożeją; gdy spada, tanieją. Im firma więcej warta, tym mocniej wpływa na wynik. Wiele firm w koszyku to chińskie przedsiębiorstwa notowane w Hongkongu, dlatego liczba często odzwierciedla nastroje wokół gospodarki Chin, a nie tylko samego Hongkongu.",
+        "Liczba jest podana w dolarach hongkońskich, które są sztywno powiązane z dolarem USA. To nie to samo co wskaźniki giełd w Szanghaju czy Shenzhen. To punkty, nie cena, za którą coś kupisz, i nie uwzględnia wypłat z zysku, które firmy dają właścicielom akcji (dywidend), więc nie pokazuje pełnego zysku z trzymania tych akcji."
       ],
       "technical": [
         {
@@ -544,11 +544,11 @@
     },
     {
       "instrument_id": "us-13w",
-      "display_name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
+      "display_name": "Rentowność bonów skarbowych USA 13-tygodniowych (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
       "qualitative": [
-        "Ten szereg pokazuje, ile rząd USA płaci za pożyczenie pieniędzy na 13 tygodni (około trzech miesięcy), czyli oprocentowanie bonów skarbowych o tym terminie. Bon skarbowy nie ma kuponu: sprzedaje się go poniżej wartości nominalnej, a różnica między ceną zakupu a nominałem jest zyskiem. Wyrażona w procentach rocznych, to właśnie stopa dyskontowa.",
-        "Rentowność krótkich bonów jest silnie związana z bieżącą polityką pieniężną banku centralnego (w USA z Fed), bo inwestorzy porównują ją z tym, ile mogliby zarobić na stopie podstawowej. Dlatego bywa używana jako przybliżenie „stopy wolnej od ryzyka”, a jej różnica wobec rentowności obligacji 10-letnich (kształt krzywej rentowności) jest często omawiana jako wskaźnik oczekiwań wobec gospodarki.",
-        "Warto pamiętać, że to nie cena, tylko oprocentowanie: gdy wartość szeregu rośnie, bony są tańsze (dają wyższy zysk), a gdy spada — droższe. Stopa dyskontowa różni się od „rentowności równoważnej obligacji” (bond-equivalent yield) liczonej inaczej, więc jej wartość jest nieco niższa od tej drugiej. Wykres pokazuje poziom stopy w danym dniu, a nie wynik inwestycji."
+        "Rząd USA pożycza też na krótko: na 13 tygodni, czyli około trzech miesięcy. Robi to, sprzedając papiery zwane bonami skarbowymi (bon to krótka pożyczka dla rządu). Taki papier nie wypłaca odsetek po drodze: kupuje się go taniej, niż rząd odda na końcu. Na przykład płacisz 98 zł, a po trzech miesiącach dostajesz 100 zł, i te 2 zł to Twój zysk. Na wykresie jest ten zysk przeliczony na procent w skali roku, ale liczony od kwoty oddawanej na końcu (tu od 100 zł), a nie od tej, którą zapłaciłeś. Dlatego wychodzi trochę mniej niż przy innej metodzie liczenia. Taki procent nazywa się rentownością, a policzony w ten sposób — stopą dyskontową.",
+        "Gdy liczba rośnie, krótkie pożyczki dla rządu USA lepiej płacą, a papiery są tańsze; gdy spada, jest odwrotnie. Liczba jest silnie związana z decyzjami amerykańskiego banku centralnego (Fed), czyli instytucji, która ustala podstawowe oprocentowanie pieniędzy w kraju. Bywa uważana za zarobek niemal bez ryzyka, bo pożycza się rządowi, który zwykle oddaje długi.",
+        "To nie cena, tylko procent. Ta sama pożyczka policzona inną metodą daje nieco wyższy procent; ta seria używa metody, która daje wynik niższy. Wykres pokazuje poziom w danym dniu, a nie wynik czyjejś inwestycji."
       ],
       "technical": [
         {
@@ -605,11 +605,11 @@
     },
     {
       "instrument_id": "us-10y",
-      "display_name": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
+      "display_name": "Rentowność obligacji skarbowych USA 10-letnich (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na 10 lat)",
       "qualitative": [
-        "Ten szereg pokazuje rentowność 10-letnich obligacji skarbowych USA, czyli roczny zysk, jaki dostaje ktoś, kto kupuje taką obligację po bieżącej cenie i trzyma ją do terminu wykupu. To jedna z najczęściej śledzonych stóp na świecie: wpływa na koszt kredytów hipotecznych, wyceny akcji i firmowych obligacji.",
-        "Rentowność i cena obligacji poruszają się w przeciwnych kierunkach: gdy cena spada, rentowność rośnie, i odwrotnie. Wzrost rentowności oznacza więc, że rynek żąda wyższego oprocentowania za pożyczanie rządowi na 10 lat, ale sam wykres nie wyjaśnia dlaczego — mogą za tym stać oczekiwania inflacji, polityki banku centralnego, podaży obligacji lub popytu na bezpieczne aktywa.",
-        "Rentowność 10-letnia bywa porównywana z rentownością 13-tygodniowych bonów lub obligacji 30-letnich: różnica tworzy krzywą rentowności. Nie mylić jej z ceną ani z oprocentowaniem kredytów, które mają dodatkową marżę. Wartość szeregu to poziom stopy w danym dniu."
+        "Rząd USA, jak każdy duży dłużnik, pożycza pieniądze. Robi to, sprzedając papiery zwane obligacjami skarbowymi: kupujący pożycza rządowi pieniądze, a rząd obiecuje oddać je po 10 latach i płacić odsetki. Takie papiery można potem odsprzedawać innym, a ich cena się zmienia. Liczba na wykresie to roczny zysk w procentach (fachowo: rentowność), jaki miałby ktoś, kto kupi taki papier dziś po bieżącej cenie i trzyma go do końca. Działa to jak oprocentowanie lokaty, tylko dla pożyczki dla rządu USA.",
+        "Gdy liczba rośnie, pożyczanie rządowi na 10 lat lepiej płaci, a cena już istniejących papierów spada; gdy liczba spada, jest odwrotnie. Cena i ten procent poruszają się jak huśtawka, w przeciwne strony. To jedna z najczęściej śledzonych liczb na świecie, bo wpływa m.in. na koszt kredytów na mieszkania w USA. Sam wykres nie wyjaśnia, dlaczego się zmienia; mogą za tym stać oczekiwania co do cen w sklepach, decyzje banku centralnego (instytucji, która ustala podstawowe oprocentowanie pieniędzy w kraju) albo to, ile papierów rząd wypuszcza.",
+        "Łatwo pomylić z ceną papieru: to nie cena, tylko procent. To też nie oprocentowanie kredytu w banku, bo bank dolicza swój zarobek. Wartość na wykresie to poziom w danym dniu, a nie wynik czyjejś inwestycji."
       ],
       "technical": [
         {
@@ -666,11 +666,11 @@
     },
     {
       "instrument_id": "us-30y",
-      "display_name": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
+      "display_name": "Rentowność obligacji skarbowych USA 30-letnich (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na 30 lat)",
       "qualitative": [
-        "Ten szereg pokazuje rentowność najdłuższych obligacji skarbowych USA, 30-letnich, czyli roczny zysk dla kogoś, kto kupuje taką obligację po bieżącej cenie i trzyma ją do wykupu. Odzwierciedla oczekiwania rynku co do stóp procentowych i inflacji w bardzo długim horyzoncie.",
-        "Podobnie jak dla innych obligacji: gdy cena obligacji spada, rentowność rośnie, i odwrotnie. Rentowność 30-letnia jest zwykle bardziej wrażliwa na zmianę oczekiwań co do inflacji i podaży długu niż rentowność krótkich bonów. Wykres pokazuje poziom stopy, a nie wynik inwestycji.",
-        "Bywa mylona z oprocentowaniem 30-letnich kredytów hipotecznych: kredyty mają własną marżę i zwykle śledzą rentowność obligacji 10-letnich. Seria nie jest ciągła pod względem dostępności papierów: Departament Skarbu nie publikował swojej serii 30-letniej od lutego 2002 do lutego 2006 r., więc ten okres w danych należy traktować ostrożnie."
+        "Pożyczasz rządowi USA pieniądze na 30 lat. To trochę jak kredyt na mieszkanie, tylko że to Ty jesteś bankiem. Rząd robi to, sprzedając obligacje skarbowe (papiery, w których obiecuje po 30 latach oddać pożyczkę i płacić odsetki). Takie papiery można odsprzedawać, a ich cena się zmienia. Liczba na wykresie to roczny zysk w procentach (fachowo: rentowność), jaki miałby ktoś, kto kupi taki papier dziś po bieżącej cenie i trzyma go do końca.",
+        "Gdy liczba rośnie, pożyczanie rządowi na 30 lat lepiej płaci, a cena już istniejących papierów spada; gdy liczba spada, jest odwrotnie. Przy tak długiej pożyczce liczy się, co będzie z cenami w sklepach przez dziesiątki lat, więc ta liczba jest zwykle wrażliwsza na zmianę takich oczekiwań niż procent z krótkich pożyczek. Wykres pokazuje poziom w danym dniu, a nie wynik czyjejś inwestycji.",
+        "Nie mylić z oprocentowaniem 30-letnich kredytów na mieszkanie: banki doliczają swój zarobek, a takie kredyty zwykle idą w ślad za papierami 10-letnimi. Od lutego 2002 do lutego 2006 r. amerykański Departament Skarbu nie podawał tej liczby, więc ten okres w danych traktuj ostrożnie."
       ],
       "technical": [
         {
@@ -727,11 +727,11 @@
     },
     {
       "instrument_id": "vix",
-      "display_name": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
+      "display_name": "VIX (jak duże wahania giełdy rynek przewiduje na najbliższy miesiąc)",
       "qualitative": [
-        "VIX, zwany „indeksem strachu”, mierzy, jak duże wahania indeksu S&P 500 rynek spodziewa się w ciągu najbliższych 30 dni. Nie jest ceną akcji ani średnią z przeszłych wahań: jest liczony z cen opcji na S&P 500, czyli z tego, ile uczestnicy rynku płacą za zabezpieczenie przed ruchami indeksu.",
-        "Im wyższa wartość VIX, tym większe wahania rynek „wycenia” na najbliższy miesiąc; im niższa, tym spokojniejszy rynek. Wartość podawana jest w punktach odpowiadających rocznej zmienności w procentach, więc VIX równy 20 oznacza, że rynek wycenia roczną zmienność około 20%. Wzrosty VIX często towarzyszą spadkom akcji, ale sam VIX nie wskazuje kierunku ruchu ani nie przewiduje go.",
-        "Częsty błąd to traktowanie VIX jak „ceny strachu” do kupienia: sam indeks nie jest papierem wartościowym, a instrumenty na niego (kontrakty terminowe, fundusze) zachowują się inaczej niż sam indeks. Ten szereg to wartość indeksu, nie cena takiego instrumentu."
+        "Wyobraź sobie prognozę pogody, ale dla giełdy: nie mówi, czy będzie padać (czyli czy giełda wzrośnie, czy spadnie), tylko czy będzie spokojnie, czy burzliwie. VIX to taka „prognoza burzliwości” dla amerykańskiej giełdy na najbliższe 30 dni (dokładniej dla liczby S&P 500, która podsumowuje 500 dużych firm USA). Liczy się ją z tego, ile ludzie płacą za zabezpieczenie się przed gwałtownymi ruchami giełdy. Pomyśl o ubezpieczeniu: im większego sztormu się spodziewają, tym droższa polisa.",
+        "Im wyższa liczba, tym większe wahania rynek przewiduje, w obie strony. Im niższa, tym spokojniej. Liczba 20 to miara spodziewanej skali wahań (w przeliczeniu na rok), a nie zapowiedź, że giełda ruszy się o 20%; jest to tylko skala, bez kierunku. Wzrosty VIX często idą w parze ze spadkami akcji, bo ludzie boją się spadków, ale sam VIX nie przewiduje, w którą stronę pójdzie giełda.",
+        "VIX bywa nazywany „indeksem strachu” (liczbą, która ma pokazywać lęk na giełdzie), ale to nie jest cena, za którą coś kupisz: to wartość liczona wzorem. Produkty finansowe oparte na VIX zachowują się inaczej niż sam VIX, a ten wykres pokazuje właśnie sam VIX."
       ],
       "technical": [
         {
@@ -788,11 +788,11 @@
     },
     {
       "instrument_id": "usd-index",
-      "display_name": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
+      "display_name": "Indeks dolara (czy dolar jest mocny, czy słaby wobec sześciu innych walut)",
       "qualitative": [
-        "Indeks dolara amerykańskiego (U.S. Dollar Index, DXY) pokazuje, ile wart jest dolar USA w porównaniu z koszykiem sześciu walut innych krajów. Gdy indeks rośnie, dolar się umacnia wobec tego koszyka; gdy spada — osłabia się. Jest to wskaźnik względny, nie cena dolara w złotych ani w żadnej konkretnej walucie.",
-        "Koszyk ma sztywne wagi: euro stanowi około 57,6%, jen 13,6%, funt 11,9%, dolar kanadyjski 9,1%, korona szwedzka 4,2% i frank szwajcarski 3,6%. Dlatego DXY w największej mierze odzwierciedla kurs EUR/USD, a nie zmianę wartości dolara wobec wszystkich walut świata.",
-        "Wagi pochodzą z 1973 r. i zmieniły się tylko raz (w 1999 r., gdy powstało euro), więc nie odpowiadają dzisiejszemu handlowi USA: w koszyku nie ma m.in. Chin, Meksyku ani Korei. Nie należy go mylić z szerokim indeksem dolara Fed (Broad Dollar Index) ani z kursem USD/PLN."
+        "Jedziesz na wakacje do trzech krajów i w każdym płacisz dolarami. W jednym za dolara dostaniesz więcej, w drugim mniej, więc trudno powiedzieć, czy dolar jest ogólnie mocny. Ta liczba łączy sześć walut w jedną, jak koszyk: euro to 57,6%, jen 13,6%, funt 11,9%, dolar kanadyjski 9,1%, korona szwedzka 4,2%, frank szwajcarski 3,6%. Taka liczba, podsumowująca grupę, nazywa się indeksem. Wartość 100 miała w marcu 1973 r.",
+        "Gdy liczba rośnie, dolar jest mocniejszy wobec tego koszyka; gdy spada, słabszy. Dla zwykłej osoby oznacza to np., że za dolara dostanie w tych krajach więcej albo mniej. Ponieważ euro jest największą częścią koszyka, ruch liczby w dużej mierze odzwierciedla kurs EUR/USD.",
+        "Nie jest to cena dolara w złotówkach ani w żadnej konkretnej walucie. Koszyk pochodzi z 1973 r. i zmienił się tylko raz, w 1999 r., gdy powstało euro, więc nie odpowiada dzisiejszemu handlowi USA: nie ma w nim m.in. Chin, Meksyku ani Korei. Nie mylić z szerszym wskaźnikiem dolara liczonym przez amerykański bank centralny (Fed) ani z kursem USD/PLN."
       ],
       "technical": [
         {
@@ -844,11 +844,12 @@
     },
     {
       "instrument_id": "gold",
-      "display_name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
+      "display_name": "Złoto — kontrakt terminowy (cena złota ustalona dziś, a dostawa później, uncja trojańska)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na złoto notowanego na giełdzie COMEX (część CME Group), a nie cenę złota spot. Kontrakt to umowa na dostawę 100 uncji trojańskich złota w określonym miesiącu w przyszłości. Cena kontraktu zwykle różni się od ceny natychmiastowej, bo uwzględnia koszt utrzymania złota i oprocentowanie pieniądza do dnia dostawy.",
-        "Dla wykresu oznacza to dwie rzeczy. Po pierwsze, obok kontraktów o różnych terminach istnieje wiele cen „złota” jednocześnie; ten szereg łączy kolejne najbliższe serie w jedną linię, więc przy przejściu na następną serię cena może „skoczyć” bez żadnej zmiany na rynku. Po drugie, wartość nie jest identyczna z ceną spot (cena natychmiastowa), z którą często bywa mylona.",
-        "Złoto jest szeroko śledzone jako surowiec o roli „bezpiecznego aktywa” i wskaźnik nastrojów wobec ryzyka, inflacji i realnych stóp procentowych. Wykres pokazuje przeszłe ceny i nie wskazuje, co będzie dalej."
+        "Wyobraź sobie, że dziś umawiasz się z jubilerem: za kilka miesięcy kupisz od niego sztabkę złota, ale cenę ustalacie od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena złota z takiej umowy, w dolarach za uncję trojańską, czyli za około 31 gramów. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 100 uncji, czyli ponad 3 kg złota.",
+        "Gdy liczba rośnie, złoto na przyszłą dostawę drożeje; gdy spada, tanieje. Złoto kupują często ludzie, którzy chcą schować pieniądze w czymś trwałym, gdy w gospodarce jest niepewnie albo ceny w sklepach szybko rosną. Dlatego jego cena bywa uważana za znak takich nastrojów.",
+        "Łatwo to pomylić z ceną złota „od ręki”, czyli takiego, które kupujesz i odbierasz od razu. Obie ceny są podobne, ale nie takie same: w cenie umowy na później siedzi też koszt czekania, bo ktoś musi do tego czasu trzymać złoto i nie może zrobić nic z zamrożonymi pieniędzmi. To też nie jest cena ze sklepu jubilerskiego, gdzie dochodzą koszt wykonania i zarobek sprzedawcy.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. W miejscu przejścia cena może przeskoczyć, choć na rynku nic się nie zmieniło. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -905,11 +906,12 @@
     },
     {
       "instrument_id": "gold-spot",
-      "display_name": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
+      "display_name": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
       "qualitative": [
-        "Ten szereg pokazuje cenę spot złota, czyli cenę transakcji z natychmiastową dostawą (rozliczenie zwykle w ciągu dwóch dni roboczych), wyrażoną w dolarach za uncję trojańską (XAU/USD). To nie jest cena kontraktu terminowego, który dotyczy dostawy w przyszłości i ma własną cenę zależną od kosztu utrzymania złota.",
-        "Cena spot jest podstawą wielu wycen w świecie złota. Rynek spot to głównie handel pozagiełdowy (OTC) w Londynie, Nowym Jorku i Azji, dlatego nie ma jednej „oficjalnej” ceny w dowolnym momencie: istnieją ceny referencyjne, np. LBMA Gold Price ustalane dwa razy dziennie w aukcjach.",
-        "Ta seria pochodzi z Gold Watcher, źródła publikującego jedną wartość na dzień. Kontrakt terminowy (instrument „Złoto — kontrakt terminowy”) pokazuje otwarcie, maksimum, minimum i zamknięcie, a ta seria tylko jedną wartość dziennie, więc wykres jest zawsze linią. Nie traktuj jej jak prognozy ani jak gwarancji ceny, po której można kupić lub sprzedać złoto."
+        "To cena hurtowa: za tyle złoto zmienia właściciela dziś między dużymi handlarzami i bankami, w wielkich sztabach (rozliczenie zwykle w ciągu najwyżej dwóch dni roboczych). Tak jak owoce w hurtowni są tańsze niż na straganie, tak w sklepie czy kantorze za złoto zapłacisz więcej. Cena jest podana w dolarach za uncję trojańską, czyli za około 31 gramów. W świecie finansów taką cenę „na już” nazywa się ceną spot. Dla porównania: gdy cenę ustalasz dziś, a złoto dostajesz dopiero za jakiś czas, mówimy o innej cenie — pokazuje ją instrument „Złoto — kontrakt terminowy”.",
+        "Gdy liczba rośnie, złoto jest dziś droższe: za tę samą ilość trzeba zapłacić więcej dolarów. Gdy spada, jest tańsze. Kto ma złoto, widzi jego wartość rosnącą lub malejącą razem z tą liczbą. W złotówkach cena zależy jeszcze od kursu dolara.",
+        "Nie ma jednej oficjalnej ceny złota w każdej chwili. Złoto sprzedają sobie głównie banki i handlarze w Londynie, Nowym Jorku i Azji, prawie całą dobę, bez jednego wspólnego miejsca handlu. Dlatego powstały ceny wzorcowe, np. londyńska cena ustalana dwa razy dziennie.",
+        "Skąd te dane: pierwotnym źródłem jest serwis Metals.Dev, który podaje ceny metali. Gold Watcher to pośrednik — pobiera z Metals.Dev jedną wartość na każdy dzień i ją publikuje, a MarketLab bierze ją właśnie od niego. Dlatego jest jedna liczba na dzień i nie widać, jak cena zmieniała się w ciągu dnia, więc wykres jest zwykłą linią. To nie jest cena, po której na pewno kupisz złoto w sklepie czy kantorze, ani prognoza."
       ],
       "technical": [
         {
@@ -918,11 +920,11 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Jedna wartość dnia publikowana przez Gold Watcher, który korzysta z danych Metals.Dev. Źródło nie podaje godziny, do której odnosi się wartość dnia, więc nie należy zakładać, że odpowiada cenie zamknięcia konkretnej giełdy."
+          "value": "Jedna wartość dnia: Gold Watcher pobiera ją z Metals.Dev (pierwotnego źródła dziennej ceny złota XAU/USD) i publikuje, a MarketLab bierze ją od Gold Watcher. Źródło nie podaje godziny, do której odnosi się wartość dnia, więc nie należy zakładać, że odpowiada cenie zamknięcia konkretnej giełdy."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Gold Watcher (publiczne dokumenty JSON), seria gold/xau-usd, symbol XAU/USD; pobierane z publicznych dokumentów JSON."
+          "value": "Pierwotne źródło: Metals.Dev (dzienna cena złota XAU/USD, https://metals.dev/). Pośrednik: Gold Watcher, który pobiera z Metals.Dev jedną wartość dziennie i publikuje ją jako publiczne dokumenty JSON (seria gold/xau-usd); MarketLab pobiera dane z tych dokumentów. Symbol: XAU/USD."
         },
         {
           "label": "Jednostka i waluta",
@@ -947,7 +949,12 @@
       ],
       "sources": [
         {
-          "title": "Gold Watcher — dokument dostępności serii (źródło danych MarketLab)",
+          "title": "Metals.Dev — ceny metali (pierwotne źródło dziennej ceny złota)",
+          "url": "https://metals.dev/",
+          "accessed": "2026-10-11"
+        },
+        {
+          "title": "Gold Watcher — dokument dostępności serii (pośrednik, z którego MarketLab pobiera dane)",
           "url": "https://goldwatcher-publisher.goldwatcher.workers.dev/data/v1/availability.json",
           "accessed": "2026-10-10"
         },
@@ -967,15 +974,16 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-11"
     },
     {
       "instrument_id": "silver",
-      "display_name": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
+      "display_name": "Srebro — kontrakt terminowy (cena srebra ustalona dziś, a dostawa później, uncja trojańska)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na srebro z giełdy COMEX, a nie cenę srebra spot. Kontrakt dotyczy dostawy 5 000 uncji trojańskich srebra w przyszłym miesiącu; ten szereg łączy kolejne najbliższe serie w jedną linię.",
-        "Srebro jest jednocześnie metalem inwestycyjnym i przemysłowym (m.in. elektronika, panele fotowoltaiczne), dlatego jego cena reaguje zarówno na nastroje wobec bezpiecznych aktywów, jak i na koniunkturę w przemyśle. Zwykle jest bardziej zmienne niż złoto.",
-        "Przy rolowaniu na następną serię cena może się nieco przesunąć bez zmiany na rynku; to cecha ciągłego kontraktu, nie błąd danych. Wykres pokazuje przeszłe ceny i nie sugeruje przyszłych."
+        "Wyobraź sobie, że dziś umawiasz się z hurtownikiem: za jakiś czas kupisz od niego srebro, ale cenę ustalacie od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena srebra z takiej umowy, w dolarach za uncję trojańską, czyli za około 31 gramów. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 5000 uncji, czyli około 155 kg srebra.",
+        "Gdy liczba rośnie, srebro na przyszłą dostawę drożeje; gdy spada, tanieje. Srebro jest i metalem, który ludzie kupują jako oszczędności, i surowcem do wyrobów, np. elektroniki i paneli słonecznych. Jego cena reaguje więc zarówno na nastroje, jak i na to, jak idzie przemysłowi. Zwykle waha się mocniej niż cena złota.",
+        "Nie mylić z ceną srebra kupowanego i odbieranego od razu, bo to osobna cena, trochę inna. To także nie cena monety czy sztabki ze sklepu, gdzie dochodzą koszt wykonania i zarobek sprzedawcy.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. W miejscu przejścia cena może przeskoczyć, choć na rynku nic się nie zmieniło. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -1032,11 +1040,12 @@
     },
     {
       "instrument_id": "platinum",
-      "display_name": "Platyna — kontrakt terminowy (cena umowy na przyszłą dostawę platyny, uncja trojańska)",
+      "display_name": "Platyna — kontrakt terminowy (cena platyny ustalona dziś, a dostawa później, uncja trojańska)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na platynę z giełdy NYMEX (CME Group). Kontrakt dotyczy dostawy 50 uncji trojańskich platyny, a szereg łączy kolejne najbliższe serie w jedną linię. To nie jest cena spot.",
-        "Platyna jest metalem szlachetnym używanym głównie w przemyśle (m.in. katalizatory w samochodach, przemysł chemiczny i szklarski) oraz w jubilerstwie i jako lokata. Rynek platyny jest znacznie mniejszy i mniej płynny niż rynek złota, więc jej ceny bywają bardziej nieregularne.",
-        "Mała płynność ma skutek dla wykresu: w danych są okresy, gdy nie ma notowań przez całe tygodnie, a wiele dni ma identyczne wartości otwarcia, maksimum, minimum i zamknięcia. Nie należy tego odczytywać jako stabilności ceny, tylko jako ograniczenie danych."
+        "Wyobraź sobie fabrykę samochodów, która dziś umawia się na zakup platyny za jakiś czas i ustala cenę od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena platyny z takiej umowy, w dolarach za uncję trojańską, czyli za około 31 gramów. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 50 uncji, czyli około 1,5 kg platyny.",
+        "Platyna to metal szlachetny. Używa się jej w samochodach (w urządzeniach oczyszczających spaliny), w przemyśle chemicznym i szklarskim oraz w biżuterii; niektórzy trzymają ją też jako oszczędności. Gdy liczba rośnie, platyna drożeje; gdy spada, tanieje.",
+        "Chętnych do handlu platyną jest znacznie mniej niż do handlu złotem, więc w danych bywają tygodnie bez notowań, a wiele dni ma dokładnie te same ceny. Nie znaczy to, że cena była stabilna: to ograniczenie danych.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. W miejscu przejścia cena może przeskoczyć, choć na rynku nic się nie zmieniło. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -1088,11 +1097,12 @@
     },
     {
       "instrument_id": "copper",
-      "display_name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
+      "display_name": "Miedź — kontrakt terminowy (cena miedzi ustalona dziś, a dostawa później, funt)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na miedź z giełdy COMEX (CME Group), podawaną w dolarach za funt (≈ 453,6 g). Kontrakt dotyczy 25 000 funtów miedzi, a szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
-        "Miedź jest metalem przemysłowym używanym w budownictwie, sieciach elektrycznych, elektronice i transporcie, dlatego jej cena bywa traktowana jako miernik koniunktury przemysłowej. Wykres pokazuje ceny z przeszłości i nie przesądza o przyszłych.",
-        "Nie należy mylić tej serii z ceną miedzi na Londyńskiej Giełdzie Metali (LME), która jest notowana w dolarach za tonę i dotyczy innych kontraktów."
+        "Wyobraź sobie hurtownię, która dziś umawia się z hutą: za jakiś czas kupi miedź, ale cenę ustalają od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena miedzi z takiej umowy, w dolarach za funt, czyli za około 454 gramy. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 25 000 funtów, czyli ponad 11 ton miedzi.",
+        "Miedź jest w kablach, rurach, elektronice i samochodach. Gdy firmy dużo budują i produkują, miedzi potrzeba więcej i często drożeje; gdy przemysł zwalnia, zwykle tanieje. Dlatego rosnąca liczba bywa odczytywana jako dobry nastrój w przemyśle, a spadająca jako gorszy, choć nie zawsze tak jest.",
+        "Nie mylić z ceną miedzi na giełdzie metali w Londynie: tam liczy się ją w dolarach za tonę i dotyczy innych umów. To też nie jest cena miedzi kupowanej od razu.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. W miejscu przejścia cena może przeskoczyć, choć na rynku nic się nie zmieniło. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -1144,11 +1154,12 @@
     },
     {
       "instrument_id": "crude-oil",
-      "display_name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
+      "display_name": "Ropa naftowa WTI — kontrakt terminowy (cena ropy ustalona dziś, a dostawa później, baryłka)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na ropę naftową gatunku WTI (West Texas Intermediate) z giełdy NYMEX (CME Group), w dolarach za baryłkę. Kontrakt dotyczy 1 000 baryłek ropy, dostarczanej fizycznie w Cushing w stanie Oklahoma. Szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
-        "WTI jest jednym z głównych punktów odniesienia cen ropy na świecie, obok brent z Morza Północnego. Cena ropy wpływa na koszty paliw, inflację i wyniki spółek energetycznych, ale ten szereg to tylko cena jednego typu kontraktu, nie „cena benzyny”.",
-        "Ważna cecha danych: 20 kwietnia 2020 r. cena kontraktu najbliższej serii spadła poniżej zera (zamknięcie −37,63 USD), przy niemal pełnych magazynach w Cushing i zbliżającym się wygaśnięciu kontraktu. Takie notowania są w MarketLab pomijane (filtr wartości ≤ 0), więc dni 20 i 21 kwietnia 2020 r. nie ma na wykresie."
+        "Wyobraź sobie firmę, która dziś umawia się ze sprzedawcą ropy: za jakiś czas kupi ropę, ale cenę ustalają od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena ropy z takiej umowy, w dolarach za baryłkę, czyli za około 159 litrów. Chodzi o ropę WTI, jeden z najważniejszych gatunków ropy na świecie, wydobywany w USA. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 1000 baryłek.",
+        "Gdy liczba rośnie, ropa jest droższa; gdy spada, tańsza. Z czasem cena ropy przekłada się na ceny paliw i transportu, a przez to na wiele rzeczy w sklepach. To jednak nie jest cena benzyny na stacji: tam dochodzą podatki, koszt przerobu ropy na paliwo i zarobki sprzedawców.",
+        "Wyjątkowy dzień: 20 kwietnia 2020 r. cena tej umowy spadła poniżej zera, do minus 37,63 dolara. Magazyny były prawie pełne, a umowie kończył się termin, więc ci, którzy ją mieli, woleli dopłacić, byle nie odbierać ropy, której nie mieli gdzie przechować. MarketLab pomija ceny równe zeru lub niższe, dlatego dni 20 i 21 kwietnia 2020 r. nie ma na wykresie.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. W miejscu przejścia cena może przeskoczyć, choć na rynku nic się nie zmieniło. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -1200,11 +1211,12 @@
     },
     {
       "instrument_id": "natural-gas",
-      "display_name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
+      "display_name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena gazu ustalona dziś, a dostawa później, miara energii MMBtu)",
       "qualitative": [
-        "Ten szereg pokazuje cenę kontraktu terminowego na gaz ziemny w punkcie Henry Hub w Luizjanie (USA), notowanego na giełdzie NYMEX (CME Group) w dolarach za MMBtu (milion brytyjskich jednostek ciepła, miara energii). Kontrakt dotyczy 10 000 MMBtu, a szereg łączy kolejne najbliższe serie w jedną linię; to nie jest cena spot.",
-        "Henry Hub jest głównym punktem odniesienia cen gazu w USA. Cena jest wyraźnie sezonowa i zależy od pogody (ogrzewanie zimą, klimatyzacja latem), poziomu zapasów w magazynach i produkcji. Nie odpowiada bezpośrednio cenom gazu w Europie ani w Polsce, które mają własne punkty odniesienia i koszty transportu.",
-        "Wykres pokazuje przeszłe ceny; nie jest prognozą. Przy rolowaniu na następną serię cena może się znacznie przesunąć, bo ceny kolejnych miesięcy dostawy potrafią się wyraźnie różnić (np. lato kontra zima)."
+        "Wyobraź sobie ciepłownię, która już dziś umawia się na dostawę gazu na zimę i ustala cenę od razu. Taka umowa to kontrakt terminowy (cena jest ustalona dziś, a towar i zapłata przechodzą z rąk do rąk później). Liczba na wykresie to cena gazu ziemnego z takiej umowy, dla gazu dostarczanego w miejscu Henry Hub w Luizjanie (USA), w dolarach za MMBtu. MMBtu to miara energii zawartej w gazie, tak jak kilowatogodziny w prądzie. Jedna umowa na amerykańskiej giełdzie towarów (giełda to miejsce, gdzie ludzie i firmy kupują i sprzedają) dotyczy 10 000 MMBtu.",
+        "Gdy liczba rośnie, gaz w USA drożeje; gdy spada, tanieje. Cena wyraźnie zależy od pory roku i pogody: zimą gaz idzie na ogrzewanie, a latem zużywa się go na prąd do klimatyzacji. Liczy się też, ile gazu leży w magazynach i ile się go wydobywa.",
+        "Z tej liczby nie wynika wprost cena gazu w Europie ani w Polsce: tam są inne punkty odniesienia i dochodzi koszt transportu.",
+        "Na wykresie jest jedna linia, ale takich umów istnieje naraz wiele, z różnymi terminami dostawy. Dostawca danych (Yahoo) pokazuje zwykle tę z najbliższym terminem, a gdy ten termin się zbliża, przechodzi na następną. Gaz na lato i na zimę kosztuje różnie, więc w miejscu przejścia cena potrafi się mocno zmienić, choć na rynku nic się nie stało. Wykres pokazuje przeszłość i nie mówi, co będzie dalej."
       ],
       "technical": [
         {
@@ -1256,11 +1268,11 @@
     },
     {
       "instrument_id": "usd-jpy",
-      "display_name": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
+      "display_name": "USD/JPY (ile jenów kosztuje 1 dolar)",
       "qualitative": [
-        "USD/JPY pokazuje, ile jenów japońskich kosztuje jeden dolar amerykański. Gdy wartość rośnie, dolar jest droższy w jenach (jen słabszy); gdy spada, jen się umacnia. To jedna z najczęściej handlowanych par walutowych na świecie.",
-        "Para jest silnie związana z różnicą stóp procentowych między USA i Japonią oraz z postrzeganiem jena jako waluty „bezpiecznej” w okresach niepewności na rynkach. Wartość szeregu to poziom kursu, nie wynik inwestycji; sam wykres nie wyjaśnia przyczyny zmiany.",
-        "Należy pamiętać, że ta seria jest wyrażona w jenach za 1 dolar, odwrotnie niż EUR/USD (dolary za 1 euro). Wzrost USD/JPY oznacza umocnienie dolara, a wzrost EUR/USD — osłabienie dolara."
+        "Jedziesz do Tokio i wymieniasz dolary na jeny. Ta liczba mówi, ile jenów japońskich dostaniesz za jednego dolara. Gdyby wynosiła 150, za 1 dolara dostałbyś 150 jenów. To jedna z najczęściej wymienianych na świecie par walut.",
+        "Gdy liczba rośnie, dolar jest droższy, a jen słabszy: turysta z dolarami kupi w Japonii więcej. Gdy spada, jen jest mocniejszy. Para jest silnie związana z różnicą w oprocentowaniu pieniędzy w USA i Japonii oraz z tym, że w niepewnych czasach jen bywa uważany za „bezpieczną” walutę.",
+        "Pamiętaj o kierunku: tu to jeny za 1 dolara, odwrotnie niż w parze EUR/USD (dolary za 1 euro). Wzrost USD/JPY oznacza więc mocniejszego dolara, a wzrost EUR/USD — słabszego. Liczba pokazuje poziom kursu, nie czyjś zysk, i sama nie wyjaśnia, dlaczego się zmieniła."
       ],
       "technical": [
         {
@@ -1317,11 +1329,12 @@
     },
     {
       "instrument_id": "eur-usd",
-      "display_name": "EUR/USD (kurs euro w dolarach amerykańskich)",
+      "display_name": "EUR/USD (ile dolarów kosztuje 1 euro)",
       "qualitative": [
-        "EUR/USD pokazuje, ile dolarów amerykańskich kosztuje jedno euro. Gdy wartość rośnie, euro jest droższe w dolarach (dolar słabszy); gdy spada, dolar się umacnia. To najczęściej handlowana para walutowa na świecie.",
-        "Kurs jest powiązany m.in. z polityką pieniężną Europejskiego Banku Centralnego i amerykańskiego Fed, różnicą stóp procentowych oraz kondycją gospodarek strefy euro i USA. Euro stanowi także około 58% koszyka indeksu dolara DXY, więc EUR/USD jest głównym czynnikiem jego ruchu (w odwrotnym kierunku).",
-        "Wartość podawana jest w dolarach za 1 euro, a nie odwrotnie: wzrost oznacza umocnienie euro. To kurs rynkowy, a nie kurs walutowy w kantorze (z marżą) ani oficjalny kurs referencyjny EBC."
+        "Jedziesz do USA i wymieniasz euro na dolary. Ta liczba mówi, ile dolarów dostaniesz za jedno euro. Gdyby wynosiła 1,10, za 1 euro dostałbyś 1,10 dolara. To najczęściej wymieniana na świecie para walut.",
+        "Gdy liczba rośnie, euro jest droższe, a dolar słabszy; gdy spada, dolar jest mocniejszy. Dotyczy to każdego, kto płaci w jednej walucie za coś w drugiej, np. za zakupy w sklepie z USA czy podróż.",
+        "Na kurs wpływają m.in. decyzje banków centralnych, czyli instytucji, które ustalają podstawowe oprocentowanie pieniędzy: europejskiego i amerykańskiego. Liczy się też kondycja obu gospodarek. Euro jest największą częścią koszyka walut, z którego liczy się osobna liczba, indeks dolara (pokazuje, czy dolar jest mocny wobec koszyka sześciu walut). Dlatego EUR/USD mocno wpływa na jej ruch, w odwrotną stronę.",
+        "Pamiętaj o kierunku: to dolary za 1 euro, a nie odwrotnie, więc wzrost oznacza umocnienie euro. To kurs rynkowy, a nie kurs z kantoru (z zarobkiem kantoru) ani oficjalny kurs Europejskiego Banku Centralnego."
       ],
       "technical": [
         {
@@ -1378,11 +1391,12 @@
     },
     {
       "instrument_id": "eur-pln",
-      "display_name": "EUR/PLN (kurs euro w złotych polskich)",
+      "display_name": "EUR/PLN (ile złotych kosztuje 1 euro)",
       "qualitative": [
-        "EUR/PLN pokazuje, ile złotych kosztuje jedno euro. Gdy wartość rośnie, euro jest droższe w złotych (złoty słabszy); gdy spada, złoty się umacnia. Strefa euro jest największym partnerem handlowym Polski, dlatego ten kurs jest ważny dla firm importujących i eksportujących.",
-        "Kurs zależy m.in. od różnicy stóp procentowych, kondycji polskiej gospodarki, napływu kapitału i nastrojów wobec rynków wschodzących. Wartość szeregu to poziom kursu rynkowego, nie wynik inwestycji.",
-        "Nie należy mylić go z kursem w kantorze (zawiera marżę), z oficjalnym kursem średnim NBP (tabela A ogłaszana raz dziennie) ani z kursem referencyjnym EBC. Wszystkie te wartości są zbliżone, ale się różnią."
+        "Jedziesz na wakacje do Włoch i wymieniasz złotówki na euro. Ta liczba mówi, ile złotych zapłacisz za jedno euro. Gdyby wynosiła 4,30, za 1 euro trzeba by dać 4,30 zł.",
+        "Gdy liczba rośnie, euro jest droższe, a złoty słabszy: wakacje w strefie euro i towary stamtąd kosztują więcej. Gdy spada, euro jest tańsze, a złoty mocniejszy. Strefa euro to największy partner handlowy Polski, więc kurs ważny jest dla firm, które coś sprowadzają lub sprzedają za granicę.",
+        "Na kurs wpływają m.in. różnice w oprocentowaniu pieniędzy w Polsce i strefie euro, kondycja gospodarki i nastroje wobec naszego regionu. Liczba pokazuje poziom kursu, a nie czyjś zysk.",
+        "Nie mylić z kursem w kantorze: kantor kupuje taniej, a sprzedaje drożej (zarabia na różnicy). Nie jest to też oficjalny kurs średni Narodowego Banku Polskiego, ogłaszany raz dziennie. Wszystkie te kursy są zbliżone, ale się różnią."
       ],
       "technical": [
         {
@@ -1439,11 +1453,12 @@
     },
     {
       "instrument_id": "usd-pln",
-      "display_name": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
+      "display_name": "USD/PLN (ile złotych kosztuje 1 dolar)",
       "qualitative": [
-        "USD/PLN pokazuje, ile złotych kosztuje jeden dolar amerykański. Gdy wartość rośnie, dolar jest droższy w złotych (złoty słabszy); gdy spada, złoty się umacnia. Dolar jest główną walutą rozliczeń surowców, więc kurs ma znaczenie dla cen paliw i towarów wyrażanych w USD.",
-        "Na kurs wpływają m.in. polityka pieniężna Fed i NBP, koniunktura w Polsce i USA oraz ogólne nastroje wobec ryzyka. Częściowo jest też pochodną EUR/USD i EUR/PLN: ruch jednego z nich zmienia USD/PLN. Wartość szeregu to poziom kursu, nie rekomendacja.",
-        "Nie należy mylić go z kursem sprzedaży dolara w kantorze (z marżą) ani z kursem średnim NBP z tabeli A, który jest ogłaszany raz dziennie i nieco różni się od kursu rynkowego."
+        "Kupujesz coś w zagranicznym sklepie internetowym, który liczy w dolarach. Ta liczba mówi, ile złotych zapłacisz za jednego dolara. Gdyby wynosiła 4,00, za 1 dolara trzeba by dać 4 zł.",
+        "Gdy liczba rośnie, dolar jest droższy, a złoty słabszy; gdy spada, złoty jest mocniejszy. Dolarem rozlicza się na świecie wiele surowców, więc kurs wpływa na ceny paliw i towarów liczonych w dolarach.",
+        "Na kurs wpływają m.in. decyzje amerykańskiego i polskiego banku centralnego (instytucji, która ustala podstawowe oprocentowanie pieniędzy w kraju), kondycja obu gospodarek i nastroje na świecie. Zależy on też od kursów EUR/USD i EUR/PLN. Liczba pokazuje poziom kursu, nie radę, co robić.",
+        "Nie mylić z kursem sprzedaży dolara w kantorze (kantor dolicza swój zarobek) ani z oficjalnym kursem średnim Narodowego Banku Polskiego, ogłaszanym raz dziennie i nieco innym niż rynkowy."
       ],
       "technical": [
         {

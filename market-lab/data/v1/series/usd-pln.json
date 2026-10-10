@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "usd-pln",
-  "name": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
+  "name": "USD/PLN (ile złotych kosztuje 1 dolar)",
   "currency": "PLN",
   "unit": "PLN za 1 USD",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "USDPLN=X",
-    "description": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "USD/PLN (ile złotych kosztuje 1 dolar)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

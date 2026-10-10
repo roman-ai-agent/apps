@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "vix",
-  "name": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
+  "name": "VIX (jak duże wahania giełdy rynek przewiduje na najbliższy miesiąc)",
   "currency": "USD",
   "unit": "pkt indeksu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "^VIX",
-    "description": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "VIX (jak duże wahania giełdy rynek przewiduje na najbliższy miesiąc)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

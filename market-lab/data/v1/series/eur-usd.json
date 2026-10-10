@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "eur-usd",
-  "name": "EUR/USD (kurs euro w dolarach amerykańskich)",
+  "name": "EUR/USD (ile dolarów kosztuje 1 euro)",
   "currency": "USD",
   "unit": "USD za 1 EUR",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "EURUSD=X",
-    "description": "EUR/USD (kurs euro w dolarach amerykańskich)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "EUR/USD (ile dolarów kosztuje 1 euro)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {

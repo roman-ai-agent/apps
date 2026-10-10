@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T21:54:45.351Z",
+  "generated_at": "2026-10-10T22:35:19.810Z",
   "instruments": [
     {
       "instrument_id": "sp500",
-      "name": "S&P 500 (500 największych spółek USA, ważone wartością rynkową)",
+      "name": "S&P 500 (500 największych firm USA)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1927-12-30",
@@ -14,7 +14,7 @@
     },
     {
       "instrument_id": "dji",
-      "name": "Dow Jones Industrial Average (30 dużych spółek USA, ważone ceną akcji)",
+      "name": "Dow Jones Industrial Average (30 dużych firm USA, liczone według ceny akcji)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1992-01-02",
@@ -24,7 +24,7 @@
     },
     {
       "instrument_id": "nasdaq-composite",
-      "name": "Nasdaq Composite (prawie wszystkie spółki giełdy Nasdaq, ważone wartością rynkową)",
+      "name": "Nasdaq Composite (prawie wszystkie firmy z giełdy Nasdaq)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-02-05",
@@ -34,7 +34,7 @@
     },
     {
       "instrument_id": "nasdaq100",
-      "name": "Nasdaq-100 (100 największych spółek niefinansowych z giełdy Nasdaq)",
+      "name": "Nasdaq-100 (100 największych firm z giełdy Nasdaq, poza bankami i ubezpieczycielami)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1985-10-01",
@@ -44,7 +44,7 @@
     },
     {
       "instrument_id": "russell2000",
-      "name": "Russell 2000 (około 2000 małych spółek USA, ważone wartością rynkową)",
+      "name": "Russell 2000 (około 2000 małych firm USA)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1987-09-10",
@@ -54,7 +54,7 @@
     },
     {
       "instrument_id": "dax",
-      "name": "DAX (40 największych spółek Niemiec, indeks dochodowy z reinwestowanymi dywidendami)",
+      "name": "DAX (40 największych firm Niemiec, liczony razem z wypłatami zysku dla właścicieli akcji)",
       "currency": "EUR",
       "unit": "pkt indeksu",
       "first_date": "1987-12-30",
@@ -64,7 +64,7 @@
     },
     {
       "instrument_id": "ftse100",
-      "name": "FTSE 100 (100 największych spółek Wielkiej Brytanii, ważone wartością rynkową)",
+      "name": "FTSE 100 (100 największych firm Wielkiej Brytanii)",
       "currency": "GBP",
       "unit": "pkt indeksu",
       "first_date": "1984-01-03",
@@ -74,7 +74,7 @@
     },
     {
       "instrument_id": "nikkei225",
-      "name": "Nikkei 225 (225 dużych spółek Japonii, ważone ceną akcji)",
+      "name": "Nikkei 225 (225 dużych firm Japonii, liczone według ceny akcji)",
       "currency": "JPY",
       "unit": "pkt indeksu",
       "first_date": "1965-01-05",
@@ -84,7 +84,7 @@
     },
     {
       "instrument_id": "hang-seng",
-      "name": "Hang Seng (95 największych spółek z giełdy w Hongkongu, ważone wartością rynkową)",
+      "name": "Hang Seng (95 największych firm z giełdy w Hongkongu)",
       "currency": "HKD",
       "unit": "pkt indeksu",
       "first_date": "1986-12-31",
@@ -94,7 +94,7 @@
     },
     {
       "instrument_id": "us-13w",
-      "name": "Rentowność bonów skarbowych USA 13-tygodniowych (stopa dyskontowa krótkiego długu rządu USA)",
+      "name": "Rentowność bonów skarbowych USA 13-tygodniowych (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1960-01-04",
@@ -104,7 +104,7 @@
     },
     {
       "instrument_id": "us-10y",
-      "name": "Rentowność obligacji skarbowych USA 10-letnich (oprocentowanie długu rządu USA na 10 lat)",
+      "name": "Rentowność obligacji skarbowych USA 10-letnich (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na 10 lat)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1962-01-02",
@@ -114,7 +114,7 @@
     },
     {
       "instrument_id": "us-30y",
-      "name": "Rentowność obligacji skarbowych USA 30-letnich (oprocentowanie długu rządu USA na 30 lat)",
+      "name": "Rentowność obligacji skarbowych USA 30-letnich (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na 30 lat)",
       "currency": "USD",
       "unit": "%",
       "first_date": "1977-02-15",
@@ -124,7 +124,7 @@
     },
     {
       "instrument_id": "vix",
-      "name": "VIX (oczekiwana przez rynek zmienność S&P 500 w ciągu 30 dni)",
+      "name": "VIX (jak duże wahania giełdy rynek przewiduje na najbliższy miesiąc)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1990-01-02",
@@ -134,7 +134,7 @@
     },
     {
       "instrument_id": "usd-index",
-      "name": "Indeks dolara (siła dolara USA wobec koszyka sześciu walut, głównie euro)",
+      "name": "Indeks dolara (czy dolar jest mocny, czy słaby wobec sześciu innych walut)",
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-01-04",
@@ -144,7 +144,7 @@
     },
     {
       "instrument_id": "gold",
-      "name": "Złoto — kontrakt terminowy (cena umowy na przyszłą dostawę złota, uncja trojańska)",
+      "name": "Złoto — kontrakt terminowy (cena złota ustalona dziś, a dostawa później, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
@@ -154,7 +154,7 @@
     },
     {
       "instrument_id": "gold-spot",
-      "name": "Złoto — cena spot (cena natychmiastowej dostawy, uncja trojańska)",
+      "name": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2017-01-01",
@@ -165,7 +165,7 @@
     },
     {
       "instrument_id": "silver",
-      "name": "Srebro — kontrakt terminowy (cena umowy na przyszłą dostawę srebra, uncja trojańska)",
+      "name": "Srebro — kontrakt terminowy (cena srebra ustalona dziś, a dostawa później, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
@@ -175,7 +175,7 @@
     },
     {
       "instrument_id": "platinum",
-      "name": "Platyna — kontrakt terminowy (cena umowy na przyszłą dostawę platyny, uncja trojańska)",
+      "name": "Platyna — kontrakt terminowy (cena platyny ustalona dziś, a dostawa później, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "1997-10-29",
@@ -185,7 +185,7 @@
     },
     {
       "instrument_id": "copper",
-      "name": "Miedź — kontrakt terminowy (cena umowy na przyszłą dostawę miedzi, funt)",
+      "name": "Miedź — kontrakt terminowy (cena miedzi ustalona dziś, a dostawa później, funt)",
       "currency": "USD",
       "unit": "USD/lb",
       "first_date": "2000-08-30",
@@ -195,7 +195,7 @@
     },
     {
       "instrument_id": "crude-oil",
-      "name": "Ropa naftowa WTI — kontrakt terminowy (cena umowy na przyszłą dostawę ropy, baryłka)",
+      "name": "Ropa naftowa WTI — kontrakt terminowy (cena ropy ustalona dziś, a dostawa później, baryłka)",
       "currency": "USD",
       "unit": "USD/bbl",
       "first_date": "2000-08-23",
@@ -205,7 +205,7 @@
     },
     {
       "instrument_id": "natural-gas",
-      "name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
+      "name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena gazu ustalona dziś, a dostawa później, miara energii MMBtu)",
       "currency": "USD",
       "unit": "USD/MMBtu",
       "first_date": "2000-08-30",
@@ -215,7 +215,7 @@
     },
     {
       "instrument_id": "usd-jpy",
-      "name": "USD/JPY (kurs dolara amerykańskiego w jenach japońskich)",
+      "name": "USD/JPY (ile jenów kosztuje 1 dolar)",
       "currency": "JPY",
       "unit": "JPY za 1 USD",
       "first_date": "1996-10-30",
@@ -225,7 +225,7 @@
     },
     {
       "instrument_id": "eur-usd",
-      "name": "EUR/USD (kurs euro w dolarach amerykańskich)",
+      "name": "EUR/USD (ile dolarów kosztuje 1 euro)",
       "currency": "USD",
       "unit": "USD za 1 EUR",
       "first_date": "2003-12-01",
@@ -235,7 +235,7 @@
     },
     {
       "instrument_id": "eur-pln",
-      "name": "EUR/PLN (kurs euro w złotych polskich)",
+      "name": "EUR/PLN (ile złotych kosztuje 1 euro)",
       "currency": "PLN",
       "unit": "PLN za 1 EUR",
       "first_date": "2002-04-01",
@@ -245,7 +245,7 @@
     },
     {
       "instrument_id": "usd-pln",
-      "name": "USD/PLN (kurs dolara amerykańskiego w złotych polskich)",
+      "name": "USD/PLN (ile złotych kosztuje 1 dolar)",
       "currency": "PLN",
       "unit": "PLN za 1 USD",
       "first_date": "2003-12-01",

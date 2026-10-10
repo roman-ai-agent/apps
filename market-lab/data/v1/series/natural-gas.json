@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "instrument_id": "natural-gas",
-  "name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
+  "name": "Gaz ziemny Henry Hub — kontrakt terminowy (cena gazu ustalona dziś, a dostawa później, miara energii MMBtu)",
   "currency": "USD",
   "unit": "USD/MMBtu",
   "interval": "1d",
@@ -9,8 +9,8 @@
   "source": {
     "provider": "yahoo-finance",
     "symbol": "NG=F",
-    "description": "Gaz ziemny Henry Hub — kontrakt terminowy (cena umowy na przyszłą dostawę gazu, MMBtu)",
-    "retrieved_at": "2026-10-10T21:54:45.351Z"
+    "description": "Gaz ziemny Henry Hub — kontrakt terminowy (cena gazu ustalona dziś, a dostawa później, miara energii MMBtu)",
+    "retrieved_at": "2026-10-10T22:35:19.810Z"
   },
   "bars": [
     {
