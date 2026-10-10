@@ -1,75 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/apps/gold-watcher/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="gold_watcher">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>gold_watcher</title>
-  <link rel="manifest" href="manifest.json">
-</head>
-<body>
-  <script>
-    (() => {
-      const ready = () => new Promise((resolve) => {
-        const waitForImplementation = () => {
-          const bridge = window.__processFlutterApplicationImplementation;
-          if (bridge && typeof bridge.setState === 'function' &&
-              typeof bridge.setStateWithScenario === 'function' &&
-              typeof bridge.captureCurrent === 'function' &&
-              typeof bridge.focusElement === 'function') {
-            resolve(bridge);
-            return;
-          }
-          window.setTimeout(waitForImplementation, 0);
-        };
-        waitForImplementation();
-      });
-      window.__processFlutterApplication = {
-        setState: (stateId) => ready().then((bridge) => bridge.setState(stateId)),
-        setStateWithScenario: (stateId, scenarioId) => ready().then((bridge) => {
-          if (typeof bridge.setStateWithScenario !== 'function') {
-            throw new Error('Flutter Web capture scenario bridge is unavailable');
-          }
-          return bridge.setStateWithScenario(stateId, scenarioId);
-        }),
-        captureCurrent: () => ready().then((bridge) => bridge.captureCurrent()),
-        focusElement: (elementId) => ready().then((bridge) => bridge.focusElement(elementId)),
-      };
-    })();
-  </script>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js?v=gw-v2-7736b19b8b7f87ce52e3f61a1ccdd097a1869a0cb7378b3a789f9913bd6690fd" async></script>
-</body>
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gold Watcher</title>
+    <script type="module" crossorigin src="./assets/index-ByIOqu51.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BQvoQkYp.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
