@@ -1,7 +1,147 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T15:10:09.969Z",
+  "generated_at": "2026-10-10T17:06:42.913Z",
   "instruments": [
+    {
+      "instrument_id": "sp500",
+      "name": "S&P 500",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1927-12-30",
+      "last_date": "2026-10-09",
+      "bar_count": 24811,
+      "series_path": "series/sp500.json"
+    },
+    {
+      "instrument_id": "dji",
+      "name": "Dow Jones Industrial Average",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1992-01-02",
+      "last_date": "2026-10-09",
+      "bar_count": 8755,
+      "series_path": "series/dji.json"
+    },
+    {
+      "instrument_id": "nasdaq-composite",
+      "name": "NASDAQ Composite",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1971-02-05",
+      "last_date": "2026-10-09",
+      "bar_count": 14037,
+      "series_path": "series/nasdaq-composite.json"
+    },
+    {
+      "instrument_id": "nasdaq100",
+      "name": "NASDAQ-100",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1985-10-01",
+      "last_date": "2026-10-09",
+      "bar_count": 10336,
+      "series_path": "series/nasdaq100.json"
+    },
+    {
+      "instrument_id": "russell2000",
+      "name": "Russell 2000",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1987-09-10",
+      "last_date": "2026-10-09",
+      "bar_count": 9845,
+      "series_path": "series/russell2000.json"
+    },
+    {
+      "instrument_id": "dax",
+      "name": "DAX",
+      "currency": "EUR",
+      "unit": "pkt indeksu",
+      "first_date": "1987-12-30",
+      "last_date": "2026-10-09",
+      "bar_count": 9807,
+      "series_path": "series/dax.json"
+    },
+    {
+      "instrument_id": "ftse100",
+      "name": "FTSE 100",
+      "currency": "GBP",
+      "unit": "pkt indeksu",
+      "first_date": "1984-01-03",
+      "last_date": "2026-10-09",
+      "bar_count": 10805,
+      "series_path": "series/ftse100.json"
+    },
+    {
+      "instrument_id": "nikkei225",
+      "name": "Nikkei 225",
+      "currency": "JPY",
+      "unit": "pkt indeksu",
+      "first_date": "1965-01-05",
+      "last_date": "2026-10-09",
+      "bar_count": 15183,
+      "series_path": "series/nikkei225.json"
+    },
+    {
+      "instrument_id": "hang-seng",
+      "name": "Hang Seng",
+      "currency": "HKD",
+      "unit": "pkt indeksu",
+      "first_date": "1986-12-31",
+      "last_date": "2026-10-09",
+      "bar_count": 9816,
+      "series_path": "series/hang-seng.json"
+    },
+    {
+      "instrument_id": "us-13w",
+      "name": "Bony USA 13 tyg. — rentowność",
+      "currency": "USD",
+      "unit": "%",
+      "first_date": "1960-01-04",
+      "last_date": "2026-10-09",
+      "bar_count": 16669,
+      "series_path": "series/us-13w.json"
+    },
+    {
+      "instrument_id": "us-10y",
+      "name": "Obligacje USA 10 lat — rentowność",
+      "currency": "USD",
+      "unit": "%",
+      "first_date": "1962-01-02",
+      "last_date": "2026-10-09",
+      "bar_count": 16181,
+      "series_path": "series/us-10y.json"
+    },
+    {
+      "instrument_id": "us-30y",
+      "name": "Obligacje USA 30 lat — rentowność",
+      "currency": "USD",
+      "unit": "%",
+      "first_date": "1977-02-15",
+      "last_date": "2026-10-09",
+      "bar_count": 12439,
+      "series_path": "series/us-30y.json"
+    },
+    {
+      "instrument_id": "vix",
+      "name": "VIX",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1990-01-02",
+      "last_date": "2026-10-09",
+      "bar_count": 9263,
+      "series_path": "series/vix.json"
+    },
+    {
+      "instrument_id": "usd-index",
+      "name": "Indeks dolara (DXY)",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1971-01-04",
+      "last_date": "2026-10-09",
+      "bar_count": 14161,
+      "series_path": "series/usd-index.json"
+    },
     {
       "instrument_id": "gold",
       "name": "Złoto (COMEX GC=F)",
@@ -13,14 +153,94 @@
       "series_path": "series/gold.json"
     },
     {
-      "instrument_id": "sp500",
-      "name": "S&P 500",
+      "instrument_id": "silver",
+      "name": "Srebro (COMEX SI=F)",
       "currency": "USD",
-      "unit": "pkt indeksu",
-      "first_date": "2000-01-03",
+      "unit": "USD/oz t",
+      "first_date": "2000-08-30",
       "last_date": "2026-10-09",
-      "bar_count": 6733,
-      "series_path": "series/sp500.json"
+      "bar_count": 6554,
+      "series_path": "series/silver.json"
+    },
+    {
+      "instrument_id": "platinum",
+      "name": "Platyna (NYMEX PL=F)",
+      "currency": "USD",
+      "unit": "USD/oz t",
+      "first_date": "1997-10-29",
+      "last_date": "2026-10-09",
+      "bar_count": 6580,
+      "series_path": "series/platinum.json"
+    },
+    {
+      "instrument_id": "copper",
+      "name": "Miedź (COMEX HG=F)",
+      "currency": "USD",
+      "unit": "USD/lb",
+      "first_date": "2000-08-30",
+      "last_date": "2026-10-09",
+      "bar_count": 6557,
+      "series_path": "series/copper.json"
+    },
+    {
+      "instrument_id": "crude-oil",
+      "name": "Ropa WTI (NYMEX CL=F)",
+      "currency": "USD",
+      "unit": "USD/bbl",
+      "first_date": "2000-08-23",
+      "last_date": "2026-10-09",
+      "bar_count": 6559,
+      "series_path": "series/crude-oil.json"
+    },
+    {
+      "instrument_id": "natural-gas",
+      "name": "Gaz ziemny (NYMEX NG=F)",
+      "currency": "USD",
+      "unit": "USD/MMBtu",
+      "first_date": "2000-08-30",
+      "last_date": "2026-10-09",
+      "bar_count": 6558,
+      "series_path": "series/natural-gas.json"
+    },
+    {
+      "instrument_id": "usd-jpy",
+      "name": "USD/JPY",
+      "currency": "JPY",
+      "unit": "JPY za 1 USD",
+      "first_date": "1996-10-30",
+      "last_date": "2026-10-09",
+      "bar_count": 7765,
+      "series_path": "series/usd-jpy.json"
+    },
+    {
+      "instrument_id": "eur-usd",
+      "name": "EUR/USD",
+      "currency": "USD",
+      "unit": "USD za 1 EUR",
+      "first_date": "2003-12-01",
+      "last_date": "2026-10-09",
+      "bar_count": 5931,
+      "series_path": "series/eur-usd.json"
+    },
+    {
+      "instrument_id": "eur-pln",
+      "name": "EUR/PLN",
+      "currency": "PLN",
+      "unit": "PLN za 1 EUR",
+      "first_date": "2002-04-01",
+      "last_date": "2026-10-09",
+      "bar_count": 6341,
+      "series_path": "series/eur-pln.json"
+    },
+    {
+      "instrument_id": "usd-pln",
+      "name": "USD/PLN",
+      "currency": "PLN",
+      "unit": "PLN za 1 USD",
+      "first_date": "2003-12-01",
+      "last_date": "2026-10-10",
+      "bar_count": 5931,
+      "series_path": "series/usd-pln.json"
     }
   ]
 }
