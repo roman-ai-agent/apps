@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T22:35:19.810Z",
+  "generated_at": "2026-10-11T06:18:40.494Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -9,7 +9,7 @@
       "unit": "pkt indeksu",
       "first_date": "1927-12-30",
       "last_date": "2026-10-09",
-      "bar_count": 24811,
+      "bar_count": 36079,
       "series_path": "series/sp500.json"
     },
     {
@@ -19,7 +19,7 @@
       "unit": "pkt indeksu",
       "first_date": "1992-01-02",
       "last_date": "2026-10-09",
-      "bar_count": 8755,
+      "bar_count": 12700,
       "series_path": "series/dji.json"
     },
     {
@@ -29,7 +29,7 @@
       "unit": "pkt indeksu",
       "first_date": "1971-02-05",
       "last_date": "2026-10-09",
-      "bar_count": 14037,
+      "bar_count": 20336,
       "series_path": "series/nasdaq-composite.json"
     },
     {
@@ -39,7 +39,7 @@
       "unit": "pkt indeksu",
       "first_date": "1985-10-01",
       "last_date": "2026-10-09",
-      "bar_count": 10336,
+      "bar_count": 14984,
       "series_path": "series/nasdaq100.json"
     },
     {
@@ -49,7 +49,7 @@
       "unit": "pkt indeksu",
       "first_date": "1987-09-10",
       "last_date": "2026-10-09",
-      "bar_count": 9845,
+      "bar_count": 14275,
       "series_path": "series/russell2000.json"
     },
     {
@@ -59,7 +59,7 @@
       "unit": "pkt indeksu",
       "first_date": "1987-12-30",
       "last_date": "2026-10-09",
-      "bar_count": 9807,
+      "bar_count": 14164,
       "series_path": "series/dax.json"
     },
     {
@@ -69,7 +69,7 @@
       "unit": "pkt indeksu",
       "first_date": "1984-01-03",
       "last_date": "2026-10-09",
-      "bar_count": 10805,
+      "bar_count": 15621,
       "series_path": "series/ftse100.json"
     },
     {
@@ -79,7 +79,7 @@
       "unit": "pkt indeksu",
       "first_date": "1965-01-05",
       "last_date": "2026-10-09",
-      "bar_count": 15183,
+      "bar_count": 22558,
       "series_path": "series/nikkei225.json"
     },
     {
@@ -89,7 +89,7 @@
       "unit": "pkt indeksu",
       "first_date": "1986-12-31",
       "last_date": "2026-10-09",
-      "bar_count": 9816,
+      "bar_count": 14528,
       "series_path": "series/hang-seng.json"
     },
     {
@@ -99,7 +99,7 @@
       "unit": "%",
       "first_date": "1960-01-04",
       "last_date": "2026-10-09",
-      "bar_count": 16669,
+      "bar_count": 24386,
       "series_path": "series/us-13w.json"
     },
     {
@@ -109,7 +109,7 @@
       "unit": "%",
       "first_date": "1962-01-02",
       "last_date": "2026-10-09",
-      "bar_count": 16181,
+      "bar_count": 23657,
       "series_path": "series/us-10y.json"
     },
     {
@@ -119,7 +119,7 @@
       "unit": "%",
       "first_date": "1977-02-15",
       "last_date": "2026-10-09",
-      "bar_count": 12439,
+      "bar_count": 18134,
       "series_path": "series/us-30y.json"
     },
     {
@@ -129,7 +129,7 @@
       "unit": "pkt indeksu",
       "first_date": "1990-01-02",
       "last_date": "2026-10-09",
-      "bar_count": 9263,
+      "bar_count": 13430,
       "series_path": "series/vix.json"
     },
     {
@@ -139,7 +139,7 @@
       "unit": "pkt indeksu",
       "first_date": "1971-01-04",
       "last_date": "2026-10-09",
-      "bar_count": 14161,
+      "bar_count": 20368,
       "series_path": "series/usd-index.json"
     },
     {
@@ -149,7 +149,7 @@
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
-      "bar_count": 6553,
+      "bar_count": 9537,
       "series_path": "series/gold.json"
     },
     {
@@ -158,8 +158,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2017-01-01",
-      "last_date": "2026-10-08",
-      "bar_count": 3558,
+      "last_date": "2026-10-09",
+      "bar_count": 3569,
       "series_path": "series/gold-spot.json",
       "bar_kind": "close"
     },
@@ -170,7 +170,7 @@
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
-      "bar_count": 6554,
+      "bar_count": 9537,
       "series_path": "series/silver.json"
     },
     {
@@ -180,7 +180,7 @@
       "unit": "USD/oz t",
       "first_date": "1997-10-29",
       "last_date": "2026-10-09",
-      "bar_count": 6580,
+      "bar_count": 10573,
       "series_path": "series/platinum.json"
     },
     {
@@ -190,7 +190,7 @@
       "unit": "USD/lb",
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
-      "bar_count": 6557,
+      "bar_count": 9537,
       "series_path": "series/copper.json"
     },
     {
@@ -200,7 +200,7 @@
       "unit": "USD/bbl",
       "first_date": "2000-08-23",
       "last_date": "2026-10-09",
-      "bar_count": 6559,
+      "bar_count": 9544,
       "series_path": "series/crude-oil.json"
     },
     {
@@ -210,7 +210,7 @@
       "unit": "USD/MMBtu",
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
-      "bar_count": 6558,
+      "bar_count": 9537,
       "series_path": "series/natural-gas.json"
     },
     {
@@ -220,7 +220,7 @@
       "unit": "JPY za 1 USD",
       "first_date": "1996-10-30",
       "last_date": "2026-10-09",
-      "bar_count": 7765,
+      "bar_count": 10937,
       "series_path": "series/usd-jpy.json"
     },
     {
@@ -230,7 +230,7 @@
       "unit": "USD za 1 EUR",
       "first_date": "2003-12-01",
       "last_date": "2026-10-09",
-      "bar_count": 5931,
+      "bar_count": 8349,
       "series_path": "series/eur-usd.json"
     },
     {
@@ -240,7 +240,7 @@
       "unit": "PLN za 1 EUR",
       "first_date": "2002-04-01",
       "last_date": "2026-10-09",
-      "bar_count": 6341,
+      "bar_count": 8958,
       "series_path": "series/eur-pln.json"
     },
     {
@@ -250,7 +250,7 @@
       "unit": "PLN za 1 USD",
       "first_date": "2003-12-01",
       "last_date": "2026-10-10",
-      "bar_count": 5931,
+      "bar_count": 8350,
       "series_path": "series/usd-pln.json"
     }
   ]
