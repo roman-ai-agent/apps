@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T07:33:01.791Z",
+  "generated_at": "2026-10-11T18:09:54.854Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -239,8 +239,8 @@
       "currency": "PLN",
       "unit": "PLN za 1 EUR",
       "first_date": "2002-04-01",
-      "last_date": "2026-10-09",
-      "bar_count": 8958,
+      "last_date": "2026-10-11",
+      "bar_count": 8960,
       "series_path": "series/eur-pln.json"
     },
     {
@@ -249,9 +249,53 @@
       "currency": "PLN",
       "unit": "PLN za 1 USD",
       "first_date": "2003-12-01",
-      "last_date": "2026-10-10",
-      "bar_count": 8350,
+      "last_date": "2026-10-11",
+      "bar_count": 8351,
       "series_path": "series/usd-pln.json"
+    },
+    {
+      "instrument_id": "us-tbill-13w",
+      "name": "Rentowność bonów skarbowych USA 3-miesięcznych, dane Fed i Skarbu USA (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
+      "currency": "USD",
+      "unit": "%",
+      "first_date": "1954-01-04",
+      "last_date": "2026-10-09",
+      "bar_count": 26577,
+      "series_path": "series/us-tbill-13w.json",
+      "bar_kind": "close"
+    },
+    {
+      "instrument_id": "us-cpi",
+      "name": "Inflacja USA, poziom cen (jak zmienia się koszyk zwykłych zakupów Amerykanina)",
+      "currency": "USD",
+      "unit": "pkt indeksu",
+      "first_date": "1913-01-01",
+      "last_date": "2026-08-31",
+      "bar_count": 41516,
+      "series_path": "series/us-cpi.json",
+      "bar_kind": "close"
+    },
+    {
+      "instrument_id": "pl-cpi",
+      "name": "Inflacja Polski, poziom cen od grudnia 1981 (jak zmienia się koszyk zwykłych zakupów Polaka)",
+      "currency": "PLN",
+      "unit": "pkt indeksu",
+      "first_date": "1982-01-01",
+      "last_date": "2026-08-31",
+      "bar_count": 16314,
+      "series_path": "series/pl-cpi.json",
+      "bar_kind": "close"
+    },
+    {
+      "instrument_id": "pl-cpi-yoy",
+      "name": "Inflacja Polski, rok do roku (o ile procent drożej niż rok temu kosztują zwykłe zakupy Polaka)",
+      "currency": "PLN",
+      "unit": "%",
+      "first_date": "1982-01-01",
+      "last_date": "2026-08-31",
+      "bar_count": 16314,
+      "series_path": "series/pl-cpi-yoy.json",
+      "bar_kind": "close"
     }
   ]
 }

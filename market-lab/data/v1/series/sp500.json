@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^GSPC",
     "description": "S&P 500 (500 największych firm USA)",
-    "retrieved_at": "2026-10-11T07:33:01.791Z"
+    "retrieved_at": "2026-10-11T18:09:54.854Z"
   },
   "carried": [
     [
