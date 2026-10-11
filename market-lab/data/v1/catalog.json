@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T18:09:54.854Z",
+  "generated_at": "2026-10-11T19:57:05.399Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -10,7 +10,8 @@
       "first_date": "1927-12-30",
       "last_date": "2026-10-09",
       "bar_count": 36079,
-      "series_path": "series/sp500.json"
+      "series_path": "series/sp500.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "dji",
@@ -20,7 +21,8 @@
       "first_date": "1992-01-02",
       "last_date": "2026-10-09",
       "bar_count": 12700,
-      "series_path": "series/dji.json"
+      "series_path": "series/dji.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "nasdaq-composite",
@@ -30,7 +32,8 @@
       "first_date": "1971-02-05",
       "last_date": "2026-10-09",
       "bar_count": 20336,
-      "series_path": "series/nasdaq-composite.json"
+      "series_path": "series/nasdaq-composite.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "nasdaq100",
@@ -40,7 +43,8 @@
       "first_date": "1985-10-01",
       "last_date": "2026-10-09",
       "bar_count": 14984,
-      "series_path": "series/nasdaq100.json"
+      "series_path": "series/nasdaq100.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "russell2000",
@@ -50,7 +54,8 @@
       "first_date": "1987-09-10",
       "last_date": "2026-10-09",
       "bar_count": 14275,
-      "series_path": "series/russell2000.json"
+      "series_path": "series/russell2000.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "dax",
@@ -60,7 +65,8 @@
       "first_date": "1987-12-30",
       "last_date": "2026-10-09",
       "bar_count": 14164,
-      "series_path": "series/dax.json"
+      "series_path": "series/dax.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "ftse100",
@@ -70,7 +76,8 @@
       "first_date": "1984-01-03",
       "last_date": "2026-10-09",
       "bar_count": 15621,
-      "series_path": "series/ftse100.json"
+      "series_path": "series/ftse100.json",
+      "value_decimals": 1
     },
     {
       "instrument_id": "nikkei225",
@@ -80,7 +87,8 @@
       "first_date": "1965-01-05",
       "last_date": "2026-10-09",
       "bar_count": 22558,
-      "series_path": "series/nikkei225.json"
+      "series_path": "series/nikkei225.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "hang-seng",
@@ -90,7 +98,8 @@
       "first_date": "1986-12-31",
       "last_date": "2026-10-09",
       "bar_count": 14528,
-      "series_path": "series/hang-seng.json"
+      "series_path": "series/hang-seng.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "us-13w",
@@ -100,7 +109,8 @@
       "first_date": "1960-01-04",
       "last_date": "2026-10-09",
       "bar_count": 24386,
-      "series_path": "series/us-13w.json"
+      "series_path": "series/us-13w.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "us-10y",
@@ -110,7 +120,8 @@
       "first_date": "1962-01-02",
       "last_date": "2026-10-09",
       "bar_count": 23657,
-      "series_path": "series/us-10y.json"
+      "series_path": "series/us-10y.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "us-30y",
@@ -120,7 +131,8 @@
       "first_date": "1977-02-15",
       "last_date": "2026-10-09",
       "bar_count": 18134,
-      "series_path": "series/us-30y.json"
+      "series_path": "series/us-30y.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "vix",
@@ -130,7 +142,8 @@
       "first_date": "1990-01-02",
       "last_date": "2026-10-09",
       "bar_count": 13430,
-      "series_path": "series/vix.json"
+      "series_path": "series/vix.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "usd-index",
@@ -140,7 +153,8 @@
       "first_date": "1971-01-04",
       "last_date": "2026-10-09",
       "bar_count": 20368,
-      "series_path": "series/usd-index.json"
+      "series_path": "series/usd-index.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "gold",
@@ -150,7 +164,8 @@
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
       "bar_count": 9537,
-      "series_path": "series/gold.json"
+      "series_path": "series/gold.json",
+      "value_decimals": 1
     },
     {
       "instrument_id": "gold-spot",
@@ -161,6 +176,7 @@
       "last_date": "2026-10-09",
       "bar_count": 21376,
       "series_path": "series/gold-spot.json",
+      "value_decimals": 4,
       "bar_kind": "close"
     },
     {
@@ -171,7 +187,8 @@
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
       "bar_count": 9537,
-      "series_path": "series/silver.json"
+      "series_path": "series/silver.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "platinum",
@@ -181,7 +198,8 @@
       "first_date": "1997-10-29",
       "last_date": "2026-10-09",
       "bar_count": 10573,
-      "series_path": "series/platinum.json"
+      "series_path": "series/platinum.json",
+      "value_decimals": 1
     },
     {
       "instrument_id": "copper",
@@ -191,7 +209,8 @@
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
       "bar_count": 9537,
-      "series_path": "series/copper.json"
+      "series_path": "series/copper.json",
+      "value_decimals": 4
     },
     {
       "instrument_id": "crude-oil",
@@ -201,7 +220,8 @@
       "first_date": "2000-08-23",
       "last_date": "2026-10-09",
       "bar_count": 9544,
-      "series_path": "series/crude-oil.json"
+      "series_path": "series/crude-oil.json",
+      "value_decimals": 2
     },
     {
       "instrument_id": "natural-gas",
@@ -211,7 +231,8 @@
       "first_date": "2000-08-30",
       "last_date": "2026-10-09",
       "bar_count": 9537,
-      "series_path": "series/natural-gas.json"
+      "series_path": "series/natural-gas.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "usd-jpy",
@@ -221,7 +242,8 @@
       "first_date": "1996-10-30",
       "last_date": "2026-10-09",
       "bar_count": 10937,
-      "series_path": "series/usd-jpy.json"
+      "series_path": "series/usd-jpy.json",
+      "value_decimals": 3
     },
     {
       "instrument_id": "eur-usd",
@@ -231,7 +253,8 @@
       "first_date": "2003-12-01",
       "last_date": "2026-10-09",
       "bar_count": 8349,
-      "series_path": "series/eur-usd.json"
+      "series_path": "series/eur-usd.json",
+      "value_decimals": 6
     },
     {
       "instrument_id": "eur-pln",
@@ -241,7 +264,8 @@
       "first_date": "2002-04-01",
       "last_date": "2026-10-11",
       "bar_count": 8960,
-      "series_path": "series/eur-pln.json"
+      "series_path": "series/eur-pln.json",
+      "value_decimals": 5
     },
     {
       "instrument_id": "usd-pln",
@@ -251,7 +275,8 @@
       "first_date": "2003-12-01",
       "last_date": "2026-10-11",
       "bar_count": 8351,
-      "series_path": "series/usd-pln.json"
+      "series_path": "series/usd-pln.json",
+      "value_decimals": 6
     },
     {
       "instrument_id": "us-tbill-13w",
@@ -262,6 +287,7 @@
       "last_date": "2026-10-09",
       "bar_count": 26577,
       "series_path": "series/us-tbill-13w.json",
+      "value_decimals": 2,
       "bar_kind": "close"
     },
     {
@@ -273,6 +299,7 @@
       "last_date": "2026-08-31",
       "bar_count": 41516,
       "series_path": "series/us-cpi.json",
+      "value_decimals": 3,
       "bar_kind": "close"
     },
     {
@@ -284,6 +311,7 @@
       "last_date": "2026-08-31",
       "bar_count": 16314,
       "series_path": "series/pl-cpi.json",
+      "value_decimals": 3,
       "bar_kind": "close"
     },
     {
@@ -295,6 +323,7 @@
       "last_date": "2026-08-31",
       "bar_count": 16314,
       "series_path": "series/pl-cpi-yoy.json",
+      "value_decimals": 1,
       "bar_kind": "close"
     }
   ]

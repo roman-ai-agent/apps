@@ -11,7 +11,7 @@
     "provider": "goldwatcher",
     "symbol": "inflation/pl-cpi",
     "description": "Inflacja Polski, poziom cen od grudnia 1981 (jak zmienia się koszyk zwykłych zakupów Polaka)",
-    "retrieved_at": "2026-10-11T18:09:54.854Z"
+    "retrieved_at": "2026-10-11T19:57:05.399Z"
   },
   "bars": [
     {
