@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T06:18:40.494Z",
+  "generated_at": "2026-10-11T07:25:44.391Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -157,9 +157,9 @@
       "name": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
-      "first_date": "2017-01-01",
+      "first_date": "1968-04-01",
       "last_date": "2026-10-09",
-      "bar_count": 3569,
+      "bar_count": 21376,
       "series_path": "series/gold-spot.json",
       "bar_kind": "close"
     },
