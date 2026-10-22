@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T19:57:05.399Z",
+  "generated_at": "2026-10-22T22:16:50.182Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -8,8 +8,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1927-12-30",
-      "last_date": "2026-10-09",
-      "bar_count": 36079,
+      "last_date": "2026-10-22",
+      "bar_count": 24820,
       "series_path": "series/sp500.json",
       "value_decimals": 2
     },
@@ -19,8 +19,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1992-01-02",
-      "last_date": "2026-10-09",
-      "bar_count": 12700,
+      "last_date": "2026-10-22",
+      "bar_count": 8764,
       "series_path": "series/dji.json",
       "value_decimals": 2
     },
@@ -30,8 +30,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-02-05",
-      "last_date": "2026-10-09",
-      "bar_count": 20336,
+      "last_date": "2026-10-22",
+      "bar_count": 14046,
       "series_path": "series/nasdaq-composite.json",
       "value_decimals": 2
     },
@@ -41,8 +41,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1985-10-01",
-      "last_date": "2026-10-09",
-      "bar_count": 14984,
+      "last_date": "2026-10-22",
+      "bar_count": 10345,
       "series_path": "series/nasdaq100.json",
       "value_decimals": 2
     },
@@ -52,10 +52,10 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1987-09-10",
-      "last_date": "2026-10-09",
-      "bar_count": 14275,
+      "last_date": "2026-10-22",
+      "bar_count": 9854,
       "series_path": "series/russell2000.json",
-      "value_decimals": 2
+      "value_decimals": 3
     },
     {
       "instrument_id": "dax",
@@ -63,8 +63,8 @@
       "currency": "EUR",
       "unit": "pkt indeksu",
       "first_date": "1987-12-30",
-      "last_date": "2026-10-09",
-      "bar_count": 14164,
+      "last_date": "2026-10-21",
+      "bar_count": 9815,
       "series_path": "series/dax.json",
       "value_decimals": 2
     },
@@ -74,10 +74,10 @@
       "currency": "GBP",
       "unit": "pkt indeksu",
       "first_date": "1984-01-03",
-      "last_date": "2026-10-09",
-      "bar_count": 15621,
+      "last_date": "2026-10-22",
+      "bar_count": 10814,
       "series_path": "series/ftse100.json",
-      "value_decimals": 1
+      "value_decimals": 2
     },
     {
       "instrument_id": "nikkei225",
@@ -85,8 +85,8 @@
       "currency": "JPY",
       "unit": "pkt indeksu",
       "first_date": "1965-01-05",
-      "last_date": "2026-10-09",
-      "bar_count": 22558,
+      "last_date": "2026-10-21",
+      "bar_count": 15190,
       "series_path": "series/nikkei225.json",
       "value_decimals": 2
     },
@@ -96,8 +96,8 @@
       "currency": "HKD",
       "unit": "pkt indeksu",
       "first_date": "1986-12-31",
-      "last_date": "2026-10-09",
-      "bar_count": 14528,
+      "last_date": "2026-10-21",
+      "bar_count": 9823,
       "series_path": "series/hang-seng.json",
       "value_decimals": 2
     },
@@ -107,8 +107,8 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1960-01-04",
-      "last_date": "2026-10-09",
-      "bar_count": 24386,
+      "last_date": "2026-10-22",
+      "bar_count": 16678,
       "series_path": "series/us-13w.json",
       "value_decimals": 3
     },
@@ -118,8 +118,8 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1962-01-02",
-      "last_date": "2026-10-09",
-      "bar_count": 23657,
+      "last_date": "2026-10-22",
+      "bar_count": 16190,
       "series_path": "series/us-10y.json",
       "value_decimals": 3
     },
@@ -129,8 +129,8 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1977-02-15",
-      "last_date": "2026-10-09",
-      "bar_count": 18134,
+      "last_date": "2026-10-22",
+      "bar_count": 12448,
       "series_path": "series/us-30y.json",
       "value_decimals": 3
     },
@@ -140,8 +140,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1990-01-02",
-      "last_date": "2026-10-09",
-      "bar_count": 13430,
+      "last_date": "2026-10-22",
+      "bar_count": 9272,
       "series_path": "series/vix.json",
       "value_decimals": 2
     },
@@ -151,10 +151,10 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-01-04",
-      "last_date": "2026-10-09",
-      "bar_count": 20368,
+      "last_date": "2026-10-22",
+      "bar_count": 14170,
       "series_path": "series/usd-index.json",
-      "value_decimals": 2
+      "value_decimals": 3
     },
     {
       "instrument_id": "gold",
@@ -162,8 +162,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-09",
-      "bar_count": 9537,
+      "last_date": "2026-10-22",
+      "bar_count": 6562,
       "series_path": "series/gold.json",
       "value_decimals": 1
     },
@@ -173,8 +173,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "1968-04-01",
-      "last_date": "2026-10-09",
-      "bar_count": 21376,
+      "last_date": "2026-10-21",
+      "bar_count": 15896,
       "series_path": "series/gold-spot.json",
       "value_decimals": 4,
       "bar_kind": "close"
@@ -185,8 +185,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-09",
-      "bar_count": 9537,
+      "last_date": "2026-10-22",
+      "bar_count": 6563,
       "series_path": "series/silver.json",
       "value_decimals": 3
     },
@@ -196,8 +196,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "1997-10-29",
-      "last_date": "2026-10-09",
-      "bar_count": 10573,
+      "last_date": "2026-10-22",
+      "bar_count": 6588,
       "series_path": "series/platinum.json",
       "value_decimals": 1
     },
@@ -207,8 +207,8 @@
       "currency": "USD",
       "unit": "USD/lb",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-09",
-      "bar_count": 9537,
+      "last_date": "2026-10-22",
+      "bar_count": 6566,
       "series_path": "series/copper.json",
       "value_decimals": 4
     },
@@ -218,8 +218,8 @@
       "currency": "USD",
       "unit": "USD/bbl",
       "first_date": "2000-08-23",
-      "last_date": "2026-10-09",
-      "bar_count": 9544,
+      "last_date": "2026-10-22",
+      "bar_count": 6567,
       "series_path": "series/crude-oil.json",
       "value_decimals": 2
     },
@@ -229,8 +229,8 @@
       "currency": "USD",
       "unit": "USD/MMBtu",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-09",
-      "bar_count": 9537,
+      "last_date": "2026-10-22",
+      "bar_count": 6567,
       "series_path": "series/natural-gas.json",
       "value_decimals": 3
     },
@@ -240,8 +240,8 @@
       "currency": "JPY",
       "unit": "JPY za 1 USD",
       "first_date": "1996-10-30",
-      "last_date": "2026-10-09",
-      "bar_count": 10937,
+      "last_date": "2026-10-22",
+      "bar_count": 7774,
       "series_path": "series/usd-jpy.json",
       "value_decimals": 3
     },
@@ -251,8 +251,8 @@
       "currency": "USD",
       "unit": "USD za 1 EUR",
       "first_date": "2003-12-01",
-      "last_date": "2026-10-09",
-      "bar_count": 8349,
+      "last_date": "2026-10-22",
+      "bar_count": 5940,
       "series_path": "series/eur-usd.json",
       "value_decimals": 6
     },
@@ -262,8 +262,8 @@
       "currency": "PLN",
       "unit": "PLN za 1 EUR",
       "first_date": "2002-04-01",
-      "last_date": "2026-10-11",
-      "bar_count": 8960,
+      "last_date": "2026-10-22",
+      "bar_count": 6350,
       "series_path": "series/eur-pln.json",
       "value_decimals": 5
     },
@@ -273,8 +273,8 @@
       "currency": "PLN",
       "unit": "PLN za 1 USD",
       "first_date": "2003-12-01",
-      "last_date": "2026-10-11",
-      "bar_count": 8351,
+      "last_date": "2026-10-22",
+      "bar_count": 5939,
       "series_path": "series/usd-pln.json",
       "value_decimals": 6
     },
@@ -284,8 +284,8 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1954-01-04",
-      "last_date": "2026-10-09",
-      "bar_count": 26577,
+      "last_date": "2026-10-21",
+      "bar_count": 18199,
       "series_path": "series/us-tbill-13w.json",
       "value_decimals": 2,
       "bar_kind": "close"
@@ -296,8 +296,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1913-01-01",
-      "last_date": "2026-08-31",
-      "bar_count": 41516,
+      "last_date": "2026-08-01",
+      "bar_count": 1363,
       "series_path": "series/us-cpi.json",
       "value_decimals": 3,
       "bar_kind": "close"
@@ -308,8 +308,8 @@
       "currency": "PLN",
       "unit": "pkt indeksu",
       "first_date": "1982-01-01",
-      "last_date": "2026-08-31",
-      "bar_count": 16314,
+      "last_date": "2026-08-01",
+      "bar_count": 536,
       "series_path": "series/pl-cpi.json",
       "value_decimals": 3,
       "bar_kind": "close"
@@ -320,8 +320,8 @@
       "currency": "PLN",
       "unit": "%",
       "first_date": "1982-01-01",
-      "last_date": "2026-08-31",
-      "bar_count": 16314,
+      "last_date": "2026-08-01",
+      "bar_count": 536,
       "series_path": "series/pl-cpi-yoy.json",
       "value_decimals": 1,
       "bar_kind": "close"
