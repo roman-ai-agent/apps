@@ -1,0 +1,62 @@
+{
+  "schema_version": 3,
+  "revision_id": "r3.3",
+  "id_migrations": [],
+  "targets": [
+    {
+      "target_id": "mac-wide",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "target_id": "iphone-16",
+      "width": 393,
+      "height": 852
+    },
+    {
+      "target_id": "pixel-8",
+      "width": 412,
+      "height": 915
+    },
+    {
+      "target_id": "galaxy-s20",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "target_id": "iphone-16-pro-max",
+      "width": 440,
+      "height": 956
+    }
+  ],
+  "states": [
+    {
+      "state_id": "gold-overview.ready",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "gold-overview.ready-in-market",
+      "fixture_id": "in-market"
+    },
+    {
+      "state_id": "gold-overview.details-expanded",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "gold-overview.loading",
+      "fixture_id": "no-data"
+    },
+    {
+      "state_id": "gold-overview.refreshing",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "gold-overview.stale",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "gold-overview.unavailable",
+      "fixture_id": "no-data"
+    }
+  ]
+}
