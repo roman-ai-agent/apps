@@ -1,0 +1,560 @@
+{
+  "fixtures": {
+    "default": {
+      "locale": "pl",
+      "strings": {
+        "level_label": "Poziom {n}",
+        "back_to_land": "Wróć do krainy",
+        "back_to_map": "Wróć do mapy krain",
+        "targets_label": "Liczby do uzyskania",
+        "target_to_hit": "{n}, do zbicia",
+        "target_hit": "{n}, zbita",
+        "wheel_label": "Koło działań",
+        "result_pending_sr": "Suma pojawi się po puszczeniu",
+        "result_value": "Wyszło {n}",
+        "result_hit_sr": "trafienie",
+        "result_miss_sr": "nie pasuje do żadnej liczby",
+        "too_short": "Połącz co najmniej 2 działania",
+        "tile_result_sr": "wynik {n}",
+        "level_complete": "Poziom ukończony",
+        "next_level": "Następny poziom",
+        "to_land_map": "Do mapy krain",
+        "continue": "Dalej",
+        "coming_soon": "Kolejne krainy wkrótce",
+        "land_status_open": "Dostępna",
+        "land_status_locked": "Zablokowana",
+        "land_status_done": "Ukończona",
+        "level_status_done": "ukończony",
+        "level_status_open": "dostępny",
+        "level_status_locked": "zablokowany",
+        "level_button_sr": "Poziom {n}, {status}",
+        "land_card_sr": "{name}, {status}",
+        "map_title": "Mapa krain",
+        "levels_label": "Poziomy",
+        "app_name": "Sumlands"
+      },
+      "lands": [
+        {
+          "land_id": "land.valley",
+          "name": "Dolina Dwudziestki",
+          "topic": "Dodawanie i odejmowanie do 20",
+          "entry_image": "assets/land-valley-entry.svg",
+          "level_bg": "assets/land-valley-level-bg.svg"
+        },
+        {
+          "land_id": "land.forest",
+          "name": "Las Setki",
+          "topic": "Dodawanie, odejmowanie, mnożenie i dzielenie do 100",
+          "entry_image": "assets/land-forest-entry.svg",
+          "level_bg": "assets/land-forest-level-bg.svg"
+        },
+        {
+          "land_id": "land.highlands",
+          "name": "Wyżyna Potęg",
+          "topic": "Mnożenie, dzielenie, kwadraty i sześciany",
+          "entry_image": "assets/land-highlands-entry.svg",
+          "level_bg": "assets/land-highlands-level-bg.svg"
+        }
+      ],
+      "level": {
+        "land_id": "land.valley",
+        "level_number": 4,
+        "targets": [
+          11,
+          14,
+          17
+        ],
+        "wheels": {
+          "11": [
+            {
+              "label": "18−9",
+              "result": 9
+            },
+            {
+              "label": "9+3",
+              "result": 12
+            },
+            {
+              "label": "17−12",
+              "result": 5
+            },
+            {
+              "label": "3+1",
+              "result": 4
+            },
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "5−4",
+              "result": 1
+            },
+            {
+              "label": "9−6",
+              "result": 3
+            }
+          ],
+          "14": [
+            {
+              "label": "4+2",
+              "result": 6
+            },
+            {
+              "label": "9−2",
+              "result": 7
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "17−4",
+              "result": 13
+            },
+            {
+              "label": "8+2",
+              "result": 10
+            },
+            {
+              "label": "15−13",
+              "result": 2
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            }
+          ],
+          "17": [
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "14−13",
+              "result": 1
+            },
+            {
+              "label": "7−5",
+              "result": 2
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            },
+            {
+              "label": "15−5",
+              "result": 10
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "16−7",
+              "result": 9
+            }
+          ],
+          "11,14,17": [
+            {
+              "label": "11+4",
+              "result": 15
+            },
+            {
+              "label": "20−7",
+              "result": 13
+            },
+            {
+              "label": "3+3",
+              "result": 6
+            },
+            {
+              "label": "17−10",
+              "result": 7
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            },
+            {
+              "label": "15−2",
+              "result": 13
+            },
+            {
+              "label": "3+2",
+              "result": 5
+            }
+          ],
+          "14,17": [
+            {
+              "label": "12−9",
+              "result": 3
+            },
+            {
+              "label": "6+1",
+              "result": 7
+            },
+            {
+              "label": "11−1",
+              "result": 10
+            },
+            {
+              "label": "5+4",
+              "result": 9
+            },
+            {
+              "label": "17−5",
+              "result": 12
+            },
+            {
+              "label": "4+2",
+              "result": 6
+            },
+            {
+              "label": "15−2",
+              "result": 13
+            }
+          ],
+          "11,17": [
+            {
+              "label": "7+6",
+              "result": 13
+            },
+            {
+              "label": "19−4",
+              "result": 15
+            },
+            {
+              "label": "3+2",
+              "result": 5
+            },
+            {
+              "label": "4−3",
+              "result": 1
+            },
+            {
+              "label": "7+3",
+              "result": 10
+            },
+            {
+              "label": "13−5",
+              "result": 8
+            },
+            {
+              "label": "4+3",
+              "result": 7
+            }
+          ],
+          "11,14": [
+            {
+              "label": "13−7",
+              "result": 6
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "3+1",
+              "result": 4
+            },
+            {
+              "label": "14−5",
+              "result": 9
+            },
+            {
+              "label": "3+3",
+              "result": 6
+            },
+            {
+              "label": "17−4",
+              "result": 13
+            }
+          ]
+        }
+      }
+    },
+    "english": {
+      "locale": "en",
+      "strings": {
+        "level_label": "Level {n}",
+        "back_to_land": "Back to land",
+        "back_to_map": "Back to land map",
+        "targets_label": "Numbers to make",
+        "target_to_hit": "{n}, to make",
+        "target_hit": "{n}, done",
+        "wheel_label": "Operation wheel",
+        "result_pending_sr": "The sum appears when you let go",
+        "result_value": "You got {n}",
+        "result_hit_sr": "a match",
+        "result_miss_sr": "no number matches",
+        "too_short": "Connect at least 2 operations",
+        "tile_result_sr": "result {n}",
+        "level_complete": "Level complete",
+        "next_level": "Next level",
+        "to_land_map": "To the land map",
+        "continue": "Continue",
+        "coming_soon": "More lands coming soon",
+        "land_status_open": "Open",
+        "land_status_locked": "Locked",
+        "land_status_done": "Completed",
+        "level_status_done": "completed",
+        "level_status_open": "open",
+        "level_status_locked": "locked",
+        "level_button_sr": "Level {n}, {status}",
+        "land_card_sr": "{name}, {status}",
+        "map_title": "Land map",
+        "levels_label": "Levels",
+        "app_name": "Sumlands"
+      },
+      "lands": [
+        {
+          "land_id": "land.valley",
+          "name": "Valley of Twenty",
+          "topic": "Adding and subtracting up to 20",
+          "entry_image": "assets/land-valley-entry.svg",
+          "level_bg": "assets/land-valley-level-bg.svg"
+        },
+        {
+          "land_id": "land.forest",
+          "name": "Hundred Forest",
+          "topic": "Adding, subtracting, times tables and division up to 100",
+          "entry_image": "assets/land-forest-entry.svg",
+          "level_bg": "assets/land-forest-level-bg.svg"
+        },
+        {
+          "land_id": "land.highlands",
+          "name": "Highlands of Powers",
+          "topic": "Multiplying, dividing, squares and cubes",
+          "entry_image": "assets/land-highlands-entry.svg",
+          "level_bg": "assets/land-highlands-level-bg.svg"
+        }
+      ],
+      "level": {
+        "land_id": "land.valley",
+        "level_number": 4,
+        "targets": [
+          11,
+          14,
+          17
+        ],
+        "wheels": {
+          "11": [
+            {
+              "label": "18−9",
+              "result": 9
+            },
+            {
+              "label": "9+3",
+              "result": 12
+            },
+            {
+              "label": "17−12",
+              "result": 5
+            },
+            {
+              "label": "3+1",
+              "result": 4
+            },
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "5−4",
+              "result": 1
+            },
+            {
+              "label": "9−6",
+              "result": 3
+            }
+          ],
+          "14": [
+            {
+              "label": "4+2",
+              "result": 6
+            },
+            {
+              "label": "9−2",
+              "result": 7
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "17−4",
+              "result": 13
+            },
+            {
+              "label": "8+2",
+              "result": 10
+            },
+            {
+              "label": "15−13",
+              "result": 2
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            }
+          ],
+          "17": [
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "14−13",
+              "result": 1
+            },
+            {
+              "label": "7−5",
+              "result": 2
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            },
+            {
+              "label": "15−5",
+              "result": 10
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "16−7",
+              "result": 9
+            }
+          ],
+          "11,14,17": [
+            {
+              "label": "11+4",
+              "result": 15
+            },
+            {
+              "label": "20−7",
+              "result": 13
+            },
+            {
+              "label": "3+3",
+              "result": 6
+            },
+            {
+              "label": "17−10",
+              "result": 7
+            },
+            {
+              "label": "7+1",
+              "result": 8
+            },
+            {
+              "label": "15−2",
+              "result": 13
+            },
+            {
+              "label": "3+2",
+              "result": 5
+            }
+          ],
+          "14,17": [
+            {
+              "label": "12−9",
+              "result": 3
+            },
+            {
+              "label": "6+1",
+              "result": 7
+            },
+            {
+              "label": "11−1",
+              "result": 10
+            },
+            {
+              "label": "5+4",
+              "result": 9
+            },
+            {
+              "label": "17−5",
+              "result": 12
+            },
+            {
+              "label": "4+2",
+              "result": 6
+            },
+            {
+              "label": "15−2",
+              "result": 13
+            }
+          ],
+          "11,17": [
+            {
+              "label": "7+6",
+              "result": 13
+            },
+            {
+              "label": "19−4",
+              "result": 15
+            },
+            {
+              "label": "3+2",
+              "result": 5
+            },
+            {
+              "label": "4−3",
+              "result": 1
+            },
+            {
+              "label": "7+3",
+              "result": 10
+            },
+            {
+              "label": "13−5",
+              "result": 8
+            },
+            {
+              "label": "4+3",
+              "result": 7
+            }
+          ],
+          "11,14": [
+            {
+              "label": "13−7",
+              "result": 6
+            },
+            {
+              "label": "2+1",
+              "result": 3
+            },
+            {
+              "label": "13−3",
+              "result": 10
+            },
+            {
+              "label": "3+1",
+              "result": 4
+            },
+            {
+              "label": "14−5",
+              "result": 9
+            },
+            {
+              "label": "3+3",
+              "result": 6
+            },
+            {
+              "label": "17−4",
+              "result": 13
+            }
+          ]
+        }
+      }
+    }
+  }
+}

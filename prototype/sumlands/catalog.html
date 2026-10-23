@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sumlands — katalog komponentów r1</title>
+<link rel="stylesheet" href="assets/sumlands.css">
+<script src="assets/sumlands-ui.js"></script>
+<style>
+body{margin:0;background:var(--paper)}
+.sl-cat{box-sizing:border-box;max-width:1240px;margin:0 auto;padding:32px 24px 80px}
+.sl-cat.is-framed{box-shadow:0 0 0 1px var(--line),0 8px 30px oklch(0.3 0.03 255 / .12);background:var(--paper)}
+.sl-cat.is-narrow{padding:24px 8px 48px}
+.sl-cat.is-narrow .cat-grid{grid-template-columns:minmax(0,1fr)}
+.sl-cat.is-narrow .cat-spm-box{padding:12px}
+body.cat-body{background:oklch(0.93 0.006 255)}
+.cat-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:2px solid var(--line)}
+.cat-head h1{margin:0;font-size:30px;line-height:1.15}
+.cat-head p{margin:6px 0 0;color:var(--ink-2);font-size:15px;max-width:60ch;text-wrap:pretty}
+.cat-tools{display:flex;gap:6px;align-items:center;font-size:14px}
+.cat-tools button{font:inherit;font-weight:700;padding:6px 14px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.cat-tools button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.cat-toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin:16px 0 8px;font:13px var(--mono)}
+.cat-sec{padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+.cat-sec h2{margin:0;font:700 13px var(--mono);color:var(--path-deep);letter-spacing:.02em}
+.cat-sec h3{margin:4px 0 6px;font-size:24px;line-height:1.2}
+.cat-sem{margin:0 0 20px;color:var(--ink-2);font-size:16px;max-width:70ch;text-wrap:pretty}
+.cat-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:start}
+@media (max-width:900px){.cat-grid{grid-template-columns:minmax(0,1fr)}}
+.cat-spec{margin:0;display:grid;gap:14px;font-size:14.5px;line-height:1.45}
+.cat-spec dt{font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.cat-spec dd{margin:2px 0 0;text-wrap:pretty}
+.cat-spec code,.cat-sem code{font:12.5px var(--mono);background:var(--muted);padding:1px 5px;border-radius:4px}
+.cat-spec ul{margin:2px 0 0;padding-left:18px}
+.cat-specimens{display:flex;flex-wrap:wrap;gap:18px}
+.cat-spm{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}
+.cat-spm-box{position:relative;max-width:100%;min-width:0;overflow-x:auto;display:flex;align-items:center;justify-content:center;padding:22px;border-radius:14px;background:oklch(0.955 0.02 140);min-height:120px}
+.cat-spm-label{font:11.5px var(--mono);color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+.cat-spm-label b{font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+.cat-tilebox{position:relative}
+.cat-wide{flex-basis:100%;width:100%}.cat-wide .cat-spm-box{width:100%;justify-content:flex-start}.cat-specimens{min-width:0}
+.cat-demo-row{display:flex;flex-direction:column;gap:14px;align-items:center;width:100%}
+.cat-demo-row .sl-targets{margin:0}
+.cat-demo-row .sl-result{width:100%;max-width:328px}
+</style>
+</head>
+<body class="cat-body">
+<div class="sl-cat" id="cat"></div>
+<script>
+(async function () {
+  'use strict';
+  var h = SL.h, root = document.getElementById('cat');
+  var fixtures;
+  var manifest;
+  try { fixtures = await (await fetch('assets/fixtures.json', { cache: 'no-store' })).json(); manifest = await (await fetch('prototype-manifest.json', { cache: 'no-store' })).json(); }
+  catch (e) { root.append(h('div', { 'class': 'sl-error', role: 'alert' }, 'Nie można wczytać assets/fixtures.json lub prototype-manifest.json — uruchom przez lokalny serwer HTTP (README.md).')); return; }
+  var lang = 'default';
+  var cq = new URLSearchParams(location.search);
+  var ctg = manifest.targets.filter(function (t) { return t.target_id === cq.get('target'); })[0] || manifest.targets.filter(function (t) { return t.target_id === 'mac-wide'; })[0] || manifest.targets[0];
+  var cUrl = function (t) { var u = new URLSearchParams(); u.set('target', t); return '?' + u.toString(); };
+  if (cq.get('target') !== ctg.target_id) history.replaceState(null, '', cUrl(ctg.target_id));
+  root.style.maxWidth = Math.min(1240, ctg.width) + 'px';
+  if (ctg.width < 1240) root.classList.add('is-framed');
+  if (ctg.width < 900) root.classList.add('is-narrow');
+  var cbar = SL.previewToolbar({
+    catalogHref: cUrl(ctg.target_id), catalogCurrent: true,
+    backHref: 'index.html?mode=user_preview&state=' + encodeURIComponent(manifest.states[0].state_id) + '&target=' + encodeURIComponent(ctg.target_id),
+    targetId: ctg.target_id, noteStateId: 'catalog', targets: manifest.targets,
+    onTarget: function (t) { location.search = cUrl(t); }
+  });
+  document.body.append(cbar);
+  var cfit = function () { document.body.style.paddingBottom = cbar.offsetHeight + 'px'; };
+  cfit(); window.addEventListener('resize', cfit);
+  if (window.ResizeObserver) new ResizeObserver(cfit).observe(cbar);
+
+  function spm(label, note, node, opts) {
+    opts = opts || {};
+    return h('div', { 'class': 'cat-spm' + (opts.wide ? ' cat-wide' : ''), 'data-catalog-variant': label },
+      h('div', { 'class': 'cat-spm-box', style: opts.boxStyle || null }, node),
+      h('div', { 'class': 'cat-spm-label' }, h('b', {}, label), note || null));
+  }
+  function spec(rows) {
+    return h('dl', { 'class': 'cat-spec' }, rows.map(function (r) { return [h('dt', { html: r[0] }), h('dd', { html: r[1] })]; }));
+  }
+  function tileBox(op, size, o) {
+    var g = SL.geom(size), pad = g.d + 28;
+    var box = h('div', { 'class': 'cat-tilebox', style: { width: pad + 'px', height: pad + 'px', '--d': g.d + 'px', '--fs': g.fs + 'px' } });
+    box.append(SL.tile(op, { elementId: o.elementId, variant: o.variant, revealed: o.revealed, demo: o.demo, loc: o.loc, strings: o.S, x: pad / 2, y: pad / 2 - 6 }));
+    return box;
+  }
+  function section(id, title, sem, specRows, specimens) {
+    return h('section', { 'class': 'cat-sec', id: id, 'data-catalog-component': id },
+      h('h2', {}, id), h('h3', {}, title), h('p', { 'class': 'cat-sem', html: sem }),
+      h('div', { 'class': 'cat-grid' }, spec(specRows), h('div', { 'class': 'cat-specimens' }, specimens)));
+  }
+
+  function render() {
+    var fx = fixtures.fixtures[lang], S = fx.strings, loc = fx.locale, L = fx.lands;
+    document.documentElement.lang = loc;
+    var div = loc === 'pl' ? ':' : '÷';
+    var w0 = fx.level.wheels['11,14,17'];
+    root.replaceChildren();
+
+    root.append(h('header', { 'class': 'cat-head' },
+      h('div', {}, h('h1', {}, 'Sumlands — katalog komponentów'),
+        h('p', {}, 'Rewizja r1. Każdy komponent pokazuje warianty, stany interakcji, rolę i nazwę dostępną oraz różnice responsywne. Okazy renderuje ten sam runtime co index.html (assets/sumlands-ui.js). Teksty z fixture „' + lang + '”.')),
+      h('div', { 'class': 'cat-tools', 'data-prototype-tool': 'catalog-fixture' }, 'fixture:',
+        ['default', 'english'].map(function (f) { return h('button', { type: 'button', 'aria-pressed': f === lang ? 'true' : 'false', onclick: function () { lang = f; render(); } }, f); }))));
+    var ids = ['component.operation-tile', 'component.operation-wheel', 'component.target-number', 'component.path-result', 'component.level-button', 'component.land-card', 'component.primary-button', 'component.back-button'];
+    root.append(h('nav', { 'class': 'cat-toc' }, ids.map(function (i) { return h('a', { href: '#' + i }, i); })));
+
+    /* operation-tile */
+    var ex = [{ label: '3+4', result: 7 }, { label: '14−11', result: 3 }, { label: '84' + div + '7', result: 12 }, { label: '13×4', result: 52 }, { label: '7²', result: 49 }, { label: '3³', result: 27 }];
+    root.append(section('component.operation-tile', 'Płytka działania',
+      'Pojedyncze działanie na kole. Pokazuje wyłącznie zapis działania; wynik pojawia się dopiero po puszczeniu, jako plakietka pod płytką — tylko na płytkach tworzących ścieżkę.',
+      [['Warianty', '<ul><li><code>default</code> — zwykła</li><li><code>in-path</code> — w ścieżce: wypełnienie i obrys w kolorze ścieżki, skala 1,06</li><li><code>inactive</code> — nieaktywna: przezroczystość 45%; podczas zatrzymania po trafieniu (0,9 s) i wymiany koła (2×300 ms) oraz pod komunikatem „' + S.level_complete + '”</li><li>modyfikator <code>revealed</code> (po puszczeniu, tylko <code>in-path</code>): plakietka z wynikiem — grafitowa przy pudle, zielona przy trafieniu</li></ul>'],
+       ['Stany interakcji', 'hover (tylko urządzenia z kursorem, gdy nie trwa rysowanie): obrys w kolorze ścieżki. Brak osobnego „pressed” — dotknięcie od razu daje <code>in-path</code>. Płytka sama nie ma akcji; gest przyjmuje <code>component.operation-wheel</code>.'],
+       ['Rola i nazwa dostępna', '<code>role="img"</code>, niefokusowalna. Nazwa: działanie słownie, np. „' + SL.speak('3+4', loc) + '”, „' + SL.speak('84' + div + '7', loc) + '”, „' + SL.speak('7²', loc) + '”. Po odsłonięciu dochodzi „, ' + SL.fmt(S.tile_result_sr, { n: 7 }) + '”. Przed puszczeniem wynik nie występuje w DOM.'],
+       ['Responsywność', 'Średnica = 25,3% boku koła: 81 px na <code>mobile-compact</code>, 87 px na pozostałych telefonach, 116 px na <code>mac-wide</code>. Tekst max(24 px, 30% średnicy): 24 / 26 / 35 px. Najdłuższy zapis to 5 znaków (<code>14−11</code>). Dzielenie: „:” w PL, „÷” w EN.']],
+      [spm('default', '360 px', tileBox(ex[0], 320, { elementId: 'catalog.tile.default', loc: loc, S: S })),
+       spm('default', '5 znaków', tileBox(ex[1], 320, { elementId: 'catalog.tile.long', loc: loc, S: S })),
+       spm('default', 'dzielenie', tileBox(ex[2], 320, { elementId: 'catalog.tile.div', loc: loc, S: S })),
+       spm('default', 'mnożenie', tileBox(ex[3], 320, { elementId: 'catalog.tile.mul', loc: loc, S: S })),
+       spm('default', 'potęgi', h('div', { style: { display: 'flex' } }, tileBox(ex[4], 320, { elementId: 'catalog.tile.sq', loc: loc, S: S }), tileBox(ex[5], 320, { elementId: 'catalog.tile.cube', loc: loc, S: S }))),
+       spm('hover', 'kursor', tileBox(ex[0], 320, { elementId: 'catalog.tile.hover', demo: 'hover', loc: loc, S: S })),
+       spm('in-path', 'rysowanie', tileBox(ex[0], 320, { elementId: 'catalog.tile.in-path', variant: 'in-path', loc: loc, S: S })),
+       spm('inactive', '', tileBox(ex[0], 320, { elementId: 'catalog.tile.inactive', variant: 'inactive', loc: loc, S: S })),
+       spm('in-path + revealed', 'pudło', tileBox(ex[0], 320, { elementId: 'catalog.tile.revealed-miss', variant: 'in-path', revealed: 'miss', loc: loc, S: S })),
+       spm('in-path + revealed', 'trafienie', tileBox(ex[0], 320, { elementId: 'catalog.tile.revealed-hit', variant: 'in-path', revealed: 'hit', loc: loc, S: S })),
+       spm('default', 'mac-wide 116 px', tileBox(ex[1], 460, { elementId: 'catalog.tile.wide', loc: loc, S: S }))]));
+
+    /* operation-wheel */
+    function wheel(size, init, id, interactive, extra) {
+      var o = { ops: w0, size: size, loc: loc, strings: S, elementId: id, elementPrefix: id + '.', initial: init, interactive: !!interactive };
+      Object.keys(extra || {}).forEach(function (k) { o[k] = extra[k]; });
+      return SL.createWheel(o);
+    }
+    var g320 = SL.geom(320);
+    var tailPt = { x: (g320.centers[0].x + g320.centers[1].x) / 2 + 6, y: (g320.centers[0].y + g320.centers[1].y) / 2 + 10 };
+    var demoTargets = fx.level.targets.map(function (v, i) { return SL.target({ value: v, elementId: 'catalog.demo.target-' + (i + 1), strings: S }); });
+    var demoResult = SL.pathResult({ elementId: 'catalog.demo.result', strings: S });
+    var demoRemaining = fx.level.targets.slice();
+    var demo = wheel(320, {}, 'catalog.demo.wheel', true, {
+      interactionId: 'interaction.catalog.draw-path', action: 'draw-path', expected: 'jak interaction.level.draw-path; demo bez wymiany koła',
+      onStart: function () { SL.setResult(demoResult, 'pending', null, S); },
+      onRelease: function (path) {
+        if (!path.length) return;
+        var r = SL.rules.evaluate(w0, path, demoRemaining);
+        if (r.kind === 'too-short') { demo.set({ path: [], revealed: false }); SL.setResult(demoResult, 'too-short', null, S); return; }
+        demo.set({ revealed: r.kind }); SL.setResult(demoResult, r.kind, r.sum, S);
+      }
+    });
+    root.append(section('component.operation-wheel', 'Koło działań',
+      '7 płytek na obwodzie (bez płytki w środku) i linia ścieżki od środka do środka płytek. Przyjmuje gest rysowania; reguły oceny są poza komponentem (<code>SL.rules</code>).',
+      [['Warianty', '<ul><li><code>idle</code> — brak ścieżki</li><li><code>drawing</code> — ścieżka niebieska, ogon przerywany do palca/kursora; bez wyników</li><li><code>revealed-miss</code> — linia grafitowa 55%, plakietki wyników na płytkach ścieżki</li><li><code>revealed-hit</code> — linia zielona, plakietki zielone; reszta płytek <code>inactive</code> do wymiany</li><li><code>inactive</code> — wymiana koła: płytki znikają (300 ms) i pojawiają się nowe (300 ms); gest zablokowany</li></ul>'],
+       ['Akcja <code>draw-path</code>', '<ul><li>dotknięcie / naciśnięcie na płytce (cały promień) — zaczyna ścieżkę; pole sumy wraca do „?”</li><li>wejście w 70% promienia innej płytki — dodaje ją (każda najwyżej raz)</li><li>powrót na poprzednią płytkę — usuwa ostatnią</li><li>wyjście poza koło z przyciśnięciem — ścieżka trwa</li><li>wyjście kursora poza okno lub utrata fokusu okna — anuluje bez oceny</li><li>puszczenie: ≥ 2 płytki → wyniki + suma (trafienie: zbicie celu, po 0,9 s nowa lista; pudło: ta sama lista); 1 płytka → „' + S.too_short + '”</li></ul>'],
+       ['Rola i nazwa dostępna', '<code>role="group"</code>, nazwa „' + S.wheel_label + '”. Ogłoszenia wyniku przez <code>component.path-result</code> (live region). Rysowanie z klawiatury poza zakresem r1.'],
+       ['Responsywność', 'Bok koła: 320 px (<code>mobile-compact</code>), 344 px (<code>iphone-standard</code>, <code>android-standard</code>, <code>mobile-large</code>), 460 px (<code>mac-wide</code>, prawa kolumna). Promień pierścienia 37,3% boku; odstęp między sąsiednimi płytkami ≥ 22 px. Na telefonach koło stoi 24 px nad dolnym marginesem 34 px; na Macu wyśrodkowane pionowo.']],
+      [spm('live demo', 'narysuj ścieżkę palcem lub myszą', h('div', { 'class': 'cat-demo-row' }, h('ul', { 'class': 'sl-targets', 'aria-label': S.targets_label }, demoTargets), demoResult, demo.el), { wide: false }),
+       spm('idle', '320 px', wheel(320, {}, 'catalog.wheel.idle').el),
+       spm('drawing', '2 płytki + ogon', wheel(320, { path: [6, 0], tail: tailPt }, 'catalog.wheel.drawing').el),
+       spm('revealed-miss', '6 + 7 = 13', wheel(320, { path: [2, 3], revealed: 'miss' }, 'catalog.wheel.miss').el),
+       spm('revealed-hit', '6 + 5 = 11', wheel(320, { path: [2, 6], revealed: 'hit', inactive: true }, 'catalog.wheel.hit').el),
+       spm('inactive', 'wymiana koła', wheel(320, { inactive: true }, 'catalog.wheel.inactive').el),
+       spm('idle', 'mac-wide 460 px', wheel(460, {}, 'catalog.wheel.wide').el, { wide: true })]));
+
+    /* target-number */
+    function tlist(items, wide) {
+      var ul = h('ul', { 'class': 'sl-targets', 'aria-label': S.targets_label, style: { margin: 0 } }, items);
+      return wide ? h('div', { 'class': 'sl-wide', style: { display: 'contents' } }, ul) : ul;
+    }
+    root.append(section('component.target-number', 'Liczba celu',
+      'Liczba do uzyskania na poziomie (3–5). Zbita liczba zostaje na swoim miejscu — układ się nie przesuwa.',
+      [['Warianty', '<ul><li><code>to-hit</code> — do zbicia: grafitowy obrys</li><li><code>hit</code> — zbita: trzy sygnały naraz — zielone tło, przekreślenie, znacznik ✓ (nie tylko kolor). Przejście 300 ms.</li></ul>'],
+       ['Stany interakcji', 'Brak — element nieinteraktywny.'],
+       ['Rola i nazwa dostępna', 'Element <code>li</code> listy „' + S.targets_label + '”. Nazwa: „' + SL.fmt(S.target_to_hit, { n: 14 }) + '” / „' + SL.fmt(S.target_hit, { n: 11 }) + '”.'],
+       ['Responsywność', 'Telefony: wys. 60 px, min. szer. 64 px, 30 px, odstęp 10 px, wiersz wyśrodkowany; 5 liczb trzycyfrowych na 360 px zawija się do 2 wierszy. <code>mac-wide</code>: wys. 76 px, min. szer. 88 px, 40 px, odstęp 16 px, wyrównanie do lewej kolumny.']],
+      [spm('to-hit', '', tlist([SL.target({ value: 14, elementId: 'catalog.target.to-hit', strings: S })])),
+       spm('hit', '', tlist([SL.target({ value: 11, variant: 'hit', elementId: 'catalog.target.hit', strings: S })])),
+       spm('5 liczb', '360 px', h('div', { style: { width: '328px' } }, tlist([11, 14, 17, 100, 64].map(function (v, i) { return SL.target({ value: v, variant: i === 1 ? 'hit' : 'to-hit', elementId: 'catalog.target.row-' + i, strings: S }); })))),
+       spm('mac-wide', '', tlist([SL.target({ value: 14, elementId: 'catalog.target.wide', strings: S }), SL.target({ value: 11, variant: 'hit', elementId: 'catalog.target.wide-hit', strings: S })], true))]));
+
+    /* path-result */
+    function res(v, sum, id, wide) {
+      var el = SL.pathResult({ elementId: id, variant: v, sum: sum, strings: S });
+      var w = h('div', { style: { width: wide ? '440px' : '328px' } }, el);
+      return wide ? h('div', { 'class': 'sl-wide', style: { display: 'contents' } }, w) : w;
+    }
+    root.append(section('component.path-result', 'Odsłonięta suma ścieżki',
+      'Stałe pole nad kołem. Do puszczenia pokazuje „?”; po puszczeniu — sumę. Znika (wraca do „?”), gdy gracz zaczyna rysować następną ścieżkę.',
+      [['Warianty', '<ul><li><code>pending</code> — „?” w przerywanej ramce; nigdy suma częściowa</li><li><code>hit</code> — trafienie: zielone tło, biały tekst, ✓</li><li><code>miss</code> — pudło: neutralne, bez czerwieni i bez kary</li><li><code>too-short</code> — ścieżka z 1 płytki: „' + S.too_short + '”, bez oceny</li></ul>'],
+       ['Stany interakcji', 'Brak — element nieinteraktywny.'],
+       ['Rola i nazwa dostępna', '<code>role="status"</code>, <code>aria-live="polite"</code>. Ogłasza np. „' + SL.fmt(S.result_value, { n: 11 }) + ', ' + S.result_hit_sr + '” / „' + SL.fmt(S.result_value, { n: 15 }) + ', ' + S.result_miss_sr + '”.'],
+       ['Responsywność', 'Telefony: pełna szerokość treści, min. wys. 64 px, 28 px (komunikat 20 px), 20 px nad kołem. <code>mac-wide</code>: lewa kolumna pod liczbami celu, min. wys. 84 px, 34 px (komunikat 24 px), wyrównanie do lewej. Tekst zawija się do 2 wierszy.']],
+      [spm('pending', '', res('pending', null, 'catalog.result.pending')),
+       spm('miss', '', res('miss', 15, 'catalog.result.miss')),
+       spm('hit', '', res('hit', 11, 'catalog.result.hit')),
+       spm('too-short', '', res('too-short', null, 'catalog.result.too-short')),
+       spm('hit', 'mac-wide', res('hit', 11, 'catalog.result.wide', true))]));
+
+    /* level-button */
+    function lvRow(wide) {
+      var vs = ['completed', 'completed', 'completed', 'available', 'locked', 'locked', 'locked', 'locked', 'locked', 'locked'];
+      var grid = h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(5,' + (wide ? 72 : 56) + 'px)', gap: (wide ? 20 : 12) + 'px', justifyContent: 'space-between', width: wide ? 'auto' : '328px' } },
+        vs.map(function (v, i) { return SL.levelButton({ n: i + 1, variant: v, wide: wide, strings: S, elementId: 'catalog.level' + (wide ? '-wide' : '') + '.' + (i + 1) }); }));
+      return grid;
+    }
+    root.append(section('component.level-button', 'Przycisk poziomu',
+      'Poziom na liście krainy (10 poziomów). Stan pokazany kształtem i ikoną, nie tylko kolorem.',
+      [['Warianty', '<ul><li><code>completed</code> — ukończony: zielony, ✓</li><li><code>available</code> — dostępny (następny do zagrania): wypełniony kolorem akcji z poświatą</li><li><code>locked</code> — zablokowany: szary, kłódka</li></ul>'],
+       ['Stany interakcji', 'hover (kursor): uniesienie o 2 px; pressed: wciśnięcie o 3 px; focus-visible: obrys 3 px. <code>locked</code> nie reaguje.'],
+       ['Akcja', '<code>tap</code> → <code>screen.level</code> wskazanego poziomu (<code>completed</code>: ponowna gra od początku, R-2.6). <code>locked</code>: brak efektu.'],
+       ['Rola i nazwa dostępna', '<code>button</code>; nazwa „' + SL.fmt(S.level_button_sr, { n: 4, status: S.level_status_open }) + '”. <code>locked</code>: <code>aria-disabled="true"</code>.'],
+       ['Responsywność', 'Telefony: 56×56 px, siatka 5×2, odstęp ≥ 12 px (na 360 px dokładnie 328 px). <code>mac-wide</code>: 72×72 px, siatka 5×2 obok obrazka krainy.']],
+      [spm('completed', '', SL.levelButton({ n: 1, variant: 'completed', strings: S, elementId: 'catalog.level.completed' })),
+       spm('available', '', SL.levelButton({ n: 4, variant: 'available', strings: S, elementId: 'catalog.level.available' })),
+       spm('locked', '', SL.levelButton({ n: 5, variant: 'locked', strings: S, elementId: 'catalog.level.locked' })),
+       spm('hover', '', SL.levelButton({ n: 4, variant: 'available', demo: 'hover', strings: S, elementId: 'catalog.level.hover' })),
+       spm('pressed', '', SL.levelButton({ n: 4, variant: 'available', demo: 'pressed', strings: S, elementId: 'catalog.level.pressed' })),
+       spm('lista', '360 px', lvRow(false), { wide: true }),
+       spm('lista', 'mac-wide', lvRow(true), { wide: true })]));
+
+    /* land-card */
+    function card(i, v, layout, id, demo) { return SL.landCard({ land: L[i], variant: v, layout: layout, demo: demo, strings: S, elementId: id }); }
+    root.append(section('component.land-card', 'Karta krainy',
+      'Kraina na mapie: obrazek wejścia 16:9, nazwa, zakres matematyki i stan.',
+      [['Warianty', '<ul><li><code>available</code> — dostępna: etykieta w kolorze akcji ze strzałką</li><li><code>completed</code> — ukończona: zielony obrys i etykieta z ✓</li><li><code>locked</code> — zablokowana: obrazek w odcieniach szarości z kłódką, szara etykieta</li></ul>'],
+       ['Stany interakcji', 'hover (kursor): obrys w kolorze akcji; pressed: wciśnięcie o 3 px; focus-visible: obrys 3 px. <code>locked</code> nie reaguje.'],
+       ['Akcja', '<code>tap</code> → <code>screen.land</code> danej krainy (<code>available</code> i <code>completed</code>). <code>locked</code>: brak efektu.'],
+       ['Rola i nazwa dostępna', '<code>button</code>; nazwa „' + SL.fmt(S.land_card_sr, { name: L[0].name, status: S.land_status_open }) + '”. <code>locked</code>: <code>aria-disabled="true"</code>.'],
+       ['Responsywność', 'Telefony: układ poziomy (obrazek 128 px po lewej, kadr od środka), 3 karty jedna pod drugą bez przewijania; nazwa 19 px, do 2 wierszy. <code>mac-wide</code>: układ pionowy, obrazek 16:9 na całą szerokość, 3 karty w rzędzie; nazwa 22 px.']],
+      [spm('available', 'telefon', h('div', { style: { width: '328px' } }, card(0, 'available', 'row', 'catalog.land.available'))),
+       spm('completed', 'telefon', h('div', { style: { width: '328px' } }, card(0, 'completed', 'row', 'catalog.land.completed'))),
+       spm('locked', 'telefon · najdłuższa nazwa', h('div', { style: { width: '328px' } }, card(2, 'locked', 'row', 'catalog.land.locked'))),
+       spm('hover', 'telefon', h('div', { style: { width: '328px' } }, card(1, 'available', 'row', 'catalog.land.hover', 'hover'))),
+       spm('mac-wide', 'completed · available · locked', h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(3, 280px)', gap: '20px' } }, card(0, 'completed', 'column', 'catalog.land.wide-1'), card(1, 'available', 'column', 'catalog.land.wide-2'), card(2, 'locked', 'column', 'catalog.land.wide-3')), { wide: true })]));
+
+    /* primary-button */
+    root.append(section('component.primary-button', 'Przycisk akcji',
+      'Główna akcja komunikatu. Ten sam wygląd, różne zachowanie zależnie od miejsca.',
+      [['Warianty treści i akcji', '<ul><li>„' + S.next_level + '” — po poziomach 1–9 → <code>screen.level</code> następnego poziomu</li><li>„' + S.to_land_map + '” — po 10. poziomie krainy 1 lub 2 → <code>screen.land-map</code> z nowo odblokowaną krainą</li><li>„' + S.continue + '” — po 10. poziomie krainy 3 → <code>land-map.all-complete</code> („' + S.coming_soon + '”)</li></ul>'],
+       ['Stany interakcji', 'hover (kursor): ciemniejsze tło; pressed: wciśnięcie o 3 px; focus-visible: obrys 3 px. Po pokazaniu komunikatu przycisk dostaje fokus.'],
+       ['Rola i nazwa dostępna', '<code>button</code>; nazwa = etykieta.'],
+       ['Responsywność', 'Telefony: pełna szerokość karty komunikatu (max 312 px), min. wys. 56 px, etykieta do 2 wierszy. <code>mac-wide</code>: ta sama karta 360 px wyśrodkowana na powierzchni.']],
+      [spm('default', '', SL.primaryButton({ label: S.next_level, elementId: 'catalog.primary.default' })),
+       spm('hover', '', SL.primaryButton({ label: S.next_level, demo: 'hover', elementId: 'catalog.primary.hover' })),
+       spm('pressed', '', SL.primaryButton({ label: S.next_level, demo: 'pressed', elementId: 'catalog.primary.pressed' })),
+       spm('to-land-map', '', SL.primaryButton({ label: S.to_land_map, elementId: 'catalog.primary.map' })),
+       spm('continue', '', SL.primaryButton({ label: S.continue, elementId: 'catalog.primary.continue' })),
+       spm('w komunikacie', S.level_complete, h('div', { 'class': 'sl-complete-card', style: { width: '312px', boxShadow: 'none' } }, h('h2', {}, S.level_complete), SL.primaryButton({ label: S.next_level, elementId: 'catalog.primary.in-panel' })))]));
+
+    /* back-button */
+    root.append(section('component.back-button', 'Przycisk powrotu',
+      'Okrągły przycisk ze strzałką w nagłówku ekranu. Wspólny wygląd, różne zachowanie na różnych ekranach.',
+      [['Warianty zachowania', '<ul><li>na <code>screen.level</code>: „' + S.back_to_land + '” → <code>screen.land</code> bez potwierdzenia; poziom przy powrocie zaczyna się od nowa (R-3.2)</li><li>na <code>screen.land</code>: „' + S.back_to_map + '” → <code>screen.land-map</code></li><li>na <code>screen.land-map</code>: brak przycisku</li></ul>'],
+       ['Stany interakcji', 'hover (kursor): obrys w kolorze akcji; pressed: wciśnięcie o 2 px; focus-visible: obrys 3 px.'],
+       ['Rola i nazwa dostępna', '<code>button</code>; nazwa jak wyżej (<code>aria-label</code> i <code>title</code>).'],
+       ['Responsywność', '44×44 px na wszystkich targetach; na telefonach w nagłówku 59 px od góry, 16 px od lewej; na <code>mac-wide</code> w nagłówku nad lewą kolumną.']],
+      [spm('default', '', SL.backButton({ label: S.back_to_land, elementId: 'catalog.back.default' })),
+       spm('hover', '', SL.backButton({ label: S.back_to_land, demo: 'hover', elementId: 'catalog.back.hover' })),
+       spm('pressed', '', SL.backButton({ label: S.back_to_land, demo: 'pressed', elementId: 'catalog.back.pressed' }))]));
+  }
+  render();
+})();
+</script>
+</body>
+</html>

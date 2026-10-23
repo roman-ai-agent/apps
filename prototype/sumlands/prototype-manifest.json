@@ -1,0 +1,78 @@
+{
+  "schema_version": 3,
+  "revision_id": "r1",
+  "id_migrations": [],
+  "targets": [
+    {
+      "target_id": "mac-wide",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "target_id": "iphone-standard",
+      "width": 393,
+      "height": 852
+    },
+    {
+      "target_id": "android-standard",
+      "width": 412,
+      "height": 915
+    },
+    {
+      "target_id": "mobile-compact",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "target_id": "mobile-large",
+      "width": 440,
+      "height": 956
+    }
+  ],
+  "states": [
+    {
+      "state_id": "land-map.first-run",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "land-map.first-run.en",
+      "fixture_id": "english"
+    },
+    {
+      "state_id": "land-map.two-lands-open",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "land.valley-in-progress",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "level.start",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "level.start.en",
+      "fixture_id": "english"
+    },
+    {
+      "state_id": "level.drawing",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "level.miss",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "level.hit",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "level.complete",
+      "fixture_id": "default"
+    },
+    {
+      "state_id": "land-map.all-complete",
+      "fixture_id": "default"
+    }
+  ]
+}

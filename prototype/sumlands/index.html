@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sumlands — prototyp r1</title>
+<link rel="stylesheet" href="assets/sumlands.css">
+<script src="assets/sumlands-ui.js"></script>
+</head>
+<body class="sl-page">
+<div id="app"></div>
+<script>
+(async function () {
+  'use strict';
+  var h = SL.h, app = document.getElementById('app');
+  /* Stany: ekran + opis sytuacji. Dane (krainy, poziom, listy działań, teksty) pochodzą z fixture. */
+  var STATES = {
+    'land-map.first-run':      { screen: 'screen.land-map', render: renderMap,   init: { lands: ['available', 'locked', 'locked'] } },
+    'land-map.first-run.en':   { screen: 'screen.land-map', render: renderMap,   init: { lands: ['available', 'locked', 'locked'] } },
+    'land-map.two-lands-open': { screen: 'screen.land-map', render: renderMap,   init: { lands: ['completed', 'available', 'locked'] } },
+    'land-map.all-complete':   { screen: 'screen.land-map', render: renderMap,   init: { lands: ['completed', 'completed', 'completed'], comingSoon: true } },
+    'land.valley-in-progress': { screen: 'screen.land',     render: renderLand,  init: { land: 'land.valley', levels: ['completed', 'completed', 'completed', 'available', 'locked', 'locked', 'locked', 'locked', 'locked', 'locked'] } },
+    'level.start':             { screen: 'screen.level',    render: renderLevel, init: {} },
+    'level.start.en':          { screen: 'screen.level',    render: renderLevel, init: {} },
+    'level.drawing':           { screen: 'screen.level',    render: renderLevel, init: { path: [2, 3], tailTowards: 4 } },
+    'level.miss':              { screen: 'screen.level',    render: renderLevel, init: { path: [2, 3], revealed: 'miss' } },
+    'level.hit':               { screen: 'screen.level',    render: renderLevel, init: { hits: [11], lastSum: 11 } },
+    'level.complete':          { screen: 'screen.level',    render: renderLevel, init: { hits: [11, 17, 14], lastSum: 14, complete: true } }
+  };
+  var ALLOWED = ['mode', 'state', 'target', 'capture_scenario'];
+  var CAPTURE_SCENARIOS = {};
+
+  function fail(msg) {
+    document.body.className = 'sl-page';
+    app.replaceChildren(h('div', { 'class': 'sl-error', role: 'alert', 'data-prototype-error': 'true' }, 'Błąd renderu prototypu: ' + msg));
+    throw new Error(msg);
+  }
+  async function load(url) {
+    var r = await fetch(url, { cache: 'no-store' });
+    if (!r.ok) throw new Error(url + ' → HTTP ' + r.status);
+    return r.json();
+  }
+
+  var q = new URLSearchParams(location.search);
+  q.forEach(function (_, k) {
+    if (ALLOWED.indexOf(k) < 0) fail('nieznany parametr „' + k + '”');
+    if (q.getAll(k).length > 1) fail('parametr „' + k + '” podany więcej niż raz');
+  });
+
+  var manifest, fixtures;
+  try { manifest = await load('prototype-manifest.json'); fixtures = await load('assets/fixtures.json'); }
+  catch (e) { fail('nie można wczytać manifestu lub fixture (' + e.message + '). Uruchom paczkę przez lokalny serwer HTTP — zob. README.md'); }
+
+  var noParams = Array.from(q.keys()).length === 0;
+  var mode = noParams ? 'user_preview' : q.get('mode');
+  if (mode !== 'capture' && mode !== 'user_preview') fail('nieznany lub brakujący tryb „' + mode + '”');
+  var stateId = q.get('state'), targetId = q.get('target');
+  if (mode === 'capture' && (!stateId || !targetId)) fail('mode=capture wymaga parametrów state i target');
+  if (mode === 'user_preview') { stateId = stateId || manifest.states[0].state_id; targetId = targetId || 'iphone-standard'; }
+  var st = manifest.states.filter(function (x) { return x.state_id === stateId; })[0];
+  if (!st) fail('nieznany stan „' + stateId + '”');
+  var tg = manifest.targets.filter(function (x) { return x.target_id === targetId; })[0];
+  if (!tg) fail('nieznany target „' + targetId + '”');
+  if (st.target_ids && st.target_ids.indexOf(targetId) < 0) fail('niedozwolona para stanu „' + stateId + '” i targetu „' + targetId + '”');
+  var scenario = q.get('capture_scenario');
+  if (scenario !== null) {
+    if (mode !== 'capture') fail('capture_scenario jest dozwolony tylko w mode=capture');
+    if (!CAPTURE_SCENARIOS[stateId] || CAPTURE_SCENARIOS[stateId].indexOf(scenario) < 0) fail('nieobsługiwany capture_scenario „' + scenario + '” dla stanu „' + stateId + '”');
+  }
+  var fx = fixtures.fixtures && fixtures.fixtures[st.fixture_id];
+  if (!fx) fail('fixture „' + st.fixture_id + '” nie istnieje w assets/fixtures.json');
+  var def = STATES[stateId];
+  if (!def) fail('brak renderera stanu „' + stateId + '”');
+  document.documentElement.lang = fx.locale;
+
+  var wide = tg.width >= 1000;
+  var surface = h('div', {
+    'class': 'sl-surface ' + (wide ? 'sl-wide' : 'sl-phone'),
+    'data-element-id': 'element.product-work-surface',
+    'data-screen-id': def.screen,
+    'data-state-id': stateId,
+    'data-target-id': targetId,
+    'data-fixture-id': st.fixture_id,
+    style: { width: tg.width + 'px', height: tg.height + 'px' }
+  });
+
+  function urlFor(s, t) { var u = new URLSearchParams(); u.set('mode', 'user_preview'); u.set('state', s); u.set('target', t); return '?' + u.toString(); }
+  var toast = null, toastTimer = null;
+  function say(msg) {
+    if (!toast) return;
+    toast.textContent = msg; clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.textContent = ''; }, 3200);
+  }
+  /* Nawigacja klikalnego prototypu: w user_preview przechodzi do stanu z paczki; cel spoza paczki → komunikat. */
+  var nav = {
+    go: function (s, note) {
+      if (mode !== 'user_preview') return;
+      if (note) { try { sessionStorage.setItem('sumlands.prototype.toast', note); } catch (_) {} }
+      location.search = urlFor(s, targetId);
+    },
+    outside: function (dest) { say('Akcja → ' + dest + ' (stan poza paczką r1)'); }
+  };
+  def.render(surface, { fx: fx, S: fx.strings, target: tg, wide: wide, init: def.init, nav: nav });
+
+  if (mode === 'capture') {
+    document.body.className = 'sl-capture';
+    app.append(surface);
+  } else {
+    if (noParams || q.get('mode') !== 'user_preview' || !q.get('state') || !q.get('target')) history.replaceState(null, '', urlFor(stateId, targetId));
+    var stage = h('div', { 'class': 'sl-stage' }, surface);
+    var box = h('div', { 'class': 'sl-stage-box' }, stage);
+    toast = h('div', { 'class': 'sl-toast', role: 'status', 'aria-live': 'polite', 'data-prototype-tool': 'preview-toast' });
+    var screenOf = {}; Object.keys(STATES).forEach(function (k) { screenOf[k] = STATES[k].screen; });
+    var bar = SL.previewToolbar({
+      catalogHref: 'catalog.html?target=' + encodeURIComponent(targetId),
+      states: manifest.states.map(function (s) { return { state_id: s.state_id, screen_id: screenOf[s.state_id] }; }),
+      stateId: stateId, targetId: targetId, noteStateId: stateId, targets: manifest.targets,
+      onState: function (s) { location.search = urlFor(s, targetId); },
+      onTarget: function (t) { location.search = urlFor(stateId, t); }
+    });
+    var preview = h('div', { 'class': 'sl-preview' }, box);
+    app.append(preview, toast, bar);
+    var fit = function () {
+      var bh = bar.offsetHeight;
+      document.body.style.paddingBottom = bh + 'px';
+      toast.style.bottom = (bh + 10) + 'px';
+      var k = Math.min(1, (window.innerWidth - 32) / tg.width, (window.innerHeight - bh - 32) / tg.height);
+      k = Math.max(k, 0.1);
+      stage.style.transform = 'scale(' + k + ')';
+      box.style.width = Math.round(tg.width * k) + 'px';
+      box.style.height = Math.round(tg.height * k) + 'px';
+    };
+    fit(); window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(bar);
+    try { var pending = sessionStorage.getItem('sumlands.prototype.toast'); if (pending) { sessionStorage.removeItem('sumlands.prototype.toast'); say(pending); } } catch (_) {}
+  }
+
+  await Promise.all(Array.from(surface.querySelectorAll('img')).map(function (i) { return i.decode().catch(function () {}); }));
+  if (document.fonts && document.fonts.ready) await document.fonts.ready;
+  surface.setAttribute('data-prototype-ready', 'true');
+
+  /* screen.land-map */
+  function renderMap(surface, ctx) {
+    var S = ctx.S, init = ctx.init;
+    var screen = h('div', { 'class': 'sl-screen' });
+    screen.append(h('header', { 'class': 'sl-map-head' },
+      h('span', { 'class': 'sl-app-name', 'data-element-id': 'element.land-map.app-name' }, S.app_name),
+      h('h1', { 'class': 'sl-map-title', 'data-element-id': 'element.land-map.title' }, S.map_title)));
+    if (init.comingSoon) {
+      screen.append(h('section', { 'class': 'sl-notice', role: 'status', 'data-element-id': 'element.land-map.coming-soon' },
+        h('span', { 'class': 'sl-notice-ic', 'aria-hidden': 'true' }, SL.icon('check', 22)),
+        h('h2', {}, S.coming_soon)));
+    }
+    screen.append(h('ul', { 'class': 'sl-lands', 'data-element-id': 'element.land-map.lands' },
+      ctx.fx.lands.map(function (land, i) {
+        var v = init.lands[i], n = i + 1;
+        var expected = v === 'locked' ? 'brak efektu (kraina zablokowana)' : 'navigate screen.land (' + land.land_id + ')';
+        return h('li', {}, SL.landCard({
+          land: land, variant: v, layout: ctx.wide ? 'column' : 'row', strings: S,
+          elementId: 'element.land-map.land-' + n, interactionId: 'interaction.land-map.open-land-' + n, action: 'tap', expected: expected,
+          onClick: function () {
+            if (v === 'locked') return;
+            if (land.land_id === 'land.valley') ctx.nav.go('land.valley-in-progress', v === 'completed' || stateId !== 'land-map.first-run' ? 'Pokazano land.valley-in-progress — jedyny stan screen.land w paczce r1' : null);
+            else ctx.nav.outside('screen.land · ' + land.name);
+          }
+        }));
+      })));
+    surface.append(screen);
+  }
+
+  /* screen.land */
+  function renderLand(surface, ctx) {
+    var S = ctx.S, init = ctx.init;
+    var land = ctx.fx.lands.filter(function (l) { return l.land_id === init.land; })[0];
+    var screen = h('div', { 'class': 'sl-screen' });
+    screen.append(h('header', { 'class': 'sl-land-head' },
+      SL.backButton({ elementId: 'element.land.back', label: S.back_to_map, interactionId: 'interaction.land.back', action: 'tap', expected: 'navigate screen.land-map', onClick: function () { ctx.nav.go('land-map.first-run'); } }),
+      h('div', { 'class': 'sl-land-titles' },
+        h('h1', { 'class': 'sl-land-title', 'data-element-id': 'element.land.title' }, land.name),
+        h('span', { 'class': 'sl-land-sub', 'data-element-id': 'element.land.topic' }, land.topic))));
+    var hero = h('div', { 'class': 'sl-land-hero', 'data-element-id': 'element.land.image' }, h('img', { src: land.entry_image, alt: '', draggable: 'false' }));
+    var levels = h('div', {},
+      h('h2', { 'class': 'sl-levels-label', id: 'sl-levels-label' }, S.levels_label),
+      h('ul', { 'class': 'sl-levels', 'data-element-id': 'element.land.levels', 'aria-labelledby': 'sl-levels-label' },
+        init.levels.map(function (v, i) {
+          var n = i + 1;
+          var expected = v === 'locked' ? 'brak efektu (poziom zablokowany)' : 'navigate screen.level (' + land.land_id + ', poziom ' + n + ')' + (v === 'completed' ? ', gra od początku' : '');
+          return h('li', {}, SL.levelButton({
+            n: n, variant: v, wide: ctx.wide, strings: S,
+            elementId: 'element.land.level-' + n, interactionId: 'interaction.land.open-level-' + n, action: 'tap', expected: expected,
+            onClick: function () {
+              if (v === 'locked') return;
+              if (n === ctx.fx.level.level_number) ctx.nav.go('level.start');
+              else ctx.nav.outside('screen.level · ' + SL.fmt(S.level_label, { n: n }));
+            }
+          }));
+        })));
+    if (ctx.wide) screen.append(h('div', { 'class': 'sl-land-main' }, hero, levels));
+    else screen.append(hero, levels);
+    surface.append(screen);
+  }
+
+  /* screen.level */
+  function renderLevel(surface, ctx) {
+    var fx = ctx.fx, S = ctx.S, lv = fx.level, target = ctx.target, init = ctx.init, wide = ctx.wide;
+    var land = fx.lands.filter(function (l) { return l.land_id === lv.land_id; })[0];
+    surface.append(h('img', { 'class': 'sl-bg', src: land.level_bg, alt: '', 'aria-hidden': 'true', draggable: 'false', 'data-element-id': 'element.level.background' }));
+
+    var hits = init.hits || [];
+    var remaining = lv.targets.filter(function (v) { return hits.indexOf(v) < 0; });
+    var targetEls = lv.targets.map(function (v, i) { return SL.target({ value: v, variant: hits.indexOf(v) >= 0 ? 'hit' : 'to-hit', elementId: 'element.level.target-' + (i + 1), strings: S }); });
+    var targetsList = h('ul', { 'class': 'sl-targets', 'data-element-id': 'element.level.targets', 'aria-label': S.targets_label }, targetEls);
+    var size = wide ? 460 : Math.min(target.width - 40, 344);
+    var ops = SL.rules.wheelFor(lv, remaining.length ? remaining : [init.lastSum]);
+    var initResult = { variant: 'pending', sum: null };
+    var wheelInit = {};
+    if (init.path) {
+      wheelInit.path = init.path.slice();
+      if (init.revealed) {
+        wheelInit.revealed = init.revealed;
+        var ev = SL.rules.evaluate(ops, init.path, remaining);
+        initResult = { variant: ev.kind, sum: ev.sum };
+      } else if (init.tailTowards !== undefined) {
+        var g = SL.geom(size), a = g.centers[init.path[init.path.length - 1]], b = g.centers[init.tailTowards];
+        wheelInit.tail = { x: a.x + (b.x - a.x) * 0.55, y: a.y + (b.y - a.y) * 0.55 + 6 };
+      }
+    } else if (init.lastSum) initResult = { variant: 'hit', sum: init.lastSum };
+    if (init.complete) wheelInit.inactive = true;
+    var result = SL.pathResult({ elementId: 'element.level.path-result', variant: initResult.variant, sum: initResult.sum, strings: S });
+
+    var wheel = SL.createWheel({
+      ops: ops, size: size, loc: fx.locale, strings: S, interactive: true, initial: wheelInit,
+      elementId: 'element.level.wheel', elementPrefix: 'element.level.',
+      interactionId: 'interaction.level.draw-path', action: 'draw-path',
+      expected: 'dotknięcie płytki zaczyna ścieżkę (płytka: in-path, wynik: pending); wejście w 70% promienia innej płytki dodaje ją; powrót na poprzednią płytkę usuwa ostatnią; wyjście poza koło z przyciśnięciem nie przerywa; wyjście kursora poza okno anuluje bez oceny; puszczenie: ≥2 płytki → wyniki płytek i suma (hit: liczba celu zbita, po 0,9 s nowa lista 7 działań; miss: ta sama lista), 1 płytka → too-short',
+      onStart: function () { SL.setResult(result, 'pending', null, S); },
+      onRelease: function (path) {
+        if (!path.length) return;
+        var r = SL.rules.evaluate(ops, path, remaining);
+        if (r.kind === 'too-short') { wheel.set({ path: [], revealed: false }); SL.setResult(result, 'too-short', null, S); return; }
+        wheel.set({ revealed: r.kind });
+        SL.setResult(result, r.kind, r.sum, S);
+        if (r.kind !== 'hit') return;
+        for (var i = 0; i < targetEls.length; i++) {
+          if (lv.targets[i] === r.sum && targetEls[i].getAttribute('data-variant') === 'to-hit') { SL.setTarget(targetEls[i], 'hit', r.sum, S); break; }
+        }
+        remaining.splice(remaining.indexOf(r.sum), 1);
+        wheel.set({ inactive: true });
+        setTimeout(function () {
+          if (!remaining.length) { wheel.set({ path: [], revealed: false }); showComplete(); return; }
+          ops = SL.rules.wheelFor(lv, remaining);
+          wheel.swap(ops, 300, function () { wheel.set({ inactive: false }); });
+        }, 900);
+      }
+    });
+
+    var header = h('header', { 'class': 'sl-level-header' },
+      SL.backButton({ elementId: 'element.level.back', label: S.back_to_land, interactionId: 'interaction.level.back', action: 'tap', expected: 'navigate screen.land (' + land.land_id + ') bez potwierdzenia; poziom przy powrocie zaczyna się od nowa', onClick: function () { ctx.nav.go('land.valley-in-progress'); } }),
+      h('div', { 'class': 'sl-level-title', 'data-element-id': 'element.level.title' },
+        h('span', { 'class': 'sl-level-land' }, land.name),
+        h('h1', { 'class': 'sl-level-name' }, SL.fmt(S.level_label, { n: lv.level_number }))));
+    var wheelWrap = h('div', { 'class': 'sl-wheel-wrap' }, wheel.el);
+    var content = h('div', { 'class': 'sl-level' });
+    if (wide) content.append(header, h('div', { 'class': 'sl-level-main' }, h('div', { 'class': 'sl-left' }, targetsList, result), wheelWrap));
+    else content.append(header, targetsList, h('div', { 'class': 'sl-spacer' }), result, wheelWrap);
+    surface.append(content);
+    if (init.complete) showComplete(true);
+
+    function showComplete(isStatic) {
+      var next = lv.level_number + 1;
+      surface.append(h('div', { 'class': 'sl-complete', 'data-element-id': 'element.level.complete', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'sl-complete-title' },
+        h('div', { 'class': 'sl-complete-card' },
+          h('h2', { id: 'sl-complete-title' }, S.level_complete),
+          SL.primaryButton({ elementId: 'element.level.next', label: S.next_level, interactionId: 'interaction.level.next', action: 'tap', expected: 'navigate screen.level (' + land.land_id + ', poziom ' + next + ')', onClick: function () { ctx.nav.outside('screen.level · ' + SL.fmt(S.level_label, { n: next })); } }))));
+      if (!isStatic) { var b = surface.querySelector('[data-element-id="element.level.next"]'); if (b) b.focus({ preventScroll: true }); }
+    }
+  }
+})();
+</script>
+</body>
+</html>
