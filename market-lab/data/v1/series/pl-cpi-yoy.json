@@ -11,7 +11,7 @@
     "provider": "goldwatcher",
     "symbol": "inflation/pl-cpi-yoy",
     "description": "Inflacja Polski, rok do roku (o ile procent drożej niż rok temu kosztują zwykłe zakupy Polaka)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {

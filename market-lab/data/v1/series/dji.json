@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^DJI",
     "description": "Dow Jones Industrial Average (30 dużych firm USA, liczone według ceny akcji)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {

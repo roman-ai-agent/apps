@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "NG=F",
     "description": "Gaz ziemny Henry Hub — kontrakt terminowy (cena gazu ustalona dziś, a dostawa później, miara energii MMBtu)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -45977,10 +45977,17 @@
     },
     {
       "date": "2026-10-22",
+      "open": 2.78,
+      "high": 2.838,
+      "low": 2.726,
+      "close": 2.796
+    },
+    {
+      "date": "2026-10-23",
       "open": 2.787,
-      "high": 2.787,
-      "low": 2.782,
-      "close": 2.787
+      "high": 2.792,
+      "low": 2.708,
+      "close": 3.119
     }
   ]
 }

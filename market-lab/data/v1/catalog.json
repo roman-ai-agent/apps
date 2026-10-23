@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T22:16:50.182Z",
+  "generated_at": "2026-10-23T09:20:42.635Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -55,7 +55,7 @@
       "last_date": "2026-10-22",
       "bar_count": 9854,
       "series_path": "series/russell2000.json",
-      "value_decimals": 3
+      "value_decimals": 2
     },
     {
       "instrument_id": "dax",
@@ -63,8 +63,8 @@
       "currency": "EUR",
       "unit": "pkt indeksu",
       "first_date": "1987-12-30",
-      "last_date": "2026-10-21",
-      "bar_count": 9815,
+      "last_date": "2026-10-23",
+      "bar_count": 9817,
       "series_path": "series/dax.json",
       "value_decimals": 2
     },
@@ -74,8 +74,8 @@
       "currency": "GBP",
       "unit": "pkt indeksu",
       "first_date": "1984-01-03",
-      "last_date": "2026-10-22",
-      "bar_count": 10814,
+      "last_date": "2026-10-23",
+      "bar_count": 10815,
       "series_path": "series/ftse100.json",
       "value_decimals": 2
     },
@@ -84,11 +84,12 @@
       "name": "Nikkei 225 (225 dużych firm Japonii, liczone według ceny akcji)",
       "currency": "JPY",
       "unit": "pkt indeksu",
-      "first_date": "1965-01-05",
-      "last_date": "2026-10-21",
-      "bar_count": 15190,
+      "first_date": "1949-05-16",
+      "last_date": "2026-10-22",
+      "bar_count": 19224,
       "series_path": "series/nikkei225.json",
-      "value_decimals": 2
+      "value_decimals": 2,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "hang-seng",
@@ -96,8 +97,8 @@
       "currency": "HKD",
       "unit": "pkt indeksu",
       "first_date": "1986-12-31",
-      "last_date": "2026-10-21",
-      "bar_count": 9823,
+      "last_date": "2026-10-23",
+      "bar_count": 9825,
       "series_path": "series/hang-seng.json",
       "value_decimals": 2
     },
@@ -118,10 +119,11 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1962-01-02",
-      "last_date": "2026-10-22",
-      "bar_count": 16190,
+      "last_date": "2026-10-21",
+      "bar_count": 16186,
       "series_path": "series/us-10y.json",
-      "value_decimals": 3
+      "value_decimals": 2,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "us-30y",
@@ -129,10 +131,11 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1977-02-15",
-      "last_date": "2026-10-22",
-      "bar_count": 12448,
+      "last_date": "2026-10-21",
+      "bar_count": 12416,
       "series_path": "series/us-30y.json",
-      "value_decimals": 3
+      "value_decimals": 2,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "vix",
@@ -140,8 +143,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1990-01-02",
-      "last_date": "2026-10-22",
-      "bar_count": 9272,
+      "last_date": "2026-10-23",
+      "bar_count": 9273,
       "series_path": "series/vix.json",
       "value_decimals": 2
     },
@@ -151,8 +154,8 @@
       "currency": "USD",
       "unit": "pkt indeksu",
       "first_date": "1971-01-04",
-      "last_date": "2026-10-22",
-      "bar_count": 14170,
+      "last_date": "2026-10-23",
+      "bar_count": 14171,
       "series_path": "series/usd-index.json",
       "value_decimals": 3
     },
@@ -162,8 +165,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-22",
-      "bar_count": 6562,
+      "last_date": "2026-10-23",
+      "bar_count": 6563,
       "series_path": "series/gold.json",
       "value_decimals": 1
     },
@@ -172,11 +175,11 @@
       "name": "Złoto — cena spot (ile kosztuje złoto kupowane i odbierane od ręki, uncja trojańska)",
       "currency": "USD",
       "unit": "USD/oz t",
-      "first_date": "1968-04-01",
-      "last_date": "2026-10-21",
-      "bar_count": 15896,
+      "first_date": "1975-01-02",
+      "last_date": "2026-10-22",
+      "bar_count": 13401,
       "series_path": "series/gold-spot.json",
-      "value_decimals": 4,
+      "value_decimals": 8,
       "bar_kind": "close"
     },
     {
@@ -185,8 +188,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-22",
-      "bar_count": 6563,
+      "last_date": "2026-10-23",
+      "bar_count": 6564,
       "series_path": "series/silver.json",
       "value_decimals": 3
     },
@@ -196,8 +199,8 @@
       "currency": "USD",
       "unit": "USD/oz t",
       "first_date": "1997-10-29",
-      "last_date": "2026-10-22",
-      "bar_count": 6588,
+      "last_date": "2026-10-23",
+      "bar_count": 6590,
       "series_path": "series/platinum.json",
       "value_decimals": 1
     },
@@ -207,8 +210,8 @@
       "currency": "USD",
       "unit": "USD/lb",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-22",
-      "bar_count": 6566,
+      "last_date": "2026-10-23",
+      "bar_count": 6567,
       "series_path": "series/copper.json",
       "value_decimals": 4
     },
@@ -218,8 +221,8 @@
       "currency": "USD",
       "unit": "USD/bbl",
       "first_date": "2000-08-23",
-      "last_date": "2026-10-22",
-      "bar_count": 6567,
+      "last_date": "2026-10-23",
+      "bar_count": 6569,
       "series_path": "series/crude-oil.json",
       "value_decimals": 2
     },
@@ -229,8 +232,8 @@
       "currency": "USD",
       "unit": "USD/MMBtu",
       "first_date": "2000-08-30",
-      "last_date": "2026-10-22",
-      "bar_count": 6567,
+      "last_date": "2026-10-23",
+      "bar_count": 6568,
       "series_path": "series/natural-gas.json",
       "value_decimals": 3
     },
@@ -239,44 +242,48 @@
       "name": "USD/JPY (ile jenów kosztuje 1 dolar)",
       "currency": "JPY",
       "unit": "JPY za 1 USD",
-      "first_date": "1996-10-30",
-      "last_date": "2026-10-22",
-      "bar_count": 7774,
+      "first_date": "1971-01-04",
+      "last_date": "2026-10-16",
+      "bar_count": 13984,
       "series_path": "series/usd-jpy.json",
-      "value_decimals": 3
+      "value_decimals": 2,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "eur-usd",
       "name": "EUR/USD (ile dolarów kosztuje 1 euro)",
       "currency": "USD",
       "unit": "USD za 1 EUR",
-      "first_date": "2003-12-01",
-      "last_date": "2026-10-22",
-      "bar_count": 5940,
+      "first_date": "1999-01-04",
+      "last_date": "2026-10-16",
+      "bar_count": 6969,
       "series_path": "series/eur-usd.json",
-      "value_decimals": 6
+      "value_decimals": 4,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "eur-pln",
       "name": "EUR/PLN (ile złotych kosztuje 1 euro)",
       "currency": "PLN",
       "unit": "PLN za 1 EUR",
-      "first_date": "2002-04-01",
+      "first_date": "2002-01-02",
       "last_date": "2026-10-22",
-      "bar_count": 6350,
+      "bar_count": 6268,
       "series_path": "series/eur-pln.json",
-      "value_decimals": 5
+      "value_decimals": 4,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "usd-pln",
       "name": "USD/PLN (ile złotych kosztuje 1 dolar)",
       "currency": "PLN",
       "unit": "PLN za 1 USD",
-      "first_date": "2003-12-01",
+      "first_date": "2002-01-02",
       "last_date": "2026-10-22",
-      "bar_count": 5939,
+      "bar_count": 6268,
       "series_path": "series/usd-pln.json",
-      "value_decimals": 6
+      "value_decimals": 4,
+      "bar_kind": "close"
     },
     {
       "instrument_id": "us-tbill-13w",
@@ -284,8 +291,8 @@
       "currency": "USD",
       "unit": "%",
       "first_date": "1954-01-04",
-      "last_date": "2026-10-21",
-      "bar_count": 18199,
+      "last_date": "2026-10-09",
+      "bar_count": 18185,
       "series_path": "series/us-tbill-13w.json",
       "value_decimals": 2,
       "bar_kind": "close"

@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^NDX",
     "description": "Nasdaq-100 (100 największych firm z giełdy Nasdaq, poza bankami i ubezpieczycielami)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {

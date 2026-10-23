@@ -11,7 +11,7 @@
     "provider": "goldwatcher",
     "symbol": "rates/us-tbill-13w",
     "description": "Rentowność bonów skarbowych USA 3-miesięcznych, dane Fed i Skarbu USA (ile rocznie zarabia ten, kto pożycza rządowi USA pieniądze na około 3 miesiące)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -127275,20 +127275,6 @@
       "close": 4.11
     },
     {
-      "date": "2026-10-03",
-      "open": 4.11,
-      "high": 4.11,
-      "low": 4.11,
-      "close": 4.11
-    },
-    {
-      "date": "2026-10-04",
-      "open": 4.11,
-      "high": 4.11,
-      "low": 4.11,
-      "close": 4.11
-    },
-    {
       "date": "2026-10-05",
       "open": 4.15,
       "high": 4.15,
@@ -127322,90 +127308,6 @@
       "high": 4.16,
       "low": 4.16,
       "close": 4.16
-    },
-    {
-      "date": "2026-10-10",
-      "open": 4.16,
-      "high": 4.16,
-      "low": 4.16,
-      "close": 4.16
-    },
-    {
-      "date": "2026-10-11",
-      "open": 4.16,
-      "high": 4.16,
-      "low": 4.16,
-      "close": 4.16
-    },
-    {
-      "date": "2026-10-12",
-      "open": 4.16,
-      "high": 4.16,
-      "low": 4.16,
-      "close": 4.16
-    },
-    {
-      "date": "2026-10-13",
-      "open": 4.19,
-      "high": 4.19,
-      "low": 4.19,
-      "close": 4.19
-    },
-    {
-      "date": "2026-10-14",
-      "open": 4.2,
-      "high": 4.2,
-      "low": 4.2,
-      "close": 4.2
-    },
-    {
-      "date": "2026-10-15",
-      "open": 4.2,
-      "high": 4.2,
-      "low": 4.2,
-      "close": 4.2
-    },
-    {
-      "date": "2026-10-16",
-      "open": 4.18,
-      "high": 4.18,
-      "low": 4.18,
-      "close": 4.18
-    },
-    {
-      "date": "2026-10-17",
-      "open": 4.18,
-      "high": 4.18,
-      "low": 4.18,
-      "close": 4.18
-    },
-    {
-      "date": "2026-10-18",
-      "open": 4.18,
-      "high": 4.18,
-      "low": 4.18,
-      "close": 4.18
-    },
-    {
-      "date": "2026-10-19",
-      "open": 4.2,
-      "high": 4.2,
-      "low": 4.2,
-      "close": 4.2
-    },
-    {
-      "date": "2026-10-20",
-      "open": 4.18,
-      "high": 4.18,
-      "low": 4.18,
-      "close": 4.18
-    },
-    {
-      "date": "2026-10-21",
-      "open": 4.17,
-      "high": 4.17,
-      "low": 4.17,
-      "close": 4.17
     }
   ]
 }

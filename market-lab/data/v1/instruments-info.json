@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T22:16:50.182Z",
+  "generated_at": "2026-10-23T09:20:42.635Z",
   "instruments": [
     {
       "instrument_id": "sp500",
@@ -444,7 +444,7 @@
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol ^N225. Notowania pochodzą z Yahoo Finance, nie od dostawcy indeksu; mogą różnić się od oficjalnych wartości zamknięcia o korekty i drobne rozbieżności."
+          "value": "Dane o zamknięciu Nikkei 225 udostępniane przez FRED (Federal Reserve Bank of St. Louis), seria NIKKEI225."
         },
         {
           "label": "Jednostka i waluta",
@@ -452,11 +452,11 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Tokijska giełda, sesja z przerwą południową; zamknięcie o 15:30 czasu japońskiego (Asia/Tokyo; do listopada 2024 o 15:00). Indeks liczony co 5 sekund."
+          "value": "Tokijska giełda, sesja z przerwą południową; zamknięcie o 15:30 czasu japońskiego (Asia/Tokyo; do listopada 2024 o 15:00). Wartość w MarketLab to zamknięcie sesji, a data to dzień sesji w Tokio."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "1965-01-05. Nikkei liczy indeks od 7 września 1950 r. (wartości wsteczne od 16 maja 1949 r.)."
+          "value": "1949-05-16 (początek serii FRED; Nikkei liczy indeks od 7 września 1950 r., wartości wsteczne od 16 maja 1949 r.)."
         },
         {
           "label": "Znane zmiany metodologii",
@@ -464,10 +464,15 @@
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Do marca 1988 r. szereg to praktycznie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie; ponad 5 700 dni), więc świece dla tego okresu nie niosą informacji o zakresie dnia. Przerwy noworoczne (japońskie wolne dni giełdy) dają kilkudniowe luki."
+          "value": "Brak punktów w dni bez sesji w Tokio, w tym przerwy noworoczne i Golden Week (np. 26 kwietnia – 7 maja 2019 r.); przerwy nie są wypełniane. Wartości są kopiowane z FRED bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia (otwarcie, maksimum, minimum): jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "FRED (Federal Reserve Bank of St. Louis) — Nikkei 225, seria NIKKEI225",
+          "url": "https://fred.stlouisfed.org/series/NIKKEI225",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "Nikkei Indexes — Nikkei Stock Average (Nikkei 225), profil",
           "url": "https://indexes.nikkei.co.jp/en/nkave/index/profile?idx=nk225",
@@ -479,7 +484,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "hang-seng",
@@ -618,23 +623,23 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Departament Skarbu USA wyznacza rentowności o stałym terminie zapadalności (constant maturity) z krzywej rentowności par, wyliczanej metodą monotone convex z ofert kupna (bid-side) ostatnio aukcjonowanych papierów, zebranych przez Fed Nowy Jork około 15:30 czasu NY. Dla 10 lat wejściem jest ostatnia aukcjonowana 10-letnia obligacja."
+          "value": "Rentowność o stałym terminie zapadalności (constant maturity) z krzywej rentowności Departamentu Skarbu USA, publikowana przez Rezerwę Federalną w zestawieniu H.15; jedna wartość dziennie na zamknięciu rynku, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol ^TNX (indeks rentowności Cboe). Notowania pochodzą z Yahoo Finance (symbol z grupy indeksów stóp procentowych Cboe), nie z oficjalnej tabeli Departamentu Skarbu USA; starsza część historii (od lat 60. i 70.) ma pochodzenie, którego dostawca nie opisuje."
+          "value": "Rezerwa Federalna (H.15) przez FRED, seria DGS10."
         },
         {
           "label": "Jednostka i waluta",
-          "value": "Procent rocznie (%), USD. Wartość 4,50 oznacza 4,50% rocznie (historycznie Cboe publikowało ją jako wartość ×10, Yahoo podaje w procentach)."
+          "value": "Procent rocznie (%), USD. Wartość 4,50 oznacza 4,50% rocznie (w zestawieniu H.15 wartości są podane w procentach)."
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek pozagiełdowy obligacji USA; w danych MarketLab daty w strefie America/Chicago, dni robocze."
+          "value": "Data to dzień publikacji w zestawieniu H.15 (strefa America/New_York): rentowność z zamknięcia rynku pozagiełdowego obligacji USA, tylko dni robocze rynku obligacji."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "1962-01-02. Starsze notowania mają pochodzenie niedokumentowane przez dostawcę."
+          "value": "1962-01-02."
         },
         {
           "label": "Znane zmiany metodologii",
@@ -642,10 +647,15 @@
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Do października 1993 r. w danych przeważnie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie); także w późniejszych latach część dni do listopada 2025 r. ma wartości jednakowe w czterech polach. Brak notowań 11–14 września 2001 r. W MarketLab pomijane są dni, w których którekolwiek z pól otwarcie/maksimum/minimum/zamknięcie ma wartość ≤ 0."
+          "value": "Brak punktów w dni bez publikacji (weekendy i święta rynku obligacji USA). Wartości są kopiowane z FRED bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia: jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "FRED (Federal Reserve Bank of St. Louis) — Rentowność 10-letnich obligacji skarbowych USA, seria DGS10",
+          "url": "https://fred.stlouisfed.org/series/DGS10",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "U.S. Department of the Treasury — Daily Treasury Par Yield Curve Rates",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
@@ -662,7 +672,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "us-30y",
@@ -670,7 +680,7 @@
       "qualitative": [
         "Pożyczasz rządowi USA pieniądze na 30 lat. To trochę jak kredyt na mieszkanie, tylko że to Ty jesteś bankiem. Rząd robi to, sprzedając obligacje skarbowe (papiery, w których obiecuje po 30 latach oddać pożyczkę i płacić odsetki). Takie papiery można odsprzedawać, a ich cena się zmienia. Liczba na wykresie to roczny zysk w procentach (fachowo: rentowność), jaki miałby ktoś, kto kupi taki papier dziś po bieżącej cenie i trzyma go do końca.",
         "Gdy liczba rośnie, pożyczanie rządowi na 30 lat lepiej płaci, a cena już istniejących papierów spada; gdy liczba spada, jest odwrotnie. Przy tak długiej pożyczce liczy się, co będzie z cenami w sklepach przez dziesiątki lat, więc ta liczba jest zwykle wrażliwsza na zmianę takich oczekiwań niż procent z krótkich pożyczek. Wykres pokazuje poziom w danym dniu, a nie wynik czyjejś inwestycji.",
-        "Nie mylić z oprocentowaniem 30-letnich kredytów na mieszkanie: banki doliczają swój zarobek, a takie kredyty zwykle idą w ślad za papierami 10-letnimi. Od lutego 2002 do lutego 2006 r. amerykański Departament Skarbu nie podawał tej liczby, więc ten okres w danych traktuj ostrożnie."
+        "Nie mylić z oprocentowaniem 30-letnich kredytów na mieszkanie: banki doliczają swój zarobek, a takie kredyty zwykle idą w ślad za papierami 10-letnimi. Departament Skarbu wstrzymał własną serię 30-letnią od lutego 2002 do lutego 2006 r.; dane Rezerwy Federalnej zawierają w tym okresie wartości, których sposobu wyznaczenia MarketLab nie sprawdzał, więc traktuj ten okres ostrożnie."
       ],
       "technical": [
         {
@@ -679,11 +689,11 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Rentowność o stałym terminie zapadalności z krzywej rentowności par Departamentu Skarbu USA (metoda monotone convex, oferty kupna ostatnio aukcjonowanych papierów, zebrane o ok. 15:30 czasu NY). Seria 30-letnia Skarbu została wstrzymana 18 lutego 2002 r. i przywrócona 9 lutego 2006 r."
+          "value": "Rentowność o stałym terminie zapadalności (constant maturity) z krzywej rentowności Departamentu Skarbu USA, publikowana przez Rezerwę Federalną w zestawieniu H.15; jedna wartość dziennie na zamknięciu rynku, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol ^TYX (indeks rentowności Cboe). Notowania pochodzą z Yahoo Finance (symbol z grupy indeksów stóp procentowych Cboe), nie z oficjalnej tabeli Departamentu Skarbu USA; starsza część historii (od lat 60. i 70.) ma pochodzenie, którego dostawca nie opisuje."
+          "value": "Rezerwa Federalna (H.15) przez FRED, seria DGS30."
         },
         {
           "label": "Jednostka i waluta",
@@ -691,7 +701,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek pozagiełdowy obligacji USA; daty w strefie America/Chicago, dni robocze."
+          "value": "Data to dzień publikacji w zestawieniu H.15 (strefa America/New_York): rentowność z zamknięcia rynku pozagiełdowego obligacji USA, tylko dni robocze rynku obligacji."
         },
         {
           "label": "Początek historii w MarketLab",
@@ -699,14 +709,19 @@
         },
         {
           "label": "Znane zmiany metodologii",
-          "value": "Zawieszenie i przywrócenie serii 30-letniej (2002–2006) oraz zmiany metody krzywej Skarbu (opis z 18 lutego 2025 r.). W MarketLab brak luki w tym okresie, ale pochodzenie danych dostawcy z tych lat nie jest opisane."
+          "value": "Departament Skarbu wstrzymał własną serię 30-letnią 18 lutego 2002 r. i przywrócił 9 lutego 2006 r.; FRED zawiera w tym okresie wartości (np. 2004-06-01: 5,48), których sposobu wyznaczenia MarketLab nie weryfikował. Zmiany metody krzywej Skarbu (opis z 18 lutego 2025 r.)."
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Do października 1993 r. w danych przeważnie tylko cena zamknięcia (otwarcie = maksimum = minimum = zamknięcie). Brak notowań 11–14 września 2001 r. W MarketLab pomijane są dni, w których którekolwiek z pól otwarcie/maksimum/minimum/zamknięcie ma wartość ≤ 0."
+          "value": "Brak punktów w dni bez publikacji (weekendy i święta rynku obligacji USA). Wartości są kopiowane z FRED bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia: jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "FRED (Federal Reserve Bank of St. Louis) — Rentowność 30-letnich obligacji skarbowych USA, seria DGS30",
+          "url": "https://fred.stlouisfed.org/series/DGS30",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "U.S. Department of the Treasury — Daily Treasury Par Yield Curve Rates",
           "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve",
@@ -723,7 +738,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "vix",
@@ -932,7 +947,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Dni kalendarzowe UTC (strefa UTC), także soboty i niedziele; rynek spot jest prawie całodobowy od niedzielnego wieczoru do piątkowego wieczoru, więc wartości weekendowe nie są notowaniami giełdowymi (w danych często powtarzają piątek)."
+          "value": "Strefa UTC. MarketLab pomija dni, które źródło samo oznacza jako przeniesione, ale obecny dostawca od 2017 r. podaje także wartości weekendowe jako zwykłe obserwacje, więc w danych są też soboty i niedziele; po zmianie dostawcy (Twelve Data) będą tylko dni notowań. Luki aplikacja wypełnia ostatnią znaną wartością tylko do wyświetlenia."
         },
         {
           "label": "Początek historii w MarketLab",
@@ -944,7 +959,7 @@
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Jedna wartość dziennie (otwarcie = maksimum = minimum = zamknięcie, więc brak zakresu dnia). Wartości weekendowe bywają powtórzeniem piątku (w danych sobota = piątek w ok. 29% przypadków). Brak dni 25 grudnia 2024 – 1 stycznia 2025 r. Wartość w dniu bieżącym pojawia się dopiero po zamknięciu okresu przez źródło."
+          "value": "Jedna wartość dziennie (otwarcie = maksimum = minimum = zamknięcie, więc brak zakresu dnia). Dni oznaczone przez źródło jako przeniesione są pominięte, lecz wartości weekendowe od 2017 r. podane jako zwykłe obserwacje zostają. Brak dni 25 grudnia 2024 – 1 stycznia 2025 r. Wartość w dniu bieżącym pojawia się dopiero po zamknięciu okresu przez źródło."
         }
       ],
       "sources": [
@@ -1277,15 +1292,15 @@
       "technical": [
         {
           "label": "Rodzaj danych",
-          "value": "Kurs walutowy spot (rynkowy) pary USD/JPY: ile JPY za 1 USD."
+          "value": "Kurs walutowy dolara w jenach z zestawienia Rezerwy Federalnej H.10: ile JPY za 1 USD."
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Notowanie międzybankowe z rynku pozagiełdowego (OTC); brak ważenia ani składu. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku."
+          "value": "Kurs południowy z Nowego Jorku (noon buying rate) ogłaszany przez Fed Nowy Jork i publikowany w zestawieniu Rezerwy Federalnej H.10; jedna wartość dziennie, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol USDJPY=X."
+          "value": "Rezerwa Federalna (H.10) przez FRED, seria DEXJPUS."
         },
         {
           "label": "Jednostka i waluta",
@@ -1293,22 +1308,32 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+          "value": "Data to dzień publikacji kursu w zestawieniu H.10 (strefa America/New_York): kurs z południa czasu nowojorskiego, tylko dni robocze USA — nie zamknięcie doby walutowej."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "1996-10-30."
+          "value": "1971-01-04."
         },
         {
           "label": "Znane zmiany metodologii",
-          "value": "Brak formalnej metodologii: kurs jest kwotowaniem rynkowym; dostawca może zmieniać agregację źródeł."
+          "value": "Brak formalnej metodologii rynkowej; kurs jest ustalanym w południe kwotowaniem Fed Nowy Jork."
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Brak notowań 1 sierpnia – 25 sierpnia 2008 r. (kilkutygodniowa luka w danych dostawcy). Pojedyncze dni z błędnymi wartościami dostawcy (zbyt wysokie lub niskie maksimum, minimum lub zamknięcie). Znane przypadki: 8 października i 8 grudnia 2008 r. (nagłe odbicia o kilka–kilkanaście jenów, które wracają następnego dnia)."
+          "value": "Brak punktów w dni bez publikacji H.10 (weekendy i święta USA); w sierpniu 1971 r. źródło nie podaje kursu od 16 do 30 sierpnia (przerwa nie jest wypełniana). Wartości są kopiowane z FRED bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia (otwarcie, maksimum, minimum): jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "FRED (Federal Reserve Bank of St. Louis) — Jeny japońskie za 1 dolara USA, seria DEXJPUS",
+          "url": "https://fred.stlouisfed.org/series/DEXJPUS",
+          "accessed": "2026-10-23"
+        },
+        {
+          "title": "Federal Reserve — H.10 Foreign Exchange Rates",
+          "url": "https://www.federalreserve.gov/releases/h10/",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "BIS — Triennial Central Bank Survey: rynek walutowy 2025",
           "url": "https://www.bis.org/statistics/rpfx25.htm",
@@ -1325,7 +1350,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "eur-usd",
@@ -1334,20 +1359,20 @@
         "Jedziesz do USA i wymieniasz euro na dolary. Ta liczba mówi, ile dolarów dostaniesz za jedno euro. Gdyby wynosiła 1,10, za 1 euro dostałbyś 1,10 dolara. To najczęściej wymieniana na świecie para walut.",
         "Gdy liczba rośnie, euro jest droższe, a dolar słabszy; gdy spada, dolar jest mocniejszy. Dotyczy to każdego, kto płaci w jednej walucie za coś w drugiej, np. za zakupy w sklepie z USA czy podróż.",
         "Na kurs wpływają m.in. decyzje banków centralnych, czyli instytucji, które ustalają podstawowe oprocentowanie pieniędzy: europejskiego i amerykańskiego. Liczy się też kondycja obu gospodarek. Euro jest największą częścią koszyka walut, z którego liczy się osobna liczba, indeks dolara (pokazuje, czy dolar jest mocny wobec koszyka sześciu walut). Dlatego EUR/USD mocno wpływa na jej ruch, w odwrotną stronę.",
-        "Pamiętaj o kierunku: to dolary za 1 euro, a nie odwrotnie, więc wzrost oznacza umocnienie euro. To kurs rynkowy, a nie kurs z kantoru (z zarobkiem kantoru) ani oficjalny kurs Europejskiego Banku Centralnego."
+        "Pamiętaj o kierunku: to dolary za 1 euro, a nie odwrotnie, więc wzrost oznacza umocnienie euro. To kurs z południa w Nowym Jorku publikowany przez Rezerwę Federalną (H.10), a nie kurs z kantoru (z zarobkiem kantoru) ani kurs referencyjny Europejskiego Banku Centralnego."
       ],
       "technical": [
         {
           "label": "Rodzaj danych",
-          "value": "Kurs walutowy spot (rynkowy) pary EUR/USD: ile USD za 1 EUR."
+          "value": "Kurs walutowy euro w dolarach z zestawienia Rezerwy Federalnej H.10: ile USD za 1 EUR."
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. EBC publikuje osobny kurs referencyjny, ustalany około 14:10 CET i publikowany około 16:00 CET."
+          "value": "Kurs południowy z Nowego Jorku (noon buying rate) ogłaszany przez Fed Nowy Jork i publikowany w zestawieniu Rezerwy Federalnej H.10; jedna wartość dziennie, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol EURUSD=X."
+          "value": "Rezerwa Federalna (H.10) przez FRED, seria DEXUSEU."
         },
         {
           "label": "Jednostka i waluta",
@@ -1355,22 +1380,32 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+          "value": "Data to dzień publikacji kursu w zestawieniu H.10 (strefa America/New_York): kurs z południa czasu nowojorskiego, tylko dni robocze USA — nie zamknięcie doby walutowej."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "2003-12-01. Euro istnieje od 1999 r., ale dostawca ma dane dla tej pary od grudnia 2003 r."
+          "value": "1999-01-04 (początek euro i serii H.10)."
         },
         {
           "label": "Znane zmiany metodologii",
-          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym."
+          "value": "Brak formalnej metodologii rynkowej; kurs jest ustalanym w południe kwotowaniem Fed Nowy Jork."
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Brak notowań 1–25 sierpnia 2008 r. Pojedyncze dni z błędnymi wartościami dostawcy (zbyt wysokie lub niskie maksimum, minimum lub zamknięcie). Znane przypadki jednodniowych skoków w danych: m.in. 8 stycznia, 8 lutego, 8 października i 8 grudnia 2008 r. (np. 1,5571 w sąsiedztwie wartości ok. 1,45–1,47)."
+          "value": "Brak punktów w dni bez publikacji H.10 (weekendy i święta USA). Wartości są kopiowane z FRED bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia (otwarcie, maksimum, minimum): jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "FRED (Federal Reserve Bank of St. Louis) — Dolary USA za 1 euro, seria DEXUSEU",
+          "url": "https://fred.stlouisfed.org/series/DEXUSEU",
+          "accessed": "2026-10-23"
+        },
+        {
+          "title": "Federal Reserve — H.10 Foreign Exchange Rates",
+          "url": "https://www.federalreserve.gov/releases/h10/",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "ECB — kursy referencyjne euro (m.in. EUR/USD)",
           "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html",
@@ -1387,7 +1422,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "eur-pln",
@@ -1396,20 +1431,20 @@
         "Jedziesz na wakacje do Włoch i wymieniasz złotówki na euro. Ta liczba mówi, ile złotych zapłacisz za jedno euro. Gdyby wynosiła 4,30, za 1 euro trzeba by dać 4,30 zł.",
         "Gdy liczba rośnie, euro jest droższe, a złoty słabszy: wakacje w strefie euro i towary stamtąd kosztują więcej. Gdy spada, euro jest tańsze, a złoty mocniejszy. Strefa euro to największy partner handlowy Polski, więc kurs ważny jest dla firm, które coś sprowadzają lub sprzedają za granicę.",
         "Na kurs wpływają m.in. różnice w oprocentowaniu pieniędzy w Polsce i strefie euro, kondycja gospodarki i nastroje wobec naszego regionu. Liczba pokazuje poziom kursu, a nie czyjś zysk.",
-        "Nie mylić z kursem w kantorze: kantor kupuje taniej, a sprzedaje drożej (zarabia na różnicy). Nie jest to też oficjalny kurs średni Narodowego Banku Polskiego, ogłaszany raz dziennie. Wszystkie te kursy są zbliżone, ale się różnią."
+        "Nie mylić z kursem w kantorze: kantor kupuje taniej, a sprzedaje drożej (zarabia na różnicy). Wartość na wykresie to właśnie oficjalny kurs średni Narodowego Banku Polskiego, ogłaszany raz w dniu roboczym, więc w dni wolne od pracy nie ma żadnego punktu."
       ],
       "technical": [
         {
           "label": "Rodzaj danych",
-          "value": "Kurs walutowy spot (rynkowy) pary EUR/PLN: ile PLN za 1 EUR."
+          "value": "Oficjalny kurs średni euro w złotych (tabela A Narodowego Banku Polskiego): ile PLN za 1 EUR."
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. NBP publikuje kurs średni w tabeli A raz w dniu roboczym; EBC publikuje kurs referencyjny około 16:00 CET."
+          "value": "NBP ustala kurs średni w tabeli A na podstawie kwotowań banków; publikuje go raz w dniu roboczym (fixing ok. 11:45 czasu środkowoeuropejskiego). Jedna wartość dziennie, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol EURPLN=X."
+          "value": "Narodowy Bank Polski, API api.nbp.pl, tabela A, waluta EUR (symbol w MarketLab: A/EUR)."
         },
         {
           "label": "Jednostka i waluta",
@@ -1417,22 +1452,27 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów."
+          "value": "Data to dzień publikacji kursu przez NBP (strefa Europe/Warsaw), tylko dni robocze NBP; kurs z fixingu przedpołudniowego, nie z zamknięcia rynku."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "2002-04-01."
+          "value": "2002-01-02 (pierwsza publikacja dostępna w API NBP)."
         },
         {
           "label": "Znane zmiany metodologii",
-          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym. Polska nie należy do strefy euro i zachowuje własną walutę."
+          "value": "Brak formalnej zmiany metodologii w danych MarketLab; polska waluta pozostaje złotym."
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Wyraźne błędy dostawcy w latach 2002–2003, m.in. 5 grudnia 2002 r. (zamknięcie 0,825), 31 grudnia 2002 r. (7,14), 7 stycznia 2003 r. (minimum 0,082) — wartości nierealistyczne, które mogą zniekształcać wykres i skale. Luki w danych: 6 września – 7 października 2002 r., 29 lipca – 6 sierpnia 2003 r. oraz 1–26 sierpnia 2008 r."
+          "value": "Brak punktów w dni bez publikacji NBP (weekendy, święta; najdłuższa przerwa między publikacjami to 6 dni). Wartości są kopiowane z NBP bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia (otwarcie, maksimum, minimum): jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "NBP — API kursów walut, tabela A (EUR)",
+          "url": "https://api.nbp.pl/",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "NBP — kursy średnie walut obcych, tabela A",
           "url": "https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/",
@@ -1449,7 +1489,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "usd-pln",
@@ -1458,20 +1498,20 @@
         "Kupujesz coś w zagranicznym sklepie internetowym, który liczy w dolarach. Ta liczba mówi, ile złotych zapłacisz za jednego dolara. Gdyby wynosiła 4,00, za 1 dolara trzeba by dać 4 zł.",
         "Gdy liczba rośnie, dolar jest droższy, a złoty słabszy; gdy spada, złoty jest mocniejszy. Dolarem rozlicza się na świecie wiele surowców, więc kurs wpływa na ceny paliw i towarów liczonych w dolarach.",
         "Na kurs wpływają m.in. decyzje amerykańskiego i polskiego banku centralnego (instytucji, która ustala podstawowe oprocentowanie pieniędzy w kraju), kondycja obu gospodarek i nastroje na świecie. Zależy on też od kursów EUR/USD i EUR/PLN. Liczba pokazuje poziom kursu, nie radę, co robić.",
-        "Nie mylić z kursem sprzedaży dolara w kantorze (kantor dolicza swój zarobek) ani z oficjalnym kursem średnim Narodowego Banku Polskiego, ogłaszanym raz dziennie i nieco innym niż rynkowy."
+        "Nie mylić z kursem sprzedaży dolara w kantorze (kantor dolicza swój zarobek). Wartość na wykresie to oficjalny kurs średni Narodowego Banku Polskiego, ogłaszany raz w dniu roboczym; w dni wolne od pracy nie ma punktu."
       ],
       "technical": [
         {
           "label": "Rodzaj danych",
-          "value": "Kurs walutowy spot (rynkowy) pary USD/PLN: ile PLN za 1 USD."
+          "value": "Oficjalny kurs średni dolara w złotych (tabela A Narodowego Banku Polskiego): ile PLN za 1 USD."
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Notowanie międzybankowe z rynku OTC; brak ważenia. Kurs rynkowy (orientacyjny, z notowań międzybankowych agregowanych przez Yahoo Finance), nie oficjalny kurs referencyjny ani kurs walutowy kantoru czy banku. NBP publikuje kurs średni w tabeli A raz w dniu roboczym."
+          "value": "NBP ustala kurs średni w tabeli A na podstawie kwotowań banków; publikuje go raz w dniu roboczym (fixing ok. 11:45 czasu środkowoeuropejskiego). Jedna wartość dziennie, bez zakresu dnia (brak otwarcia, maksimum i minimum)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
-          "value": "Yahoo Finance, symbol USDPLN=X."
+          "value": "Narodowy Bank Polski, API api.nbp.pl, tabela A, waluta USD (symbol w MarketLab: A/USD)."
         },
         {
           "label": "Jednostka i waluta",
@@ -1479,22 +1519,27 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek walutowy działa niemal całą dobę od poniedziałku do piątku; w danych MarketLab dni liczone w strefie Europe/London, bez weekendów. W danych występuje jeden dzień weekendowy (ostatnia data szeregu to sobota 10 października 2026 r.)."
+          "value": "Data to dzień publikacji kursu przez NBP (strefa Europe/Warsaw), tylko dni robocze NBP; kurs z fixingu przedpołudniowego, nie z zamknięcia rynku."
         },
         {
           "label": "Początek historii w MarketLab",
-          "value": "2003-12-01."
+          "value": "2002-01-02 (pierwsza publikacja dostępna w API NBP)."
         },
         {
           "label": "Znane zmiany metodologii",
-          "value": "Brak formalnej metodologii; kurs jest kwotowaniem rynkowym."
+          "value": "Brak formalnej zmiany metodologii w danych MarketLab."
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Brak notowań 1–25 sierpnia 2008 r. (w tym okresie kurs zmienił się w danych z ok. 2,06 do ok. 2,27). Okresowo pojedyncze dni z błędnymi wartościami dostawcy."
+          "value": "Brak punktów w dni bez publikacji NBP (weekendy, święta). Wartości są kopiowane z NBP bez filtrów, poprawek i uzupełniania luk. Brak zakresu dnia (otwarcie, maksimum, minimum): jest jedna wartość dziennie, więc na wykresie jest tylko linia."
         }
       ],
       "sources": [
+        {
+          "title": "NBP — API kursów walut, tabela A (USD)",
+          "url": "https://api.nbp.pl/",
+          "accessed": "2026-10-23"
+        },
         {
           "title": "NBP — kursy średnie walut obcych, tabela A",
           "url": "https://nbp.pl/en/statistic-and-financial-reporting/rates/table-a/",
@@ -1511,7 +1556,7 @@
           "accessed": "2026-10-10"
         }
       ],
-      "reviewed_at": "2026-10-10"
+      "reviewed_at": "2026-10-23"
     },
     {
       "instrument_id": "us-tbill-13w",
@@ -1540,7 +1585,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Rynek pozagiełdowy bonów skarbowych USA, notowania w dni robocze USA. W MarketLab dni kalendarzowe UTC, także soboty, niedziele i święta."
+          "value": "Rynek pozagiełdowy bonów skarbowych USA, notowania w dni robocze USA. W MarketLab dni oznaczone przez źródło jako przeniesione (weekendy, święta) są pominięte; aplikacja wypełnia luki ostatnią znaną wartością tylko do wyświetlenia."
         },
         {
           "label": "Początek historii w MarketLab",
@@ -1552,7 +1597,7 @@
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Dzień bez notowania (weekend, święto) powtarza ostatnie notowanie, a MarketLab oznacza go dopiskiem „brak notowania”; dni „ND” (brak notowania) w publikacji H.15 są pomijane i też powtarzają poprzednie. Wartości bywają ujemne (najniższa −0,05 w dniu 2020-03-26). Ostatni dzień szeregu to ostatni dzień z notowaniem opublikowanym przez źródło; kolejne dni pojawiają się po jego publikacji. Status licencji danych nie jest potwierdzony."
+          "value": "Dni oznaczone przez źródło jako przeniesione (weekendy, święta, dni „ND” w publikacji H.15) nie trafiają do danych MarketLab; dni bieżącego, niezamkniętego miesiąca nie mają jeszcze oznaczenia pochodzenia i mogą zawierać wartości przeniesione. Aplikacja wypełnia luki ostatnią znaną wartością tylko do wyświetlenia i oznacza je dopiskiem „brak notowania”. Wartości bywają ujemne (najniższa −0,05 w dniu 2020-03-26). Ostatni dzień szeregu to ostatni dzień z notowaniem opublikowanym przez źródło; kolejne dni pojawiają się po jego publikacji. Status licencji danych nie jest potwierdzony."
         }
       ],
       "sources": [
@@ -1594,7 +1639,7 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Indeks cen ważonych strukturą wydatków miejskich konsumentów USA; bazą jest średnia z lat 1982–1984 równa 100. Wartość niewyrównana (bez usuwania wahań sezonowych), więc nadaje się do porównań poziomów cen i przeliczeń na ceny realne. W MarketLab każdy dzień kalendarzowy ma wartość indeksu swojego miesiąca (nie jest to interpolacja i nie ma dziennej zmienności)."
+          "value": "Indeks cen ważonych strukturą wydatków miejskich konsumentów USA; bazą jest średnia z lat 1982–1984 równa 100. Wartość niewyrównana (bez usuwania wahań sezonowych), więc nadaje się do porównań poziomów cen i przeliczeń na ceny realne. W MarketLab jedna obserwacja na opublikowany miesiąc (data pierwszego dnia miesiąca); to nie interpolacja i nie ma dziennej zmienności."
         },
         {
           "label": "Źródło i symbol w MarketLab",
@@ -1606,7 +1651,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab dni kalendarzowe UTC; wszystkie dni miesiąca mają tę samą wartość."
+          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab jedna obserwacja na miesiąc z datą pierwszego dnia miesiąca; aplikacja wypełnia dni między obserwacjami wyłącznie do wyświetlenia (z dopiskiem „wartość miesięczna”)."
         },
         {
           "label": "Początek historii w MarketLab",
@@ -1618,7 +1663,7 @@
         },
         {
           "label": "Luki i ograniczenia danych",
-          "value": "Miesiąc pojawia się dopiero po jego publikacji przez BLS: dni po ostatnim opublikowanym miesiącu nie mają danych (ostatni opublikowany miesiąc podaje dokument dostępności serii w API). Październik 2025 r. nie został opublikowany (przerwa w finansowaniu rządu USA), więc w szeregu powtarza wartość z września 2025 r. i jest oznaczony dopiskiem „brak notowania”. Status licencji danych nie jest potwierdzony; publikacje BLS są własnością publiczną z prośbą o wskazanie źródła."
+          "value": "Miesiąc pojawia się dopiero po jego publikacji przez BLS: dni po ostatnim opublikowanym miesiącu nie mają danych (ostatni opublikowany miesiąc podaje dokument dostępności serii w API). Październik 2025 r. nie został opublikowany (przerwa w finansowaniu rządu USA), więc w szeregu nie ma obserwacji tego miesiąca; dni notowań października 2025 r. przeliczane są wskaźnikiem z września, a na wykresie dni te są wypełnione i oznaczone dopiskiem „wartość miesięczna”. Status licencji danych nie jest potwierdzony; publikacje BLS są własnością publiczną z prośbą o wskazanie źródła."
         }
       ],
       "sources": [
@@ -1660,7 +1705,7 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "I(grudzień 1981) = 100; I(t) = I(t−1) · m/m(t) / 100, z zaokrągleniem do tysięcznych w każdym kroku. Wskaźniki GUS opierają się na koszyku, którego skład i wagi GUS zmienia co roku (zwykle w styczniu), dlatego indeks łańcuchowy nie odtwarza dokładnie oficjalnego wskaźnika rok do roku (średnia różnica ok. 0,13 pkt od 2000 r., największa 0,79 pkt w styczniu 2023 r.). W MarketLab każdy dzień kalendarzowy ma wartość indeksu swojego miesiąca."
+          "value": "I(grudzień 1981) = 100; I(t) = I(t−1) · m/m(t) / 100, z zaokrągleniem do tysięcznych w każdym kroku. Wskaźniki GUS opierają się na koszyku, którego skład i wagi GUS zmienia co roku (zwykle w styczniu), dlatego indeks łańcuchowy nie odtwarza dokładnie oficjalnego wskaźnika rok do roku (średnia różnica ok. 0,13 pkt od 2000 r., największa 0,79 pkt w styczniu 2023 r.). W MarketLab jedna obserwacja na opublikowany miesiąc (data pierwszego dnia miesiąca)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
@@ -1672,7 +1717,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab dni kalendarzowe UTC; wszystkie dni miesiąca mają tę samą wartość."
+          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab jedna obserwacja na miesiąc z datą pierwszego dnia miesiąca; aplikacja wypełnia dni między obserwacjami wyłącznie do wyświetlenia (z dopiskiem „wartość miesięczna”)."
         },
         {
           "label": "Początek historii w MarketLab",
@@ -1721,7 +1766,7 @@
         },
         {
           "label": "Sposób liczenia / ważenia",
-          "value": "Wartość GUS „analogiczny miesiąc poprzedniego roku = 100” pomniejszona o 100, jedno miejsce po przecinku; np. 103,4 daje 3,4. Wartości ujemne oznaczają deflację. Koszyk i wagi ustala GUS i zmienia je co roku. W MarketLab każdy dzień kalendarzowy ma wartość swojego miesiąca."
+          "value": "Wartość GUS „analogiczny miesiąc poprzedniego roku = 100” pomniejszona o 100, jedno miejsce po przecinku; np. 103,4 daje 3,4. Wartości ujemne oznaczają deflację. Koszyk i wagi ustala GUS i zmienia je co roku. W MarketLab jedna obserwacja na opublikowany miesiąc (data pierwszego dnia miesiąca)."
         },
         {
           "label": "Źródło i symbol w MarketLab",
@@ -1733,7 +1778,7 @@
         },
         {
           "label": "Strefa i godziny notowań",
-          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab dni kalendarzowe UTC; wszystkie dni miesiąca mają tę samą wartość."
+          "value": "Nie dotyczy: dane miesięczne bez godziny. W MarketLab jedna obserwacja na miesiąc z datą pierwszego dnia miesiąca; aplikacja wypełnia dni między obserwacjami wyłącznie do wyświetlenia (z dopiskiem „wartość miesięczna”)."
         },
         {
           "label": "Początek historii w MarketLab",

@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^GDAXI",
     "description": "DAX (40 największych firm Niemiec, liczony razem z wypłatami zysku dla właścicieli akcji)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -68717,6 +68717,20 @@
       "high": 25706.19,
       "low": 25249.96,
       "close": 25645.04
+    },
+    {
+      "date": "2026-10-22",
+      "open": 25497.94,
+      "high": 25563.13,
+      "low": 25318.18,
+      "close": 25371.75
+    },
+    {
+      "date": "2026-10-23",
+      "open": 25325.58,
+      "high": 25329.32,
+      "low": 25200.77,
+      "close": 25202.83
     }
   ]
 }

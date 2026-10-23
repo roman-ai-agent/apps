@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^RUT",
     "description": "Russell 2000 (około 2000 małych firm USA)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -68986,10 +68986,10 @@
     },
     {
       "date": "2026-10-22",
-      "open": 2770.949,
-      "high": 2784.921,
-      "low": 2762.577,
-      "close": 2784.026
+      "open": 2770.95,
+      "high": 2784.92,
+      "low": 2762.58,
+      "close": 2784.03
     }
   ]
 }

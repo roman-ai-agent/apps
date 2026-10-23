@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "^HSI",
     "description": "Hang Seng (95 największych firm z giełdy w Hongkongu)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -68773,6 +68773,20 @@
       "high": 24139.11,
       "low": 23620.1,
       "close": 23651.87
+    },
+    {
+      "date": "2026-10-22",
+      "open": 23513.79,
+      "high": 23513.79,
+      "low": 22879.11,
+      "close": 22934.68
+    },
+    {
+      "date": "2026-10-23",
+      "open": 23027.98,
+      "high": 23231.63,
+      "low": 22803.77,
+      "close": 23093.37
     }
   ]
 }

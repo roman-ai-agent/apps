@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "HG=F",
     "description": "Miedź — kontrakt terminowy (cena miedzi ustalona dziś, a dostawa później, funt)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -45970,10 +45970,17 @@
     },
     {
       "date": "2026-10-22",
+      "open": 6.3755,
+      "high": 6.39,
+      "low": 6.3595,
+      "close": 6.3625
+    },
+    {
+      "date": "2026-10-23",
       "open": 6.398,
-      "high": 6.399,
-      "low": 6.3885,
-      "close": 6.398
+      "high": 6.4775,
+      "low": 6.3715,
+      "close": 6.4585
     }
   ]
 }

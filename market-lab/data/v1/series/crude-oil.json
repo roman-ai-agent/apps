@@ -10,7 +10,7 @@
     "provider": "yahoo-finance",
     "symbol": "CL=F",
     "description": "Ropa naftowa WTI — kontrakt terminowy (cena ropy ustalona dziś, a dostawa później, baryłka)",
-    "retrieved_at": "2026-10-22T22:16:50.182Z"
+    "retrieved_at": "2026-10-23T09:20:42.635Z"
   },
   "bars": [
     {
@@ -45976,11 +45976,25 @@
       "close": 101.79
     },
     {
+      "date": "2026-10-21",
+      "open": 98.19,
+      "high": 100.4,
+      "low": 96.26,
+      "close": 97.15
+    },
+    {
       "date": "2026-10-22",
+      "open": 97.78,
+      "high": 100.17,
+      "low": 97.72,
+      "close": 99.47
+    },
+    {
+      "date": "2026-10-23",
       "open": 99.1,
-      "high": 99.23,
-      "low": 99.03,
-      "close": 99.11
+      "high": 100.98,
+      "low": 98.84,
+      "close": 100.33
     }
   ]
 }
