@@ -1,6 +1,20 @@
-# Bloomgrid r1 — specyfikacja responsywności
+# Bloomgrid r2 — specyfikacja responsywności
 
-Targety: `mac-wide` 1440×900, `iphone-standard` 393×852, `android-standard` 412×915, `mobile-compact` 360×800, `mobile-large` 440×956. Telefony tylko w pionie. `element.product-work-surface` obejmuje cały ekran targetu. Bez przewijania na żadnym ekranie gry.
+Targety: `mac-wide` 1440×900, `iphone-standard` 393×852, `android-standard` 412×915, `mobile-compact` 360×800, `mobile-large` 440×956, `tablet-narrow` 820×1180, `phone-landscape` 852×393. `element.product-work-surface` obejmuje cały ekran targetu.
+
+## Reguła układu dla dowolnej szerokości okna (r2, Q65 wariant A)
+
+O układzie decyduje wyłącznie szerokość okna:
+
+| Szerokość okna | Układ |
+|---|---|
+| < 1024 px | Układ telefonu (sekcje „telefony” niżej) w kolumnie o szerokości min(okno, 440 px), wyśrodkowanej poziomo. Tło (niebo i pas ogrodu) na całą szerokość okna. Geometria planszy i trójki liczona z szerokości kolumny, więc od 440 px w górę jest taka jak na `mobile-large`. |
+| ≥ 1024 px | Układ `mac-wide` (sekcje „mac-wide” niżej), treść do 1040 px wyśrodkowana. |
+
+- Wysokość nie zmienia układu. Ekran w układzie telefonu ma co najmniej 800 px wysokości (wysokość `mobile-compact`). Niższe okno, np. telefon w poziomie, przewija stronę w pionie. Przewija się sam ekran, a nakładki (zasłona dialogu, panelu końca i błędu programu) zostają nad oknem. Karta na zasłonie przewija się, gdy jest wyższa niż okno. Poziomego przewijania nie ma.
+- Wyższe okno (np. `tablet-narrow`) daje układ telefonu z większym wolnym miejscem: grupa gry wyśrodkowana pionowo, trójka i menu przy dolnej krawędzi.
+- Przeciągany klocek przewija się razem z ekranem. Podczas przeciągania strona się nie przewija (`touch-action: none` na planszy i klockach).
+- Zmierzone (px od góry, `game.classic-start`): `tablet-narrow` — plansza 408–815, trójka 1020–1146; `phone-landscape` — plansza 219–626, trójka 642–768 (wysokość ekranu 800, okno 393, przewijanie do 407 px). Pozostałe targety bez zmian względem r1.
 
 ## Marginesy treści
 

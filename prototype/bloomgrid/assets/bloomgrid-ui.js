@@ -63,14 +63,19 @@
   };
 
   /* Geometria według targetu (responsive-spec.md). */
+  /* Reguła układu (r2, Q65): szerokość okna < 1024 px — układ telefonu w kolumnie do 440 px, wyśrodkowanej;
+     od 1024 px — układ mac-wide. Wysokość nie zmienia układu: przy niskim oknie (telefon w poziomie) strona się przewija. */
+  BG.WIDE_MIN = 1024;
+  BG.PHONE_COL_MAX = 440;
   BG.geometry = function (tg) {
-    var wide = tg.width >= 1000, pad = wide ? 8 : 6, gap = wide ? 4 : 3;
-    var contentW = wide ? 1040 : tg.width - 32;
+    var wide = tg.width >= BG.WIDE_MIN, pad = wide ? 8 : 6, gap = wide ? 4 : 3;
+    var colW = wide ? 1040 : Math.min(tg.width, BG.PHONE_COL_MAX);
+    var contentW = wide ? 1040 : colW - 32;
     var cell = wide ? 64 : Math.floor((Math.min(contentW, 420) - 9 * gap - 2 * pad) / 8);
     var boardW = 8 * cell + 9 * gap + 2 * pad;
     var trayW = wide ? 380 : contentW, trayGap = 12, slotW = (trayW - 2 * trayGap) / 3, pg = 2;
     var pc = Math.floor((slotW - 16 - 4 * pg) / 5);
-    return { wide: wide, pad: pad, gap: gap, cell: cell, boardW: boardW, pc: pc, pg: pg, slotH: 5 * pc + 4 * pg + 18, trayGap: trayGap, lift: Math.max(44, cell + 8) };
+    return { wide: wide, colW: colW, pad: pad, gap: gap, cell: cell, boardW: boardW, pc: pc, pg: pg, slotH: 5 * pc + 4 * pg + 18, trayGap: trayGap, lift: Math.max(44, cell + 8) };
   };
 
   /* component.board-cell */

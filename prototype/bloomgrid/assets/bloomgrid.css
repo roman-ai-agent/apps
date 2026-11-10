@@ -26,8 +26,11 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 /* Powierzchnia robocza = cały ekran targetu */
 .bg-surface{position:relative;overflow:hidden;font-family:var(--font);color:var(--ink);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
   background:url(garden-border.svg) repeat-x left bottom / 480px 160px, linear-gradient(180deg,var(--sky-1),var(--sky-2) 70%);}
-.bg-screen{position:absolute;inset:0;display:flex;flex-direction:column}
-.bg-phone .bg-screen{padding:59px 16px 34px}
+/* Reguła układu (r2): przewijany obszar na całą powierzchnię; ekran telefonu to kolumna do 440 px wyśrodkowana,
+   o wysokości co najmniej 800 px (niższe okno, np. telefon w poziomie, przewija stronę). Tło zostaje na całej szerokości. */
+.bg-scroll{position:absolute;inset:0;overflow-x:hidden;overflow-y:auto}
+.bg-screen{position:relative;display:flex;flex-direction:column;width:100%;min-height:100%;margin:0 auto}
+.bg-phone .bg-screen{max-width:440px;min-height:max(100%,800px);padding:59px 16px 34px}
 .bg-wide .bg-screen{padding:32px 40px}
 
 /* component.board */
@@ -140,7 +143,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-wordmark-tag{font-weight:600;font-size:15px;color:var(--ink-2)}
 
 /* component.dialog i component.game-over-panel */
-.bg-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(28,22,14,.46)}
+.bg-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:safe center;justify-content:center;padding:16px;overflow-y:auto;background:rgba(28,22,14,.46)}
 .bg-card{width:min(100%,380px);padding:24px 22px 22px;border-radius:24px;background:var(--paper);box-shadow:0 18px 50px rgba(28,20,10,.35);display:flex;flex-direction:column;gap:14px}
 .bg-card h2{margin:0;font-size:23px;font-weight:800;line-height:1.2}
 .bg-card p{margin:0;font-size:16px;line-height:1.4;color:var(--ink-2)}
@@ -168,7 +171,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-btn[data-variant=light]{background:#fff;color:#5E1E10}
 .bg-btn[data-variant=light]:hover,.bg-btn[data-variant=light][data-demo=hover]{background:#FFE9E0}
 .bg-crash{position:absolute;inset:0;z-index:45;background:rgba(28,22,14,.42)}
-.bg-phone .bg-crash .bg-alert{position:absolute;left:16px;right:16px;top:59px}
+.bg-phone .bg-crash .bg-alert{position:absolute;left:50%;top:59px;width:calc(min(100%,440px) - 32px);transform:translateX(-50%)}
 .bg-wide .bg-crash .bg-alert{position:absolute;left:50%;top:32px;width:560px;transform:translateX(-50%)}
 .bg-phone .bg-save-wrap{width:100%;margin-top:12px}
 .bg-wide .bg-save-wrap{width:100%}

@@ -94,7 +94,10 @@
     },
     say: function (m) { if (mode === 'user_preview') say(m); }
   };
-  var ctx = { fx: fx, sc: sc, S: fx.strings, loc: fx.locale, geo: geo, nav: nav, surface: surface };
+  /* Ekran leży w przewijanym obszarze (r2: niskie okno przewija stronę); nakładki i przeciągany klocek leżą na powierzchni. */
+  var scroller = h('div', { 'class': 'bg-scroll' });
+  surface.append(scroller);
+  var ctx = { fx: fx, sc: sc, S: fx.strings, loc: fx.locale, geo: geo, nav: nav, surface: surface, root: scroller };
   var view = sc.screen === 'home' ? renderHome(surface, ctx) : renderGame(surface, ctx);
 
   if (mode === 'capture') {
@@ -153,7 +156,7 @@
     actions.append(BG.menuButton({ elementId: 'element.home.daily', variant: 'secondary', icon: 'calendar', label: S.daily, meta: metaDaily,
       interactionId: 'interaction.home.daily', action: 'tap', expected: 'navigate game.daily-start: od pierwszej trójki ciągu bieżącej daty (R-3.2, R-3.3)', onClick: function () { ctx.nav.go('game.daily-start'); } }));
     screen.append(wide ? h('div', { 'class': 'bg-home-mid' }, actions) : actions);
-    surface.append(screen);
+    ctx.root.append(screen);
     return null;
   }
 
@@ -208,7 +211,7 @@
         saveWrap, h('div', { 'class': 'bg-tray-wrap' }, tray.el));
     }
     screen.append(main);
-    surface.append(screen);
+    ctx.root.append(screen);
 
     /* Stan gry z fixture; klatka ruchu (move) liczona regułami z położenia przed ruchem. */
     var state = { board: BGRules.parseBoard(sc.board), tray: sc.tray.slice(), score: sc.score, combo: sc.combo, dry: sc.dry };
@@ -221,7 +224,8 @@
     }
     if (sc.drag) view.drag = sc.drag;
     var game = BG.play({
-      geo: geo, S: S, loc: loc, state: state, seed: sc.seed, surface: surface, interactive: true, view: view,
+      /* Warstwą przeciąganego klocka jest ekran (przewija się razem z planszą), nie cała powierzchnia. */
+      geo: geo, S: S, loc: loc, state: state, seed: sc.seed, surface: screen, interactive: true, view: view,
       board: board, tray: tray, score: score, strip: strip,
       ids: { piece: 'element.game.piece-', drag: 'interaction.game.drag-piece-', combo: 'element.game.combo', points: 'element.game.move-points' },
       blocked: function () { return !ctx.nav.live || !!overlay || !!crash; },

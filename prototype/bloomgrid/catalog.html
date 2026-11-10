@@ -405,7 +405,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     });
     root.append(h('section', { 'class': 'cat-sec', id: 'responsive' },
       h('h2', {}, 'responsive'), h('h3', {}, 'Responsywność ekranu gry'),
-      h('p', { 'class': 'cat-sem', html: 'Powierzchnia robocza = cały ekran targetu. Szczegóły: <code>responsive-spec.md</code>. Telefony tylko w pionie; bez przewijania.' }),
+      h('p', { 'class': 'cat-sem', html: 'Powierzchnia robocza = cały ekran targetu. Reguła układu (r2, Q65): okno węższe niż 1024 px — układ telefonu w kolumnie do 440 px, wyśrodkowanej, tło ogrodu na całą szerokość; od 1024 px — układ mac-wide. Ekran telefonu ma co najmniej 800 px wysokości, więc niższe okno (telefon w poziomie) przewija stronę. Szczegóły: <code>responsive-spec.md</code>.' }),
       h('div', { html: table(['target', 'ekran', 'pole planszy', 'plansza', 'pole w trójce', 'slot', 'odstęp nad palcem'], rows) })));
 
     /* Plan stanów */

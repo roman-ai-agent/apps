@@ -1,13 +1,15 @@
 {
   "schema_version": 3,
-  "revision_id": "r1",
+  "revision_id": "r2",
   "id_migrations": [],
   "targets": [
     { "target_id": "mac-wide", "width": 1440, "height": 900 },
     { "target_id": "iphone-standard", "width": 393, "height": 852 },
     { "target_id": "android-standard", "width": 412, "height": 915 },
     { "target_id": "mobile-compact", "width": 360, "height": 800 },
-    { "target_id": "mobile-large", "width": 440, "height": 956 }
+    { "target_id": "mobile-large", "width": 440, "height": 956 },
+    { "target_id": "tablet-narrow", "width": 820, "height": 1180 },
+    { "target_id": "phone-landscape", "width": 852, "height": 393 }
   ],
   "states": [
     { "state_id": "home.first-run", "fixture_id": "default" },
