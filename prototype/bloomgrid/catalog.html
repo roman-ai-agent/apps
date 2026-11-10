@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Bloomgrid — katalog komponentów r1</title>
+<link rel="stylesheet" href="assets/bloomgrid.css">
+<script src="assets/bloomgrid-rules.js"></script>
+<script src="assets/bloomgrid-ui.js"></script>
+<style>
+body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--ink)}
+.bg-cat{max-width:1240px;margin:0 auto;padding:32px 24px 80px;background:var(--paper)}
+.bg-cat.is-framed{box-shadow:0 0 0 1px var(--line),0 8px 30px rgba(40,34,20,.12)}
+.bg-cat.is-narrow{padding:24px 8px 48px}
+.bg-cat.is-narrow .cat-grid{grid-template-columns:minmax(0,1fr)}
+.bg-cat.is-narrow .cat-spm-box{padding:14px 16px}
+.cat-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:2px solid var(--line)}
+.cat-head h1{margin:0;font-size:30px;line-height:1.15}
+.cat-head p{margin:6px 0 0;color:var(--ink-2);font-size:15px;max-width:66ch;text-wrap:pretty}
+.cat-tools{display:flex;gap:6px;align-items:center;font-size:14px}
+.cat-tools button{font:inherit;font-weight:700;padding:6px 14px;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.cat-tools button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.cat-toc{display:flex;flex-wrap:wrap;gap:6px 14px;margin:16px 0 8px;font:13px var(--mono)}
+.cat-toc a{color:var(--green-d)}
+.cat-sec{padding:36px 0;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+.cat-sec > h2{margin:0;font:700 13px var(--mono);color:var(--green);letter-spacing:.02em}
+.cat-sec > h3{margin:4px 0 6px;font-size:24px;line-height:1.2}
+.cat-sem{margin:0 0 20px;color:var(--ink-2);font-size:16px;max-width:72ch;text-wrap:pretty}
+.cat-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;align-items:start}
+@media (max-width:900px){.cat-grid{grid-template-columns:minmax(0,1fr)}}
+.cat-spec{margin:0;display:grid;gap:14px;font-size:14.5px;line-height:1.45}
+.cat-spec dt{font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.cat-spec dd{margin:2px 0 0;text-wrap:pretty}
+.cat-spec code,.cat-sem code,.cat-table code{font:12.5px var(--mono);background:#F0EBDC;padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+.cat-spec ul{margin:2px 0 0;padding-left:18px}
+.cat-specimens{display:flex;flex-wrap:wrap;gap:18px;min-width:0}
+.cat-spm{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}
+.cat-spm-box{position:relative;max-width:100%;min-width:0;overflow-x:auto;display:flex;align-items:center;justify-content:center;padding:22px;border-radius:14px;background:linear-gradient(180deg,var(--sky-1),var(--sky-2));min-height:96px}
+.cat-spm-label{font:11.5px var(--mono);color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
+.cat-spm-label b{font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+.cat-wide{flex-basis:100%;width:100%}.cat-wide .cat-spm-box{width:100%}
+.cat-table{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.4}
+.cat-table th,.cat-table td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.cat-table th{font:700 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2)}
+.cat-table-wrap{overflow-x:auto;max-width:100%}
+.cat-swatch{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;text-align:center}
+.cat-swatch-cell{--cell:56px}
+.cat-cellrow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.cat-shapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px;width:100%}
+.cat-shape{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:92px;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.6);font:10.5px var(--mono);color:var(--ink-2)}
+.cat-dragbox{position:relative}
+.cat-finger{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(34,48,30,.18);border:2px solid rgba(34,48,30,.45);transform:translate(-50%,-50%);pointer-events:none}
+.cat-finger-label{position:absolute;transform:translate(-100%,0);font:11px var(--mono);color:var(--ink-2);white-space:nowrap}
+.cat-demo{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px;border-radius:18px;background:linear-gradient(180deg,var(--sky-1),var(--sky-2))}
+.cat-demo .bg-strip{width:var(--board-w)}
+.cat-demo .bg-tray{width:min(100%,var(--tray-w))}
+.cat-stack{display:flex;flex-direction:column;gap:12px;width:min(100%,361px)}
+.cat-cardbox{position:relative;width:100%;display:flex;justify-content:center}
+.cat-note{font-size:13.5px;color:var(--ink-2);margin:8px 0 0}
+</style>
+</head>
+<body class="cat-body">
+<div class="bg-cat" id="cat"></div>
+<script>
+(async function () {
+  'use strict';
+  var h = BG.h, root = document.getElementById('cat');
+  var fixtures, manifest;
+  try { fixtures = await (await fetch('assets/fixtures.json', { cache: 'no-store' })).json(); manifest = await (await fetch('prototype-manifest.json', { cache: 'no-store' })).json(); }
+  catch (e) { root.append(h('div', { 'class': 'bg-error', role: 'alert' }, 'Nie można wczytać assets/fixtures.json lub prototype-manifest.json — uruchom przez lokalny serwer HTTP (README.md).')); return; }
+  var lang = 'default';
+  var cq = new URLSearchParams(location.search);
+  var ctg = manifest.targets.filter(function (t) { return t.target_id === cq.get('target'); })[0] || manifest.targets.filter(function (t) { return t.target_id === 'mac-wide'; })[0];
+  var cUrl = function (t) { var u = new URLSearchParams(); u.set('target', t); return '?' + u.toString(); };
+  if (cq.get('target') !== ctg.target_id) history.replaceState(null, '', cUrl(ctg.target_id));
+  root.style.maxWidth = Math.min(1240, ctg.width) + 'px';
+  if (ctg.width < 1240) root.classList.add('is-framed');
+  if (ctg.width < 900) root.classList.add('is-narrow');
+  var cbar = BG.previewToolbar({
+    catalogHref: cUrl(ctg.target_id), catalogCurrent: true,
+    backHref: 'index.html?mode=user_preview&state=' + encodeURIComponent(manifest.states[0].state_id) + '&target=' + encodeURIComponent(ctg.target_id),
+    targetId: ctg.target_id, noteStateId: 'catalog', targets: manifest.targets,
+    onTarget: function (t) { location.search = cUrl(t); }
+  });
+  document.body.append(cbar);
+  var cfit = function () { document.body.style.paddingBottom = cbar.offsetHeight + 'px'; };
+  cfit(); window.addEventListener('resize', cfit);
+  if (window.ResizeObserver) new ResizeObserver(cfit).observe(cbar);
+  await BG.preload();
+
+  function spm(label, note, node, opts) {
+    opts = opts || {};
+    return h('div', { 'class': 'cat-spm' + (opts.wide ? ' cat-wide' : ''), 'data-catalog-variant': label },
+      h('div', { 'class': 'cat-spm-box', style: opts.boxStyle || null }, node),
+      h('div', { 'class': 'cat-spm-label' }, h('b', {}, label), note || null));
+  }
+  function spec(rows) { return h('dl', { 'class': 'cat-spec' }, rows.map(function (r) { return [h('dt', { html: r[0] }), h('dd', { html: r[1] })]; })); }
+  function table(head, rows) {
+    return '<div class="cat-table-wrap"><table class="cat-table"><thead><tr>' + head.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      rows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>';
+  }
+  function section(id, title, sem, specRows, specimens) {
+    return h('section', { 'class': 'cat-sec', id: id, 'data-catalog-component': id },
+      h('h2', {}, id), h('h3', {}, title), h('p', { 'class': 'cat-sem', html: sem }),
+      h('div', { 'class': 'cat-grid' }, spec(specRows), h('div', { 'class': 'cat-specimens' }, specimens)));
+  }
+  function geoCell(cell) { var gap = 3, pad = 6; return { cell: cell, gap: gap, pad: pad, boardW: 8 * cell + 9 * gap + 2 * pad }; }
+  function cellBox(o, size) { var w = h('div', { style: { '--cell': (size || 52) + 'px', position: 'relative' } }, BG.cell(o)); return w; }
+  var narrow = ctg.width < 900;
+  var specCell = narrow ? 26 : 30;
+
+  function render() {
+    var fx = fixtures.fixtures[lang], S = fx.strings, loc = fx.locale, C = fx.catalog;
+    document.documentElement.lang = loc;
+    root.replaceChildren();
+    root.append(h('header', { 'class': 'cat-head' },
+      h('div', {}, h('h1', {}, 'Bloomgrid — katalog komponentów'),
+        h('p', {}, 'Rewizja r1 (katalog zaakceptowany w r1-katalog; zmiany: plakietka „×2” poza polami — Q59, klucze kolorów, nowy component.alert). Każdy komponent pokazuje przeznaczenie, warianty, konfiguracje, stany interakcji, rolę i nazwę dostępną, kontrakt akcji (action → expected_effect) w każdym kontekście oraz różnice responsywne. Okazy renderuje ten sam runtime co index.html (assets/bloomgrid-ui.js, reguły w assets/bloomgrid-rules.js). Teksty z fixture „' + lang + '”.')),
+      h('div', { 'class': 'cat-tools', 'data-prototype-tool': 'catalog-fixture' }, 'fixture:',
+        ['default', 'english'].map(function (f) { return h('button', { type: 'button', 'aria-pressed': f === lang ? 'true' : 'false', onclick: function () { lang = f; render(); } }, f); }))));
+    var ids = ['foundation.palette', 'component.board-cell', 'component.board', 'component.piece', 'component.piece-tray', 'component.score-display', 'component.combo-badge', 'component.move-points', 'component.mode-label', 'component.icon-button', 'component.menu-button', 'component.button', 'component.wordmark', 'component.dialog', 'component.game-over-panel', 'component.alert', 'responsive', 'states-plan'];
+    root.append(h('nav', { 'class': 'cat-toc' }, ids.map(function (i) { return h('a', { href: '#' + i }, i); })));
+
+    /* Podstawy: kolory i symbole */
+    var colorRows = [['poppy', '#E8692A', '4,03'], ['sun', '#F2D63C', '8,99'], ['leaf', '#179870', '3,58'], ['drop', '#5DB8EC', '5,93'], ['berry', '#D07FB8', '4,61']];
+    root.append(section('foundation.palette', 'Kolory klocków, symbole ogrodu i oprawa',
+      'Pięć kolorów klocków (R-1.3) z bazy palety Okabe-Ito, każdy z własnym symbolem ogrodu na każdym polu, na planszy i w trójce (R-1.9, Q27). Symbol, a nie barwa, jest pierwszym rozróżnieniem: kolory dają się odróżnić bez widzenia barw (WCAG 1.4.1). Jeden jasny wygląd niezależnie od trybu ciemnego systemu (Q32).',
+      [['Kolory i symbole', table(['color', 'symbol', 'hex', 'kontrast z pustym polem'], colorRows.map(function (r) { return ['<code>' + r[0] + '</code>', S.colors[r[0]], '<code>' + r[1] + '</code>', r[2] + ':1']; }))],
+       ['Kontrola dostępności', 'Puste pole <code>#3F2D21</code>; każde wypełnione pole ma kontrast ≥ 3:1 (WCAG 1.4.11). Symulacja Machado 2009 (pełne nasilenie): najmniejsza różnica par ΔE76 — protanopia 15,8 (kropla–jagoda), deuteranopia 24,3, tritanopia 18,9 (liść–kropla). Każda para różni się kształtem symbolu: kwiat (5 płatków), słońce (promienie), liść (ukośny, z nerwem), kropla (łza), jagody (3 kulki z szypułką).'],
+       ['Oprawa', 'Plansza to drewniana grządka z ciemną ziemią (<code>#2C2017</code> między polami). Tło: ciepłe niebo i pas ogrodu przy dolnej krawędzi (<code>assets/garden-border.svg</code>, powtarzany poziomo). Akcent interfejsu: zieleń <code>#2E6B3A</code> (biały tekst 6,6:1). Czcionka systemowa zaokrąglona (<code>ui-rounded</code>, fallback system-ui), cyfry o stałej szerokości.'],
+       ['Ruch', 'Animacje tylko po interakcji: czyszczenie 320 ms, punkty ruchu 1,4 s, podbicie serii 280 ms. Przy <code>prefers-reduced-motion: reduce</code> brak animacji; zmiany stanu natychmiastowe, punkty ruchu nadal widoczne 1,4 s. W <code>mode=capture</code> stany pokazują jedną stałą klatkę.']],
+      [spm('5 kolorów', 'pole 56 px', h('div', { 'class': 'cat-cellrow' }, BGRules.COLORS.map(function (c) {
+        return h('div', { 'class': 'cat-swatch' }, cellBox({ elementId: 'catalog.palette.' + c, color: c }, 56), h('span', {}, h('code', {}, c)), h('span', {}, S.colors[c]));
+      }))),
+       spm('skala szarości', 'kontrola bez barw', h('div', { 'class': 'cat-cellrow', style: { filter: 'grayscale(1)' } }, BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.palette.gray.' + c, color: c }, 44); }))),
+       spm('pole 15 px', 'najmniejszy rozmiar (trójka, mobile-compact)', h('div', { 'class': 'cat-cellrow' }, BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.palette.small.' + c, color: c }, 15); })))]));
+
+    /* component.board-cell */
+    var pb = { 'class': 'cat-cellrow' };
+    root.append(section('component.board-cell', 'Pole planszy',
+      'Jedno z 64 pól planszy; ta sama oprawa rysuje pola klocka. Pole samo nie ma akcji — gest przyjmuje <code>component.piece</code>. Podświetlenia opisują skutek położenia trzymanego klocka (R-1.4).',
+      [['Warianty', '<ul><li><code>empty</code> — puste: ciemna ziemia, cień wewnętrzny</li><li><code>filled</code> × 5 kolorów (<code>data-color</code>) — kolor, symbol, jasna krawędź u góry</li></ul>'],
+       ['Modyfikatory podglądu', '<ul><li><code>preview=place</code> — pole, które zajmie trzymany klocek: kolor klocka zmieszany z ziemią (62%), symbol 75%, biała obwódka 2 px</li><li><code>line=clear</code> — pole linii, którą położenie wyczyści: rozjaśnienie i jasna obwódka <code>#FFF4C8</code></li><li><code>line=bonus</code> — pole linii jednego koloru (premia R-2.4): ukośne białe paski i przerywana obwódka; plakietka „' + S.bonus_badge + '” leży poza polami (<code>component.board</code>, Q59); wyróżnienie nie tylko kolorem (Q25)</li><li><code>clearing</code> — czyszczenie po położeniu: jasny błysk i zmniejszanie do zera (320 ms); w capture stała klatka: jasne pole, skala 0,86</li></ul>'],
+       ['Konfiguracje', 'Rozmiar <code>--cell</code>; zaokrąglenie 22% boku; symbol w środkowych 60%. Pole na przecięciu czyszczonego rzędu i kolumny należy do obu linii (R-1.6) — wariant <code>bonus</code> ma pierwszeństwo przed <code>clear</code>.'],
+       ['Stany interakcji', 'Brak (pole nie jest fokusowalne ani klikalne).'],
+       ['Rola i nazwa dostępna', 'Brak własnej roli; stan planszy opisuje nazwa <code>component.board</code>.'],
+       ['Responsywność', 'Bok 36 / 40 / 42 / 46 / 64 px (mobile-compact / iphone / android / mobile-large / mac-wide). W trójce 15–20 px.']],
+      [spm('empty · filled', '', h('div', pb, cellBox({ elementId: 'catalog.cell.empty' }), BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.cell.' + c, color: c }); }))),
+       spm('preview=place', 'pole docelowe klocka „' + S.colors.leaf + '”', h('div', pb, cellBox({ elementId: 'catalog.cell.place' }, 52))),
+       spm('line=clear', 'pole zajęte i pole docelowe', h('div', pb, cellBox({ elementId: 'catalog.cell.clear-filled', color: 'drop', line: 'clear' }), cellBox({ elementId: 'catalog.cell.clear-place', line: 'clear' }))),
+       spm('line=bonus', 'linia jednego koloru', h('div', pb, cellBox({ elementId: 'catalog.cell.bonus-filled', color: 'leaf', line: 'bonus' }), cellBox({ elementId: 'catalog.cell.bonus-place', line: 'bonus' }))),
+       spm('clearing', 'klatka capture', h('div', pb, cellBox({ elementId: 'catalog.cell.clearing', color: 'sun', clearing: true })))]));
+    /* Ustaw podgląd „place” w okazach (kolor klocka bez wypełnienia). */
+    ['catalog.cell.place', 'catalog.cell.clear-place', 'catalog.cell.bonus-place'].forEach(function (id) {
+      var el = root.querySelector('[data-element-id="' + id + '"]');
+      el.setAttribute('data-preview', 'place'); el.setAttribute('data-color', 'leaf');
+    });
+
+    /* component.board */
+    var g1 = geoCell(specCell);
+    var demoBoard = BGRules.parseBoard(C.board);
+    function boardSpm(id, view, boardArr) {
+      var b = BG.board({ geo: g1, S: S, elementId: id, elementPrefix: id + '.' });
+      b.render(boardArr || demoBoard, view || {});
+      return b;
+    }
+    var dragP = C.tray[C.drag.slot], dragSh = BGRules.shape(dragP.shape);
+    var an = BGRules.analyze(demoBoard, dragSh, dragP.color, C.drag.row, C.drag.col);
+    var cleared = BGRules.play({ board: demoBoard, tray: C.tray, score: C.score, combo: C.combo, dry: C.dry }, C.drag.slot, C.drag.row, C.drag.col, BGRules.rng(C.seed));
+    function dragSpecimen(touch) {
+      var b = boardSpm('catalog.board.drag-' + (touch ? 'touch' : 'mouse'), { preview: an, previewColor: dragP.color });
+      var pitch = g1.cell + g1.gap, ox = g1.pad + g1.gap, lift = touch ? Math.max(44, g1.cell + 8) : 0;
+      var gh = BG.piece({ piece: dragP, cell: g1.cell, gap: g1.gap, S: S, elementId: null, variant: 'dragging' });
+      var gx = ox + C.drag.col * pitch, gy = ox + C.drag.row * pitch;
+      var box = h('div', { 'class': 'cat-dragbox', style: { width: g1.boardW + 'px', height: g1.boardW + (touch ? 0 : 0) + 'px' } }, b.el, gh);
+      gh.style.left = gx + 'px'; gh.style.top = gy + 'px';
+      var w = dragSh.w * g1.cell + (dragSh.w - 1) * g1.gap, hh = dragSh.h * g1.cell + (dragSh.h - 1) * g1.gap;
+      if (touch) {
+        var fxp = gx + w / 2, fyp = gy + hh + lift;
+        box.append(h('span', { 'class': 'cat-finger', 'aria-hidden': 'true', style: { left: fxp + 'px', top: fyp + 'px' } }));
+        box.append(h('span', { 'class': 'cat-finger-label', style: { left: (fxp + 22) + 'px', top: (fyp + 24) + 'px' } }, 'palec · ' + lift + ' px pod klockiem'));
+        box.style.paddingBottom = '0';
+      }
+      return box;
+    }
+    root.append(section('component.board', 'Plansza 8×8',
+      'Grządka 8×8 pól (R-1.1). Przyjmuje upuszczany klocek; podczas przeciągania pokazuje skutek położenia: pola do zajęcia, linie do wyczyszczenia i linie z premią jednego koloru (R-1.4). Nad miejscem, w którym klocek się nie mieści, i poza planszą nic nie jest podświetlone (Q24).',
+      [['Warianty', '<ul><li><code>idle</code> — stan planszy</li><li><code>preview</code> — trzymany klocek nad miejscem, w którym się mieści: modyfikatory pól z <code>component.board-cell</code> i plakietka „' + S.bonus_badge + '” dla każdej linii jednego koloru. Plakietka nie zasłania żadnego pola (Q59): dla rzędu zaczyna się na prawej ramce na wysokości rzędu i wystaje do 14 px poza planszę; dla kolumny stoi nad górną ramką nad kolumną i wystaje do 10 px ponad planszę (22×18 px)</li><li><code>no-fit</code> — klocek nad zajętymi polami albo poza planszą: wygląd jak <code>idle</code></li><li><code>clearing</code> — po położeniu: plansza z klockiem, czyszczone pola w wariancie <code>clearing</code>, plakietki linii z premią; potem plansza po czyszczeniu</li></ul>'],
+       ['Konfiguracje', 'Plansza (<code>board</code>, 64 pola), widok (<code>preview</code> | <code>clearing</code>). Wymiar: 8·pole + 9·odstęp 3 px (4 px na mac-wide) + 2·rama 6 px (8 px).'],
+       ['Wyznaczenie miejsca', 'Lewy górny róg rysowanego klocka zaokrąglany do najbliższego pola siatki (przyciąganie). Na dotyku klocek jest rysowany nad palcem, a miejsce wyznaczają pola pod narysowanym klockiem, nie pod palcem (R-1.8). Mysz: klocek zachowuje punkt chwytu względem kursora.'],
+       ['Stany interakcji', 'Plansza nie ma własnej akcji; upuszczenie opisuje <code>component.piece</code>. Na planszy <code>touch-action: none</code> — przeciąganie nie przewija strony.'],
+       ['Rola i nazwa dostępna', '<code>role="img"</code>, nazwa „' + BG.fmt(S.board_sr, { n: 23 }) + '” (liczba z bieżącej planszy). Plakietka „' + S.bonus_badge + '” ma tekst dla czytnika „' + S.bonus_sr + '”.'],
+       ['Responsywność', 'Szerokość 327 / 359 / 375 / 407 / 564 px (mobile-compact / iphone / android / mobile-large / mac-wide); na telefonach wyśrodkowana w kolumnie, na mac-wide w lewej kolumnie (zob. <a href="#responsive">responsywność</a>).']],
+      [spm('idle', 'fixture catalog.board', boardSpm('catalog.board.idle').el),
+       spm('preview', 'klocek „' + S.colors.leaf + '” 1×2 nad r6–r7 c8: rząd 6 jednego koloru (×2) i rząd 7 do wyczyszczenia', boardSpm('catalog.board.preview', { preview: an, previewColor: dragP.color }).el),
+       spm('no-fit', 'kwadrat 2×2 nad zajętymi polami: bez podświetlenia', boardSpm('catalog.board.no-fit').el),
+       spm('clearing', 'klatka po położeniu', boardSpm('catalog.board.clearing', { clearing: cleared.move.clearedCells, bonusLines: cleared.move.lines }, cleared.move.placedBoard).el),
+       spm('preview · dotyk', 'R-1.8: klocek nad palcem', dragSpecimen(true), { boxStyle: { paddingBottom: '64px', paddingTop: '22px' } }),
+       spm('preview · mysz', 'punkt chwytu zachowany', dragSpecimen(false))]));
+
+    /* component.piece */
+    var pieceRows = [['Kontekst', 'action', 'expected_effect'],
+      ['<code>screen.game</code>, oba tryby; klocek w trójce (<code>element.game.piece-1…3</code>, <code>interaction.game.drag-piece-1…3</code>)', 'naciśnięcie (dotyk albo przycisk myszy)', 'klocek powiększa się do rozmiaru pól planszy; dotyk: rysowany nad palcem (odstęp max(44 px, pole + 8 px)), mysz: punkt chwytu zachowany; slot pokazuje bladą sylwetkę (<code>lifted</code>)'],
+      ['jw.', 'przeciąganie nad miejscem, w którym klocek się mieści', 'plansza w wariancie <code>preview</code>: pola do zajęcia, linie do wyczyszczenia, linie jednego koloru z „' + S.bonus_badge + '”'],
+      ['jw.', 'przeciąganie nad zajętymi polami albo poza planszą', 'nic nie jest podświetlone (Q24)'],
+      ['jw.', 'puszczenie tam, gdzie się mieści', 'klocek na podświetlonych polach, wynik +1 za pole (R-2.1); gdy linie: czyszczenie, <code>component.move-points</code> i ewentualnie <code>component.combo-badge</code>; slot pusty; po trzecim klocku nowa trójka (R-1.1); gdy żaden pozostały klocek się nie mieści — koniec gry (<code>game.over-*</code>) po 450 ms'],
+      ['jw.', 'puszczenie gdzie indziej, przerwanie wskaźnika', 'klocek wraca do slotu; plansza i wynik bez zmian (R-1.5)']];
+    var allShapes = h('div', { 'class': 'cat-shapes' }, BGRules.SHAPES.map(function (sh, i) {
+      return h('div', { 'class': 'cat-shape' }, BG.piece({ piece: { shape: sh.id, color: BGRules.COLORS[i % 5] }, cell: 12, gap: 2, S: S, elementId: 'catalog.piece.shape-' + sh.id, variant: 'static' }), sh.id);
+    }));
+    root.append(section('component.piece', 'Klocek',
+      'Klocek z trójki do przeciągnięcia na planszę. Jeden z 37 kształtów (R-1.2) w jednym z 5 kolorów; bez obrotu i odbicia. Klocek, który nigdzie się nie mieści, nie jest oznaczony — można go chwycić, a po puszczeniu wraca (Q26).',
+      [['Warianty', '<ul><li><code>tray</code> — w trójce, pola 15–21 px</li><li><code>lifted</code> — w trójce podczas przeciągania: przezroczystość 22%</li><li><code>dragging</code> — przeciągany: pola w rozmiarze pól planszy, cień, ponad interfejsem</li><li><code>static</code> — bez interakcji (okazy, panel końca gry nie używa)</li></ul>'],
+       ['Konfiguracje', '<code>shape</code> (37 ID poniżej), <code>color</code> (5).'],
+       ['Stany interakcji', 'hover (tylko kursor): rozjaśnienie i cień; kursor <code>grab</code> / <code>grabbing</code>. Brak <code>disabled</code> (Q26). <code>busy</code>: przez 340 ms czyszczenia po położeniu nowe chwycenie nie startuje. Nie jest przełącznikiem.'],
+       ['Rola i nazwa dostępna', '<code>role="img"</code>, <code>aria-roledescription</code> „' + S.piece_role + '”, nazwa „' + BG.fmt(S.piece_sr, { n: 4, cells: BG.cellsWord(4, S), color: S.colors.poppy }) + '”. Tylko przeciąganie, bez drogi dwoma dotknięciami i bez klawiatury — świadome odstępstwo od WCAG 2.5.7 i 2.1.1 (Q22); klocek nie jest fokusowalny.'],
+       ['Interakcje', table(pieceRows[0], pieceRows.slice(1))],
+       ['Responsywność', 'Pole w trójce: 15 / 17 / 18 / 20 / 18 px (mobile-compact / iphone / android / mobile-large / mac-wide), odstęp 2 px. Przeciągany: jak pole planszy. Odstęp nad palcem: 44 / 48 / 50 / 54 px (mobile-compact / iphone / android / mobile-large).']],
+      [spm('tray', '', h('div', { 'class': 'cat-cellrow', style: { alignItems: 'center', gap: '20px' } }, C.tray.map(function (p, i) { return BG.piece({ piece: p, cell: 18, gap: 2, S: S, elementId: 'catalog.piece.tray-' + (i + 1), variant: 'static' }); }))),
+       spm('lifted', '', (function () { var p = BG.piece({ piece: C.tray[1], cell: 18, gap: 2, S: S, elementId: 'catalog.piece.lifted', variant: 'lifted' }); return p; })()),
+       spm('dragging', 'rozmiar pola planszy 40 px', (function () { var p = BG.piece({ piece: C.tray[2], cell: 40, gap: 3, S: S, elementId: 'catalog.piece.dragging', variant: 'static' }); p.style.filter = 'drop-shadow(0 10px 12px rgba(40,24,10,.32))'; return p; })()),
+       spm('37 kształtów', 'ID kształtu = data-shape', allShapes, { wide: true })]));
+
+    /* component.piece-tray */
+    var gT = BG.geometry({ width: 393, height: 852 });
+    function traySpm(id, trayArr) { var t = BG.tray({ geo: gT, S: S, elementId: id }); t.render(trayArr, function (p, i) { return BG.piece({ piece: p, cell: gT.pc, gap: gT.pg, S: S, elementId: id + '.piece-' + (i + 1), variant: 'static' }); }); t.el.style.width = '361px'; return t.el; }
+    root.append(section('component.piece-tray', 'Trójka klocków',
+      'Trzy sloty z klockami do wyboru (R-1.1). Położony klocek zostawia pusty slot; nową trójkę gra daje dopiero po położeniu wszystkich trzech, w dowolnej kolejności.',
+      [['Warianty slotu', '<ul><li><code>filled</code> — klocek wyśrodkowany w slocie</li><li><code>empty</code> — klocek położony: przygaszone tło i przerywany znak w środku</li></ul>'],
+       ['Konfiguracje', '3 sloty, każdy mieści klocek do 5×5 pól. Kolejność slotów stała w trakcie trójki.'],
+       ['Stany interakcji', 'Brak własnych; interakcje mają klocki.'],
+       ['Rola i nazwa dostępna', '<code>role="group"</code>, nazwa „' + S.tray_sr + '”; pusty slot ma tekst dla czytnika „' + S.slot_empty_sr + '”.'],
+       ['Responsywność', 'Telefony: pełna szerokość treści, 3 kolumny, odstęp 12 px, wysokość slotu 101 / 111 / 116 / 126 px (mobile-compact / iphone / android / mobile-large). mac-wide: 380 px w prawej kolumnie, slot 116 px.']],
+      [spm('3 filled', '', traySpm('catalog.tray.full', C.tray)),
+       spm('1 empty', 'po położeniu pierwszego klocka', traySpm('catalog.tray.one-placed', [null, C.tray[1], C.tray[2]])),
+       spm('2 empty', '', traySpm('catalog.tray.two-placed', [null, C.tray[1], null]))]));
+
+    /* component.score-display */
+    function scoreSpm(id, variant, label, n, fs) { var s = BG.scoreDisplay({ variant: variant, label: label, value: n, loc: loc, elementId: id }); if (fs) s.el.style.setProperty('--score-fs', fs); return s.el; }
+    root.append(section('component.score-display', 'Wynik i rekord',
+      'Liczba z etykietą: wynik bieżącej gry i rekord trybu (R-4.1). Separator tysięcy według języka gry, do 7 cyfr (R-2.5): w PL liczby 4-cyfrowe bez separatora, od 10 000 twarda spacja (norma CLDR); w EN przecinek od 1 000.',
+      [['Warianty', '<ul><li><code>score</code> — „' + S.score + '”, cyfry 40 px (telefony) / 60 px (mac-wide), wyśrodkowane</li><li><code>record</code> — w nagłówku po prawej: „' + S.record + '” (klasyczny) albo „' + S.record_daily + '” (wyzwanie dnia), cyfry 17 px</li></ul>'],
+       ['Konfiguracje', '<code>label</code>, <code>value</code> (0–9 999 999), język.'],
+       ['Zachowanie', 'Wynik zmienia się od razu po położeniu klocka. W trakcie gry rekord w nagłówku pokazuje wartość sprzed bieżącej gry. Po końcu gry nagłówek pod panelem zgadza się z panelem: przy nowym rekordzie pokazuje nowy rekord (R-4.1, R-3.4); po podejściu do wyzwania zakończonym innego dnia rekordu w nagłówku nie ma (R-3.6).'],
+       ['Stany interakcji', 'Brak.'],
+       ['Rola i nazwa dostępna', 'Zwykły tekst (etykieta + liczba), bez regionu live.'],
+       ['Responsywność', 'Cyfry o stałej szerokości (<code>tabular-nums</code>); 7 cyfr z separatorami mieści się na 360 px.']],
+      [spm('score', '0', scoreSpm('catalog.score.zero', 'score', S.score, 0)),
+       spm('score', '4 cyfry', scoreSpm('catalog.score.four', 'score', S.score, 6210)),
+       spm('score', '7 cyfr', scoreSpm('catalog.score.max', 'score', S.score, 9999999)),
+       spm('record', '', scoreSpm('catalog.record.classic', 'record', S.record, C.records.classic)),
+       spm('record', 'wyzwanie dnia', scoreSpm('catalog.record.daily', 'record', S.record_daily, C.records.daily))]));
+
+    /* component.combo-badge */
+    root.append(section('component.combo-badge', 'Wskaźnik serii',
+      'Pokazuje licznik serii c, gdy c ≥ 2 (R-2.7). Przy c &lt; 2 wskaźnika nie ma; nie pokazuje, ile położeń zostało do wyzerowania (Q28).',
+      [['Warianty', '<ul><li><code>visible</code> — „' + BG.fmt(S.combo, { c: 'c' }) + '” z ikoną kiełka</li><li><code>hidden</code> — c &lt; 2: brak elementu, miejsce w pasku zostaje (układ nie skacze)</li></ul>'],
+       ['Zachowanie', 'Po ruchu, który zwiększa c, krótkie podbicie (280 ms; bez przy reduced motion). Wyzerowanie licznika (R-2.3) usuwa wskaźnik.'],
+       ['Stany interakcji', 'Brak.'],
+       ['Rola i nazwa dostępna', 'Zwykły tekst; zmianę ogłasza region <code>component.move-points</code>.'],
+       ['Responsywność', 'Po lewej w pasku nad planszą (telefony) albo pod wynikiem (mac-wide); wysokość 32 px.']],
+      [spm('visible', 'c = 2', BG.comboBadge({ c: 2, S: S, elementId: 'catalog.combo.2' })),
+       spm('visible', 'c = 12', BG.comboBadge({ c: 12, S: S, elementId: 'catalog.combo.12' })),
+       spm('hidden', 'c = 1', h('span', { style: { font: '12px var(--mono)', color: 'var(--ink-2)' } }, '(brak elementu)'))]));
+
+    /* component.move-points */
+    function mp(id, p) { return BG.movePoints({ points: p, S: S, loc: loc, elementId: id }); }
+    root.append(section('component.move-points', 'Punkty ruchu',
+      'Po ruchu, który czyści co najmniej jedną linię, przez chwilę pokazuje przy planszy punkty zdobyte w tym ruchu, z osobnym dopiskiem premii serii i premii za linię jednego koloru, gdy ruch je dał (R-2.6). Położenie bez czyszczenia nie pokazuje punktów ruchu.',
+      [['Warianty', '<ul><li><code>lines</code> — tylko suma</li><li><code>lines+combo</code> — dopisek „' + BG.fmt(S.move_combo, { n: 'n' }) + '”</li><li><code>lines+mono</code> — dopisek „' + BG.fmt(S.move_mono, { n: 'n' }) + '” z gwiazdką</li><li><code>lines+combo+mono</code></li></ul>'],
+       ['Konfiguracje', 'Suma = pola + linie + premia jednego koloru + premia serii (R-2.1–R-2.4); premia jednego koloru = dodatkowe 80·k za każdą linię jednego koloru.'],
+       ['Zachowanie', 'Pojawia się po puszczeniu, znika po 1,4 s; kolejny ruch z czyszczeniem zastępuje go od razu. Ruch bez czyszczenia usuwa poprzedni.'],
+       ['Stany interakcji', 'Brak; nie przechwytuje wskaźnika.'],
+       ['Rola i nazwa dostępna', '<code>role="status"</code>, <code>aria-live="polite"</code>: „' + BG.fmt(S.move_points_sr, { n: BG.num(632, loc) }) + '” + dopiski.'],
+       ['Responsywność', 'Telefony: po prawej w pasku 44 px nad planszą, wyrównanie do prawej, dopiski zawijają się. mac-wide: pasek pod wynikiem w prawej kolumnie.']],
+      [spm('lines', '1 linia', mp('catalog.points.lines', { cleared: 1, total: 83, combo: 0, mono: 0 })),
+       spm('lines+combo', '', mp('catalog.points.combo', { cleared: 2, total: 474, combo: 150, mono: 0 })),
+       spm('lines+mono', '', mp('catalog.points.mono', { cleared: 1, total: 163, combo: 0, mono: 80 })),
+       spm('lines+combo+mono', 'okaz z fixture', mp('catalog.points.all', cleared.move.points))]));
+
+    /* component.mode-label */
+    root.append(section('component.mode-label', 'Nazwa trybu',
+      'Środek nagłówka ekranu gry: który tryb trwa. W wyzwaniu dnia także data ciągu (R-3.6: podejście należy do daty rozpoczęcia).',
+      [['Warianty', '<ul><li><code>classic</code> — „' + S.mode_classic + '”</li><li><code>daily</code> — „' + S.mode_daily + '” i pod spodem data rozpoczęcia podejścia</li></ul>'],
+       ['Stany interakcji', 'Brak.'],
+       ['Rola i nazwa dostępna', 'Zwykły tekst.'],
+       ['Responsywność', 'Wyśrodkowana między przyciskiem wyjścia a rekordem; zawija się do 2 wierszy.']],
+      [spm('classic', '', BG.modeLabel({ variant: 'classic', S: S, elementId: 'catalog.mode.classic' })),
+       spm('daily', '', BG.modeLabel({ variant: 'daily', S: S, elementId: 'catalog.mode.daily' }))]));
+
+    /* component.icon-button */
+    root.append(section('component.icon-button', 'Przycisk ikony — wyjście',
+      'Przycisk 44×44 px z ikoną domu w nagłówku ekranu gry. Ta sama oprawa ma dwa kontrakty zależnie od trybu (R-3.5).',
+      [['Warianty', '<code>exit</code> (ikona domu).'],
+       ['Interakcje', table(['Kontekst', 'action', 'expected_effect'], [
+         ['<code>screen.game</code>, tryb klasyczny (<code>element.game.exit</code>, <code>interaction.game.exit</code>)', 'tap / klik', 'navigate <code>screen.home</code> (<code>home.resume-available</code>) bez pytania; gra zachowana do „' + S.continue + '”'],
+         ['<code>screen.game</code>, wyzwanie dnia (<code>element.game.exit</code>, <code>interaction.game.exit</code>)', 'tap / klik', 'open <code>component.dialog</code> „' + S.confirm_title + '” (<code>game.daily-exit-confirm</code>); gra wstrzymana pod dialogiem']])],
+       ['Stany interakcji', 'default, hover (białe tło, ciemniejsza obwódka), pressed (przesunięcie 1 px, zielone tło), focus-visible (obrys 3 px <code>#1F5FBF</code>). Brak <code>disabled</code>/<code>busy</code>. Nie jest przełącznikiem.'],
+       ['Rola i nazwa dostępna', '<code>button</code>, nazwa „' + S.exit_label + '” (<code>aria-label</code> i <code>title</code>).'],
+       ['Responsywność', 'Zawsze 44×44 px, lewy róg nagłówka.']],
+      ['default', 'hover', 'pressed', 'focus'].map(function (d) { return spm(d, '', BG.iconButton({ elementId: 'catalog.icon-button.' + d, label: S.exit_label, icon: 'home', demo: d === 'default' ? null : d })); })));
+
+    /* component.menu-button */
+    var meta = { cont: BG.fmt(S.meta_saved, { n: BG.num(1240, loc) }), rec: BG.fmt(S.meta_record, { n: BG.num(C.records.classic, loc) }), daily: BG.fmt(S.meta_daily, { date: S.daily_date, n: BG.num(C.records.daily, loc) }) };
+    root.append(section('component.menu-button', 'Przycisk menu startowego',
+      'Duży przycisk ekranu startowego: etykieta trybu i wiersz informacji (rekord, data, zapisany wynik). Ekran startowy pokazuje rekord trybu klasycznego i rekord wyzwania bieżącej daty (R-3.1) w wierszach informacji tych przycisków.',
+      [['Warianty', '<ul><li><code>primary</code> — zielony, biały tekst; pierwsza akcja ekranu: „' + S.continue + '”, gdy jest zapisana gra, w przeciwnym razie „' + S.new_game + '”</li><li><code>secondary</code> — biały z zieloną obwódką</li></ul>'],
+       ['Konfiguracje', '<code>label</code>, <code>meta</code>, <code>icon</code> (resume | play | calendar).'],
+       ['Interakcje', table(['Kontekst', 'action', 'expected_effect'], [
+         ['<code>screen.home</code>, „' + S.continue + '” — tylko przy zapisanej grze klasycznej', 'tap / klik', 'navigate <code>screen.game</code> z zapisaną grą (<code>game.classic-resumed</code>): plansza, trójka, wynik i seria (R-4.2)'],
+         ['<code>screen.home</code>, „' + S.new_game + '”', 'tap / klik', 'navigate <code>game.classic-start</code>; przy zapisanej grze usuwa zapis bez potwierdzenia, rekord bez zmian (R-4.4)'],
+         ['<code>screen.home</code>, „' + S.daily + '”', 'tap / klik', 'navigate <code>game.daily-start</code>: od pierwszej trójki ciągu bieżącej daty (R-3.2, R-3.3)']])],
+       ['Stany interakcji', 'default, hover, pressed (wciśnięcie 3 px), focus-visible (obrys 3 px). Brak <code>disabled</code>/<code>busy</code>; „' + S.continue + '” bez zapisu nie istnieje (nie jest wyłączony). Nie jest przełącznikiem.'],
+       ['Rola i nazwa dostępna', '<code>button</code>; nazwa = etykieta + wiersz informacji, np. „' + S.new_game + ' ' + meta.rec + '”.'],
+       ['Responsywność', 'Telefony: pełna szerokość treści, min. 68 px wysokości, odstęp 12 px, kolumna w dolnej połowie ekranu. mac-wide: kolumna 400 px wyśrodkowana. Wiersz informacji zawija się.']],
+      [spm('bez zapisu', 'home.first-run / home.with-records', h('div', { 'class': 'cat-stack' },
+         BG.menuButton({ elementId: 'catalog.menu.new-game', variant: 'primary', icon: 'play', label: S.new_game, meta: meta.rec }),
+         BG.menuButton({ elementId: 'catalog.menu.daily', variant: 'secondary', icon: 'calendar', label: S.daily, meta: meta.daily }))),
+       spm('z zapisem', 'home.resume-available', h('div', { 'class': 'cat-stack' },
+         BG.menuButton({ elementId: 'catalog.menu.continue', variant: 'primary', icon: 'resume', label: S.continue, meta: meta.cont }),
+         BG.menuButton({ elementId: 'catalog.menu.new-game-2', variant: 'secondary', icon: 'play', label: S.new_game, meta: meta.rec }),
+         BG.menuButton({ elementId: 'catalog.menu.daily-2', variant: 'secondary', icon: 'calendar', label: S.daily, meta: meta.daily }))),
+       spm('stany', 'hover · pressed · focus', h('div', { 'class': 'cat-stack' }, ['hover', 'pressed', 'focus'].map(function (d) { return BG.menuButton({ elementId: 'catalog.menu.' + d, variant: d === 'hover' ? 'secondary' : 'primary', icon: 'play', label: S.new_game, meta: meta.rec, demo: d }); })))]));
+
+    /* component.button */
+    root.append(section('component.button', 'Przycisk',
+      'Przycisk tekstowy w dialogu i panelu końca gry. Każde użycie ma własny kontrakt (tabela w <code>component.dialog</code> i <code>component.game-over-panel</code>).',
+      [['Warianty', '<ul><li><code>primary</code> — zalecana akcja</li><li><code>secondary</code> — akcja alternatywna</li><li><code>danger</code> — akcja z utratą: czerwono-brązowy tekst i obwódka</li></ul>'],
+       ['Stany interakcji', 'default, hover, pressed, focus-visible. Brak <code>disabled</code>/<code>busy</code>. Jednorazowe akcje, nie przełączniki.'],
+       ['Rola i nazwa dostępna', '<code>button</code>, nazwa = etykieta.'],
+       ['Responsywność', 'Min. 52 px wysokości. Telefony: pełna szerokość karty, jeden pod drugim; mac-wide: obok siebie, równa szerokość.']],
+      [spm('primary', '', BG.button({ elementId: 'catalog.button.primary', variant: 'primary', label: S.play_again })),
+       spm('secondary', '', BG.button({ elementId: 'catalog.button.secondary', variant: 'secondary', label: S.to_home })),
+       spm('danger', '', BG.button({ elementId: 'catalog.button.danger', variant: 'danger', label: S.confirm_end })),
+       spm('hover · pressed · focus', '', h('div', { 'class': 'cat-cellrow' }, ['hover', 'pressed', 'focus'].map(function (d) { return BG.button({ elementId: 'catalog.button.' + d, variant: 'primary', label: S.play_again, demo: d }); })))]));
+
+    /* component.wordmark */
+    root.append(section('component.wordmark', 'Nazwa gry',
+      'Znak (grządka 2×2 z kiełkiem, <code>assets/bloomgrid-mark.svg</code>) i nazwa „Bloomgrid” na ekranie startowym, z hasłem.',
+      [['Warianty', '<code>with-tagline</code> (ekran startowy).'],
+       ['Stany interakcji', 'Brak.'],
+       ['Rola i nazwa dostępna', 'Nazwa jest nagłówkiem <code>h1</code> ekranu; znak ma pusty <code>alt</code> (dekoracja).'],
+       ['Responsywność', 'Telefony: nazwa 34 px, znak 44 px, w górnej części ekranu. mac-wide: nazwa 48 px, znak 60 px.']],
+      [spm('with-tagline', 'telefon', BG.wordmark({ elementId: 'catalog.wordmark.phone', S: S })),
+       spm('with-tagline', 'mac-wide', BG.wordmark({ elementId: 'catalog.wordmark.wide', S: S, style: { '--wm-fs': '48px', '--mark': '60px' } }))]));
+
+    /* component.dialog */
+    root.append(section('component.dialog', 'Dialog potwierdzenia — koniec podejścia',
+      'Pyta przed opuszczeniem wyzwania dnia: „' + S.confirm_title + ' ' + S.confirm_body + '” (R-3.5). Pojawia się nad ekranem gry na ciemnej zasłonie.',
+      [['Konfiguracje', '<code>title</code> „' + S.confirm_title + '”, <code>body</code> „' + S.confirm_body + '”, <code>actions</code> [„' + S.confirm_keep + '” primary, „' + S.confirm_end + '” danger].'],
+       ['Interakcje', table(['Element', 'action', 'expected_effect'], [
+         ['„' + S.confirm_keep + '” (<code>element.game.confirm.keep</code>, <code>interaction.game.confirm.keep</code>)', 'tap / klik / Escape', 'zamyka dialog; gra trwa bez zmian'],
+         ['„' + S.confirm_end + '” (<code>element.game.confirm.end</code>, <code>interaction.game.confirm.end</code>)', 'tap / klik', 'kończy podejście bez zapisu wyniku do rekordu; navigate <code>screen.home</code>'],
+         ['zasłona', 'tap / klik', 'brak efektu (chroni przed przypadkowym zamknięciem)']])],
+       ['Stany interakcji', 'Fokus startuje na „' + S.confirm_keep + '” i nie wychodzi poza dialog. Przyciski jak <code>component.button</code>.'],
+       ['Rola i nazwa dostępna', '<code>alertdialog</code>, <code>aria-modal="true"</code>, nazwa z tytułu, opis z treści.'],
+       ['Responsywność', 'Karta do 380 px (mac-wide do 460 px), wyśrodkowana; margines 16 px. Telefony: przyciski jeden pod drugim; mac-wide: obok siebie, etykiety w jednym wierszu.']],
+      [spm('telefon', '', h('div', { 'class': 'cat-cardbox' }, BG.dialog({ elementId: 'catalog.dialog.phone', prefix: 'catalog.dialog.phone.', S: S, scrim: false }))),
+       spm('mac-wide', 'przyciski w rzędzie', h('div', { 'class': 'cat-cardbox' }, BG.dialog({ elementId: 'catalog.dialog.wide', prefix: 'catalog.dialog.wide.', S: S, scrim: false, row: true })))]));
+
+    /* component.game-over-panel */
+    function over(id, o) { return h('div', { 'class': 'cat-cardbox' }, BG.gameOverPanel(Object.assign({ elementId: id, prefix: id + '.', S: S, loc: loc, scrim: false }, o))); }
+    root.append(section('component.game-over-panel', 'Panel końca gry',
+      'Szablon końca gry obu trybów (R-3.4): wynik, rekord trybu, „' + S.new_record + '” przy pobiciu rekordu, „' + S.play_again + '” i „' + S.to_home + '”; w wyzwaniu dnia informacja o ciągu. Panel leży nad planszą na zasłonie; końcowa plansza jest pod nią widoczna.',
+      [['Parametry szablonu', table(['parametr', 'wartości', 'skutek'], [
+         ['<code>mode</code>', 'classic | daily', 'tytuł „' + S.game_over + ' · tryb”, etykieta rekordu „' + S.record + '” / „' + S.record_daily + '”'],
+         ['<code>score</code>', '0–9 999 999', 'duża liczba 54 px'],
+         ['<code>record</code>', 'liczba', 'rekord trybu po tej grze (przy nowym rekordzie równy wynikowi)'],
+         ['<code>newRecord</code>', 'true | false', 'visible: plakietka z gwiazdką „' + S.new_record + '” nad wynikiem; hidden: brak'],
+         ['<code>dailyInfo</code>', 'until-midnight | new-available (tylko daily)', '„' + S.daily_until_midnight + '” albo, gdy data zmieniła się od rozpoczęcia podejścia, „' + S.daily_new_available + '”. Przy <code>new-available</code> panel nie pokazuje wiersza rekordu ani „' + S.new_record + '” — podejście zakończone innego dnia nie zmienia rekordu (R-3.6, Q44)']])],
+       ['Interakcje', table(['Element', 'action', 'expected_effect'], [
+         ['„' + S.play_again + '” (<code>element.game.over.play-again</code>, <code>interaction.game.over.play-again</code>), classic', 'tap / klik', 'navigate <code>game.classic-start</code> (nowa gra klasyczna)'],
+         ['jw., daily', 'tap / klik', 'navigate <code>game.daily-start</code>: nowe podejście od pierwszej trójki ciągu bieżącej daty'],
+         ['„' + S.to_home + '” (<code>element.game.over.to-home</code>, <code>interaction.game.over.to-home</code>)', 'tap / klik', 'navigate <code>screen.home</code> (z aktualnymi rekordami)']])],
+       ['Stany interakcji', 'Fokus startuje na „' + S.play_again + '”. Escape i zasłona: brak efektu (gra się skończyła, trzeba wybrać akcję).'],
+       ['Rola i nazwa dostępna', '<code>dialog</code>, <code>aria-modal="true"</code>, nazwa z tytułu.'],
+       ['Nagłówek ekranu pod panelem', 'Rekord w nagłówku zgadza się z panelem: przy <code>newRecord=true</code> pokazuje nowy rekord; przy <code>new-available</code> rekordu w nagłówku nie ma (tytuł trybu z datą zostaje).'],
+       ['Responsywność', 'Karta do 380 px (mac-wide do 460 px); telefony: przyciski w kolumnie, mac-wide: w rzędzie, etykiety w jednym wierszu. Informacja dnia zawija się.']],
+      [spm('classic', 'newRecord=false', over('catalog.over.classic', { mode: 'classic', score: 6842, record: C.records.classic })),
+       spm('classic', 'newRecord=true', over('catalog.over.classic-record', { mode: 'classic', score: 21360, record: 21360, newRecord: true })),
+       spm('daily', 'until-midnight', over('catalog.over.daily', { mode: 'daily', score: 2140, record: C.records.daily, dailyInfo: 'until-midnight' })),
+       spm('daily', 'new-available: bez rekordu i bez „' + S.new_record + '”', over('catalog.over.daily-new', { mode: 'daily', score: 3310, dailyInfo: 'new-available' }))]));
+
+    /* component.alert */
+    root.append(section('component.alert', 'Komunikat błędu',
+      'Jedna oprawa dla trzech komunikatów o błędach. Każdy wariant ma własny kontrakt: błąd zapisu gry (R-4.5), nieczytelny zapis przy starcie (R-4.6) i nieoczekiwany błąd programu (R-5.3). Ikona ostrzeżenia i tekst, nie tylko kolor.',
+      [['Warianty', '<ul><li><code>save-error</code> — „' + S.save_error + '” z przyciskiem „' + S.retry + '” (<code>component.button</code> secondary); jasnopomarańczowe tło. Ekran gry, między planszą a trójką (telefony) albo pod trójką (mac-wide). Gra działa dalej, bez zasłony</li><li><code>read-error</code> — „' + S.read_error + '”, bez przycisku; ekran startowy, nad przyciskami menu</li><li><code>crash</code> — „' + S.crash + '” z przyciskiem „' + S.restart + '” (wariant <code>light</code>); ciemnoczerwony pasek u góry ekranu na zasłonie, która blokuje resztę ekranu</li></ul>'],
+       ['Interakcje', table(['Kontekst', 'action', 'expected_effect'], [
+         ['<code>save-error</code>: „' + S.retry + '” (<code>element.game.save-error.retry</code>, <code>interaction.game.save-retry</code>)', 'tap / klik', 'ponawia zapis: po udanym zapisie komunikat znika, po nieudanym zostaje; gra trwa bez zmian. Gra sama nie ponawia zapisu (R-4.5)'],
+         ['<code>read-error</code> (<code>element.home.read-error</code>)', '—', 'brak akcji; komunikat widoczny na ekranie startowym do pierwszego przejścia do gry. „' + S.continue + '” nie ma, bo zapisana gra przepadła; rekordy czytelne zostają (R-4.6)'],
+         ['<code>crash</code>: „' + S.restart + '” (<code>element.app.crash.restart</code>, <code>interaction.app.crash-restart</code>)', 'tap / klik', 'przeładowuje grę z ostatnim zapisem: ekran startowy (z „' + S.continue + '”, gdy zapis gry klasycznej istnieje) (R-5.3)'],
+         ['<code>crash</code>: zasłona', 'tap / klik', 'brak efektu']])],
+       ['Stany interakcji', 'Przyciski jak <code>component.button</code> (default, hover, pressed, focus-visible). Brak <code>disabled</code>; <code>busy</code> nie występuje (zapis lokalny jest natychmiastowy).'],
+       ['Rola i nazwa dostępna', '<code>role="alert"</code> (czytnik ogłasza tekst od razu); przyciski <code>button</code> z nazwą = etykieta.'],
+       ['Responsywność', 'Telefony: pełna szerokość treści, tekst zawija się obok przycisku. mac-wide: <code>save-error</code> 380 px w prawej kolumnie, <code>crash</code> 560 px wyśrodkowany u góry, <code>read-error</code> 400 px w kolumnie menu.']],
+      [spm('save-error', '', h('div', { style: { width: '100%', maxWidth: '361px' } }, BG.alert({ variant: 'save-error', S: S, elementId: 'catalog.alert.save' }))),
+       spm('read-error', '', h('div', { style: { width: '100%', maxWidth: '361px' } }, BG.alert({ variant: 'read-error', S: S, elementId: 'catalog.alert.read' }))),
+       spm('crash', '', h('div', { style: { width: '100%', maxWidth: '361px' } }, BG.alert({ variant: 'crash', S: S, elementId: 'catalog.alert.crash' })))]));
+
+    /* Responsywność */
+    var rows = manifest.targets.map(function (t) {
+      var g = BG.geometry(t);
+      return ['<code>' + t.target_id + '</code>', t.width + '×' + t.height, g.cell + ' px', g.boardW + ' px', g.pc + ' px', Math.round(g.slotH) + ' px', g.wide ? '—' : g.lift + ' px'];
+    });
+    root.append(h('section', { 'class': 'cat-sec', id: 'responsive' },
+      h('h2', {}, 'responsive'), h('h3', {}, 'Responsywność ekranu gry'),
+      h('p', { 'class': 'cat-sem', html: 'Powierzchnia robocza = cały ekran targetu. Szczegóły: <code>responsive-spec.md</code>. Telefony tylko w pionie; bez przewijania.' }),
+      h('div', { html: table(['target', 'ekran', 'pole planszy', 'plansza', 'pole w trójce', 'slot', 'odstęp nad palcem'], rows) })));
+
+    /* Plan stanów */
+    var plan = [
+      ['home.first-run', 'screen.home', 'bez rekordów (0) i bez zapisu; „' + S.new_game + '” primary, „' + S.daily + '”'],
+      ['home.first-run.en', 'screen.home', 'jw. po angielsku'],
+      ['home.with-records', 'screen.home', 'rekord klasyczny i rekord dnia &gt; 0, bez zapisu'],
+      ['home.resume-available', 'screen.home', 'zapisana gra: „' + S.continue + '” primary, „' + S.new_game + '”, „' + S.daily + '”'],
+      ['home.read-error', 'screen.home', '„' + S.read_error + '”, rekordy zostają, bez „' + S.continue + '” (R-4.6)'],
+      ['game.classic-start', 'screen.game', 'pusta plansza, pierwsza trójka, wynik 0'],
+      ['game.classic-start.en', 'screen.game', 'jw. po angielsku'],
+      ['game.classic-resumed', 'screen.game', 'wznowiona gra: plansza z kolorami, 2 klocki w trójce, wynik, „' + BG.fmt(S.combo, { c: 2 }) + '”'],
+      ['game.daily-start', 'screen.game', 'wyzwanie dnia: nazwa trybu z datą, rekord dnia'],
+      ['game.dragging-fits', 'screen.game', 'klocek nad miejscem, w którym się mieści, bez linii'],
+      ['game.dragging-line-preview', 'screen.game', 'klocek nad miejscem, które wyczyści linię zwykłą i linię jednego koloru'],
+      ['game.line-clear', 'screen.game', 'klatka czyszczenia zwykłej linii, punkty ruchu'],
+      ['game.color-bonus', 'screen.game', 'klatka czyszczenia linii jednego koloru, „' + S.bonus_badge + '”, dopisek premii'],
+      ['game.combo', 'screen.game', '„' + BG.fmt(S.combo, { c: 3 }) + '”, punkty ruchu z dopiskiem serii'],
+      ['game.daily-exit-confirm', 'screen.game', 'dialog „' + S.confirm_title + '”'],
+      ['game.save-error', 'screen.game', 'wznowiona gra z komunikatem „' + S.save_error + '” (R-4.5)'],
+      ['game.crash', 'screen.game', 'pasek „' + S.crash + '” na zasłonie (R-5.3)'],
+      ['game.over-classic', 'screen.game', 'panel końca gry, classic'],
+      ['game.over-classic.en', 'screen.game', 'jw. po angielsku'],
+      ['game.over-classic-new-record', 'screen.game', 'classic, „' + S.new_record + '”'],
+      ['game.over-daily', 'screen.game', 'daily, until-midnight'],
+      ['game.over-daily.en', 'screen.game', 'jw. po angielsku'],
+      ['game.over-daily-new-day', 'screen.game', 'daily, new-available: wynik bez rekordu i bez „' + S.new_record + '” (R-3.6); nagłówek bez rekordu dnia, tytuł z datą zostaje']];
+    root.append(h('section', { 'class': 'cat-sec', id: 'states-plan' },
+      h('h2', {}, 'states-plan'), h('h3', {}, 'Stany rewizji r1'),
+      h('p', { 'class': 'cat-sem', html: 'Stany z manifestu r1 (23), otwierane w <code>index.html</code>. Bez <code>game.dragging-blocked</code> (Q24).' }),
+      h('div', { html: table(['state_id', 'screen_id', 'opis'], plan.map(function (r) { return ['<code>' + r[0] + '</code>', '<code>' + r[1] + '</code>', r[2]]; })) })));
+
+    /* Demo na żywo w sekcji planszy */
+    var boardSec = root.querySelector('#component\\.board .cat-specimens');
+    /* Demo w rozmiarze iphone-standard; w wąskim katalogu pomniejszone, żeby zmieściło się w ramce okazu. */
+    var gD = BG.geometry(ctg.width >= 900 ? { width: 393, height: 852 } : { width: ctg.width - 72, height: 800 });
+    var demo = h('div', { 'class': 'cat-demo', style: { '--board-w': gD.boardW + 'px', '--tray-w': gD.boardW + 'px' } });
+    var dScore = BG.scoreDisplay({ variant: 'score', label: S.score, value: C.score, loc: loc, elementId: 'catalog.demo.score' });
+    dScore.el.style.setProperty('--score-fs', '32px');
+    var dStrip = h('div', { 'class': 'bg-strip' });
+    var dBoard = BG.board({ geo: gD, S: S, elementId: 'catalog.demo.board', elementPrefix: 'catalog.demo.board.' });
+    var dTray = BG.tray({ geo: gD, S: S, elementId: 'catalog.demo.tray' });
+    var reset = h('button', { type: 'button', 'class': 'pt-btn', 'data-prototype-tool': 'catalog-demo-reset', style: { color: 'var(--ink)', borderColor: 'var(--line)', background: '#fff' }, onclick: function () { render(); } }, 'Od nowa');
+    demo.append(dScore.el, dStrip, dBoard.el, dTray.el);
+    BG.play({
+      geo: gD, S: S, loc: loc, seed: C.seed, surface: demo, interactive: true, board: dBoard, tray: dTray, score: dScore, strip: dStrip,
+      state: { board: BGRules.parseBoard(C.board), tray: C.tray.slice(), score: C.score, combo: C.combo, dry: C.dry },
+      ids: { piece: 'catalog.demo.piece-', drag: 'catalog.demo.drag-piece-', combo: 'catalog.demo.combo', points: 'catalog.demo.move-points' },
+      onOver: function () { reset.textContent = 'Koniec gry — od nowa'; }
+    });
+    boardSec.append(h('div', { 'class': 'cat-spm cat-wide', 'data-catalog-variant': 'na żywo' },
+      h('div', { 'class': 'cat-spm-box bg-anim', style: { flexDirection: 'column', gap: '10px' } }, demo, reset),
+      h('div', { 'class': 'cat-spm-label' }, h('b', {}, 'na żywo'), 'przeciągnij „' + S.colors.leaf + '” 1×2 na prawy koniec rzędów 6–7: premia jednego koloru i seria ×3')));
+  }
+  render();
+})();
+</script>
+</body>
+</html>

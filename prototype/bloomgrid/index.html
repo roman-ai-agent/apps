@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Bloomgrid — prototyp r1</title>
+<link rel="stylesheet" href="assets/bloomgrid.css">
+<script src="assets/bloomgrid-rules.js"></script>
+<script src="assets/bloomgrid-ui.js"></script>
+</head>
+<body class="bg-page">
+<div id="app"></div>
+<script>
+(async function () {
+  'use strict';
+  var h = BG.h, app = document.getElementById('app');
+  /* Stan = ekran + scenariusz z fixture (klucz: state_id bez sufiksu „.en”). Plansza, trójka, wynik, rekordy i teksty pochodzą z fixture. */
+  var SCREEN = { home: 'screen.home', game: 'screen.game' };
+  var ALLOWED = ['mode', 'state', 'target', 'capture_scenario'];
+  var CAPTURE_SCENARIOS = {};
+
+  function fail(msg) {
+    document.body.className = 'bg-page';
+    app.replaceChildren(h('div', { 'class': 'bg-error', role: 'alert', 'data-prototype-error': 'true' }, 'Błąd renderu prototypu: ' + msg));
+    throw new Error(msg);
+  }
+  async function load(url) {
+    var r = await fetch(url, { cache: 'no-store' });
+    if (!r.ok) throw new Error(url + ' → HTTP ' + r.status);
+    return r.json();
+  }
+
+  var q = new URLSearchParams(location.search);
+  q.forEach(function (_, k) {
+    if (ALLOWED.indexOf(k) < 0) fail('nieznany parametr „' + k + '”');
+    if (q.getAll(k).length > 1) fail('parametr „' + k + '” podany więcej niż raz');
+  });
+
+  var manifest, fixtures;
+  try { manifest = await load('prototype-manifest.json'); fixtures = await load('assets/fixtures.json'); }
+  catch (e) { fail('nie można wczytać manifestu lub fixture (' + e.message + '). Uruchom paczkę przez lokalny serwer HTTP — zob. README.md'); }
+
+  var noParams = Array.from(q.keys()).length === 0;
+  var mode = noParams ? 'user_preview' : q.get('mode');
+  if (mode !== 'capture' && mode !== 'user_preview') fail('nieznany lub brakujący tryb „' + mode + '”');
+  var stateId = q.get('state'), targetId = q.get('target');
+  if (mode === 'capture' && (!stateId || !targetId)) fail('mode=capture wymaga parametrów state i target');
+  if (mode === 'user_preview') { stateId = stateId || manifest.states[0].state_id; targetId = targetId || 'iphone-standard'; }
+  var st = manifest.states.filter(function (x) { return x.state_id === stateId; })[0];
+  if (!st) fail('nieznany stan „' + stateId + '”');
+  var tg = manifest.targets.filter(function (x) { return x.target_id === targetId; })[0];
+  if (!tg) fail('nieznany target „' + targetId + '”');
+  if (st.target_ids && st.target_ids.indexOf(targetId) < 0) fail('niedozwolona para stanu „' + stateId + '” i targetu „' + targetId + '”');
+  var scenario = q.get('capture_scenario');
+  if (scenario !== null) {
+    if (mode !== 'capture') fail('capture_scenario jest dozwolony tylko w mode=capture');
+    if (!CAPTURE_SCENARIOS[stateId] || CAPTURE_SCENARIOS[stateId].indexOf(scenario) < 0) fail('nieobsługiwany capture_scenario „' + scenario + '” dla stanu „' + stateId + '”');
+  }
+  var fx = fixtures.fixtures && fixtures.fixtures[st.fixture_id];
+  if (!fx) fail('fixture „' + st.fixture_id + '” nie istnieje w assets/fixtures.json');
+  var en = /\.en$/.test(stateId), key = stateId.replace(/\.en$/, '');
+  var sc = fx.scenarios && fx.scenarios[key];
+  if (!sc || !SCREEN[sc.screen]) fail('brak scenariusza „' + key + '” w fixture „' + st.fixture_id + '”');
+  document.documentElement.lang = fx.locale;
+
+  var geo = BG.geometry(tg);
+  var surface = h('div', {
+    'class': 'bg-surface ' + (geo.wide ? 'bg-wide' : 'bg-phone') + (mode === 'user_preview' ? ' bg-anim' : ''),
+    'data-element-id': 'element.product-work-surface',
+    'data-screen-id': SCREEN[sc.screen],
+    'data-state-id': stateId,
+    'data-target-id': targetId,
+    'data-fixture-id': st.fixture_id,
+    style: { width: tg.width + 'px', height: tg.height + 'px' }
+  });
+
+  function urlFor(s, t) { var u = new URLSearchParams(); u.set('mode', 'user_preview'); u.set('state', s); u.set('target', t); return '?' + u.toString(); }
+  var toast = null, toastTimer = null;
+  function say(msg) {
+    if (!toast) return;
+    toast.textContent = msg; clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.textContent = ''; }, 3600);
+  }
+  var known = manifest.states.map(function (s) { return s.state_id; });
+  /* Nawigacja klikalnego prototypu (tylko user_preview): przejście do stanu paczki, w wersji językowej bieżącego stanu, gdy istnieje. */
+  var nav = {
+    live: mode === 'user_preview',
+    go: function (s) {
+      if (mode !== 'user_preview') return;
+      var target = en && known.indexOf(s + '.en') >= 0 ? s + '.en' : s;
+      if (known.indexOf(target) < 0) { say('Akcja → ' + s + ' (stan poza paczką r1)'); return; }
+      location.search = urlFor(target, targetId);
+    },
+    say: function (m) { if (mode === 'user_preview') say(m); }
+  };
+  var ctx = { fx: fx, sc: sc, S: fx.strings, loc: fx.locale, geo: geo, nav: nav, surface: surface };
+  var view = sc.screen === 'home' ? renderHome(surface, ctx) : renderGame(surface, ctx);
+
+  if (mode === 'capture') {
+    document.body.className = 'bg-capture';
+    app.append(surface);
+  } else {
+    if (noParams || q.get('mode') !== 'user_preview' || !q.get('state') || !q.get('target')) history.replaceState(null, '', urlFor(stateId, targetId));
+    var stage = h('div', { 'class': 'bg-stage' }, surface);
+    var box = h('div', { 'class': 'bg-stage-box' }, stage);
+    toast = h('div', { 'class': 'bg-toast', role: 'status', 'aria-live': 'polite', 'data-prototype-tool': 'preview-toast' });
+    var bar = BG.previewToolbar({
+      catalogHref: 'catalog.html?target=' + encodeURIComponent(targetId),
+      states: manifest.states.map(function (s) { return { state_id: s.state_id, screen_id: SCREEN[(fixtures.fixtures[s.fixture_id].scenarios[s.state_id.replace(/\.en$/, '')] || {}).screen] }; }),
+      stateId: stateId, targetId: targetId, noteStateId: stateId, targets: manifest.targets,
+      onState: function (s) { location.search = urlFor(s, targetId); },
+      onTarget: function (t) { location.search = urlFor(stateId, t); }
+    });
+    app.append(h('div', { 'class': 'bg-preview' }, box), toast, bar);
+    var fit = function () {
+      var bh = bar.offsetHeight;
+      document.body.style.paddingBottom = bh + 'px';
+      toast.style.bottom = (bh + 10) + 'px';
+      var k = Math.min(1, (window.innerWidth - 32) / tg.width, (window.innerHeight - bh - 32) / tg.height);
+      k = Math.max(k, 0.1);
+      stage.style.transform = 'scale(' + k + ')';
+      box.style.width = Math.round(tg.width * k) + 'px';
+      box.style.height = Math.round(tg.height * k) + 'px';
+      if (view && view.layout) view.layout();
+    };
+    fit(); window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(bar);
+  }
+
+  await BG.preload();
+  if (document.fonts && document.fonts.ready) await document.fonts.ready;
+  if (view && view.layout) view.layout();
+  surface.setAttribute('data-prototype-ready', 'true');
+  if (mode === 'user_preview' && view && view.focus) view.focus();
+
+  /* screen.home (R-3.1, R-4.6) */
+  function renderHome(surface, ctx) {
+    var S = ctx.S, loc = ctx.loc, sc = ctx.sc, wide = ctx.geo.wide;
+    var screen = h('div', { 'class': 'bg-screen bg-home' });
+    var rec = sc.records;
+    var metaRec = BG.fmt(S.meta_record, { n: BG.num(rec.classic, loc) });
+    var metaDaily = BG.fmt(S.meta_daily, { date: S.daily_date, n: BG.num(rec.daily, loc) });
+    screen.append(h('div', { 'class': 'bg-home-top' },
+      BG.wordmark({ elementId: 'element.home.wordmark', S: S, style: wide ? { '--wm-fs': '48px', '--mark': '60px' } : null }),
+      h('img', { 'class': 'bg-home-hero', src: 'assets/home-hero.svg', alt: '', draggable: 'false', width: '320', height: '160' })));
+    var actions = h('div', { 'class': 'bg-home-actions' });
+    if (sc.notice === 'read-error') actions.append(BG.alert({ variant: 'read-error', S: S, elementId: 'element.home.read-error' }));
+    if (sc.saved) actions.append(BG.menuButton({ elementId: 'element.home.continue', variant: 'primary', icon: 'resume', label: S.continue, meta: BG.fmt(S.meta_saved, { n: BG.num(sc.saved.score, loc) }),
+      interactionId: 'interaction.home.continue', action: 'tap', expected: 'navigate game.classic-resumed: zapisana gra klasyczna (plansza, trójka, wynik, seria, dalszy ciąg klocków; R-4.2)', onClick: function () { ctx.nav.go('game.classic-resumed'); } }));
+    actions.append(BG.menuButton({ elementId: 'element.home.new-game', variant: sc.saved ? 'secondary' : 'primary', icon: 'play', label: S.new_game, meta: metaRec,
+      interactionId: 'interaction.home.new-game', action: 'tap', expected: 'navigate game.classic-start' + (sc.saved ? '; usuwa zapisaną grę bez potwierdzenia, rekord bez zmian (R-4.4)' : ''), onClick: function () { ctx.nav.go('game.classic-start'); } }));
+    actions.append(BG.menuButton({ elementId: 'element.home.daily', variant: 'secondary', icon: 'calendar', label: S.daily, meta: metaDaily,
+      interactionId: 'interaction.home.daily', action: 'tap', expected: 'navigate game.daily-start: od pierwszej trójki ciągu bieżącej daty (R-3.2, R-3.3)', onClick: function () { ctx.nav.go('game.daily-start'); } }));
+    screen.append(wide ? h('div', { 'class': 'bg-home-mid' }, actions) : actions);
+    surface.append(screen);
+    return null;
+  }
+
+  /* screen.game */
+  function renderGame(surface, ctx) {
+    var S = ctx.S, loc = ctx.loc, geo = ctx.geo, sc = ctx.sc, daily = sc.mode === 'daily';
+    var screen = h('div', { 'class': 'bg-screen' });
+    var overlay = null, crash = null;
+    function closeOverlay() { if (overlay) { overlay.remove(); overlay = null; } }
+    function openConfirm(focus) {
+      closeOverlay();
+      overlay = BG.dialog({ elementId: 'element.game.confirm', prefix: 'element.game.confirm.', S: S, row: geo.wide,
+        onKeep: function () { closeOverlay(); }, onEnd: function () { ctx.nav.go('home.with-records'); } });
+      surface.append(overlay);
+      if (focus) overlay.querySelector('[data-element-id="element.game.confirm.keep"]').focus();
+    }
+    function openOver(o, focus) {
+      closeOverlay();
+      overlay = BG.gameOverPanel({ elementId: 'element.game.over', prefix: 'element.game.over.', S: S, loc: loc, mode: sc.mode, score: o.score, record: o.record, newRecord: o.newRecord, dailyInfo: o.dailyInfo, row: geo.wide,
+        onAgain: function () { ctx.nav.go(daily ? 'game.daily-start' : 'game.classic-start'); }, onHome: function () { ctx.nav.go('home.with-records'); } });
+      surface.append(overlay);
+      /* Nagłówek pod panelem zgadza się z panelem: po nowym rekordzie pokazuje nowy rekord (R-4.1, R-3.4);
+         po podejściu zakończonym innego dnia nie pokazuje rekordu dnia (R-3.6). */
+      if (daily && o.dailyInfo === 'new-available') record.el.remove();
+      else if (o.newRecord) record.set(o.record);
+      if (focus) overlay.querySelector('[data-element-id="element.game.over.play-again"]').focus();
+    }
+    var exit = BG.iconButton({
+      elementId: 'element.game.exit', label: S.exit_label, icon: 'home', interactionId: 'interaction.game.exit', action: 'tap',
+      expected: daily ? 'open component.dialog „' + S.confirm_title + '” (game.daily-exit-confirm)' : 'navigate home.resume-available bez pytania; gra zachowana do „' + S.continue + '” (R-3.5)',
+      onClick: function () { if (!ctx.nav.live || overlay || crash) return; if (daily) openConfirm(true); else ctx.nav.go('home.resume-available'); }
+    });
+    var record = BG.scoreDisplay({ variant: 'record', label: daily ? S.record_daily : S.record, value: daily ? sc.records.daily : sc.records.classic, loc: loc, elementId: 'element.game.record' });
+    var score = BG.scoreDisplay({ variant: 'score', label: S.score, value: sc.score, loc: loc, elementId: 'element.game.score' });
+    score.el.style.setProperty('--score-fs', geo.wide ? '60px' : '40px');
+    screen.append(h('header', { 'class': 'bg-game-head' }, exit, BG.modeLabel({ variant: daily ? 'daily' : 'classic', S: S, elementId: 'element.game.mode' }), record.el));
+    var board = BG.board({ geo: geo, S: S, elementId: 'element.game.board', elementPrefix: 'element.game.board.' });
+    var tray = BG.tray({ geo: geo, S: S, elementId: 'element.game.tray' });
+    var strip = h('div', { 'class': 'bg-strip', style: { '--board-w': geo.boardW + 'px' } });
+    var saveWrap = null;
+    if (sc.alert === 'save-error') {
+      saveWrap = h('div', { 'class': 'bg-save-wrap' }, BG.alert({ variant: 'save-error', S: S, elementId: 'element.game.save-error', interactionId: 'interaction.game.save-retry',
+        onAction: function () { if (!ctx.nav.live) return; saveWrap.remove(); ctx.nav.say('Symulacja: ponowny zapis udany — komunikat znika (R-4.5)'); } }));
+    }
+    var main;
+    if (geo.wide) {
+      main = h('div', { 'class': 'bg-game-main', style: { '--board-w': geo.boardW + 'px' } },
+        board.el, h('div', { 'class': 'bg-side' }, score.el, strip, tray.el, saveWrap));
+    } else {
+      main = h('div', { 'class': 'bg-game-main', style: { '--board-w': geo.boardW + 'px' } },
+        h('div', { 'class': 'bg-play' }, h('div', { 'class': 'bg-score-wrap' }, score.el), strip, board.el),
+        saveWrap, h('div', { 'class': 'bg-tray-wrap' }, tray.el));
+    }
+    screen.append(main);
+    surface.append(screen);
+
+    /* Stan gry z fixture; klatka ruchu (move) liczona regułami z położenia przed ruchem. */
+    var state = { board: BGRules.parseBoard(sc.board), tray: sc.tray.slice(), score: sc.score, combo: sc.combo, dry: sc.dry };
+    var view = {};
+    if (sc.move) {
+      var res = BGRules.play(state, sc.move.slot, sc.move.row, sc.move.col, BGRules.rng(sc.seed));
+      state = res.state;
+      view.frame = { placedBoard: res.move.placedBoard, clearing: res.move.clearedCells, lines: res.move.lines };
+      view.points = res.move.points;
+    }
+    if (sc.drag) view.drag = sc.drag;
+    var game = BG.play({
+      geo: geo, S: S, loc: loc, state: state, seed: sc.seed, surface: surface, interactive: true, view: view,
+      board: board, tray: tray, score: score, strip: strip,
+      ids: { piece: 'element.game.piece-', drag: 'interaction.game.drag-piece-', combo: 'element.game.combo', points: 'element.game.move-points' },
+      blocked: function () { return !ctx.nav.live || !!overlay || !!crash; },
+      onOver: function (s) {
+        var rec = daily ? sc.records.daily : sc.records.classic;
+        openOver({ score: s.score, record: Math.max(rec, s.score), newRecord: s.score > rec, dailyInfo: 'until-midnight' }, true);
+      }
+    });
+    if (sc.overlay === 'confirm') openConfirm(false);
+    if (sc.over) openOver({ score: sc.score, record: sc.over.record, newRecord: sc.over.newRecord, dailyInfo: sc.over.dailyInfo }, false);
+    if (sc.alert === 'crash') {
+      crash = h('div', { 'class': 'bg-crash' }, BG.alert({ variant: 'crash', S: S, elementId: 'element.app.crash', interactionId: 'interaction.app.crash-restart',
+        onAction: function () { ctx.nav.go('home.resume-available'); } }));
+      surface.append(crash);
+    }
+    return {
+      layout: game.layout,
+      focus: function () {
+        var f = surface.querySelector('[data-element-id="element.game.confirm.keep"], [data-element-id="element.game.over.play-again"]');
+        if (f) f.focus();
+      }
+    };
+  }
+})();
+</script>
+</body>
+</html>

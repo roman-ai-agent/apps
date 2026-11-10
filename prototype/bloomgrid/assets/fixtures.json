@@ -1,0 +1,255 @@
+{
+  "fixtures": {
+    "default": {
+      "locale": "pl",
+      "strings": {
+        "app_name": "Bloomgrid",
+        "tagline": "Układaj klocki na grządce 8×8",
+        "mode_classic": "Gra klasyczna",
+        "mode_daily": "Wyzwanie dnia",
+        "daily_date": "10 listopada",
+        "score": "Wynik",
+        "record": "Rekord",
+        "record_daily": "Rekord dnia",
+        "exit_label": "Wyjdź do ekranu startowego",
+        "combo": "Seria ×{c}",
+        "move_combo": "seria +{n}",
+        "move_mono": "jeden kolor +{n}",
+        "move_points_sr": "Ruch: +{n} pkt",
+        "new_game": "Nowa gra",
+        "continue": "Kontynuuj",
+        "daily": "Wyzwanie dnia",
+        "meta_record": "Rekord {n}",
+        "meta_saved": "Zapisana gra · wynik {n}",
+        "meta_daily": "{date} · rekord dnia {n}",
+        "play_again": "Zagraj ponownie",
+        "to_home": "Do startu",
+        "game_over": "Koniec gry",
+        "new_record": "Nowy rekord!",
+        "daily_until_midnight": "Ten sam ciąg klocków obowiązuje do północy.",
+        "daily_new_available": "Nowe wyzwanie dnia jest już dostępne.",
+        "confirm_title": "Zakończyć podejście?",
+        "confirm_body": "Wynik nie trafi do rekordu",
+        "confirm_end": "Zakończ",
+        "confirm_keep": "Graj dalej",
+        "save_error": "Nie udało się zapisać gry",
+        "retry": "Spróbuj ponownie",
+        "read_error": "Nie udało się odczytać zapisanej gry",
+        "crash": "Coś poszło nie tak",
+        "restart": "Uruchom ponownie",
+        "board_sr": "Plansza 8×8, zajęte pola: {n} z 64",
+        "tray_sr": "Klocki do położenia",
+        "piece_sr": "Klocek: {n} {cells}, {color}",
+        "piece_role": "klocek do przeciągnięcia",
+        "slot_empty_sr": "Położony",
+        "cells_one": "pole",
+        "cells_few": "pola",
+        "cells_many": "pól",
+        "bonus_badge": "×2",
+        "bonus_sr": "linia jednego koloru, punkty ×2",
+        "colors": { "poppy": "mak", "sun": "słońce", "leaf": "liść", "drop": "kropla", "berry": "jagoda" }
+      },
+      "scenarios": {
+        "home.first-run": { "screen": "home", "records": { "classic": 0, "daily": 0 }, "saved": null, "notice": null },
+        "home.with-records": { "screen": "home", "records": { "classic": 18420, "daily": 2980 }, "saved": null, "notice": null },
+        "home.resume-available": { "screen": "home", "records": { "classic": 18420, "daily": 2980 }, "saved": { "score": 2340 }, "notice": null },
+        "home.read-error": { "screen": "home", "records": { "classic": 18420, "daily": 2980 }, "saved": null, "notice": "read-error" },
+        "game.classic-start": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 20261110,
+          "board": ["........", "........", "........", "........", "........", "........", "........", "........"],
+          "tray": [{ "shape": "t4-down", "color": "poppy" }, { "shape": "square2", "color": "drop" }, { "shape": "line3-h", "color": "sun" }],
+          "score": 0, "combo": 0, "dry": 0
+        },
+        "game.classic-resumed": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [null, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 2340, "combo": 2, "dry": 1
+        },
+        "game.daily-start": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 20261110,
+          "board": ["........", "........", "........", "........", "........", "........", "........", "........"],
+          "tray": [{ "shape": "line4-h", "color": "berry" }, { "shape": "corner3-br", "color": "leaf" }, { "shape": "z4-h", "color": "poppy" }],
+          "score": 0, "combo": 0, "dry": 0
+        },
+        "game.dragging-fits": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [null, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 2340, "combo": 2, "dry": 1,
+          "drag": { "slot": 1, "row": 0, "col": 2 }
+        },
+        "game.dragging-line-preview": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 7,
+          "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spdsbpd.", ".......d"],
+          "tray": [{ "shape": "line2-v", "color": "leaf" }, { "shape": "square2", "color": "sun" }, { "shape": "corner5-tl", "color": "berry" }],
+          "score": 6210, "combo": 2, "dry": 0,
+          "drag": { "slot": 0, "row": 5, "col": 7 }
+        },
+        "game.line-clear": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 31,
+          "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "l.....p.", "spd.bpdl", "pdsl.bsd"],
+          "tray": [{ "shape": "single", "color": "sun" }, { "shape": "square2", "color": "drop" }, { "shape": "line3-v", "color": "poppy" }],
+          "score": 1250, "combo": 0, "dry": 0,
+          "move": { "slot": 0, "row": 7, "col": 4 }
+        },
+        "game.color-bonus": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 32,
+          "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spd.bpd.", ".......d"],
+          "tray": [{ "shape": "single", "color": "leaf" }, { "shape": "line3-h", "color": "sun" }, { "shape": "square2", "color": "berry" }],
+          "score": 3120, "combo": 0, "dry": 0,
+          "move": { "slot": 0, "row": 5, "col": 7 }
+        },
+        "game.combo": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 33,
+          "board": ["......p.", "......d.", "b.....s.", "bb....b.", "l.....l.", "ddsbl..s", "......d.", "p.....s."],
+          "tray": [{ "shape": "line2-h", "color": "poppy" }, { "shape": "t4-up", "color": "drop" }, { "shape": "corner3-tr", "color": "sun" }],
+          "score": 4210, "combo": 2, "dry": 0,
+          "move": { "slot": 0, "row": 5, "col": 5 }
+        },
+        "game.daily-exit-confirm": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 20261110,
+          "board": ["........", "........", "....s...", "...ss...", "b..d....", "bb.dd...", "lbbpl...", "llppl.d."],
+          "tray": [{ "shape": "line4-h", "color": "berry" }, null, { "shape": "z4-h", "color": "poppy" }],
+          "score": 860, "combo": 0, "dry": 1,
+          "overlay": "confirm"
+        },
+        "game.save-error": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [null, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 2340, "combo": 2, "dry": 1,
+          "alert": "save-error"
+        },
+        "game.crash": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [null, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 2340, "combo": 2, "dry": 1,
+          "alert": "crash"
+        },
+        "game.over-classic": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, null],
+          "score": 6842, "combo": 0, "dry": 2,
+          "over": { "record": 18420, "newRecord": false }
+        },
+        "game.over-classic-new-record": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, null],
+          "score": 21360, "combo": 0, "dry": 2,
+          "over": { "record": 21360, "newRecord": true }
+        },
+        "game.over-daily": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
+          "score": 2140, "combo": 0, "dry": 1,
+          "over": { "record": 2980, "newRecord": false, "dailyInfo": "until-midnight" }
+        },
+        "game.over-daily-new-day": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
+          "score": 3310, "combo": 0, "dry": 1,
+          "over": { "record": null, "newRecord": false, "dailyInfo": "new-available" }
+        }
+      },
+      "catalog": {
+        "records": { "classic": 18420, "daily": 2980 },
+        "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spdsbpd.", ".......d"],
+        "tray": [{ "shape": "line2-v", "color": "leaf" }, { "shape": "square2", "color": "sun" }, { "shape": "corner5-tl", "color": "berry" }],
+        "drag": { "slot": 0, "row": 5, "col": 7 },
+        "score": 6210,
+        "combo": 2,
+        "dry": 0,
+        "seed": 7
+      }
+    },
+    "english": {
+      "locale": "en",
+      "strings": {
+        "app_name": "Bloomgrid",
+        "tagline": "Fit pieces into an 8×8 garden bed",
+        "mode_classic": "Classic",
+        "mode_daily": "Daily challenge",
+        "daily_date": "November 10",
+        "score": "Score",
+        "record": "Best",
+        "record_daily": "Today's best",
+        "exit_label": "Exit to home screen",
+        "combo": "Streak ×{c}",
+        "move_combo": "streak +{n}",
+        "move_mono": "single colour +{n}",
+        "move_points_sr": "Move: +{n} points",
+        "new_game": "New game",
+        "continue": "Continue",
+        "daily": "Daily challenge",
+        "meta_record": "Best {n}",
+        "meta_saved": "Saved game · score {n}",
+        "meta_daily": "{date} · today's best {n}",
+        "play_again": "Play again",
+        "to_home": "Home",
+        "game_over": "Game over",
+        "new_record": "New best!",
+        "daily_until_midnight": "The same pieces apply until midnight.",
+        "daily_new_available": "A new daily challenge is available.",
+        "confirm_title": "End this attempt?",
+        "confirm_body": "Your score won't count toward your best",
+        "confirm_end": "End attempt",
+        "confirm_keep": "Keep playing",
+        "save_error": "Couldn't save the game",
+        "retry": "Try again",
+        "read_error": "Couldn't read the saved game",
+        "crash": "Something went wrong",
+        "restart": "Restart",
+        "board_sr": "8×8 board, {n} of 64 cells filled",
+        "tray_sr": "Pieces to place",
+        "piece_sr": "Piece: {n} {cells}, {color}",
+        "piece_role": "draggable piece",
+        "slot_empty_sr": "Placed",
+        "cells_one": "cell",
+        "cells_few": "cells",
+        "cells_many": "cells",
+        "bonus_badge": "×2",
+        "bonus_sr": "single-colour line, points ×2",
+        "colors": { "poppy": "poppy", "sun": "sun", "leaf": "leaf", "drop": "drop", "berry": "berry" }
+      },
+      "scenarios": {
+        "home.first-run": { "screen": "home", "records": { "classic": 0, "daily": 0 }, "saved": null, "notice": null },
+        "game.classic-start": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 20261110,
+          "board": ["........", "........", "........", "........", "........", "........", "........", "........"],
+          "tray": [{ "shape": "t4-down", "color": "poppy" }, { "shape": "square2", "color": "drop" }, { "shape": "line3-h", "color": "sun" }],
+          "score": 0, "combo": 0, "dry": 0
+        },
+        "game.over-classic": {
+          "screen": "game", "mode": "classic", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, null],
+          "score": 6842, "combo": 0, "dry": 2,
+          "over": { "record": 18420, "newRecord": false }
+        },
+        "game.over-daily": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
+          "score": 2140, "combo": 0, "dry": 1,
+          "over": { "record": 2980, "newRecord": false, "dailyInfo": "until-midnight" }
+        }
+      },
+      "catalog": {
+        "records": { "classic": 18420, "daily": 2980 },
+        "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spdsbpd.", ".......d"],
+        "tray": [{ "shape": "line2-v", "color": "leaf" }, { "shape": "square2", "color": "sun" }, { "shape": "corner5-tl", "color": "berry" }],
+        "drag": { "slot": 0, "row": 5, "col": 7 },
+        "score": 6210,
+        "combo": 2,
+        "dry": 0,
+        "seed": 7
+      }
+    }
+  }
+}
