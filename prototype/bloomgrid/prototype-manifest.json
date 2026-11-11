@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "revision_id": "r3",
+  "revision_id": "r4",
   "id_migrations": [],
   "targets": [
     { "target_id": "mac-wide", "width": 1440, "height": 900 },

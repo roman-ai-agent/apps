@@ -58,7 +58,9 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
    więc pola, odstępy i rozmiar planszy są jak w r2; rama wychodzi poza planszę o --frame-out (telefony 8 px, mac-wide 10 px). */
 .bg-board{--frame-out:8px;position:relative;flex:none;padding:var(--pad);border-radius:calc(var(--pad) * 2.2);background:none;
   border:0 solid transparent;border-image:url(img/board-frame.webp) 22 / calc(var(--pad) + var(--frame-out)) / var(--frame-out) stretch;
-  border-image-repeat:round;filter:drop-shadow(0 10px 14px rgba(20,10,2,.45));touch-action:none}
+  border-image-repeat:stretch;filter:drop-shadow(0 10px 14px rgba(20,10,2,.45));touch-action:none}
+/* r4: ramy z fakturą wracają do stretch. W r3 `round` powtarzał środek boku kilka razy, a złącza powtórzeń (urwane słoje,
+   ząbki) były widoczne jako drobne kreski na środku boków ramy i karty — te same „kreski”, które Tomasz widział przy slotach. */
 .bg-wide .bg-board{--frame-out:10px}
 /* Wyzwanie dnia (Q108): złota listwa na środku ramy i złote słońca w narożnikach. Leżą tylko na ramie
    (od −frame-out do 0 px od krawędzi planszy); pierwsze pole zaczyna się 9 / 12 px od krawędzi. */
@@ -115,8 +117,10 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 @media (hover:hover){.bg-piece[data-variant=tray]:hover{filter:brightness(1.06) drop-shadow(0 4px 6px rgba(40,24,10,.25))}}
 
 /* component.piece-tray */
-.bg-tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--tray-gap,12px);width:100%}
-.bg-slot{position:relative;display:flex;align-items:center;justify-content:center;height:var(--slot-h);border-radius:18px;background:none;border:0 solid transparent;border-image:url(img/slot.webp) 40 fill / 20px stretch;filter:drop-shadow(0 4px 8px rgba(20,12,4,.35))}
+.bg-tray{display:grid;grid-template-columns:repeat(3,var(--slot-w,minmax(0,1fr)));justify-content:space-between;gap:var(--tray-gap,12px);width:100%}
+/* r4: slot to jeden obraz rozciągnięty na cały slot (bez 9-slice). W r3 border-image (slice 40 → 20 px) przy ułamkowych
+   szerokościach slotów (np. 112,33 / 118,67 px) i DPR > 1 dawał szwy na granicach wycinków: różne kreski i ramki w każdym slocie. */
+.bg-slot{position:relative;display:flex;align-items:center;justify-content:center;height:var(--slot-h);border-radius:18px;background:url(img/slot.webp) center / 100% 100% no-repeat;border:0;filter:drop-shadow(0 4px 8px rgba(20,12,4,.35))}
 .bg-slot[data-variant=empty]{opacity:.62}
 .bg-slot[data-variant=empty]::after{content:"";width:22%;aspect-ratio:1;border-radius:30%;border:2px dashed rgba(42,28,16,.35)}
 
@@ -124,7 +128,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-score{display:flex;flex-direction:column;align-items:center;gap:0}
 .bg-score-label{font-size:13px;font-weight:700;color:var(--ink-2);letter-spacing:.02em}
 .bg-score-value{font-weight:800;font-size:var(--score-fs,40px);line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.bg-score[data-variant=record]{align-items:flex-end}
+.bg-score[data-variant=record]{align-items:center}
 .bg-score[data-variant=record] .bg-score-value{font-size:var(--record-fs,17px);display:inline-flex;align-items:center;gap:5px}
 .bg-score[data-variant=record] .bg-score-label{font-size:12px}
 
@@ -136,9 +140,9 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 @keyframes bg-bump{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
 
 /* component.move-points */
-.bg-points{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--green-d)}
+.bg-points{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--green-d)}
 .bg-points-total{font-weight:800;font-size:22px}
-.bg-points-notes{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 8px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.bg-points-notes{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 8px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
 .bg-points-note{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
 .bg-anim .bg-points.is-live{animation:bg-rise 1.4s ease-out forwards}
 @keyframes bg-rise{0%{opacity:0;transform:translateY(6px)}12%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
@@ -164,7 +168,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-game-head > .bg-score[data-variant=record]{grid-column:3}
 
 /* component.menu-button */
-.bg-menu-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:12px 18px;border-radius:20px;border:2px solid transparent;font:inherit;text-align:left;cursor:pointer}
+.bg-menu-btn{display:flex;align-items:center;gap:10px;width:100%;min-height:68px;padding:12px 18px;border-radius:20px;border:2px solid transparent;font:inherit;text-align:center;cursor:pointer}
 /* Przyciski z obrazów (pigułki: zielona główna, kremowa drugorzędna, kremowa z ceglaną obwódką ostrzegawcza), rozciągane border-image. */
 .bg-menu-btn,.bg-btn{border-image-slice:38 38 38 38 fill;border-image-repeat:stretch;filter:drop-shadow(0 4px 6px rgba(20,12,4,.35))}
 .bg-menu-btn{border-image-width:50% 34px}
@@ -176,9 +180,11 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-menu-btn[data-variant=secondary]{background:none;color:var(--ink)}
 .bg-menu-btn-ic{flex:none;display:flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.4)}
 .bg-menu-btn[data-variant=secondary] .bg-menu-btn-ic{background:rgba(46,107,58,.14);color:var(--green)}
-.bg-menu-btn-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+/* r4 (Q111, Q115): ikona przy lewej krawędzi, blok tekstu wyśrodkowany w całym przycisku — prawy margines bloku równy ikonie z odstępem (36 + 10 px). */
+.bg-menu-btn-text{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;min-width:0;margin-right:46px;text-align:center}
 .bg-menu-btn-label{font-weight:800;font-size:19px;line-height:1.15}
-.bg-menu-btn-meta{font-weight:600;font-size:14px;line-height:1.25;opacity:.88;font-variant-numeric:tabular-nums}
+/* r4 (Q115): wiersz informacji 15 px (był 14 px z przezroczystością .88), pełne krycie. */
+.bg-menu-btn-meta{font-weight:600;font-size:15px;line-height:1.25;font-variant-numeric:tabular-nums}
 .bg-menu-btn:hover,.bg-menu-btn[data-demo=hover],.bg-btn:hover,.bg-btn[data-demo=hover]{filter:brightness(1.05) drop-shadow(0 5px 7px rgba(20,12,4,.35))}
 .bg-menu-btn:active,.bg-menu-btn[data-demo=pressed]{transform:translateY(3px);filter:brightness(.96) drop-shadow(0 1px 2px rgba(20,12,4,.35))}
 
@@ -200,9 +206,12 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 
 /* component.dialog i component.game-over-panel */
 .bg-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:safe center;justify-content:center;padding:16px;overflow-y:auto;background:rgba(28,22,14,.46)}
-.bg-card{width:min(100%,380px);padding:24px 22px 22px;border-radius:24px;background:none;border:0 solid transparent;border-image:url(img/card.webp) 40 fill / 28px round;filter:drop-shadow(0 18px 30px rgba(28,20,10,.45));display:flex;flex-direction:column;gap:14px}
+.bg-card{width:min(100%,380px);padding:24px 22px 22px;border-radius:24px;background:none;border:0 solid transparent;border-image:url(img/card.webp) 40 fill / 28px stretch;filter:drop-shadow(0 18px 30px rgba(28,20,10,.45));display:flex;flex-direction:column;gap:14px}
 /* Wyzwanie dnia (Q108): dialog wyjścia i panel końca na karcie ze złotą listwą i słońcami w narożnikach. */
-[data-game-mode=daily] .bg-card{border-image:url(img/daily-card.webp) 42 fill / 22px / 6px round}
+[data-game-mode=daily] .bg-card{border-image:url(img/daily-card.webp) 42 fill / 22px / 6px stretch}
+/* r4 (Q111): tekst kart wyśrodkowany w poziomie, także wielowierszowy; wiersze wyrównane długością (text-wrap: balance). */
+.bg-card{text-align:center;text-wrap:balance}
+.bg-menu-btn-text,.bg-alert-text,.bg-daily-info{text-wrap:balance}
 .bg-card h2{margin:0;font-size:23px;font-weight:800;line-height:1.2}
 .bg-card p{margin:0;font-size:16px;line-height:1.4;color:var(--ink-2)}
 .bg-actions{display:flex;flex-direction:column;gap:10px;margin-top:6px}
@@ -212,7 +221,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-over-score{font-size:54px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
 .bg-over-record{font-size:16px;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .bg-newrec{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 9px;border-radius:999px;background:#FFF0B8;border:2px solid #C9A21A;color:#5A4300;font-weight:800;font-size:15px}
-.bg-daily-info{display:flex;align-items:flex-start;gap:8px;padding:10px 12px;border-radius:14px;background:var(--green-l);color:var(--green-d);font-weight:700;font-size:14.5px;line-height:1.35;text-align:left}
+.bg-daily-info{display:flex;align-items:flex-start;justify-content:center;gap:8px;padding:10px 40px 10px 12px;border-radius:14px;background:var(--green-l);color:var(--green-d);font-weight:700;font-size:14.5px;line-height:1.35;text-align:center}
 .bg-daily-info svg{flex:none;margin-top:1px}
 .bg-wide .bg-card{width:min(100%,460px)}
 .bg-btn{white-space:nowrap}
@@ -220,9 +229,9 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-wide .bg-actions .bg-btn,.bg-card.is-row .bg-actions .bg-btn{flex:1}
 
 /* component.alert */
-.bg-alert{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;border-radius:16px;font-weight:700;font-size:15px;line-height:1.3;text-align:left}
+.bg-alert{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;border-radius:16px;font-weight:700;font-size:15px;line-height:1.3;text-align:center}
 .bg-alert-ic{flex:none;display:flex}
-.bg-alert-text{flex:1;min-width:0}
+.bg-alert-text{flex:1;min-width:0;text-align:center}
 .bg-alert .bg-btn{flex:none;min-height:44px;padding:8px 14px;font-size:15px;border-radius:12px}
 .bg-alert[data-variant=save-error],.bg-alert[data-variant=read-error]{background:#FFF1E4;color:#7A3410;box-shadow:inset 0 0 0 2px #E2A47A}
 .bg-alert[data-variant=crash]{background:#5E1E10;color:#fff;box-shadow:0 8px 24px rgba(40,10,0,.35)}
@@ -255,11 +264,19 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-phone .bg-strip{width:var(--board-w);margin-top:2px}
 .bg-phone .bg-play{margin:auto 0;display:flex;flex-direction:column;align-items:center;width:100%}
 .bg-phone .bg-tray-wrap{width:100%;margin-top:16px}
-.bg-wide .bg-game-head{max-width:1040px;width:100%;margin:0 auto}
+/* r4 (Q112): wspólna siatka mac-wide. Nagłówek ma szerokość planszy + odstępu + kolumny tacki (564 + 72 + 380 = 1016 px),
+   więc przycisk domu stoi na lewej krawędzi planszy, a rekord na prawej krawędzi kolumny tacki. */
+.bg-wide .bg-game-head{max-width:1016px;width:100%;margin:0 auto;min-height:56px}
+/* r4 (Q113): większy przycisk domu i rekord na mac-wide. */
+.bg-wide .bg-icon-btn{width:56px;height:56px;border-radius:18px}
+.bg-wide .bg-score[data-variant=record] .bg-score-label{font-size:14px}
+.bg-wide .bg-score[data-variant=record] .bg-score-value{font-size:22px}
 .bg-wide .bg-game-main{flex:1;display:grid;grid-template-columns:var(--board-w) 380px;justify-content:center;align-content:center;align-items:center;gap:72px}
 .bg-wide .bg-side{display:flex;flex-direction:column;gap:20px}
-.bg-wide .bg-score{align-items:flex-start}
-.bg-wide .bg-strip{height:52px}
+/* r4 (Q112): wynik, seria i punkty ruchu jeden pod drugim na osi środkowego slotu tacki (środek kolumny 380 px).
+   Pasek ma stałą wysokość 96 px (seria 32 + odstęp 6 + punkty z dopiskami), więc kolumna nie skacze, gdy elementy znikają. */
+.bg-wide .bg-score{align-items:center}
+.bg-wide .bg-strip{flex-direction:column;justify-content:flex-start;align-items:center;gap:6px;height:96px}
 
 /* Pasek narzędzi podglądu (standard paczki) — narzędzie prototypu, nie UI produktu */
 .pt-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;flex-direction:column;gap:8px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#141518;color:#fff;font:14px/1.3 system-ui,-apple-system,"Segoe UI",sans-serif;box-shadow:0 -4px 18px rgba(0,0,0,.2)}

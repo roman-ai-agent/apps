@@ -1,5 +1,49 @@
 # Changelog
 
+## r4
+
+- Rewizja bazowa: `r3` (zaakceptowana i opublikowana, commit 7166ef6)
+- Rewizja docelowa: `r4` (Q114)
+- Migracje ID: brak (`id_migrations: []`); stany, komponenty, elementy i interakcje bez zmian
+- Wejście: uwagi Tomasza do r3 i decyzje Reprezentanta Q111–Q115
+- Nowe obrazy: brak (r4 używa obrazów r3)
+
+### Zmiana: tekst wyśrodkowany w poziomie (Q111)
+
+Wszystkie teksty są wyśrodkowane w poziomie, także wielowierszowe:
+- przyciski menu (`component.menu-button`): ikona przy lewej krawędzi, blok tekstu (etykieta i wiersz informacji) wyśrodkowany w całym przycisku; prawy margines bloku równy ikonie z odstępem (46 px po Q115), więc tekst nie nachodzi na ikonę; długie wiersze zawijają się w wyrównane wiersze (`text-wrap: balance`);
+- karty dialogu i panelu końca (tytuł, treść, „Wynik nie trafi do rekordu”), ramka informacji wyzwania („Ten sam ciąg klocków obowiązuje do północy.”, wyśrodkowana względem całej ramki mimo ikony po lewej), komunikaty `component.alert`;
+- tabliczka rekordu (etykieta i liczba wyśrodkowane w tabliczce), punkty ruchu (suma i dopiski).
+
+### Zmiana: wspólna siatka mac-wide (Q112) i większe elementy nagłówka (Q113)
+
+Tylko mac-wide; telefony bez zmian (siatka nie dotyczy `tablet-narrow` ani `phone-landscape`, bo mają układ telefonu z trójką pod planszą):
+- nagłówek ma szerokość 1016 px (plansza 564 + odstęp 72 + kolumna trójki 380): przycisk domu na lewej krawędzi planszy, rekord na prawej krawędzi kolumny trójki, środki na jednej linii;
+- przycisk domu 56×56 px (był 44×44) z proporcjonalnie większą ikoną; rekord: etykieta 14 px (była 12), liczba 22 px (była 17);
+- wynik, seria i punkty ruchu jeden pod drugim na osi środkowego slotu trójki; pasek serii i punktów ma układ kolumnowy i stałą wysokość 96 px (był 52 px, seria po lewej, punkty po prawej).
+
+Zmienione geometrie względem r3 (mac-wide, wszystkie stany gry): `element.game.exit` 200,34 44×44 → 212,32 56×56; `element.game.record` prawa krawędź 1240 → 1228, wysokość 32,8 → 40,1; `element.game.board` i pola 192 → 196 px od góry (nagłówek wyższy o 8 px); `element.game.score` 330,5 → 312,5; `element.game.combo` x 848 → 982 i y 439,5 → 411,5; `element.game.move-points` x 1144,6 → 996,3 i y 436,5 → 449,5; `element.game.tray` 501,5 → 527,5; klocki w trójce przesunięte razem z trójką; w `game.save-error` komunikat 595,5 → 621,5. W wyzwaniu dnia `element.game.mode` przesunięty razem z nagłówkiem.
+
+### Zmiana: sloty trójki bez szwów (wada z r3)
+
+Przyczyna: slot w r3 był 9-slice (`border-image` z `slot.webp`, slice 40 → szerokość 20 px) na ułamkowych szerokościach i pozycjach slotów (np. 112,33 px na iphone-standard, 118,67 px na mac-wide). Przy skalowaniu wycinków na granicach powstawały szwy, a każdy slot leżał na innym ułamku piksela, więc dostawał inne kreski i inną ramkę (także przy DPR > 1). Naprawa:
+- slot to jeden obraz rozciągnięty na cały slot (bez 9-slice);
+- sloty mają całkowitą, równą szerokość i stoją na całkowitych pozycjach (iphone 111 px / odstęp 14, mobile-compact 100 / 14, android i mac-wide 118 / 13, mobile-large, tablet-narrow i phone-landscape 128 / 12); pole klocka w trójce i wysokość slotu bez zmian.
+Zmienione geometrie: klocki w skrajnych slotach trójki przesunięte o ≤ 0,7 px w poziomie (iphone-standard, mobile-compact; na pozostałych targetach ≤ 0,5 px).
+
+Przy przeglądzie innych elementów 9-slice: ramy z fakturą (rama planszy, karty) w r3 miały `border-image-repeat: round`, który zostawiał widoczne złącza powtórzeń na środku boków (te same drobne kreski) — w r4 `stretch`. Pigułki przycisków i plakietka serii (`stretch`) bez szwów na wycinkach DPR 3.
+
+### Zmiana: wysokości po wyśrodkowaniu tekstu (Q111)
+
+Ramka informacji wyzwania w panelu końca ma symetryczne marginesy (ikona po lewej, tekst wyśrodkowany względem całej ramki), więc na android-standard, mobile-large, tablet-narrow i phone-landscape tekst zawija się na 2 wiersze i panel końca wyzwania (`game.over-daily`, `.en`, `-new-day`) jest wyższy o ok. 18 px; zmienione geometrie `element.game.over` i jego elementów (przesunięcie ≤ 10 px w pionie, ramka informacji pełnej szerokości karty).
+
+### Zmiana: wiersz informacji przycisków menu (Q115)
+
+- „Wyzwanie dnia” ma wiersz informacji tylko z rekordem dnia: pl „Rekord dnia 2980” (było „10 listopada · rekord dnia 2980”), en „Today's best 2,980” (było „November 10 · today's best 2,980”) — `meta_daily` w fixture bez `{date}`. Data zostaje na wstędze w grze (data rozpoczęcia podejścia, R-3.6, Q108).
+- Wiersze informacji wszystkich trzech przycisków („Rekord 18 420”, „Rekord dnia 2980”, „Zapisana gra · wynik 2340”) mają 15 px (było 14 px z przezroczystością 0,88) i pełne krycie.
+- Odstęp ikona–tekst 10 px (był 14), prawy margines bloku tekstu 46 px, żeby „Zapisana gra · wynik 2340” mieścił się w jednym wierszu na mobile-compact; między „gra” a „·” twarda spacja (pl i en), więc ewentualne zawinięcie nie zaczyna wiersza od kropki.
+- Zmienione geometrie: każdy przycisk menu ma 70,6 px wysokości (r3: 69,3) na wszystkich 7 targetach; kolumna menu rośnie w górę o ok. 1,3 px na przycisk (`element.home.continue`, `element.home.new-game`, `element.home.daily`, `element.home.read-error`, 12 różnic na target). Na mobile-compact żaden wiersz informacji się nie zawija (wcześniejsza wersja r4 przed Q115 miała tam 3 wiersze w „Wyzwanie dnia”).
+
 ## r3
 
 - Rewizja bazowa: `r2` (zatwierdzona, commit a6ec2ba)
@@ -37,7 +81,7 @@ Tryb wyzwania jest oznaczony na powierzchni atrybutem `data-game-mode="daily"` (
 
 ### Zmiana techniczna po przeglądzie
 
-- Rama planszy i ramy kart powtarzają boki obrazu (`border-image-repeat: round`) zamiast rozciągać fakturę drewna; gładkie pigułki zostają rozciągane.
+- Rama planszy i ramy kart powtarzają boki obrazu (`border-image-repeat: round`) zamiast rozciągać fakturę drewna; gładkie pigułki zostają rozciągane. (Cofnięte w r4: złącza powtórzeń były widoczne.)
 - Etykieta „Wynik” na mac-wide była zakryta tabliczką cyfr (tabliczka leżała nad etykietą); teraz tabliczka leży pod etykietą i cyframi, kontrast etykiety ≥ 4,5:1 na wszystkich targetach (Raport kontroli).
 
 ### Obrazy z generatora (Q862, Q106)
