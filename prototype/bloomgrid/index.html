@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>Bloomgrid — prototyp r4</title>
+<title>Bloomgrid — prototyp r5</title>
 <link rel="stylesheet" href="assets/bloomgrid.css">
 <script src="assets/bloomgrid-rules.js"></script>
 <script src="assets/bloomgrid-ui.js"></script>
@@ -162,8 +162,18 @@
     actions.append(BG.menuButton({ elementId: 'element.home.daily', variant: 'secondary', icon: 'calendar', label: S.daily, meta: metaDaily,
       interactionId: 'interaction.home.daily', action: 'tap', expected: 'navigate game.daily-start: od pierwszej trójki ciągu bieżącej daty (R-3.2, R-3.3)', onClick: function () { ctx.nav.go('game.daily-start'); } }));
     screen.append(wide ? h('div', { 'class': 'bg-home-mid' }, actions) : actions);
+    /* r5 (Q143): przełącznik dźwięku w prawym górnym rogu ekranu startowego. */
+    screen.append(h('div', { 'class': 'bg-home-sound' }, soundToggle(ctx, 'element.home.sound', 'interaction.home.sound-toggle')));
     ctx.root.append(screen);
     return null;
+  }
+
+  /* component.sound-toggle (Q143): stan z fixture (sound: false = wyciszony), zmiana tylko w user_preview; dźwięku prototyp nie odtwarza. */
+  function soundToggle(ctx, elementId, interactionId) {
+    return BG.soundToggle({ elementId: elementId, S: ctx.S, on: ctx.sc.sound !== false, interactionId: interactionId, action: 'tap / klik',
+      expected: 'przełącza dźwięk gry (aria-pressed true ↔ false, ikona głośnika ↔ przekreślonego głośnika); ustawienie zostaje po przeładowaniu i nie należy do zapisu gry',
+      inert: !ctx.nav.live,
+      onChange: function (on) { ctx.nav.say(on ? 'Dźwięk włączony (prototyp nie odtwarza dźwięku)' : 'Dźwięk wyciszony'); } });
   }
 
   /* screen.game */
@@ -179,16 +189,69 @@
       surface.append(overlay);
       if (focus) overlay.querySelector('[data-element-id="element.game.confirm.keep"]').focus();
     }
-    function openOver(o, focus) {
+    var recordBefore = daily ? sc.records.daily : sc.records.classic;
+    function openOver(o, focus, live) {
       closeOverlay();
-      overlay = BG.gameOverPanel({ elementId: 'element.game.over', prefix: 'element.game.over.', S: S, loc: loc, mode: sc.mode, score: o.score, record: o.record, newRecord: o.newRecord, dailyInfo: o.dailyInfo, row: geo.wide,
+      endMarks();
+      overlay = BG.gameOverPanel({ elementId: 'element.game.over', prefix: 'element.game.over.', S: S, loc: loc, mode: sc.mode, score: o.score, record: o.record, recordBefore: recordBefore, newRecord: o.newRecord, dailyInfo: o.dailyInfo, row: geo.wide,
         onAgain: function () { ctx.nav.go(daily ? 'game.daily-start' : 'game.classic-start'); }, onHome: function () { ctx.nav.go('home.with-records'); } });
       surface.append(overlay);
       /* Nagłówek pod panelem zgadza się z panelem: po nowym rekordzie pokazuje nowy rekord (R-4.1, R-3.4);
          po podejściu zakończonym innego dnia nie pokazuje rekordu dnia (R-3.6). */
       if (daily && o.dailyInfo === 'new-available') record.el.remove();
       else if (o.newRecord) record.set(o.record);
-      if (focus) overlay.querySelector('[data-element-id="element.game.over.play-again"]').focus();
+      var card = overlay.querySelector('.bg-card');
+      if (live) {
+        /* Q131: panel przez 300 ms nie przyjmuje kliknięć, więc stuknięcie, które skróciło krok, nie uruchamia przycisku panelu. */
+        card.inert = true; setTimeout(function () { card.inert = false; if (focus) overlay.querySelector('[data-element-id="element.game.over.play-again"]').focus(); }, 300);
+        if (BG.fx.reduced()) BG.fx.fade(card); else BG.fx.play(card, 'fx-panel', 250);
+        if (o.newRecord) BG.fx.rain(card, BG.fx.reduced());                                                       /* (8) */
+      } else if (focus) overlay.querySelector('[data-element-id="element.game.over.play-again"]').focus();
+    }
+    /* Q129: oznaczenie klocków trójki i przygaszenie planszy — tylko w chwili końca gry (krok końca i pod panelem końca). */
+    function endMarks() {
+      board.el.classList.add('is-ended');
+      tray.pieces.forEach(function (pe, i) {
+        if (!pe) return;
+        pe.setAttribute('data-variant', 'no-fit');
+        pe.setAttribute('aria-label', pe.getAttribute('aria-label').replace(/( — .*)?$/, ' — ' + S.no_fit_sr));
+        tray.slots[i].setAttribute('data-no-fit', 'true');
+        if (!tray.slots[i].querySelector('.bg-nofit-mark')) tray.slots[i].append(h('span', { 'class': 'bg-nofit-mark', 'aria-hidden': 'true' }, BG.icon('no-fit', 16)));
+      });
+    }
+    /* Krok końca gry (Q128, Q131): 1,5 s plansza i trójka z komunikatem nad trójką; stuknięcie, klik albo Esc pokazuje panel od razu.
+       W mode=capture stan game.no-moves-* zostaje na tym kroku (bez timera). */
+    var step = null;
+    function openNoMoves(o, live) {
+      endMarks();
+      main.classList.add('is-ending');
+      step = BG.noMovesStep({ elementId: 'element.game.no-moves', S: S, interactionId: 'interaction.game.no-moves-skip', action: 'tap / klik / Escape',
+        expected: 'pokazuje panel końca gry od razu (bez czekania 1,5 s); to kliknięcie nie uruchamia przycisku panelu' });
+      /* Warstwa leży na ekranie (przewija się razem z planszą i trójką, np. na phone-landscape) i pokrywa cały ekran. */
+      screen.append(step);
+      placeStep();
+      if (!live) return;
+      if (BG.fx.reduced()) BG.fx.fade(step._msg); else BG.fx.play(step._msg, 'fx-msg', 300);
+      var done = false, timer;
+      var show = function (e) {
+        if (done) return; done = true;
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        clearTimeout(timer); document.removeEventListener('keydown', key, true);
+        step.remove(); step = null; main.classList.remove('is-ending');
+        openOver(o, true, true);
+      };
+      var key = function (e) { if (e.key === 'Escape') show(e); };
+      step.addEventListener('click', show);
+      document.addEventListener('keydown', key, true);
+      timer = setTimeout(function () { show(null); }, BG.MOTION.step);
+    }
+    /* Komunikat nad górną krawędzią trójki (na mac-wide w miejscu paska serii i punktów, który w kroku jest ukryty). */
+    function placeStep() {
+      if (!step) return;
+      var sr = screen.getBoundingClientRect(), k = sr.width / screen.offsetWidth || 1, tr = tray.el.getBoundingClientRect();
+      step._msg.style.left = ((tr.left - sr.left) / k) + 'px';
+      step._msg.style.width = (tr.width / k) + 'px';
+      step._msg.style.top = ((tr.top - sr.top) / k - 12) + 'px';
     }
     var exit = BG.iconButton({
       elementId: 'element.game.exit', label: S.exit_label, icon: 'home', interactionId: 'interaction.game.exit', action: 'tap',
@@ -199,7 +262,9 @@
     var score = BG.scoreDisplay({ variant: 'score', label: S.score, value: sc.score, loc: loc, elementId: 'element.game.score' });
     score.el.style.setProperty('--score-fs', geo.wide ? '60px' : '40px');
     /* r3 (Q107): gra klasyczna to tryb domyślny — bez nazwy trybu w nagłówku; nazwa i data tylko w wyzwaniu dnia (wariant daily, Q108). */
-    screen.append(h('header', { 'class': 'bg-game-head' }, exit, daily ? BG.modeLabel({ variant: 'daily', S: S, elementId: 'element.game.mode' }) : null, record.el));
+    /* r5 (Q143): przełącznik dźwięku obok przycisku wyjścia (lewa grupa nagłówka; na mac-wide w siatce Q112). */
+    screen.append(h('header', { 'class': 'bg-game-head' }, h('div', { 'class': 'bg-head-left' }, exit, soundToggle(ctx, 'element.game.sound', 'interaction.game.sound-toggle')),
+      daily ? BG.modeLabel({ variant: 'daily', S: S, elementId: 'element.game.mode' }) : null, record.el));
     var board = BG.board({ geo: geo, S: S, elementId: 'element.game.board', elementPrefix: 'element.game.board.' });
     var tray = BG.tray({ geo: geo, S: S, elementId: 'element.game.tray' });
     var strip = h('div', { 'class': 'bg-strip', style: { '--board-w': geo.boardW + 'px' } });
@@ -234,22 +299,24 @@
       /* Warstwą przeciąganego klocka jest ekran (przewija się razem z planszą), nie cała powierzchnia. */
       geo: geo, S: S, loc: loc, state: state, seed: sc.seed, surface: screen, interactive: true, view: view,
       board: board, tray: tray, score: score, strip: strip,
-      ids: { piece: 'element.game.piece-', drag: 'interaction.game.drag-piece-', combo: 'element.game.combo', points: 'element.game.move-points' },
-      blocked: function () { return !ctx.nav.live || !!overlay || !!crash; },
+      ids: { piece: 'element.game.piece-', drag: 'interaction.game.drag-piece-', combo: 'element.game.combo', points: 'element.game.move-points', praise: 'element.game.praise' },
+      animate: ctx.nav.live,
+      blocked: function () { return !ctx.nav.live || !!overlay || !!crash || !!step; },
       onOver: function (s) {
-        var rec = daily ? sc.records.daily : sc.records.classic;
-        openOver({ score: s.score, record: Math.max(rec, s.score), newRecord: s.score > rec, dailyInfo: 'until-midnight' }, true);
+        openNoMoves({ score: s.score, record: Math.max(recordBefore, s.score), newRecord: s.score > recordBefore, dailyInfo: 'until-midnight' }, true);
       }
     });
     if (sc.overlay === 'confirm') openConfirm(false);
-    if (sc.over) openOver({ score: sc.score, record: sc.over.record, newRecord: sc.over.newRecord, dailyInfo: sc.over.dailyInfo }, false);
+    if (sc.over) openOver({ score: sc.score, record: sc.over.record, newRecord: sc.over.newRecord, dailyInfo: sc.over.dailyInfo }, false, false);
+    /* Stany game.no-moves-*: krok końca; w user_preview po 1,5 s (albo po stuknięciu) panel końca. */
+    if (sc.noMoves) openNoMoves({ score: sc.score, record: Math.max(recordBefore, sc.score), newRecord: sc.score > recordBefore, dailyInfo: 'until-midnight' }, ctx.nav.live);
     if (sc.alert === 'crash') {
       crash = h('div', { 'class': 'bg-crash' }, BG.alert({ variant: 'crash', S: S, elementId: 'element.app.crash', interactionId: 'interaction.app.crash-restart',
         onAction: function () { ctx.nav.go('home.resume-available'); } }));
       surface.append(crash);
     }
     return {
-      layout: game.layout,
+      layout: function () { game.layout(); placeStep(); },
       focus: function () {
         var f = surface.querySelector('[data-element-id="element.game.confirm.keep"], [data-element-id="element.game.over.play-again"]');
         if (f) f.focus();

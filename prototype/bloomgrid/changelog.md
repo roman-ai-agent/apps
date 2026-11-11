@@ -1,5 +1,59 @@
 # Changelog
 
+## r5
+
+- Rewizja bazowa: `r4` (zaakceptowana, wdrożona w BLG-11, commit 1fcf7ab)
+- Rewizja docelowa: `r5`
+- Migracje ID: brak (`id_migrations: []`); żadne istniejące ID nie zmienia znaczenia
+- Wejście: decyzje Reprezentanta Q128–Q139 (koniec gry, animacje), Q143 (przełącznik dźwięku), Q162 (komunikat bez przycisku); poprawka z odbioru BLG-11 (przycięty dopisek punktów)
+- Nowy obraz z generatora: `petals` (1 wywołanie, 0,14 USD) → 5 płatków `assets/img/petal-<kolor>.webp`
+
+### Dodane stany (5)
+
+| Stan | Fixture | Opis |
+|---|---|---|
+| `home.sound-muted` | default | ekran startowy z wyciszonym dźwiękiem (Q143) |
+| `game.no-moves-classic` | default | krok końca gry klasycznej: przygaszona plansza, oznaczona trójka, „Nie ma już miejsca na żaden klocek” (Q128, Q129) |
+| `game.no-moves-classic.en` | english | jw. po angielsku („No room for any piece”) |
+| `game.no-moves-daily` | default | krok końca wyzwania dnia (jeden slot pusty) |
+| `game.over-classic-tied` | default | panel końca z „Rekord wyrównany” (wynik = rekord, Q130) |
+
+W `user_preview` stany `game.no-moves-*` po 1,5 s (albo po stuknięciu, kliknięciu, Esc) przechodzą w panel końca; w `mode=capture` zostają na kroku.
+
+### Dodane komponenty i ID
+
+- `component.sound-toggle` (Q143): `element.home.sound` + `interaction.home.sound-toggle`, `element.game.sound` + `interaction.game.sound-toggle`; trwały przełącznik `aria-pressed`, nazwa „Dźwięk” / „Sound”, warianty `on`, `muted`.
+- `component.no-moves-step` (Q128, Q131): `element.game.no-moves` + `interaction.game.no-moves-skip` (tap / klik / Escape → panel końca od razu, bez uruchomienia przycisku panelu), `element.game.no-moves.message`.
+- `component.praise` (Q139): `element.game.praise` — chwilowa pochwała „Świetnie!” (2 linie) / „Wspaniale!” (3+), tylko na żywo, nie występuje w stanach capture.
+- `component.game-over-panel`: nowe elementy `element.game.over.reason` (powód końca, zawsze) i `element.game.over.record-gap` (`data-variant` `gap` — „Do rekordu zabrakło N” — albo `tied` — „Rekord wyrównany”; brak przy nowym rekordzie i po podejściu innego dnia, R-3.6). Nowy parametr szablonu `recordBefore`.
+- `component.piece`: nowy wariant `no-fit` (Q129) — tylko w chwili końca gry; slot ze znakiem przekreślonego koła i kreskowaniem. Nazwa dostępna klocka z dopiskiem „ — nie mieści się”.
+- Teksty fixture (pl / en): `no_moves`, `no_fit_sr`, `over_reason`, `record_gap`, `record_tied`, `sound`, `praise_2`, `praise_3`. Fixture: `noMoves` w scenariuszu (krok końca), `sound: false` (wyciszony).
+- Katalog: sekcje `component.sound-toggle`, `component.no-moves-step`, `foundation.motion` (animacje z przyciskami „Odtwórz”); wariant `no-fit` w `component.piece`; nowe warianty panelu końca.
+
+### Zmienione stany (bez zmiany ID)
+
+- `game.over-classic`, `game.over-classic.en`, `game.over-classic-new-record`, `game.over-daily`, `game.over-daily.en`, `game.over-daily-new-day`: panel ma linię powodu „Brak ruchów — żaden klocek się nie mieści”; gdy wynik < rekord sprzed gry — „Do rekordu zabrakło …” (over-classic: 11 578, over-daily: 840, EN „11,578 short of your best”); pod panelem plansza przygaszona, klocki trójki oznaczone `no-fit`. Panel jest wyższy (mac-wide +59 px, telefony do +80 px), elementy panelu przesunięte.
+- Wszystkie stany gry: przełącznik dźwięku w nagłówku obok przycisku wyjścia. Wszystkie stany startowe: przełącznik w prawym górnym rogu.
+
+### Zmiana: animacje (Q135–Q139)
+
+Dziewięć animacji i pochwała, opis, czasy i krzywe w `responsive-spec.md`, sekcja „Ruch”. Stan po ruchu jest od razu końcowy, a efekty grają na warstwie nad planszą, więc gra nie jest blokowana (r4: przez 340 ms czyszczenia nowe chwycenie nie startowało). Punkty ruchu zostają do następnego położenia (r4: znikały po 1,4 s). reduced-motion: tylko przezroczystość ≤ 150 ms (krok końca nadal 1,5 s). `mode=capture`: bez animacji.
+
+### Poprawki po przeglądzie Reprezentanta
+
+- Tytuł panelu końca w grze klasycznej: „Koniec gry” / „Game over” bez „· Gra klasyczna” / „· Classic” (Q107: tryb domyślny nie ma nazwy). Dotyczy `game.over-classic`, `game.over-classic.en`, `game.over-classic-new-record`, `game.over-classic-tied` i panelu po grze klasycznej na żywo. W wyzwaniu dnia bez zmian: „Koniec gry · Wyzwanie dnia”. Zmiana tekstu, bez zmiany ID; nieużywany tekst `mode_classic` usunięty z fixture (nie ma go już w żadnym widoku).
+- Przełącznik dźwięku na ekranie startowym na telefonach: prawa krawędź na prawej krawędzi treści (przycisków menu), było 4 px dalej w prawo (12 zamiast 16 px od krawędzi kolumny). Tabliczka znaku na telefonach wystaje 6 px w bok (było 10), żeby nie sięgała pod przełącznik. Na mac-wide oś już się zgadzała (x 1228 = prawa krawędź rekordu i trójki ekranu gry).
+
+### Poprawki
+
+- Q162: `component.alert` bez przycisku (`read-error`) — tekst wyśrodkowany w całym komunikacie, ikona przy lewej krawędzi. Na mobile-compact tekst zawija się w 2 wiersze, komunikat ma 59 px (był 40), kolumna menu rośnie w górę.
+- Telefony: dopisek punktów ruchu („seria +150” w `game.combo`) był przycięty ramą planszy — punkty ruchu w jednym wierszu (suma, dopiski), zawartość paska wyśrodkowana w górnych 36 px paska 44 px. Zmienione geometrie: `element.game.combo` 4 px wyżej, `element.game.move-points` (telefony, stany z punktami).
+- Katalog: okazy trójki na wąskim katalogu (mobile-compact) wychodziły poza ramkę okazu (było już w r4) — teraz w rozmiarze, który się mieści.
+
+### Zmienione geometrie względem r4 (zmierzone, 161 par stanów r4)
+
+Nowe elementy: `element.game.sound` (18 stanów gry × 7), `element.home.sound` (5 × 7), `element.game.over.reason` (6 × 7), `element.game.over.record-gap` (4 × 7). Przesunięte: elementy panelu końca (`element.game.over*`) w stanach końca; `element.game.combo` i `element.game.move-points` na telefonach; `element.home.read-error` na mobile-compact (Q162); `element.home.wordmark` w `home.first-run.en` na mobile-compact (hasło w 2 wierszach, żeby znak nie sięgał pod przełącznik dźwięku). Plansza, trójka, wynik, rekord, przycisk wyjścia i menu bez zmian.
+
 ## r4
 
 - Rewizja bazowa: `r3` (zaakceptowana i opublikowana, commit 7166ef6)

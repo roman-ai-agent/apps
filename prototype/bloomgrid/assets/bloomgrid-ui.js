@@ -49,7 +49,11 @@
     resume: '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M19 12a7 7 0 1 1-2.1-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M17.8 3.6v4.2h-4.2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     star: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7Z" fill="currentColor"/></svg>',
     warn: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3.5 21.5 20h-19Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 10v4.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.3" r="1.3" fill="currentColor"/></svg>',
-    sparkle: '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2.5c.8 5 2.5 6.7 7.5 7.5-5 .8-6.7 2.5-7.5 7.5-.8-5-2.5-6.7-7.5-7.5 5-.8 6.7-2.5 7.5-7.5Z" fill="currentColor"/></svg>'
+    sparkle: '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M12 2.5c.8 5 2.5 6.7 7.5 7.5-5 .8-6.7 2.5-7.5 7.5-.8-5-2.5-6.7-7.5-7.5 5-.8 6.7-2.5 7.5-7.5Z" fill="currentColor"/></svg>',
+    /* r5 (Q143): głośnik włączony / wyciszony; (Q129): klocek się nie mieści — koło z ukośną kreską. */
+    'sound-on': '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.6 7.6 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>',
+    'sound-off': '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m15.5 9.5 5 5M20.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>',
+    'no-fit': '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="2.8"/><path d="M6 18 18 6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>'
   };
   BG.icon = function (name, size) {
     var w = h('span', { 'class': 'bg-ic', 'aria-hidden': 'true', html: ICONS[name] });
@@ -63,7 +67,7 @@
   BG.assets = ['assets/bloomgrid-mark.svg', 'assets/img/home-hero.webp', 'assets/img/board-frame.webp', 'assets/img/cell-empty.webp', 'assets/img/slot.webp', 'assets/img/card.webp',
     'assets/img/btn-primary.webp', 'assets/img/btn-secondary.webp', 'assets/img/btn-danger.webp', 'assets/img/icon-home.webp', 'assets/img/badge-combo.webp', 'assets/img/badge-coin.webp',
     'assets/img/daily-ribbon.webp', 'assets/img/daily-sun-cap.webp', 'assets/img/daily-card.webp']
-    .concat(['poppy', 'sun', 'leaf', 'drop', 'berry'].reduce(function (a, c) { return a.concat(['assets/img/tile-' + c + '.webp', 'assets/img/tile-' + c + '-s.webp']); }, []))
+    .concat(['poppy', 'sun', 'leaf', 'drop', 'berry'].reduce(function (a, c) { return a.concat(['assets/img/tile-' + c + '.webp', 'assets/img/tile-' + c + '-s.webp', 'assets/img/petal-' + c + '.webp']); }, []))
     .concat(BG.BACKGROUNDS.reduce(function (a, b) { return a.concat(['assets/img/bg-' + b + '-phone.webp', 'assets/img/bg-' + b + '-desktop.webp']); }, []));
   /* Tło wyzwania dnia (Q104): wyliczane z daty ciągu (RRRR-MM-DD): numer dnia od 1970-01-01 modulo 3 w kolejności BG.BACKGROUNDS. */
   BG.dailyBackground = function (iso) {
@@ -114,13 +118,21 @@
     var g = o.geo, S = o.S, prefix = o.elementPrefix;
     var grid = h('div', { 'class': 'bg-grid' });
     var badges = h('div', { 'class': 'bg-badges' });
-    var el = h('div', { 'class': 'bg-board', 'data-component-id': 'component.board', 'data-element-id': o.elementId, role: 'img', style: { '--cell': g.cell + 'px', '--gap': g.gap + 'px', '--pad': g.pad + 'px', width: g.boardW + 'px' } }, grid, badges);
+    /* r5: warstwa efektów (płatki, złoty błysk, kopie plakietek) — dekoracja nad polami, bez ID i bez wpływu na układ. */
+    var fx = h('div', { 'class': 'bg-fx', 'aria-hidden': 'true' });
+    var el = h('div', { 'class': 'bg-board', 'data-component-id': 'component.board', 'data-element-id': o.elementId, role: 'img', style: { '--cell': g.cell + 'px', '--gap': g.gap + 'px', '--pad': g.pad + 'px', width: g.boardW + 'px' } }, grid, badges, fx);
     var cells = [];
     for (var r = 0; r < 8; r++) for (var c = 0; c < 8; c++) {
       var ce = BG.cell({ elementId: prefix + 'cell-r' + (r + 1) + '-c' + (c + 1) });
       cells.push(ce); grid.append(ce);
     }
-    var api = { el: el, grid: grid, cells: cells };
+    var api = { el: el, grid: grid, cells: cells, fx: fx, geo: g };
+    /* Położenie pola i plakietki „×2” w układzie planszy (px od lewego górnego rogu planszy). */
+    api.cellBox = function (i) { var pitch = g.cell + g.gap, start = g.pad + g.gap; return { x: start + (i % 8) * pitch, y: start + Math.floor(i / 8) * pitch, s: g.cell }; };
+    api.badgePos = function (l) {
+      var pitch = g.cell + g.gap, start = g.pad + g.gap;
+      return { x: l.kind === 'row' ? g.boardW - start + 1 : start + l.index * pitch + g.cell / 2, y: l.kind === 'row' ? start + l.index * pitch + g.cell / 2 : start - 1 };
+    };
     api.render = function (board, view) {
       view = view || {};
       var place = {}, line = {}, clearing = {};
@@ -137,10 +149,8 @@
       lines.filter(function (l) { return l.mono; }).forEach(function (l) {
         /* Plakietka nie zasłania żadnego pola (Q59): rząd — od prawej krawędzi ramki na wysokości rzędu;
            kolumna — nad górną krawędzią ramki nad kolumną. Pola zaczynają się pad + gap od krawędzi planszy. */
-        var pitch = g.cell + g.gap, start = g.pad + g.gap;
-        var x = l.kind === 'row' ? g.boardW - start + 1 : start + l.index * pitch + g.cell / 2;
-        var y = l.kind === 'row' ? start + l.index * pitch + g.cell / 2 : start - 1;
-        badges.append(h('span', { 'class': 'bg-badge is-' + l.kind, style: { left: x + 'px', top: y + 'px' } }, h('span', { 'aria-hidden': 'true' }, S.bonus_badge), h('span', { 'class': 'bg-sr' }, S.bonus_sr)));
+        var bp = api.badgePos(l);
+        badges.append(h('span', { 'class': 'bg-badge is-' + l.kind, style: { left: bp.x + 'px', top: bp.y + 'px' } }, h('span', { 'aria-hidden': 'true' }, S.bonus_badge), h('span', { 'class': 'bg-sr' }, S.bonus_sr)));
       });
       var filled = board.filter(function (x) { return x; }).length;
       el.setAttribute('aria-label', BG.fmt(S.board_sr, { n: filled }));
@@ -214,10 +224,36 @@
   BG.iconButton = function (o) {
     return h('button', merge({ type: 'button', 'class': 'bg-icon-btn', 'data-component-id': 'component.icon-button', 'data-element-id': o.elementId, 'aria-label': o.label, title: o.label, 'data-demo': o.demo, onclick: o.onClick }, ia(o)), BG.icon(o.icon || 'home'));
   };
+  /* component.sound-toggle (r5, Q143) — trwały przełącznik: aria-pressed="true" = dźwięk włączony. Prototyp dźwięku nie odtwarza. */
+  BG.soundToggle = function (o) {
+    var on = o.on !== false;
+    var btn = h('button', merge({ type: 'button', 'class': 'bg-sound-btn', 'data-component-id': 'component.sound-toggle', 'data-element-id': o.elementId, 'data-variant': on ? 'on' : 'muted', 'aria-pressed': on ? 'true' : 'false', 'aria-label': o.S.sound, title: o.S.sound, 'data-demo': o.demo }, ia(o)), BG.icon(on ? 'sound-on' : 'sound-off', 22));
+    btn.addEventListener('click', function () {
+      if (o.inert) return;
+      on = !on;
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.setAttribute('data-variant', on ? 'on' : 'muted');
+      btn.replaceChildren(BG.icon(on ? 'sound-on' : 'sound-off', 22));
+      if (o.onChange) o.onChange(on);
+    });
+    return btn;
+  };
+  /* component.no-moves-step (r5, Q128–Q131) — krok końca gry: warstwa na całą powierzchnię (stuknięcie, klik albo Esc pokazuje panel od razu)
+     z komunikatem nad trójką. Komunikat ustawia layout() nad górną krawędzią trójki. */
+  BG.noMovesStep = function (o) {
+    var msg = h('div', { 'class': 'bg-nomoves-msg', 'data-element-id': o.elementId + '.message', role: 'status', 'aria-live': 'assertive' }, o.S.no_moves);
+    var el = h('div', merge({ 'class': 'bg-nomoves', 'data-component-id': 'component.no-moves-step', 'data-element-id': o.elementId }, ia(o)), msg);
+    el._msg = msg;
+    return el;
+  };
+  /* component.praise (r5, Q139) — pochwała po ruchu z 2 albo 3+ liniami; chwilowa (800 ms), bez interakcji. */
+  BG.praise = function (o) {
+    return h('div', { 'class': 'bg-praise', 'data-component-id': 'component.praise', 'data-element-id': o.elementId, 'data-variant': o.lines >= 3 ? 'three' : 'two', role: 'status', 'aria-live': 'polite' }, o.lines >= 3 ? o.S.praise_3 : o.S.praise_2);
+  };
   /* component.mode-label */
   BG.modeLabel = function (o) {
     return h('div', { 'class': 'bg-mode', 'data-component-id': 'component.mode-label', 'data-element-id': o.elementId, 'data-variant': o.variant },
-      h('span', {}, o.variant === 'daily' ? o.S.mode_daily : o.S.mode_classic),
+      h('span', {}, o.S.mode_daily),
       o.variant === 'daily' ? h('span', { 'class': 'bg-mode-sub' }, o.S.daily_date) : null);
   };
   /* component.menu-button */
@@ -253,12 +289,23 @@
     var newDay = o.mode === 'daily' && o.dailyInfo === 'new-available';
     var again = BG.button({ elementId: p + 'play-again', variant: 'primary', label: S.play_again, interactionId: ip && ip + 'play-again', action: 'tap', expected: o.mode === 'daily' ? 'navigate game.daily-start (nowe podejście, ciąg bieżącej daty)' : 'navigate game.classic-start (nowa gra klasyczna)', onClick: o.onAgain, demo: o.demoAgain });
     var home = BG.button({ elementId: p + 'to-home', variant: 'secondary', label: S.to_home, interactionId: ip && ip + 'to-home', action: 'tap', expected: 'navigate screen.home', onClick: o.onHome });
-    var card = h('div', { 'class': 'bg-card bg-over' + (o.row ? ' is-row' : ''), 'data-component-id': 'component.game-over-panel', 'data-element-id': o.elementId, 'data-variant': o.mode, role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': tid },
-      h('h2', { id: tid, 'class': 'bg-over-title' }, S.game_over + ' · ' + (o.mode === 'daily' ? S.mode_daily : S.mode_classic)),
+    /* r5 (Q130): różnica do rekordu sprzed gry (recordBefore) — „Do rekordu zabrakło N”, przy równym wyniku „Rekord wyrównany”;
+       przy nowym rekordzie plakietka „Nowy rekord!”; po podejściu innego dnia (R-3.6) bez różnicy. */
+    var before = o.recordBefore, gap = null;
+    if (!newDay && !o.newRecord && typeof before === 'number' && before > 0) {
+      gap = o.score === before ? h('div', { 'class': 'bg-over-gap', 'data-element-id': p + 'record-gap', 'data-variant': 'tied' }, S.record_tied)
+        : o.score < before ? h('div', { 'class': 'bg-over-gap', 'data-element-id': p + 'record-gap', 'data-variant': 'gap' }, BG.fmt(S.record_gap, { n: BG.num(before - o.score, loc) })) : null;
+    }
+    var card = h('div', { 'class': 'bg-card bg-over' + (o.row ? ' is-row' : ''), 'data-component-id': 'component.game-over-panel', 'data-element-id': o.elementId, 'data-variant': o.mode, role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': tid, 'aria-describedby': p + 'reason' },
+      /* r5 (Q107): gra klasyczna to tryb domyślny — tytuł bez nazwy trybu; wyzwanie dnia z nazwą. */
+      h('h2', { id: tid, 'class': 'bg-over-title' }, o.mode === 'daily' ? S.game_over + ' · ' + S.mode_daily : S.game_over),
+      /* r5 (Q130): powód końca — zawsze (także po podejściu innego dnia). */
+      h('p', { id: p + 'reason', 'class': 'bg-over-reason', 'data-element-id': p + 'reason' }, BG.icon('no-fit', 16), h('span', {}, S.over_reason)),
       /* R-3.6 (Q44): podejście zakończone innego dnia nie zmienia rekordu — panel nie pokazuje rekordu ani „Nowy rekord!”. */
       o.newRecord && !newDay ? h('span', { 'class': 'bg-newrec', 'data-element-id': p + 'new-record' }, BG.icon('star', 18), S.new_record) : null,
       h('div', { 'class': 'bg-over-score', 'data-element-id': p + 'score' }, BG.num(o.score, loc)),
       newDay ? null : h('div', { 'class': 'bg-over-record', 'data-element-id': p + 'record' }, (o.mode === 'daily' ? S.record_daily : S.record) + ' ' + BG.num(o.record, loc)),
+      gap,
       o.mode === 'daily' ? h('div', { 'class': 'bg-daily-info', 'data-element-id': p + 'daily-info', 'data-variant': o.dailyInfo }, BG.icon('calendar', 20), o.dailyInfo === 'new-available' ? S.daily_new_available : S.daily_until_midnight) : null,
       h('div', { 'class': 'bg-actions' }, again, home));
     return o.scrim === false ? card : h('div', { 'class': 'bg-scrim' }, card);
@@ -271,8 +318,93 @@
     var action = null;
     if (v === 'save-error') action = BG.button({ elementId: o.elementId + '.retry', variant: 'secondary', label: S.retry, interactionId: o.interactionId, action: 'tap', expected: 'ponawia zapis gry; po udanym zapisie komunikat znika, po nieudanym zostaje; gra trwa', onClick: o.onAction, demo: o.demo });
     if (v === 'crash') action = BG.button({ elementId: o.elementId + '.restart', variant: 'light', label: S.restart, interactionId: o.interactionId, action: 'tap', expected: 'przeładowuje grę z ostatnim zapisem: ekran startowy (home.resume-available, gdy zapis gry klasycznej istnieje)', onClick: o.onAction, demo: o.demo });
-    return h('div', { 'class': 'bg-alert', 'data-component-id': 'component.alert', 'data-element-id': o.elementId, 'data-variant': v, role: 'alert' },
+    return h('div', { 'class': 'bg-alert' + (action ? '' : ' is-plain'), 'data-component-id': 'component.alert', 'data-element-id': o.elementId, 'data-variant': v, role: 'alert' },
       h('span', { 'class': 'bg-alert-ic' }, BG.icon('warn', 20)), h('span', { 'class': 'bg-alert-text' }, text), action);
+  };
+
+  /* r5 (Q135–Q139): animacje. Czasy i krzywe: responsive-spec.md, sekcja „Ruch”. Każda animacja leży na warstwie efektów
+     albo na klasie elementu, którą zdejmuje timer — stan gry jest już końcowy, więc animacje nie blokują gry (Q136).
+     reduced = prefers-reduced-motion: wyłącznie zmiana przezroczystości do 150 ms. mode=capture: animacji nie ma. */
+  BG.MOTION = { settle: 150, bloom: 450, mono: 600, pop: 250, countUp: 400, deal: 240, dealStep: 80, praise: 800, rain: 1000, dim: 300, step: 1500, fade: 150 };
+  BG.fx = {
+    reduced: function () { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); },
+    /* Klasa animacji na elemencie, zdejmowana po czasie (restart przy powtórzeniu). */
+    play: function (el, cls, ms, delay) {
+      if (!el) return;
+      el.classList.remove(cls); void el.offsetWidth;
+      if (delay) el.style.animationDelay = delay + 'ms';
+      el.classList.add(cls);
+      setTimeout(function () { el.classList.remove(cls); if (delay) el.style.animationDelay = ''; }, ms + (delay || 0) + 30);
+    },
+    fade: function (el) { BG.fx.play(el, 'fx-fade', BG.MOTION.fade); },
+    /* (1) Osadzenie: położone pola lekko sprężynują, 150 ms. */
+    settle: function (cells, reduced) { cells.forEach(function (c) { if (reduced) BG.fx.fade(c); else BG.fx.play(c, 'fx-settle', BG.MOTION.settle); }); },
+    /* (2) Rozkwit: kopia kafla na warstwie efektów rozchyla się i znika, 3 płatki w kolorze kafla opadają; 450 ms. */
+    bloom: function (board, indices, colorOf, reduced, ms) {
+      ms = ms || BG.MOTION.bloom;
+      indices.forEach(function (i, n) {
+        var b = board.cellBox(i), col = colorOf(i);
+        var tile = h('div', { 'class': 'bg-cell fx-tile' + (reduced ? ' fx-fadeout' : ' fx-bloom'), 'data-variant': 'filled', 'data-color': col, style: { left: b.x + 'px', top: b.y + 'px', width: b.s + 'px', height: b.s + 'px', '--cell': b.s + 'px', animationDuration: (reduced ? BG.MOTION.fade : ms) + 'ms' } });
+        board.fx.append(tile);
+        setTimeout(function () { tile.remove(); }, (reduced ? BG.MOTION.fade : ms) + 40);
+        if (reduced) return;
+        for (var k = 0; k < 3; k++) {
+          var a = ((i * 47 + k * 120 + n * 13) % 360) * Math.PI / 180, size = Math.round(b.s * 0.5);
+          var pe = h('img', { 'class': 'fx-petal', src: 'assets/img/petal-' + col + '.webp', alt: '', style: { left: (b.x + b.s / 2) + 'px', top: (b.y + b.s / 2) + 'px', width: size + 'px', height: size + 'px', animationDuration: ms + 'ms',
+            '--dx': Math.round(Math.cos(a) * b.s * 0.75) + 'px', '--dy': Math.round(Math.sin(a) * b.s * 0.35 + b.s * 0.8) + 'px', '--rot': ((k ? 1 : -1) * (90 + (i * 31) % 120)) + 'deg' } });
+          board.fx.append(pe);
+          (function (x) { setTimeout(function () { x.remove(); }, ms + 40); })(pe);
+        }
+      });
+    },
+    /* (3) Linia jednego koloru: złoty błysk przesuwa się wzdłuż linii, plakietka „×2” podskakuje; 600 ms (jeden błysk na linię). */
+    sweep: function (board, line, S, reduced) {
+      var g = board.geo, pitch = g.cell + g.gap, start = g.pad + g.gap, len = 8 * g.cell + 7 * g.gap;
+      var box = line.kind === 'row' ? { left: start, top: start + line.index * pitch, width: len, height: g.cell } : { left: start + line.index * pitch, top: start, width: g.cell, height: len };
+      if (!reduced) {
+        var sw = h('div', { 'class': 'fx-sweep is-' + line.kind, style: { left: box.left + 'px', top: box.top + 'px', width: box.width + 'px', height: box.height + 'px', animationDuration: BG.MOTION.mono + 'ms' } });
+        board.fx.append(sw); setTimeout(function () { sw.remove(); }, BG.MOTION.mono + 40);
+      }
+      var bp = board.badgePos(line);
+      var bd = h('span', { 'class': 'bg-badge is-' + line.kind + (reduced ? ' fx-fadeout' : ' fx-badge'), style: { left: bp.x + 'px', top: bp.y + 'px', animationDuration: (reduced ? BG.MOTION.fade : BG.MOTION.mono) + 'ms' } }, S.bonus_badge);
+      board.fx.append(bd); setTimeout(function () { bd.remove(); }, (reduced ? BG.MOTION.fade : BG.MOTION.mono) + 40);
+    },
+    /* (4) Plakietka serii wyskakuje, 250 ms. */
+    pop: function (el, reduced) { if (reduced) BG.fx.fade(el); else BG.fx.play(el, 'fx-pop', BG.MOTION.pop); },
+    /* (6) Wynik dolicza się do nowej wartości (ease-out), najwyżej 400 ms. */
+    countUp: function (api, from, to, reduced) {
+      if (reduced || from === to) { api.set(to); return; }
+      var t0 = null, ms = BG.MOTION.countUp;
+      if (api._raf) cancelAnimationFrame(api._raf);
+      var step = function (t) {
+        if (t0 === null) t0 = t;
+        var k = Math.min(1, (t - t0) / ms), e = 1 - Math.pow(1 - k, 3);
+        api.set(Math.round(from + (to - from) * e));
+        if (k < 1) api._raf = requestAnimationFrame(step); else api._raf = null;
+      };
+      api._raf = requestAnimationFrame(step);
+    },
+    /* (7) Nowa trójka wjeżdża do slotów kolejno: start co 80 ms, każdy wjazd 240 ms. */
+    deal: function (pieces, reduced) {
+      pieces.forEach(function (pe, i) { if (!pe) return; if (reduced) BG.fx.fade(pe); else BG.fx.play(pe, 'fx-deal', BG.MOTION.deal, i * BG.MOTION.dealStep); });
+    },
+    /* Pochwała (Q139): nad środkiem planszy, 800 ms; najwyżej jedna na ruch. */
+    praise: function (host, el, reduced) {
+      host.append(el);
+      el.classList.add(reduced ? 'fx-praise-reduced' : 'fx-praise');
+      setTimeout(function () { el.remove(); }, BG.MOTION.praise + 40);
+    },
+    /* (8) Nowy rekord: deszcz płatków na panelu, 1 s. */
+    rain: function (card, reduced) {
+      if (reduced) return;
+      var layer = h('div', { 'class': 'fx-rain', 'aria-hidden': 'true' });
+      var cols = ['berry', 'poppy', 'sun', 'drop', 'leaf'];
+      for (var i = 0; i < 18; i++) {
+        layer.append(h('img', { 'class': 'fx-rain-petal', src: 'assets/img/petal-' + cols[i % 5] + '.webp', alt: '', style: { left: ((i * 53) % 100) + '%', animationDelay: ((i * 37) % 400) + 'ms', animationDuration: (600 - (i * 37) % 400 + 400) + 'ms', '--rot': ((i % 2 ? 1 : -1) * (120 + i * 17 % 160)) + 'deg' } }));
+      }
+      card.append(layer);
+      setTimeout(function () { layer.remove(); }, BG.MOTION.rain + 60);
+    }
   };
 
   /* Rozgrywka na żywo: plansza + trójka + wynik + seria + punkty ruchu, przeciąganie (R-1.4, R-1.5, R-1.8). */
@@ -293,9 +425,11 @@
       return pe;
     }
     function paintCombo(bump) {
+      var prev = comboHost.firstChild ? st.combo : 0;
       comboHost.replaceChildren();
       var cb = BG.comboBadge({ c: st.combo, S: S, elementId: ids.combo });
-      if (cb) { comboHost.append(cb); if (bump && !reduced) { cb.classList.add('is-bump'); } }
+      if (cb) { comboHost.append(cb); if (bump) BG.fx.pop(cb, reduced); } /* (4) wzrost licznika */
+      return prev;
     }
     var staticGhost = null, staticView = false;
     /* Widok stanu z fixture: zwykła plansza, klatka czyszczenia (frame) albo statyczne przeciąganie (drag). */
@@ -318,13 +452,13 @@
       board.render(st.board, {});
       tray.render(st.tray, makePiece);
     }
+    /* (5) Punkty ruchu unoszą się i zostają widoczne do następnego położenia (r5; w r4 znikały po 1,4 s). */
     function showPoints(p, live) {
       pointsHost.replaceChildren();
-      clearTimeout(pointsTimer);
       var mp = BG.movePoints({ points: p, S: S, loc: loc, elementId: ids.points });
       if (!mp) return;
       pointsHost.append(mp);
-      if (live) { mp.classList.add('is-live'); pointsTimer = setTimeout(function () { pointsHost.replaceChildren(); }, 1400); }
+      if (live) { if (reduced) BG.fx.fade(mp); else BG.fx.play(mp, 'fx-rise', 300); }
     }
 
     function local(e) {
@@ -413,25 +547,32 @@
       var res = R.play(st, d.i, d.hit.row, d.hit.col, next);
       commit(res);
     }
+    /* r5: stan po ruchu jest od razu końcowy (plansza po czyszczeniu, nowa trójka, wynik), a animacje grają na warstwie efektów (Q136). */
     function commit(res) {
-      var mv = res.move;
+      var mv = res.move, before = st.score, prevCombo = st.combo;
       st = res.state;
-      scoreApi.set(st.score);
-      paintCombo(mv.points.cleared > 0);
-      if (mv.points.cleared > 0) showPoints(mv.points, true); else { pointsHost.replaceChildren(); }
-      var finish = function () {
-        busy = false;
-        board.render(st.board, {});
-        tray.render(st.tray, makePiece);
-        if (o.onMove) o.onMove(st);
-        if (st.over && o.onOver) setTimeout(function () { o.onOver(st); }, reduced ? 0 : 450);
-      };
-      if (mv.clearedCells.length && !reduced) {
+      board.render(st.board, {});
+      tray.render(st.tray, makePiece);
+      var anim = !!o.animate;
+      if (anim) {
+        var cleared = {}; mv.clearedCells.forEach(function (i) { cleared[i] = true; });
+        BG.fx.settle(mv.cells.filter(function (i) { return !cleared[i]; }).map(function (i) { return board.cells[i]; }), reduced);       /* (1) */
+        var monoLines = mv.lines.filter(function (l) { return l.mono; });
+        if (mv.clearedCells.length) BG.fx.bloom(board, mv.clearedCells, function (i) { return mv.placedBoard[i]; }, reduced, monoLines.length ? BG.MOTION.mono : BG.MOTION.bloom); /* (2) */
+        monoLines.forEach(function (l) { BG.fx.sweep(board, l, S, reduced); });                                                   /* (3) */
+        if (mv.dealt) BG.fx.deal(tray.pieces, reduced);                                                                          /* (7) */
+        if (mv.points.cleared >= 2) BG.fx.praise(board.el, BG.praise({ S: S, lines: mv.points.cleared, elementId: ids.praise || 'element.game.praise' }), reduced);
+        BG.fx.countUp(scoreApi, before, st.score, reduced);                                                                      /* (6) */
+      } else scoreApi.set(st.score);
+      paintCombo(anim && st.combo > prevCombo);
+      if (mv.points.cleared > 0) showPoints(mv.points, anim); else pointsHost.replaceChildren();
+      if (o.onMove) o.onMove(st);
+      /* Koniec gry (Q128): krok końca zaczyna się po animacji ruchu. */
+      if (st.over && o.onOver) {
+        var wait = !anim ? 0 : reduced ? BG.MOTION.fade : !mv.clearedCells.length ? BG.MOTION.settle : mv.lines.some(function (l) { return l.mono; }) ? BG.MOTION.mono : BG.MOTION.bloom;
         busy = true;
-        board.render(mv.placedBoard, { clearing: mv.clearedCells, bonusLines: mv.lines });
-        tray.render(st.tray, makePiece);
-        setTimeout(finish, 340);
-      } else finish();
+        setTimeout(function () { o.onOver(st, tray); }, wait);
+      }
     }
     paintAll();
     return { get state() { return st; }, layout: function () { if (o.afterLayout) o.afterLayout(); } };

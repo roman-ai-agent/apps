@@ -1,0 +1,23 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached images show the flower tiles and the UI kit of a cozy garden block-puzzle game. Create a small matching sprite sheet in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outline, bright soft highlight, crisp clean edges.\n\nFive single loose flower petals, arranged in one horizontal row, evenly spaced with wide gaps, each about the same size, front view, slightly curved, as if falling:\n1. a red-orange poppy petal, broad and rounded, shading from orange to deep red\n2. a golden sunflower petal, long and pointed, shading from yellow to orange\n3. a small emerald-green clover leaflet, heart-shaped\n4. a blue cornflower petal, narrow with a fringed tip, shading from turquoise to violet-blue\n5. a pink cherry blossom petal, rounded with a small notch at the tip, pink to white\n\nEach petal on its own, not touching others, on a plain flat pure white background, no shadow on the background. No text, no letters, no numbers, no watermark, no tiles, no squares.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/petals.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "21:9",
+  "seconds": 21.725,
+  "cost_usd": 0.140418,
+  "at": "2026-11-11T18:02:06+01:00",
+  "images": [
+    "prototype/assets/generated/petals.png"
+  ],
+  "text": null
+}

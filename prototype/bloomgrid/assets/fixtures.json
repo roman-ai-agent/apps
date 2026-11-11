@@ -6,7 +6,6 @@
       "strings": {
         "app_name": "Bloomgrid",
         "tagline": "Układaj klocki na grządce 8×8",
-        "mode_classic": "Gra klasyczna",
         "mode_daily": "Wyzwanie dnia",
         "daily_date": "10 listopada",
         "score": "Wynik",
@@ -48,6 +47,14 @@
         "cells_many": "pól",
         "bonus_badge": "×2",
         "bonus_sr": "linia jednego koloru, punkty ×2",
+        "no_moves": "Nie ma już miejsca na żaden klocek",
+        "no_fit_sr": "nie mieści się",
+        "over_reason": "Brak ruchów — żaden klocek się nie mieści",
+        "record_gap": "Do rekordu zabrakło {n}",
+        "record_tied": "Rekord wyrównany",
+        "sound": "Dźwięk",
+        "praise_2": "Świetnie!",
+        "praise_3": "Wspaniale!",
         "colors": { "poppy": "mak", "sun": "słonecznik", "leaf": "koniczyna", "drop": "chaber", "berry": "kwiat wiśni" }
       },
       "scenarios": {
@@ -156,6 +163,28 @@
           "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
           "score": 3310, "combo": 0, "dry": 1,
           "over": { "record": null, "newRecord": false, "dailyInfo": "new-available" }
+        },
+        "home.sound-muted": { "screen": "home", "records": { "classic": 18420, "daily": 2980 }, "saved": null, "notice": null, "sound": false },
+        "game.no-moves-classic": {
+          "screen": "game", "mode": "classic", "background": "hedge", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, { "shape": "rect-3x2", "color": "drop" }],
+          "score": 6842, "combo": 0, "dry": 2,
+          "noMoves": true
+        },
+        "game.no-moves-daily": {
+          "screen": "game", "mode": "daily", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
+          "score": 2140, "combo": 0, "dry": 1,
+          "noMoves": true
+        },
+        "game.over-classic-tied": {
+          "screen": "game", "mode": "classic", "background": "blossom-wall", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, null],
+          "score": 18420, "combo": 0, "dry": 2,
+          "over": { "record": 18420, "newRecord": false }
         }
       },
       "catalog": {
@@ -175,7 +204,6 @@
       "strings": {
         "app_name": "Bloomgrid",
         "tagline": "Fit pieces into an 8×8 garden bed",
-        "mode_classic": "Classic",
         "mode_daily": "Daily challenge",
         "daily_date": "November 10",
         "score": "Score",
@@ -217,6 +245,14 @@
         "cells_many": "cells",
         "bonus_badge": "×2",
         "bonus_sr": "single-colour line, points ×2",
+        "no_moves": "No room for any piece",
+        "no_fit_sr": "doesn't fit",
+        "over_reason": "No moves left — no piece fits",
+        "record_gap": "{n} short of your best",
+        "record_tied": "Best score tied",
+        "sound": "Sound",
+        "praise_2": "Great!",
+        "praise_3": "Wonderful!",
         "colors": { "poppy": "poppy", "sun": "sunflower", "leaf": "clover", "drop": "cornflower", "berry": "cherry blossom" }
       },
       "scenarios": {
@@ -240,6 +276,13 @@
           "tray": [null, { "shape": "rect-3x2", "color": "drop" }, { "shape": "line4-v", "color": "poppy" }],
           "score": 2140, "combo": 0, "dry": 1,
           "over": { "record": 2980, "newRecord": false, "dailyInfo": "until-midnight" }
+        },
+        "game.no-moves-classic": {
+          "screen": "game", "mode": "classic", "background": "hedge", "records": { "classic": 18420, "daily": 2980 }, "seed": 1,
+          "board": ["pdsl.bsd", "lb.dpsl.", "sdplb.bp", ".bsdlpds", "dlb.sp.l", "sp.dlbsd", "ldsbp.pl", "d.spl.sd"],
+          "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, { "shape": "rect-3x2", "color": "drop" }],
+          "score": 6842, "combo": 0, "dry": 2,
+          "noMoves": true
         }
       },
       "catalog": {

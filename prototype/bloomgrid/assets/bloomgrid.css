@@ -91,8 +91,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 /* Linia ×2: ukośne paski i obrys przerywany (jasne kreski 2 px na ciemnym pasie 4 px) + plakietka „×2” poza polami. */
 .bg-cell[data-line=bonus]::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 3px,rgba(255,255,255,0) 3px 7px);box-shadow:inset 0 0 0 4px rgba(26,16,8,.85);outline:2px dashed var(--hl);outline-offset:-3px}
 .bg-cell[data-clearing=true]{background:linear-gradient(rgba(255,248,224,.75),rgba(255,248,224,.75)),var(--tile) center/100% 100% no-repeat;border-radius:20%;box-shadow:0 0 0 2px var(--hl);transform:scale(.86)}
-.bg-anim .bg-cell[data-clearing=true]{animation:bg-clear .32s ease-in forwards}
-@keyframes bg-clear{0%{transform:scale(1)}100%{transform:scale(.25);opacity:0}}
+/* r5: klatka czyszczenia w stanach capture jest statyczna; na żywo rozkwit gra na warstwie efektów (.bg-fx). */
 
 /* znacznik linii ×2 (część component.board-cell, wariant bonus) */
 /* Plakietka „×2” leży poza polami (Q59): przy prawej krawędzi ramki na wysokości rzędu albo nad górną krawędzią ramki nad kolumną. */
@@ -136,16 +135,17 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 /* Miodowa plakietka z kiełkiem (obraz); kiełek jest w lewym kapslu obrazu, ikona w DOM zostaje niewidoczna i zachowuje miejsce. */
 .bg-combo{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 8px;border-radius:999px;background:none;border:0 solid transparent;border-image:url(img/badge-combo.webp) 29 30 29 58 fill / 16px 16px 16px 32px stretch;color:#3A2405;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap;filter:drop-shadow(0 3px 4px rgba(20,12,4,.35))}
 .bg-combo svg{display:block;visibility:hidden}
-.bg-anim .bg-combo.is-bump{animation:bg-bump .28s ease-out}
-@keyframes bg-bump{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
 
 /* component.move-points */
 .bg-points{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--green-d)}
 .bg-points-total{font-weight:800;font-size:22px}
 .bg-points-notes{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 8px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
 .bg-points-note{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
-.bg-anim .bg-points.is-live{animation:bg-rise 1.4s ease-out forwards}
-@keyframes bg-rise{0%{opacity:0;transform:translateY(6px)}12%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
+/* r5: na telefonach suma i dopiski w jednym wierszu (w r4 dopisek pod sumą wychodził poza pasek 44 px pod ramę planszy). */
+.bg-phone .bg-points{flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:flex-end;column-gap:8px;max-width:100%}
+.bg-phone .bg-points-notes{flex-wrap:nowrap}
+/* r5: zawartość paska wyśrodkowana w górnych 36 px (dolne 8 px zajmuje rama planszy wysunięta w górę), więc tabliczka punktów i seria nie wchodzą na ramę. */
+.bg-phone .bg-strip{padding-bottom:8px}
 
 /* component.icon-button */
 /* Kremowy przycisk z domkiem (obraz zawiera ikonę domu); ikona SVG w DOM zostaje niewidoczna (nazwa dostępna bez zmian). */
@@ -162,7 +162,7 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
    mobile-compact nie zachodziła na tabliczkę rekordu) — bez wpływu na układ. */
 .bg-mode[data-variant=daily]{color:#FFF6E2;text-shadow:0 1px 0 rgba(40,6,24,.6)}
 .bg-mode[data-variant=daily] .bg-mode-sub{color:#FFD978}
-.bg-phone .bg-mode[data-variant=daily]::before{left:-11px;right:-11px}
+.bg-phone .bg-mode[data-variant=daily]::before{left:-9px;right:-9px}
 .bg-mode[data-variant=daily]::before{inset:-5px -22px -16px;border-radius:0;background:url(img/daily-ribbon.webp) center / 100% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 3px 4px rgba(20,6,14,.4))}
 /* Q107: w grze klasycznej środek nagłówka jest pusty — rekord zostaje w prawej kolumnie siatki. */
 .bg-game-head > .bg-score[data-variant=record]{grid-column:3}
@@ -301,4 +301,99 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .pt-notes::placeholder{color:rgba(255,255,255,.55)}
 @media (max-width:640px){.pt-row-notes{flex-wrap:wrap}.pt-row-notes .pt-notes{flex-basis:100%}}
 
-@media (prefers-reduced-motion:reduce){.bg-anim *{animation:none !important;transition:none !important}}
+/* ===== r5: przełącznik dźwięku, krok końca gry, oznaczenie klocków, animacje ===== */
+
+/* component.sound-toggle (Q143): okrągły kremowy przycisk z zieloną obwódką (pigułka z zestawu UI), głośnik w zieleni. */
+.bg-sound-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:50%;background:none;border:0 solid transparent;border-image:url(img/btn-secondary.webp) 38 fill / 22px stretch;color:var(--green-d);cursor:pointer;filter:drop-shadow(0 3px 4px rgba(20,12,4,.35))}
+.bg-sound-btn[data-variant=muted]{color:#5A4630}
+.bg-sound-btn:hover,.bg-sound-btn[data-demo=hover]{filter:brightness(1.05) drop-shadow(0 3px 4px rgba(20,12,4,.35))}
+.bg-sound-btn:active,.bg-sound-btn[data-demo=pressed]{transform:translateY(1px);filter:brightness(.95)}
+.bg-sound-btn:focus-visible,.bg-sound-btn[data-demo=focus]{outline:3px solid var(--focus);outline-offset:3px}
+.bg-wide .bg-sound-btn{width:56px;height:56px;border-image-width:28px}
+.bg-wide .bg-sound-btn svg{width:28px;height:28px}
+.bg-head-left{display:flex;align-items:center;gap:4px}
+.bg-wide .bg-head-left{gap:12px}
+/* Oś przełącznika: telefony — prawa krawędź treści (przycisków menu, 16 px); mac-wide — prawa krawędź siatki gry (rekord i kolumna trójki). */
+.bg-home-sound{position:absolute;top:59px;right:16px;z-index:2}
+.bg-phone .bg-wordmark::before{left:-6px;right:-6px}
+/* Znak z hasłem nie sięga pod przełącznik dźwięku (po 53 px z każdej strony); dłuższe hasło (EN na mobile-compact) zawija się w 2 wiersze. */
+.bg-phone .bg-wordmark{max-width:calc(100% - 106px)}
+.bg-phone .bg-wordmark-tag{text-wrap:balance}
+.bg-wide .bg-home-sound{top:32px;right:calc((100% - 1016px) / 2)}
+
+/* component.no-moves-step (Q128): warstwa na cały ekran (bez zasłony), komunikat nad trójką na kremowej tabliczce. */
+.bg-nomoves{position:absolute;inset:0;z-index:30;cursor:pointer}
+.bg-nomoves-msg{position:absolute;transform:translateY(-100%);display:flex;justify-content:center;pointer-events:none}
+.bg-nomoves-msg{font:800 17px/1.25 var(--font);color:#2A1C10;text-align:center;text-wrap:balance}
+.bg-nomoves-msg::before{content:"";position:absolute;z-index:-1;inset:-8px 6px;border-radius:16px;background:var(--plaque);box-shadow:0 0 0 2px rgba(122,30,14,.55),0 6px 16px rgba(20,12,4,.35)}
+.bg-nomoves-msg{isolation:isolate;padding:0 22px}
+/* mac-wide: komunikat leży w miejscu paska serii i punktów; w kroku pasek jest ukryty. */
+.bg-game-main.is-ending .bg-strip > *{visibility:hidden}
+/* Przygaszenie planszy w chwili końca (9): pola i ziemia ciemnieją, rama zostaje. */
+.bg-board.is-ended .bg-grid{filter:brightness(.62) saturate(.75)}
+.bg-anim .bg-board.is-ended .bg-grid{transition:filter .3s ease-out}
+
+/* Q129: klocek trójki, który się nie mieści — wyszarzony i przygaszony, slot z ukośnym kreskowaniem i znakiem „przekreślone koło” w rogu.
+   Rozróżnienie nie tylko kolorem: kształt znaku i kreskowanie. Tylko w chwili końca gry. */
+.bg-piece[data-variant=no-fit]{filter:grayscale(.85) brightness(.72);opacity:.9;cursor:default}
+.bg-slot[data-no-fit=true]::before{content:"";position:absolute;inset:6px;border-radius:12px;pointer-events:none;background:repeating-linear-gradient(135deg,rgba(90,70,48,.22) 0 3px,rgba(90,70,48,0) 3px 9px)}
+.bg-nofit-mark{position:absolute;top:6px;right:6px;display:flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#FFF6E2;color:#7A1E0E;box-shadow:0 0 0 1.5px #7A1E0E,0 2px 3px rgba(20,12,4,.3)}
+
+/* Panel końca (Q130): powód i różnica do rekordu. */
+.bg-over-reason{display:block;text-align:center;font-size:15px !important;font-weight:700;color:#7A1E0E !important;text-wrap:balance}
+.bg-over-reason .bg-ic{display:inline-flex !important;vertical-align:-3px;margin-right:6px}
+.bg-over-gap{font-size:16px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.bg-over-gap[data-variant=tied]{color:var(--green-d)}
+
+/* Q162: komunikat bez przycisku — tekst wyśrodkowany w całym komunikacie (prawy margines = ikona 20 + odstęp 10). */
+.bg-alert.is-plain .bg-alert-text{margin-right:30px}
+
+/* component.praise (Q139): nad środkiem planszy. */
+.bg-praise{position:absolute;left:50%;top:50%;z-index:5;transform:translate(-50%,-50%);padding:8px 24px 10px;border-radius:999px;font:900 26px/1.1 var(--font);color:#3A2405;white-space:nowrap;pointer-events:none;
+  background:linear-gradient(180deg,#FFE9A6 0%,#F7C95A 52%,#E9A93A 100%);box-shadow:inset 0 2px 0 rgba(255,255,255,.7),inset 0 -3px 0 rgba(150,90,20,.35),0 0 0 2.5px #6F460F,0 6px 14px rgba(20,12,4,.4)}
+.bg-wide .bg-praise{font-size:34px}
+
+/* Warstwa efektów planszy. */
+.bg-fx{position:absolute;inset:0;pointer-events:none;z-index:4;overflow:visible}
+.bg-fx .fx-tile{position:absolute;margin:0}
+.fx-petal{position:absolute;transform:translate(-50%,-50%);will-change:transform,opacity;animation:fx-petal ease-out forwards}
+.fx-sweep{position:absolute;border-radius:8px;mix-blend-mode:screen;animation:fx-sweep ease-in-out forwards;background:linear-gradient(90deg,rgba(255,214,90,0) 0%,rgba(255,226,120,.9) 45%,rgba(255,250,215,.95) 50%,rgba(255,226,120,.9) 55%,rgba(255,214,90,0) 100%) no-repeat;background-size:40% 100%}
+.fx-sweep.is-col{background:linear-gradient(180deg,rgba(255,214,90,0) 0%,rgba(255,226,120,.9) 45%,rgba(255,250,215,.95) 50%,rgba(255,226,120,.9) 55%,rgba(255,214,90,0) 100%) no-repeat;background-size:100% 40%;animation-name:fx-sweep-col}
+.fx-tile.fx-bloom{animation:fx-bloom ease-in forwards}
+.fx-badge{animation:fx-badge ease-out forwards}
+.fx-fadeout{animation:fx-fadeout ease-out forwards}
+.fx-settle{animation:fx-settle .15s ease-out}
+.fx-pop{animation:fx-pop .25s ease-out}
+.fx-rise{animation:fx-rise .3s ease-out}
+.fx-deal{animation:fx-deal .24s cubic-bezier(.2,.8,.3,1.2) both}
+.fx-fade{animation:fx-fade .15s linear both}
+.fx-praise{animation:fx-praise .8s ease-out forwards}
+.fx-praise-reduced{animation:fx-praise-reduced .8s linear forwards}
+.fx-panel{animation:fx-panel .25s ease-out}
+.fx-msg{animation:fx-msg .3s ease-out}
+.fx-rain{position:absolute;inset:0;overflow:hidden;pointer-events:none;border-radius:24px}
+.fx-rain-petal{position:absolute;top:-24px;width:22px;height:22px;animation:fx-rain linear both}
+@keyframes fx-petal{0%{opacity:1;transform:translate(-50%,-50%) scale(.6) rotate(0)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1) rotate(var(--rot))}}
+@keyframes fx-bloom{0%{transform:scale(1);opacity:1}30%{transform:scale(1.14);opacity:1}100%{transform:scale(.3) rotate(18deg);opacity:0}}
+@keyframes fx-sweep{0%{background-position:-60% 0;opacity:0}15%{opacity:1}85%{opacity:1}100%{background-position:160% 0;opacity:0}}
+@keyframes fx-sweep-col{0%{background-position:0 -60%;opacity:0}15%{opacity:1}85%{opacity:1}100%{background-position:0 160%;opacity:0}}
+@keyframes fx-badge{0%{transform:translate(0,-50%) scale(.4);opacity:0}25%{transform:translate(0,-50%) scale(1.3);opacity:1}45%{transform:translate(0,-50%) scale(1)}80%{opacity:1}100%{opacity:0}}
+.fx-badge.is-col{animation-name:fx-badge-col}
+@keyframes fx-badge-col{0%{transform:translate(-50%,-100%) scale(.4);opacity:0}25%{transform:translate(-50%,-100%) scale(1.3);opacity:1}45%{transform:translate(-50%,-100%) scale(1)}80%{opacity:1}100%{opacity:0}}
+@keyframes fx-fadeout{from{opacity:1}to{opacity:0}}
+@keyframes fx-settle{0%{transform:scale(.84)}60%{transform:scale(1.06)}100%{transform:scale(1)}}
+@keyframes fx-pop{0%{transform:scale(1)}40%{transform:scale(1.22)}100%{transform:scale(1)}}
+@keyframes fx-rise{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+@keyframes fx-deal{0%{opacity:0;transform:translateY(18px) scale(.7)}100%{opacity:1;transform:none}}
+@keyframes fx-fade{from{opacity:0}to{opacity:1}}
+@keyframes fx-praise{0%{opacity:0;transform:translate(-50%,-30%) scale(.7)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}30%{transform:translate(-50%,-50%) scale(1)}75%{opacity:1;transform:translate(-50%,-60%)}100%{opacity:0;transform:translate(-50%,-80%)}}
+@keyframes fx-praise-reduced{0%{opacity:0}18%{opacity:1}82%{opacity:1}100%{opacity:0}}
+@keyframes fx-panel{0%{opacity:0;transform:translateY(12px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes fx-msg{0%{opacity:0;transform:translateY(calc(-100% + 8px))}100%{opacity:1;transform:translateY(-100%)}}
+@keyframes fx-rain{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(520px) rotate(var(--rot));opacity:0}}
+
+/* reduced-motion (Q137): bez ruchu; zostają tylko zmiany przezroczystości ≤ 150 ms (fx-fade, fx-fadeout, pochwała). */
+@media (prefers-reduced-motion:reduce){
+  .bg-anim *:not(.fx-fade):not(.fx-fadeout):not(.fx-praise-reduced){animation:none !important;transition:none !important}
+  .fx-fadeout{animation-duration:.15s !important}
+}

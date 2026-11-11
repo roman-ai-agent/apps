@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "revision_id": "r4",
+  "revision_id": "r5",
   "id_migrations": [],
   "targets": [
     { "target_id": "mac-wide", "width": 1440, "height": 900 },
@@ -34,6 +34,11 @@
     { "state_id": "game.over-classic-new-record", "fixture_id": "default" },
     { "state_id": "game.over-daily", "fixture_id": "default" },
     { "state_id": "game.over-daily.en", "fixture_id": "english" },
-    { "state_id": "game.over-daily-new-day", "fixture_id": "default" }
+    { "state_id": "game.over-daily-new-day", "fixture_id": "default" },
+    { "state_id": "home.sound-muted", "fixture_id": "default" },
+    { "state_id": "game.no-moves-classic", "fixture_id": "default" },
+    { "state_id": "game.no-moves-classic.en", "fixture_id": "english" },
+    { "state_id": "game.no-moves-daily", "fixture_id": "default" },
+    { "state_id": "game.over-classic-tied", "fixture_id": "default" }
   ]
 }

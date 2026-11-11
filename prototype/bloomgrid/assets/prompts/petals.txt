@@ -1,0 +1,10 @@
+The attached images show the flower tiles and the UI kit of a cozy garden block-puzzle game. Create a small matching sprite sheet in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outline, bright soft highlight, crisp clean edges.
+
+Five single loose flower petals, arranged in one horizontal row, evenly spaced with wide gaps, each about the same size, front view, slightly curved, as if falling:
+1. a red-orange poppy petal, broad and rounded, shading from orange to deep red
+2. a golden sunflower petal, long and pointed, shading from yellow to orange
+3. a small emerald-green clover leaflet, heart-shaped
+4. a blue cornflower petal, narrow with a fringed tip, shading from turquoise to violet-blue
+5. a pink cherry blossom petal, rounded with a small notch at the tip, pink to white
+
+Each petal on its own, not touching others, on a plain flat pure white background, no shadow on the background. No text, no letters, no numbers, no watermark, no tiles, no squares.

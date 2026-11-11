@@ -1,4 +1,6 @@
-# Bloomgrid r4 — specyfikacja responsywności
+# Bloomgrid r5 — specyfikacja responsywności i ruchu
+
+r5 (Q128–Q143, Q162) dodaje: przełącznik dźwięku na ekranie startowym i w nagłówku gry, krok końca gry z komunikatem nad trójką, powód końca i różnicę do rekordu w panelu, animacje (sekcja „Ruch” na końcu), wyśrodkowany tekst komunikatu bez przycisku i punkty ruchu w jednym wierszu na telefonach. Zmiany geometrii r5: sekcje „screen.game — telefony” (pasek serii i punktów, nagłówek), „screen.home” (przełącznik, znak), „Krok końca gry”.
 
 r4 (Q111–Q114) zmienia geometrię w trzech miejscach, opisanych niżej: wspólna siatka ekranu gry na mac-wide (sekcja „screen.game — mac-wide”), całkowite szerokości slotów trójki na wszystkich targetach (sekcja „Geometria planszy i trójki”) i przyciski menu z wyśrodkowanym tekstem i większym wierszem informacji (sekcja „screen.home”, Q111, Q115). Pozostała geometria jak w r3 (r3: wygląd z Q96, Q102; brak nazwy trybu w grze klasycznej, Q107). Nowe są sekcje „Tło i grafiki” i „Tła na targetach” na końcu.
 
@@ -45,10 +47,10 @@ O układzie decyduje wyłącznie szerokość okna:
 
 Kolejność od góry:
 
-1. Nagłówek (min. 48 px), siatka `1fr auto 1fr`: `component.icon-button` 44 px po lewej, `component.mode-label` w środku tylko w wyzwaniu dnia (zawija się do 2 wierszy; r3, Q107: w grze klasycznej środek pusty), `component.score-display` `record` po prawej (zawsze trzecia kolumna siatki).
+1. Nagłówek (min. 48 px), siatka `1fr auto 1fr`: po lewej `component.icon-button` 44 px i obok niego `component.sound-toggle` 44 px (r5, odstęp 4 px, środki na jednej linii), `component.mode-label` w środku tylko w wyzwaniu dnia (zawija się do 2 wierszy; r3, Q107: w grze klasycznej środek pusty), `component.score-display` `record` po prawej (zawsze trzecia kolumna siatki).
 2. Grupa gry wyśrodkowana pionowo w miejscu między nagłówkiem a trójką:
    - `component.score-display` `score` (etykieta 13 px, cyfry 40 px), 8 px pod nagłówkiem;
-   - pasek 44 px o szerokości planszy: `component.combo-badge` po lewej, `component.move-points` po prawej; pasek ma stałą wysokość także bez obu elementów, więc plansza nie skacze;
+   - pasek 44 px o szerokości planszy: `component.combo-badge` po lewej, `component.move-points` po prawej; pasek ma stałą wysokość także bez obu elementów, więc plansza nie skacze. r5: zawartość wyśrodkowana w górnych 36 px paska (dolne 8 px zajmuje rama planszy wysunięta w górę), punkty ruchu w jednym wierszu: suma, potem dopiski (wcześniej dopiski pod sumą wychodziły pod ramę i były przycięte, np. „seria +150” w `game.combo`); tabliczka punktów kończy się ≥ 1,9 px nad ramą;
    - `component.board` wyśrodkowana.
 3. Tylko `game.save-error`: `component.alert` `save-error` na pełną szerokość treści, 12 px pod grupą gry. Grupa gry przesuwa się w górę (38 px), trójka zostaje na miejscu.
 4. `component.piece-tray` na pełną szerokość treści, przy dolnym marginesie (zasięg kciuka), co najmniej 16 px pod grupą gry.
@@ -62,10 +64,19 @@ Zmierzone położenie (px od góry, mobile-compact / iphone / android / mobile-l
 
 Nadmiar wysokości dzieli się po równo nad i pod grupą gry.
 
+- r5: wstęga wyzwania dnia na telefonach wystaje w bok 9 px (było 11), żeby nie nachodziła na przełącznik dźwięku; najmniejszy odstęp wstęga–przełącznik 2,9 px (mobile-compact EN), wstęga–tabliczka rekordu 3 px.
+
+## Krok końca gry (r5, Q128–Q131)
+
+- Po ruchu kończącym grę (R-1.7) — po animacji tego ruchu — przez 1,5 s: plansza przygaszona (pola i ziemia, rama bez zmian), klocki trójki w wariancie `no-fit`, komunikat `element.game.no-moves.message` nad trójką; warstwa `element.game.no-moves` pokrywa cały ekran gry (przewija się z nim), bez zasłony. Potem panel końca gry; przygaszenie i oznaczenie zostają pod panelem.
+- Komunikat: tabliczka na szerokość trójki, tekst 17 px wyśrodkowany i zawijany w wyrównane wiersze, dolna krawędź tekstu 12 px nad trójką (tabliczka 4 px nad trójką). Telefony: między planszą a trójką; gdzie miejsca brak (mobile-compact: tekst PL w 2 wierszach; phone-landscape: 16 px między planszą a trójką), tabliczka nachodzi na dolną ramę przygaszonej planszy (do 33 px), nigdy na trójkę. mac-wide: w kolumnie trójki, w miejscu paska serii i punktów (w kroku zawartość paska jest ukryta).
+- Stuknięcie, klik albo Esc w czasie kroku pokazuje panel od razu; panel przez 300 ms nie przyjmuje kliknięć, a fokus trafia na „Zagraj ponownie” po tym czasie.
+
 `game.crash` (telefony): zasłona na całą powierzchnię, pasek `component.alert` `crash` 16 px od boków, u góry na 59 px (w miejscu nagłówka).
 
 ## screen.game — mac-wide
 
+- r5 (Q143): przełącznik dźwięku 56×56 px obok przycisku wyjścia (x 280, odstęp 12 px), środki obu na jednej linii z rekordem (y 60).
 - r4 (Q112) — wspólna siatka: nagłówek ma szerokość planszy + odstępu + kolumny trójki (564 + 72 + 380 = 1016 px), wyśrodkowany jak siatka gry. Przycisk wyjścia (56×56 px, Q113) stoi lewą krawędzią na lewej krawędzi planszy (x 212), rekord (etykieta 14 px, cyfry 22 px, tekst wyśrodkowany w tabliczce) prawą krawędzią na prawej krawędzi kolumny trójki (x 1228); środki przycisku i rekordu na jednej linii (y 60). Nazwa trybu w środku tylko w wyzwaniu dnia (Q107). Nagłówek ma 56 px wysokości.
 - Pod nim siatka `564px 380px` z odstępem 72 px, wyśrodkowana w poziomie i w pionie:
   - lewa kolumna: plansza 564 px (pole 64 px);
@@ -84,6 +95,9 @@ Nadmiar wysokości dzieli się po równo nad i pod grupą gry.
 - Panel końca gry nie zasłania nagłówka logicznie (zasłona go przyciemnia), końcowa plansza pozostaje widoczna pod zasłoną.
 
 ## screen.home
+
+- r5 (Q143): `component.sound-toggle` w prawym górnym rogu ekranu: telefony 44 px, 59 px od góry, prawa krawędź na prawej krawędzi treści — tej samej, co prawa krawędź przycisków menu (16 px od krawędzi kolumny; zmierzone 0 px różnicy na 6 targetach telefonu); mac-wide 56 px, 32 px od góry, prawa krawędź na prawej krawędzi rekordu i kolumny trójki ekranu gry (x 1228, różnica 0 px, Q112). Na telefonach znak z hasłem ma szerokość do (szerokość treści − 106 px) i tabliczkę wystającą 6 px w bok, więc nie sięga pod przełącznik (odstęp ≥ 3 px, mobile-compact EN); dłuższe hasło (EN na mobile-compact) zawija się w 2 wiersze.
+- r5 (Q162): `component.alert` `read-error` — tekst wyśrodkowany w całym komunikacie, ikona przy lewej krawędzi.
 
 - r4 (Q111, Q115): w przycisku menu ikona przy lewej krawędzi, blok tekstu wyśrodkowany w całym przycisku (prawy margines bloku 46 px = ikona 36 + odstęp 10). Wiersz informacji 15 px; „Wyzwanie dnia” pokazuje tylko „Rekord dnia N” (bez daty). Wszystkie wiersze informacji mieszczą się w jednym wierszu na każdym targecie (także mobile-compact i EN); przycisk ma 70,6 px wysokości (r3: 69,3), kolumna menu przy dolnym marginesie rośnie w górę o ok. 1,3 px na przycisk. Dłuższy tekst zawinąłby się w wyrównane wiersze bez nachodzenia na ikonę.
 
@@ -123,4 +137,24 @@ Pasek jest przyklejony do dołu okna przeglądarki, poza powierzchnią. Powierzc
 
 ## Teksty EN
 
-Fixture `english` zmienia wszystkie etykiety. Kontenery tekstu nie mają stałej szerokości ani `nowrap`, z wyjątkiem plakietek (seria, „×2”, nowy rekord) i dopisków punktów ruchu, które zawijają się między dopiskami. Najdłuższe teksty EN („Your score won't count toward your best”, „A new daily challenge is available.”) zawijają się w karcie 328 px. Grupowanie cyfr według `Intl.NumberFormat` (R-2.5): pl od 10 000 („2340”, „18 420”), en od 1 000 („6,842”).
+Fixture `english` zmienia wszystkie etykiety. Kontenery tekstu nie mają stałej szerokości ani `nowrap`, z wyjątkiem plakietek (seria, „×2”, nowy rekord) i dopisków punktów ruchu, które zawijają się między dopiskami. Najdłuższe teksty EN („Your score won't count toward your best”, „A new daily challenge is available.”) zawijają się w karcie 328 px. Grupowanie cyfr według `Intl.NumberFormat` (R-2.5): pl od 10 000 („2340”, „18 420”), en od 1 000 („6,842”). r5: komunikat końca „No room for any piece” mieści się w jednym wierszu na każdym targecie (tekst PL na mobile-compact w 2 wyśrodkowanych wierszach); różnica do rekordu „11,578 short of your best”.
+
+## Ruch (r5, Q135–Q139)
+
+Zasady: animacje grają tylko po interakcji gracza i nie blokują gry — stan po ruchu (plansza po czyszczeniu, nowa trójka, wynik) jest od razu końcowy, a efekty leżą na warstwie nad planszą albo na klasie elementu zdejmowanej po czasie (Q136); następny klocek można chwycić w trakcie animacji. Bez wstrząsu ekranu, bez błysków częstszych niż 3/s (jeden złoty błysk na linię), bez efektów kasynowych (Q137). W `mode=capture` animacji nie ma: każdy stan to stała klatka końcowa (0 animacji, DOM stały). Stałe czasów: `BG.MOTION` w `assets/bloomgrid-ui.js`.
+
+| # | Animacja | Czas | Krzywa i przebieg | reduced-motion |
+|---|---|---|---|---|
+| 1 | osadzenie położonego klocka (pola, które zostały na planszy) | 150 ms | ease-out; skala 0,84 → 1,06 (60%) → 1 | przezroczystość 0 → 1, 150 ms linear |
+| 2 | czyszczenie linii — rozkwit | 450 ms | kopia kafla na warstwie efektów: ease-in; skala 1 → 1,14 (30%) → 0,3 z obrotem 18°, przezroczystość 1 → 0 (od 30%); 3 płatki w kolorze kafla (`assets/img/petal-<kolor>.webp`, ½ pola) z jego środka: ease-out, przesunięcie do ±0,75 pola w bok i 0,45–1,15 pola w dół, obrót ±90–210°, skala 0,6 → 1, przezroczystość 1 → 0 | kopia kafla zanika (przezroczystość 1 → 0, 150 ms), bez płatków |
+| 3 | linia jednego koloru | 600 ms | rozkwit jak 2, ale 600 ms; jeden złoty błysk (gradient 40% długości linii) przesuwa się wzdłuż linii ease-in-out, pojawia się i znika w 15% / 85%; kopia plakietki „×2” podskakuje (skala 0,4 → 1,3 (25%) → 1 (45%)) i gaśnie od 80% | zanikanie 150 ms, bez błysku, „×2” zanika |
+| 4 | plakietka serii przy wzroście licznika | 250 ms | ease-out; skala 1 → 1,22 (40%) → 1 | przezroczystość 150 ms |
+| 5 | punkty ruchu | 300 ms | ease-out; 10 px w górę i pojawienie; zostają widoczne do następnego położenia (r4: znikały po 1,4 s) | przezroczystość 150 ms |
+| 6 | wynik dolicza się | ≤ 400 ms | ease-out cubic, wartość pośrednia zaokrąglana, `requestAnimationFrame` | od razu nowa wartość |
+| 7 | nowa trójka | 3 × 80 ms | klocki wjeżdżają kolejno: start co 80 ms, każdy wjazd 240 ms `cubic-bezier(.2,.8,.3,1.2)`, z 18 px niżej i skali 0,7 | przezroczystość 150 ms, wszystkie naraz |
+| 8 | nowy rekord — deszcz płatków na karcie panelu | 1000 ms | 18 płatków pięciu kolorów, start rozłożony do 400 ms, spadek liniowy przez kartę z obrotem, każdy kończy w 1000 ms | brak |
+| 9 | krok końca gry | 1500 ms | przygaszenie planszy 300 ms ease-out, komunikat wsuwa się 8 px w górę w 300 ms; po 1,5 s panel końca: 250 ms ease-out (12 px w górę, skala 0,96 → 1); stuknięcie, klik albo Esc skraca krok | ten sam czas 1,5 s; komunikat i panel tylko przezroczystość 150 ms |
+| — | pochwała (Q139) | 800 ms | ease-out; skala 0,7 → 1,06 (20%) → 1 (30%), potem unosi się o 30% wysokości i gaśnie od 75%; „Świetnie!” przy 2 liniach naraz, „Wspaniale!” przy 3 i więcej, najwyżej jedna na ruch; bez „Seria ×N!” | pojawienie 144 ms, widoczna, zanik 144 ms (tylko przezroczystość) |
+
+- Kolejność po ruchu: 1–3, 5, 6 i pochwała startują razem; 4 gdy licznik serii rośnie; 7 gdy ruch dobrał nową trójkę; krok końca (9) zaczyna się po animacji ruchu (150 / 450 / 600 ms, przy reduced-motion 150 ms).
+- Katalog (`foundation.motion`, `component.game-over-panel`, `component.no-moves-step`) ma przyciski „Odtwórz” przy animacjach.
