@@ -1,0 +1,9 @@
+Background illustration for a cozy garden block-puzzle game; the attached images show the game's tiles and UI kit, so match their cheerful palette, but paint the background in a richer, softer, painterly style with depth.
+
+Scene: a deep green garden hedge wall of glossy leaves in several shades of green, with soft rays of sunlight falling through from the top; climbing roses and small white and yellow flowers along the edges; a wooden garden bench corner and terracotta pots hinted at the bottom edges; a soft grassy ground.
+
+Composition: the central area must stay calm, simple and slightly darker and less saturated (only plain softly lit hedge there), because the game board and bright glossy pieces are placed on top of it; keep the detail (roses, pots, flowers) near the edges and corners. Gentle vignette. Soft depth of field, lush, high quality digital painting.
+
+The attached images are only a style and palette reference: do not copy or draw any of their objects. Do not draw any game tiles, rounded squares, square flower icons, buttons, boards or frames anywhere in the picture, including the bottom edge and the corners; flowers in the scene grow naturally on stems, branches or bushes. The picture must work when cropped from the sides to a narrower frame, so keep the most important detail near the top and bottom edges as well.
+
+No text, no letters, no UI elements, no game board, no tiles, no watermark.

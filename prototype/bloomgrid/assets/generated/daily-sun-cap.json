@@ -1,0 +1,19 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached image shows the UI kit of a cozy garden block-puzzle game. Create one matching small ornament in exactly the same art style: polished casual mobile game, glossy and juicy, thick dark outline, bright highlight, crisp clean edges.\n\nOrnament: a single shiny golden corner cap shaped like a small sun: a round, glossy, domed golden center with a bright highlight and eight short pointed golden rays around it, all with a thick dark brown outline, so it stays readable when shown at only 24 pixels. Warm rich gold, slightly deeper and more orange than pale yellow.\n\nOne single ornament, centered, front view, no perspective, filling about two thirds of the picture, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no watermark, no shadow on the background.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/daily-sun-cap.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "1:1",
+  "seconds": 19.826,
+  "cost_usd": 0.138952,
+  "at": "2026-11-11T13:20:20+01:00",
+  "images": [
+    "prototype/assets/generated/daily-sun-cap.png"
+  ],
+  "text": null
+}

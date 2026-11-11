@@ -1,0 +1,12 @@
+Game asset sheet for a cozy garden block-puzzle game. Five square game tiles with rounded corners, arranged in one horizontal row, evenly spaced with wide gaps between them, each tile the same size, front view, no perspective, on a plain flat pure white background.
+
+Each tile is a glossy, juicy, candy-like tile with a thick darker outline, a bright highlight band across the top, a small sparkle in the top-left corner and a darker bevel along the bottom edge.
+
+On each tile sits one big, bold, stylized flower that fills most of the tile: semi-realistic shapes but exaggerated, extra saturated and multicolored, with strong color gradients in every petal, a contrasting glowing center, crisp dark outlines and small bright highlights, so it reads clearly even at very small size. Each flower has a clearly different silhouette. Cheerful, lush and colorful, in the style of a polished casual mobile game:
+1. red-orange tile with a red poppy: four broad round cupped petals, petals shading from orange to deep red, dark violet center
+2. yellow tile with a sunflower: many narrow pointed petals in a ring, golden petals shading to orange, big brown center
+3. green tile with a four-leaf clover in lime to emerald shades with a tiny white flower
+4. blue tile with a cornflower: spiky fringed petals like a star, shading from turquoise to deep violet-blue
+5. magenta tile with a cherry blossom cluster: five-petal blossoms with a small notch at each petal tip, in pink to white shades with yellow centers
+
+The five tiles must look like one consistent set: identical tile shape, outline, lighting and gloss; only color and flower differ. No text, no letters, no numbers, no watermark, no shadows outside the tiles.

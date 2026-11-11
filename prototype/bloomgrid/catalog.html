@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
-<title>Bloomgrid — katalog komponentów r1</title>
+<title>Bloomgrid — katalog komponentów r3</title>
 <link rel="stylesheet" href="assets/bloomgrid.css">
 <script src="assets/bloomgrid-rules.js"></script>
 <script src="assets/bloomgrid-ui.js"></script>
@@ -36,7 +36,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
 .cat-spec ul{margin:2px 0 0;padding-left:18px}
 .cat-specimens{display:flex;flex-wrap:wrap;gap:18px;min-width:0}
 .cat-spm{display:flex;flex-direction:column;gap:8px;min-width:0;max-width:100%}
-.cat-spm-box{position:relative;max-width:100%;min-width:0;overflow-x:auto;display:flex;align-items:center;justify-content:center;padding:22px;border-radius:14px;background:linear-gradient(180deg,var(--sky-1),var(--sky-2));min-height:96px}
+.cat-spm-box{position:relative;max-width:100%;min-width:0;overflow-x:auto;display:flex;align-items:center;justify-content:center;padding:22px;border-radius:14px;background:linear-gradient(180deg,#F3EAD3,#E2D6B8);min-height:96px}
 .cat-spm-label{font:11.5px var(--mono);color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;align-items:baseline}
 .cat-spm-label b{font-weight:700;color:var(--ink);background:var(--card);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
 .cat-wide{flex-basis:100%;width:100%}.cat-wide .cat-spm-box{width:100%}
@@ -52,7 +52,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
 .cat-dragbox{position:relative}
 .cat-finger{position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(34,48,30,.18);border:2px solid rgba(34,48,30,.45);transform:translate(-50%,-50%);pointer-events:none}
 .cat-finger-label{position:absolute;transform:translate(-100%,0);font:11px var(--mono);color:var(--ink-2);white-space:nowrap}
-.cat-demo{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px;border-radius:18px;background:linear-gradient(180deg,var(--sky-1),var(--sky-2))}
+.cat-demo{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px;border-radius:18px;background:linear-gradient(180deg,#F3EAD3,#E2D6B8)}
 .cat-demo .bg-strip{width:var(--board-w)}
 .cat-demo .bg-tray{width:min(100%,var(--tray-w))}
 .cat-stack{display:flex;flex-direction:column;gap:12px;width:min(100%,361px)}
@@ -116,33 +116,40 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     root.replaceChildren();
     root.append(h('header', { 'class': 'cat-head' },
       h('div', {}, h('h1', {}, 'Bloomgrid — katalog komponentów'),
-        h('p', {}, 'Rewizja r1 (katalog zaakceptowany w r1-katalog; zmiany: plakietka „×2” poza polami — Q59, klucze kolorów, nowy component.alert). Każdy komponent pokazuje przeznaczenie, warianty, konfiguracje, stany interakcji, rolę i nazwę dostępną, kontrakt akcji (action → expected_effect) w każdym kontekście oraz różnice responsywne. Okazy renderuje ten sam runtime co index.html (assets/bloomgrid-ui.js, reguły w assets/bloomgrid-rules.js). Teksty z fixture „' + lang + '”.')),
+        h('p', {}, 'Rewizja r3: nowy wygląd z grafik rastrowych (Q96, Q102–Q106) — kafle z kwiatami, drewniana skrzynia planszy, przyciski i panele z obrazów, trzy ilustrowane tła sceny. Zachowanie, układ, stany, komponenty i publiczne ID bez zmian względem r2. Każdy komponent pokazuje przeznaczenie, warianty, konfiguracje, stany interakcji, rolę i nazwę dostępną, kontrakt akcji (action → expected_effect) w każdym kontekście oraz różnice responsywne. Okazy renderuje ten sam runtime co index.html (assets/bloomgrid-ui.js, reguły w assets/bloomgrid-rules.js). Teksty z fixture „' + lang + '”.')),
       h('div', { 'class': 'cat-tools', 'data-prototype-tool': 'catalog-fixture' }, 'fixture:',
         ['default', 'english'].map(function (f) { return h('button', { type: 'button', 'aria-pressed': f === lang ? 'true' : 'false', onclick: function () { lang = f; render(); } }, f); }))));
     var ids = ['foundation.palette', 'component.board-cell', 'component.board', 'component.piece', 'component.piece-tray', 'component.score-display', 'component.combo-badge', 'component.move-points', 'component.mode-label', 'component.icon-button', 'component.menu-button', 'component.button', 'component.wordmark', 'component.dialog', 'component.game-over-panel', 'component.alert', 'responsive', 'states-plan'];
     root.append(h('nav', { 'class': 'cat-toc' }, ids.map(function (i) { return h('a', { href: '#' + i }, i); })));
 
     /* Podstawy: kolory i symbole */
-    var colorRows = [['poppy', '#E8692A', '4,03'], ['sun', '#F2D63C', '8,99'], ['leaf', '#179870', '3,58'], ['drop', '#5DB8EC', '5,93'], ['berry', '#D07FB8', '4,61']];
-    root.append(section('foundation.palette', 'Kolory klocków, symbole ogrodu i oprawa',
-      'Pięć kolorów klocków (R-1.3) z bazy palety Okabe-Ito, każdy z własnym symbolem ogrodu na każdym polu, na planszy i w trójce (R-1.9, Q27). Symbol, a nie barwa, jest pierwszym rozróżnieniem: kolory dają się odróżnić bez widzenia barw (WCAG 1.4.1). Jeden jasny wygląd niezależnie od trybu ciemnego systemu (Q32).',
-      [['Kolory i symbole', table(['color', 'symbol', 'hex', 'kontrast z pustym polem'], colorRows.map(function (r) { return ['<code>' + r[0] + '</code>', S.colors[r[0]], '<code>' + r[1] + '</code>', r[2] + ':1']; }))],
-       ['Kontrola dostępności', 'Puste pole <code>#3F2D21</code>; każde wypełnione pole ma kontrast ≥ 3:1 (WCAG 1.4.11). Symulacja Machado 2009 (pełne nasilenie): najmniejsza różnica par ΔE76 — protanopia 15,8 (kropla–jagoda), deuteranopia 24,3, tritanopia 18,9 (liść–kropla). Każda para różni się kształtem symbolu: kwiat (5 płatków), słońce (promienie), liść (ukośny, z nerwem), kropla (łza), jagody (3 kulki z szypułką).'],
-       ['Oprawa', 'Plansza to drewniana grządka z ciemną ziemią (<code>#2C2017</code> między polami). Tło: ciepłe niebo i pas ogrodu przy dolnej krawędzi (<code>assets/garden-border.svg</code>, powtarzany poziomo). Akcent interfejsu: zieleń <code>#2E6B3A</code> (biały tekst 6,6:1). Czcionka systemowa zaokrąglona (<code>ui-rounded</code>, fallback system-ui), cyfry o stałej szerokości.'],
+    var colorRows = [['poppy', 'mak — 4 szerokie okrągłe płatki, ciemny środek', '#D44624', '3,84', '#D91D08', 'tile-poppy'], ['sun', 'słonecznik — wieniec wąskich płatków, duży brązowy środek', '#F4BB3D', '9,81', '#D89F2E', 'tile-sun'], ['leaf', 'koniczyna — 4 liście w kształcie serca', '#22A663', '5,47', '#0DA86F', 'tile-leaf'], ['drop', 'chaber — kolczasta gwiazda płatków', '#3C74C3', '3,65', '#4770C4', 'tile-drop'], ['berry', 'kwiat wiśni — kwiaty o 5 płatkach z wcięciem', '#E1339C', '4,21', '#B743A7', 'tile-berry']];
+    root.append(section('foundation.palette', 'Kafle z kwiatami, tła sceny i oprawa',
+      'Pięć kolorów klocków (R-1.3), każdy z własnym kwiatem na każdym polu, na planszy i w trójce (R-1.9, Q27, Q103). Kwiat, a nie barwa, jest pierwszym rozróżnieniem: kolory dają się odróżnić bez widzenia barw (WCAG 1.4.1); para mak–kwiat wiśni różni się sylwetką (4 okrągłe płatki z ciemnym środkiem kontra gromada kwiatów o 5 płatkach z wcięciem). Klucze kolorów w kodzie i DOM (<code>data-color</code>) bez zmian. Jeden jasny wygląd niezależnie od trybu ciemnego systemu (Q32, Q101).',
+      [['Kolory i kwiaty (Q103)', table(['klucz', 'kwiat', 'lico : puste'], colorRows.map(function (r) { return ['<code>' + r[0] + '</code>', r[1], '<code>' + r[2] + '</code> ' + r[3] + ':1']; })) + '<p>Obrazy: <code>assets/img/tile-&lt;klucz&gt;.webp</code>, mały kafel <code>tile-&lt;klucz&gt;-s.webp</code>. Lico = mediana obrazu poza kwiatem.</p>'],
+       ['Kontrola dostępności (Q99, Q102)', 'Puste pole: obraz wgłębienia w ziemi przyciemniony do 62% (mediana <code>#2F140B</code>); lico każdego kafla ma z nim ≥ 3:1 (najmniej chaber 3,65). Symulacja Machado 2009 (pełne nasilenie), najmniejsza różnica par ΔE76 lica: protanopia 14,4 (chaber–wiśnia), deuteranopia 30,0, tritanopia 17,6 (mak–wiśnia); kwiatów: 18,2 / 17,7 / 25,6. Mak–kwiat wiśni: lico 71,2 / 62,2 / 17,6, kwiat 49,2 / 41,2 / 59,1. Kontur kwiatu na najjaśniejszym połysku ≥ 3,7:1. Kafel koniczyny ma przesunięty odcień (szmaragd zamiast limonki), bo limonka zlewała się ze słonecznikiem przy protanopii (ΔE 8,8).'],
+       ['Mały rozmiar (Q102)', 'W trójce (pole 15–20 px) kafel uproszczony: jeden duży kwiat z grubym konturem, bez drobnych płatków i iskier (<code>assets/img/tile-*-s.webp</code>). Plansza (pole ≥ 36 px) i przeciągany klocek używają pełnego kafla.'],
+       ['Tła sceny (Q98, Q104)', 'Trzy ilustracje: <code>blossom-wall</code> (mur z kwitnącą wiśnią), <code>garden-dusk</code> (ogród o zmierzchu z latarniami), <code>hedge</code> (żywopłot z różami). Ekran startowy: zawsze <code>blossom-wall</code>. Gra klasyczna: tło losowane przy każdej nowej grze (w prototypie wynik losowania zapisany w scenariuszu stanu). Wyzwanie dnia: tło z daty ciągu — numer dnia od 1970-01-01 modulo 3 w kolejności blossom-wall, garden-dusk, hedge (10 listopada 2026: <code>garden-dusk</code>). Kadr 9:16 dla powierzchni wyższej niż szeroka, 16:9 dla pozostałych; cover, zakotwiczenie u dołu.'],
+       ['Oprawa', 'Plansza to drewniana skrzynia z mosiężnymi gwoździami (<code>assets/img/board-frame.webp</code>, border-image wychodzący 8 / 10 px poza planszę), ziemia <code>#5E321B</code> między polami. Przyciski, sloty trójki, karta dialogu, plakietka serii, plakietka „×2” i przycisk wyjścia to obrazy z tego samego zestawu. Tekst na tle sceny leży na kremowej tabliczce (<code>rgba(255,246,226,.92)</code>, tekst <code>#2A1C10</code>). Czcionka systemowa zaokrąglona (<code>ui-rounded</code>, fallback system-ui), cyfry o stałej szerokości.'],
        ['Ruch', 'Animacje tylko po interakcji: czyszczenie 320 ms, punkty ruchu 1,4 s, podbicie serii 280 ms. Przy <code>prefers-reduced-motion: reduce</code> brak animacji; zmiany stanu natychmiastowe, punkty ruchu nadal widoczne 1,4 s. W <code>mode=capture</code> stany pokazują jedną stałą klatkę.']],
       [spm('5 kolorów', 'pole 56 px', h('div', { 'class': 'cat-cellrow' }, BGRules.COLORS.map(function (c) {
         return h('div', { 'class': 'cat-swatch' }, cellBox({ elementId: 'catalog.palette.' + c, color: c }, 56), h('span', {}, h('code', {}, c)), h('span', {}, S.colors[c]));
       }))),
        spm('skala szarości', 'kontrola bez barw', h('div', { 'class': 'cat-cellrow', style: { filter: 'grayscale(1)' } }, BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.palette.gray.' + c, color: c }, 44); }))),
-       spm('pole 15 px', 'najmniejszy rozmiar (trójka, mobile-compact)', h('div', { 'class': 'cat-cellrow' }, BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.palette.small.' + c, color: c }, 15); })))]));
+       spm('pole 15 px', 'najmniejszy rozmiar (trójka, mobile-compact): kafel uproszczony', h('div', { 'class': 'cat-cellrow bg-small-tiles' }, BGRules.COLORS.map(function (c) { return cellBox({ elementId: 'catalog.palette.small.' + c, color: c }, 15); }))),
+       spm('tła sceny', 'blossom-wall · garden-dusk · hedge (kadr 9:16 i 16:9)', h('div', { 'class': 'cat-cellrow' }, BG.BACKGROUNDS.map(function (b) {
+         return h('div', { 'class': 'cat-swatch' }, h('div', { style: { display: 'flex', gap: '6px' } },
+           h('div', { style: { width: '54px', height: '96px', borderRadius: '6px', background: 'url(assets/img/bg-' + b + '-phone.webp) center/cover' } }),
+           h('div', { style: { width: '128px', height: '72px', borderRadius: '6px', background: 'url(assets/img/bg-' + b + '-desktop.webp) center/cover' } })), h('span', {}, h('code', {}, b)));
+       })))]));
 
     /* component.board-cell */
     var pb = { 'class': 'cat-cellrow' };
     root.append(section('component.board-cell', 'Pole planszy',
       'Jedno z 64 pól planszy; ta sama oprawa rysuje pola klocka. Pole samo nie ma akcji — gest przyjmuje <code>component.piece</code>. Podświetlenia opisują skutek położenia trzymanego klocka (R-1.4).',
-      [['Warianty', '<ul><li><code>empty</code> — puste: ciemna ziemia, cień wewnętrzny</li><li><code>filled</code> × 5 kolorów (<code>data-color</code>) — kolor, symbol, jasna krawędź u góry</li></ul>'],
-       ['Modyfikatory podglądu', '<ul><li><code>preview=place</code> — pole, które zajmie trzymany klocek: kolor klocka zmieszany z ziemią (62%), symbol 75%, biała obwódka 2 px</li><li><code>line=clear</code> — pole linii, którą położenie wyczyści: rozjaśnienie i jasna obwódka <code>#FFF4C8</code></li><li><code>line=bonus</code> — pole linii jednego koloru (premia R-2.4): ukośne białe paski i przerywana obwódka; plakietka „' + S.bonus_badge + '” leży poza polami (<code>component.board</code>, Q59); wyróżnienie nie tylko kolorem (Q25)</li><li><code>clearing</code> — czyszczenie po położeniu: jasny błysk i zmniejszanie do zera (320 ms); w capture stała klatka: jasne pole, skala 0,86</li></ul>'],
-       ['Konfiguracje', 'Rozmiar <code>--cell</code>; zaokrąglenie 22% boku; symbol w środkowych 60%. Pole na przecięciu czyszczonego rzędu i kolumny należy do obu linii (R-1.6) — wariant <code>bonus</code> ma pierwszeństwo przed <code>clear</code>.'],
+      [['Warianty', '<ul><li><code>empty</code> — puste: wgłębienie w ziemi (<code>assets/img/cell-empty.webp</code>, przyciemnione do 62%)</li><li><code>filled</code> × 5 kolorów (<code>data-color</code>) — błyszczący kafel z kwiatem koloru (<code>assets/img/tile-&lt;color&gt;.webp</code>; w trójce wersja uproszczona <code>-s</code>)</li></ul>'],
+       ['Modyfikatory podglądu', '<ul><li><code>preview=place</code> — pole, które zajmie trzymany klocek: kafel klocka przykryty 45% koloru pustego pola, biała obwódka 2 px</li><li><code>line=clear</code> — pole linii, którą położenie wyczyści: jasna zasłona i podwójna obwódka ciągła (jasna <code>#FFF1B8</code> 2 px + ciemna <code>#1A1008</code> 1 px, ≥ 4:1 na każdym polu)</li><li><code>line=bonus</code> — pole linii jednego koloru (premia R-2.4): ukośne białe paski i przerywana jasna obwódka na ciemnym pasie; plakietka „' + S.bonus_badge + '” (złota moneta) leży poza polami (<code>component.board</code>, Q59); wyróżnienie nie tylko kolorem (Q25)</li><li><code>clearing</code> — czyszczenie po położeniu: jasny błysk i zmniejszanie do zera (320 ms); w capture stała klatka: rozjaśniony kafel, skala 0,86</li></ul>'],
+       ['Konfiguracje', 'Rozmiar <code>--cell</code>; kafel wypełnia pole (narożniki przezroczyste); puste pole zaokrąglone 20% boku. Pole na przecięciu czyszczonego rzędu i kolumny należy do obu linii (R-1.6) — wariant <code>bonus</code> ma pierwszeństwo przed <code>clear</code>.'],
        ['Stany interakcji', 'Brak (pole nie jest fokusowalne ani klikalne).'],
        ['Rola i nazwa dostępna', 'Brak własnej roli; stan planszy opisuje nazwa <code>component.board</code>.'],
        ['Responsywność', 'Bok 36 / 40 / 42 / 46 / 64 px (mobile-compact / iphone / android / mobile-large / mac-wide). W trójce 15–20 px.']],
@@ -188,12 +195,14 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
       'Grządka 8×8 pól (R-1.1). Przyjmuje upuszczany klocek; podczas przeciągania pokazuje skutek położenia: pola do zajęcia, linie do wyczyszczenia i linie z premią jednego koloru (R-1.4). Nad miejscem, w którym klocek się nie mieści, i poza planszą nic nie jest podświetlone (Q24).',
       [['Warianty', '<ul><li><code>idle</code> — stan planszy</li><li><code>preview</code> — trzymany klocek nad miejscem, w którym się mieści: modyfikatory pól z <code>component.board-cell</code> i plakietka „' + S.bonus_badge + '” dla każdej linii jednego koloru. Plakietka nie zasłania żadnego pola (Q59): dla rzędu zaczyna się na prawej ramce na wysokości rzędu i wystaje do 14 px poza planszę; dla kolumny stoi nad górną ramką nad kolumną i wystaje do 10 px ponad planszę (22×18 px)</li><li><code>no-fit</code> — klocek nad zajętymi polami albo poza planszą: wygląd jak <code>idle</code></li><li><code>clearing</code> — po położeniu: plansza z klockiem, czyszczone pola w wariancie <code>clearing</code>, plakietki linii z premią; potem plansza po czyszczeniu</li></ul>'],
        ['Konfiguracje', 'Plansza (<code>board</code>, 64 pola), widok (<code>preview</code> | <code>clearing</code>). Wymiar: 8·pole + 9·odstęp 3 px (4 px na mac-wide) + 2·rama 6 px (8 px).'],
+       ['Wygląd (r3)', 'Drewniana skrzynia z obrazu (<code>assets/img/board-frame.webp</code>) rysowana jako border-image: obejmuje ramę 6 / 8 px i wychodzi 8 / 10 px poza planszę (border-image-outset, bez wpływu na układ), boki powtarzane (<code>round</code>), nie rozciągane; w wyzwaniu dnia (Q108) na ramie złota listwa 2 px z ciemnym obrysem i złote słońca w narożnikach (<code>daily-sun-cap.webp</code>, 22 / 30 px) — tylko na ramie, co najmniej 9 px od pierwszego pola, więc nie mylą się z obwódką linii ani z plakietką; ziemia między polami <code>#5E321B</code>; cień pod skrzynią. Plakietka „' + S.bonus_badge + '” to złota moneta (<code>badge-coin.webp</code>), tekst <code>#3A2405</code> (≥ 7:1).'],
        ['Wyznaczenie miejsca', 'Lewy górny róg rysowanego klocka zaokrąglany do najbliższego pola siatki (przyciąganie). Na dotyku klocek jest rysowany nad palcem, a miejsce wyznaczają pola pod narysowanym klockiem, nie pod palcem (R-1.8). Mysz: klocek zachowuje punkt chwytu względem kursora.'],
        ['Stany interakcji', 'Plansza nie ma własnej akcji; upuszczenie opisuje <code>component.piece</code>. Na planszy <code>touch-action: none</code> — przeciąganie nie przewija strony.'],
        ['Rola i nazwa dostępna', '<code>role="img"</code>, nazwa „' + BG.fmt(S.board_sr, { n: 23 }) + '” (liczba z bieżącej planszy). Plakietka „' + S.bonus_badge + '” ma tekst dla czytnika „' + S.bonus_sr + '”.'],
        ['Responsywność', 'Szerokość 327 / 359 / 375 / 407 / 564 px (mobile-compact / iphone / android / mobile-large / mac-wide); na telefonach wyśrodkowana w kolumnie, na mac-wide w lewej kolumnie (zob. <a href="#responsive">responsywność</a>).']],
       [spm('idle', 'fixture catalog.board', boardSpm('catalog.board.idle').el),
        spm('preview', 'klocek „' + S.colors.leaf + '” 1×2 nad r6–r7 c8: rząd 6 jednego koloru (×2) i rząd 7 do wyczyszczenia', boardSpm('catalog.board.preview', { preview: an, previewColor: dragP.color }).el),
+       spm('daily · preview', 'wyzwanie dnia (Q108): złota listwa i złote słońca w narożnikach ramy; podgląd, linie i „' + S.bonus_badge + '” bez zmian', h('div', { 'data-game-mode': 'daily' }, boardSpm('catalog.board.daily-preview', { preview: an, previewColor: dragP.color }).el)),
        spm('no-fit', 'kwadrat 2×2 nad zajętymi polami: bez podświetlenia', boardSpm('catalog.board.no-fit').el),
        spm('clearing', 'klatka po położeniu', boardSpm('catalog.board.clearing', { clearing: cleared.move.clearedCells, bonusLines: cleared.move.lines }, cleared.move.placedBoard).el),
        spm('preview · dotyk', 'R-1.8: klocek nad palcem', dragSpecimen(true), { boxStyle: { paddingBottom: '64px', paddingTop: '22px' } }),
@@ -229,6 +238,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
       'Trzy sloty z klockami do wyboru (R-1.1). Położony klocek zostawia pusty slot; nową trójkę gra daje dopiero po położeniu wszystkich trzech, w dowolnej kolejności.',
       [['Warianty slotu', '<ul><li><code>filled</code> — klocek wyśrodkowany w slocie</li><li><code>empty</code> — klocek położony: przygaszone tło i przerywany znak w środku</li></ul>'],
        ['Konfiguracje', '3 sloty, każdy mieści klocek do 5×5 pól. Kolejność slotów stała w trakcie trójki.'],
+       ['Wygląd (r3)', 'Slot to kremowy panel z obrazu (<code>assets/img/slot.webp</code>, border-image); pusty slot przygaszony do 62%. Klocki w slocie używają uproszczonych kafli (<code>tile-*-s.webp</code>).'],
        ['Stany interakcji', 'Brak własnych; interakcje mają klocki.'],
        ['Rola i nazwa dostępna', '<code>role="group"</code>, nazwa „' + S.tray_sr + '”; pusty slot ma tekst dla czytnika „' + S.slot_empty_sr + '”.'],
        ['Responsywność', 'Telefony: pełna szerokość treści, 3 kolumny, odstęp 12 px, wysokość slotu 101 / 111 / 116 / 126 px (mobile-compact / iphone / android / mobile-large). mac-wide: 380 px w prawej kolumnie, slot 116 px.']],
@@ -242,6 +252,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
       'Liczba z etykietą: wynik bieżącej gry i rekord trybu (R-4.1). Separator tysięcy według języka gry, do 7 cyfr (R-2.5): w PL liczby 4-cyfrowe bez separatora, od 10 000 twarda spacja (norma CLDR); w EN przecinek od 1 000.',
       [['Warianty', '<ul><li><code>score</code> — „' + S.score + '”, cyfry 40 px (telefony) / 60 px (mac-wide), wyśrodkowane</li><li><code>record</code> — w nagłówku po prawej: „' + S.record + '” (klasyczny) albo „' + S.record_daily + '” (wyzwanie dnia), cyfry 17 px</li></ul>'],
        ['Konfiguracje', '<code>label</code>, <code>value</code> (0–9 999 999), język.'],
+       ['Wygląd (r3)', 'Tekst <code>#2A1C10</code> (etykieta <code>#5A4630</code>) na kremowej tabliczce pod tekstem (przy każdym tle sceny, także czarnym pod tabliczką: tekst ≥ 12,8:1, etykieta ≥ 6,9:1); tabliczka nie zmienia rozmiaru elementu. Na mac-wide tabliczka leży pod cyframi i sięga pod etykietę. Ta sama tabliczka jest pod nazwą trybu, punktami ruchu i znakiem.'],
        ['Zachowanie', 'Wynik zmienia się od razu po położeniu klocka. W trakcie gry rekord w nagłówku pokazuje wartość sprzed bieżącej gry. Po końcu gry nagłówek pod panelem zgadza się z panelem: przy nowym rekordzie pokazuje nowy rekord (R-4.1, R-3.4); po podejściu do wyzwania zakończonym innego dnia rekordu w nagłówku nie ma (R-3.6).'],
        ['Stany interakcji', 'Brak.'],
        ['Rola i nazwa dostępna', 'Zwykły tekst (etykieta + liczba), bez regionu live.'],
@@ -256,6 +267,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     root.append(section('component.combo-badge', 'Wskaźnik serii',
       'Pokazuje licznik serii c, gdy c ≥ 2 (R-2.7). Przy c &lt; 2 wskaźnika nie ma; nie pokazuje, ile położeń zostało do wyzerowania (Q28).',
       [['Warianty', '<ul><li><code>visible</code> — „' + BG.fmt(S.combo, { c: 'c' }) + '” z ikoną kiełka</li><li><code>hidden</code> — c &lt; 2: brak elementu, miejsce w pasku zostaje (układ nie skacze)</li></ul>'],
+       ['Wygląd (r3)', 'Miodowa pigułka z kiełkiem w lewym kapslu (<code>assets/img/badge-combo.webp</code>), tekst <code>#3A2405</code> (9,5:1). Ikona kiełka w DOM zostaje niewidoczna i trzyma miejsce, więc rozmiar wskaźnika jest jak w r2.'],
        ['Zachowanie', 'Po ruchu, który zwiększa c, krótkie podbicie (280 ms; bez przy reduced motion). Wyzerowanie licznika (R-2.3) usuwa wskaźnik.'],
        ['Stany interakcji', 'Brak.'],
        ['Rola i nazwa dostępna', 'Zwykły tekst; zmianę ogłasza region <code>component.move-points</code>.'],
@@ -281,13 +293,12 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
 
     /* component.mode-label */
     root.append(section('component.mode-label', 'Nazwa trybu',
-      'Środek nagłówka ekranu gry: który tryb trwa. W wyzwaniu dnia także data ciągu (R-3.6: podejście należy do daty rozpoczęcia).',
-      [['Warianty', '<ul><li><code>classic</code> — „' + S.mode_classic + '”</li><li><code>daily</code> — „' + S.mode_daily + '” i pod spodem data rozpoczęcia podejścia</li></ul>'],
+      'Środek nagłówka ekranu gry tylko w wyzwaniu dnia: nazwa trybu i data ciągu (R-3.6: podejście należy do daty rozpoczęcia). Gra klasyczna jest trybem domyślnym i nie ma nazwy w nagłówku (Q107): <code>element.game.mode</code> nie istnieje w stanach gry klasycznej, nagłówek ma tylko przycisk wyjścia i rekord, środek zostaje pusty.',
+      [['Warianty', '<ul><li><code>daily</code> — „' + S.mode_daily + '” i pod spodem data rozpoczęcia podejścia, na ozdobnej śliwkowej wstędze ze złotymi lamówkami (<code>assets/img/daily-ribbon.webp</code>, Q108); tekst kremowy <code>#FFF6E2</code>, data złota <code>#FFD978</code></li><li><s><code>classic</code></s> — usunięty w r3 (Q107)</li></ul>'],
        ['Stany interakcji', 'Brak.'],
        ['Rola i nazwa dostępna', 'Zwykły tekst.'],
-       ['Responsywność', 'Wyśrodkowana między przyciskiem wyjścia a rekordem; zawija się do 2 wierszy.']],
-      [spm('classic', '', BG.modeLabel({ variant: 'classic', S: S, elementId: 'catalog.mode.classic' })),
-       spm('daily', '', BG.modeLabel({ variant: 'daily', S: S, elementId: 'catalog.mode.daily' }))]));
+       ['Responsywność', 'Wyśrodkowana między przyciskiem wyjścia a rekordem; zawija się do 2 wierszy. Wstęga jest pseudo-elementem wystającym 5 px w górę, 16 px w dół i w bok 22 px (mac-wide) albo 11 px (telefony, żeby na mobile-compact nie zachodziła na tabliczkę rekordu); bez wpływu na układ.']],
+      [spm('daily', '', h('div', { style: { padding: '8px 24px' } }, BG.modeLabel({ variant: 'daily', S: S, elementId: 'catalog.mode.daily' })))]));
 
     /* component.icon-button */
     root.append(section('component.icon-button', 'Przycisk ikony — wyjście',
@@ -296,7 +307,8 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
        ['Interakcje', table(['Kontekst', 'action', 'expected_effect'], [
          ['<code>screen.game</code>, tryb klasyczny (<code>element.game.exit</code>, <code>interaction.game.exit</code>)', 'tap / klik', 'navigate <code>screen.home</code> (<code>home.resume-available</code>) bez pytania; gra zachowana do „' + S.continue + '”'],
          ['<code>screen.game</code>, wyzwanie dnia (<code>element.game.exit</code>, <code>interaction.game.exit</code>)', 'tap / klik', 'open <code>component.dialog</code> „' + S.confirm_title + '” (<code>game.daily-exit-confirm</code>); gra wstrzymana pod dialogiem']])],
-       ['Stany interakcji', 'default, hover (białe tło, ciemniejsza obwódka), pressed (przesunięcie 1 px, zielone tło), focus-visible (obrys 3 px <code>#1F5FBF</code>). Brak <code>disabled</code>/<code>busy</code>. Nie jest przełącznikiem.'],
+       ['Wygląd (r3)', 'Kremowy kafel z zielonym domkiem (<code>assets/img/icon-home.webp</code>); ikona SVG w DOM zostaje, niewidoczna, więc nazwa dostępna i rozmiar się nie zmieniają. Ikona : kafel ≥ 5:1.'],
+       ['Stany interakcji', 'default, hover (rozjaśnienie 6%), pressed (przesunięcie 1 px, przyciemnienie 5%), focus-visible (obrys 3 px <code>#1F5FBF</code>). Brak <code>disabled</code>/<code>busy</code>. Nie jest przełącznikiem.'],
        ['Rola i nazwa dostępna', '<code>button</code>, nazwa „' + S.exit_label + '” (<code>aria-label</code> i <code>title</code>).'],
        ['Responsywność', 'Zawsze 44×44 px, lewy róg nagłówka.']],
       ['default', 'hover', 'pressed', 'focus'].map(function (d) { return spm(d, '', BG.iconButton({ elementId: 'catalog.icon-button.' + d, label: S.exit_label, icon: 'home', demo: d === 'default' ? null : d })); })));
@@ -305,7 +317,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     var meta = { cont: BG.fmt(S.meta_saved, { n: BG.num(1240, loc) }), rec: BG.fmt(S.meta_record, { n: BG.num(C.records.classic, loc) }), daily: BG.fmt(S.meta_daily, { date: S.daily_date, n: BG.num(C.records.daily, loc) }) };
     root.append(section('component.menu-button', 'Przycisk menu startowego',
       'Duży przycisk ekranu startowego: etykieta trybu i wiersz informacji (rekord, data, zapisany wynik). Ekran startowy pokazuje rekord trybu klasycznego i rekord wyzwania bieżącej daty (R-3.1) w wierszach informacji tych przycisków.',
-      [['Warianty', '<ul><li><code>primary</code> — zielony, biały tekst; pierwsza akcja ekranu: „' + S.continue + '”, gdy jest zapisana gra, w przeciwnym razie „' + S.new_game + '”</li><li><code>secondary</code> — biały z zieloną obwódką</li></ul>'],
+      [['Warianty', '<ul><li><code>primary</code> — błyszcząca zielona pigułka (<code>assets/img/btn-primary.webp</code>), ciemnozielony tekst <code>#123F14</code> (5,7:1); pierwsza akcja ekranu: „' + S.continue + '”, gdy jest zapisana gra, w przeciwnym razie „' + S.new_game + '”</li><li><code>secondary</code> — kremowa pigułka z zieloną obwódką (<code>btn-secondary.webp</code>), tekst <code>#2A1C10</code> (12,3:1)</li></ul>'],
        ['Konfiguracje', '<code>label</code>, <code>meta</code>, <code>icon</code> (resume | play | calendar).'],
        ['Interakcje', table(['Kontekst', 'action', 'expected_effect'], [
          ['<code>screen.home</code>, „' + S.continue + '” — tylko przy zapisanej grze klasycznej', 'tap / klik', 'navigate <code>screen.game</code> z zapisaną grą (<code>game.classic-resumed</code>): plansza, trójka, wynik i seria (R-4.2)'],
@@ -326,7 +338,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     /* component.button */
     root.append(section('component.button', 'Przycisk',
       'Przycisk tekstowy w dialogu i panelu końca gry. Każde użycie ma własny kontrakt (tabela w <code>component.dialog</code> i <code>component.game-over-panel</code>).',
-      [['Warianty', '<ul><li><code>primary</code> — zalecana akcja</li><li><code>secondary</code> — akcja alternatywna</li><li><code>danger</code> — akcja z utratą: czerwono-brązowy tekst i obwódka</li></ul>'],
+      [['Warianty', '<ul><li><code>primary</code> — zalecana akcja: zielona pigułka, tekst <code>#123F14</code></li><li><code>secondary</code> — akcja alternatywna: kremowa pigułka z zieloną obwódką</li><li><code>danger</code> — akcja z utratą: kremowa pigułka z ceglaną obwódką (<code>btn-danger.webp</code>), tekst <code>#7A1E0E</code> (7,8:1)</li><li><code>light</code> — tylko w komunikacie <code>crash</code>: białe tło (bez zmian)</li></ul>'],
        ['Stany interakcji', 'default, hover, pressed, focus-visible. Brak <code>disabled</code>/<code>busy</code>. Jednorazowe akcje, nie przełączniki.'],
        ['Rola i nazwa dostępna', '<code>button</code>, nazwa = etykieta.'],
        ['Responsywność', 'Min. 52 px wysokości. Telefony: pełna szerokość karty, jeden pod drugim; mac-wide: obok siebie, równa szerokość.']],
@@ -337,7 +349,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
 
     /* component.wordmark */
     root.append(section('component.wordmark', 'Nazwa gry',
-      'Znak (grządka 2×2 z kiełkiem, <code>assets/bloomgrid-mark.svg</code>) i nazwa „Bloomgrid” na ekranie startowym, z hasłem.',
+      'Znak (grządka 2×2 w kolorach kafli r3 z kiełkiem, <code>assets/bloomgrid-mark.svg</code>) i nazwa „Bloomgrid” na kremowej tabliczce na ekranie startowym, z hasłem; pod nim ilustracja skrzyni z kwiatami (<code>assets/img/home-hero.webp</code>, dekoracja).',
       [['Warianty', '<code>with-tagline</code> (ekran startowy).'],
        ['Stany interakcji', 'Brak.'],
        ['Rola i nazwa dostępna', 'Nazwa jest nagłówkiem <code>h1</code> ekranu; znak ma pusty <code>alt</code> (dekoracja).'],
@@ -349,6 +361,7 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
     root.append(section('component.dialog', 'Dialog potwierdzenia — koniec podejścia',
       'Pyta przed opuszczeniem wyzwania dnia: „' + S.confirm_title + ' ' + S.confirm_body + '” (R-3.5). Pojawia się nad ekranem gry na ciemnej zasłonie.',
       [['Konfiguracje', '<code>title</code> „' + S.confirm_title + '”, <code>body</code> „' + S.confirm_body + '”, <code>actions</code> [„' + S.confirm_keep + '” primary, „' + S.confirm_end + '” danger].'],
+       ['Wygląd (r3)', 'Karta z obrazu. Dialog występuje tylko w wyzwaniu dnia, więc ma kartę wyzwania (Q108): drewniana rama ze złotą listwą i złotymi słońcami w narożnikach (<code>assets/img/daily-card.webp</code>, rama 22 px, z czego 6 px na zewnątrz karty); treść i przyciski bez zmian. Panel końca wyzwania (<code>component.game-over-panel</code> <code>daily</code>) ma tę samą kartę, panel gry klasycznej — zwykłą (<code>card.webp</code>). Ramy kart powtarzają boki (<code>round</code>).'],
        ['Interakcje', table(['Element', 'action', 'expected_effect'], [
          ['„' + S.confirm_keep + '” (<code>element.game.confirm.keep</code>, <code>interaction.game.confirm.keep</code>)', 'tap / klik / Escape', 'zamyka dialog; gra trwa bez zmian'],
          ['„' + S.confirm_end + '” (<code>element.game.confirm.end</code>, <code>interaction.game.confirm.end</code>)', 'tap / klik', 'kończy podejście bez zapisu wyniku do rekordu; navigate <code>screen.home</code>'],
@@ -356,11 +369,11 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
        ['Stany interakcji', 'Fokus startuje na „' + S.confirm_keep + '” i nie wychodzi poza dialog. Przyciski jak <code>component.button</code>.'],
        ['Rola i nazwa dostępna', '<code>alertdialog</code>, <code>aria-modal="true"</code>, nazwa z tytułu, opis z treści.'],
        ['Responsywność', 'Karta do 380 px (mac-wide do 460 px), wyśrodkowana; margines 16 px. Telefony: przyciski jeden pod drugim; mac-wide: obok siebie, etykiety w jednym wierszu.']],
-      [spm('telefon', '', h('div', { 'class': 'cat-cardbox' }, BG.dialog({ elementId: 'catalog.dialog.phone', prefix: 'catalog.dialog.phone.', S: S, scrim: false }))),
-       spm('mac-wide', 'przyciski w rzędzie', h('div', { 'class': 'cat-cardbox' }, BG.dialog({ elementId: 'catalog.dialog.wide', prefix: 'catalog.dialog.wide.', S: S, scrim: false, row: true })))]));
+      [spm('telefon', '', h('div', { 'class': 'cat-cardbox', 'data-game-mode': 'daily' }, BG.dialog({ elementId: 'catalog.dialog.phone', prefix: 'catalog.dialog.phone.', S: S, scrim: false }))),
+       spm('mac-wide', 'przyciski w rzędzie', h('div', { 'class': 'cat-cardbox', 'data-game-mode': 'daily' }, BG.dialog({ elementId: 'catalog.dialog.wide', prefix: 'catalog.dialog.wide.', S: S, scrim: false, row: true })))]));
 
     /* component.game-over-panel */
-    function over(id, o) { return h('div', { 'class': 'cat-cardbox' }, BG.gameOverPanel(Object.assign({ elementId: id, prefix: id + '.', S: S, loc: loc, scrim: false }, o))); }
+    function over(id, o) { return h('div', { 'class': 'cat-cardbox', 'data-game-mode': o.mode === 'daily' ? 'daily' : null }, BG.gameOverPanel(Object.assign({ elementId: id, prefix: id + '.', S: S, loc: loc, scrim: false }, o))); }
     root.append(section('component.game-over-panel', 'Panel końca gry',
       'Szablon końca gry obu trybów (R-3.4): wynik, rekord trybu, „' + S.new_record + '” przy pobiciu rekordu, „' + S.play_again + '” i „' + S.to_home + '”; w wyzwaniu dnia informacja o ciągu. Panel leży nad planszą na zasłonie; końcowa plansza jest pod nią widoczna.',
       [['Parametry szablonu', table(['parametr', 'wartości', 'skutek'], [
@@ -434,8 +447,8 @@ body.cat-body{margin:0;background:#E4E2DA;font-family:var(--font);color:var(--in
       ['game.over-daily.en', 'screen.game', 'jw. po angielsku'],
       ['game.over-daily-new-day', 'screen.game', 'daily, new-available: wynik bez rekordu i bez „' + S.new_record + '” (R-3.6); nagłówek bez rekordu dnia, tytuł z datą zostaje']];
     root.append(h('section', { 'class': 'cat-sec', id: 'states-plan' },
-      h('h2', {}, 'states-plan'), h('h3', {}, 'Stany rewizji r1'),
-      h('p', { 'class': 'cat-sem', html: 'Stany z manifestu r1 (23), otwierane w <code>index.html</code>. Bez <code>game.dragging-blocked</code> (Q24).' }),
+      h('h2', {}, 'states-plan'), h('h3', {}, 'Stany rewizji r3'),
+      h('p', { 'class': 'cat-sem', html: 'Stany z manifestu r3 (23, bez zmian od r1), otwierane w <code>index.html</code>. Bez <code>game.dragging-blocked</code> (Q24). Tło sceny każdego stanu: README.md, sekcja „Tła stanów”.' }),
       h('div', { html: table(['state_id', 'screen_id', 'opis'], plan.map(function (r) { return ['<code>' + r[0] + '</code>', '<code>' + r[1] + '</code>', r[2]]; })) })));
 
     /* Demo na żywo w sekcji planszy */

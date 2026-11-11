@@ -1,0 +1,19 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached image shows the UI kit of a cozy garden block-puzzle game. Create one matching UI element in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outlines, bright highlight band across the top, small sparkles, crisp clean edges.\n\nElement: a festive horizontal title ribbon banner for a special \"daily challenge\" mode. A wide, flat-fronted ribbon in deep royal plum purple with a soft glossy highlight along the top, a thin bright gold trim line along the top and bottom edges, and folded ribbon tails at both ends that are a slightly darker plum. Tiny golden sparkles and a small golden sun emblem at each end near the tails. The central area of the ribbon must stay completely plain, flat and evenly colored plum, wide and empty, ready for text placed on top of it later. The ribbon is about five times wider than it is tall.\n\nOne single ribbon, centered, front view, no perspective, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no watermark, no shadow on the background.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/daily-ribbon.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "21:9",
+  "seconds": 20.681,
+  "cost_usd": 0.139384,
+  "at": "2026-11-11T13:18:56+01:00",
+  "images": [
+    "prototype/assets/generated/daily-ribbon.png"
+  ],
+  "text": null
+}

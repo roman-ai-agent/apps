@@ -1,0 +1,19 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached image shows the five game tiles of a cozy garden block-puzzle game. Create the matching game UI kit in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outlines, bright highlight band across the top, small sparkles, darker bevel along the bottom edge, saturated cheerful colors, crisp clean edges.\n\nLay out these separate UI elements on one sheet on a plain flat pure white background, well spaced with wide gaps, front view, no perspective, none overlapping:\n1. A wide primary button, rounded pill shape, fresh leaf-green, empty (no text on it).\n2. The same wide button as a secondary variant in warm cream with a green outline, empty.\n3. The same wide button as a warning variant in warm cream with a dark brick-red outline, empty.\n4. A small square icon button with rounded corners in cream with a dark green house icon.\n5. A game board frame for an 8 by 8 grid: a sturdy wooden garden planter box with warm honey-colored wood grain, rounded corners and small brass corner fittings; inside, 8 by 8 empty cells, each a slightly recessed rounded square of dark rich soil brown, all identical, evenly spaced.\n6. Three identical empty rounded-square tray slots for pieces, soft translucent cream panels with a subtle inner shadow.\n7. A rounded card panel for dialogs in warm cream with a soft wooden border, empty.\n8. A small rounded pill badge in honey yellow with a tiny sprout icon on the left, empty for text.\n9. A tiny round badge in gold, empty for text.\n\nAll elements must look like one consistent set together with the tiles. No text, no letters, no numbers, no watermark.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/ui-kit.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    }
+  ],
+  "aspect": "16:9",
+  "seconds": 21.895,
+  "cost_usd": 0.14009,
+  "at": "2026-11-11T12:22:22+01:00",
+  "images": [
+    "prototype/assets/generated/ui-kit.png"
+  ],
+  "text": null
+}

@@ -1,0 +1,14 @@
+The attached image shows the five game tiles of a cozy garden block-puzzle game. Create the matching game UI kit in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outlines, bright highlight band across the top, small sparkles, darker bevel along the bottom edge, saturated cheerful colors, crisp clean edges.
+
+Lay out these separate UI elements on one sheet on a plain flat pure white background, well spaced with wide gaps, front view, no perspective, none overlapping:
+1. A wide primary button, rounded pill shape, fresh leaf-green, empty (no text on it).
+2. The same wide button as a secondary variant in warm cream with a green outline, empty.
+3. The same wide button as a warning variant in warm cream with a dark brick-red outline, empty.
+4. A small square icon button with rounded corners in cream with a dark green house icon.
+5. A game board frame for an 8 by 8 grid: a sturdy wooden garden planter box with warm honey-colored wood grain, rounded corners and small brass corner fittings; inside, 8 by 8 empty cells, each a slightly recessed rounded square of dark rich soil brown, all identical, evenly spaced.
+6. Three identical empty rounded-square tray slots for pieces, soft translucent cream panels with a subtle inner shadow.
+7. A rounded card panel for dialogs in warm cream with a soft wooden border, empty.
+8. A small rounded pill badge in honey yellow with a tiny sprout icon on the left, empty for text.
+9. A tiny round badge in gold, empty for text.
+
+All elements must look like one consistent set together with the tiles. No text, no letters, no numbers, no watermark.

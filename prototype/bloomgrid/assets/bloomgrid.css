@@ -1,14 +1,17 @@
-/* Bloomgrid r1-katalog — style prototypu (index.html i catalog.html). Jeden jasny wygląd niezależnie od trybu ciemnego systemu (Q32). */
+/* Bloomgrid r3 — style prototypu (index.html i catalog.html). Jeden jasny wygląd niezależnie od trybu ciemnego systemu (Q32, Q101).
+   r3: grafika rastrowa z generatora (assets/img/*.webp, pochodzenie w assets/generated/*.json i assets/img/derived.json).
+   Układ (położenia i rozmiary) bez zmian względem r2; zmienia się tylko wygląd (Q96, Q102). */
 :root{
   color-scheme:light;
   --font:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI Variable Display","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-  --ink:#22301E; --ink-2:#4F5E49; --paper:#FFF9EC; --card:#FFFFFF; --line:#DCD6C2;
-  --sky-1:#FFF3D6; --sky-2:#EDF3D6;
-  --green:#2E6B3A; --green-d:#22522C; --green-l:#E3F0D8;
-  --wood:#8A5A36; --wood-d:#6B4227; --soil:#2C2017; --empty:#3F2D21;
-  --c-poppy:#E8692A; --c-sun:#F2D63C; --c-leaf:#179870; --c-drop:#5DB8EC; --c-berry:#D07FB8;
-  --hl:#FFF4C8; --danger:#A3341B; --focus:#1F5FBF;
+  --ink:#2A1C10; --ink-2:#5A4630; --paper:#FFF6E2; --card:#FFFFFF; --line:#DCD6C2;
+  --plaque:rgba(255,246,226,.92);
+  --green:#2E6B3A; --green-d:#123F14; --green-l:#E3F0D8;
+  --soil:#5E321B; --empty:#2F140B;
+  /* Lico klocka (mediana obrazu, do pomiarów i okazów): */
+  --c-poppy:#D44624; --c-sun:#F4BB3D; --c-leaf:#22A663; --c-drop:#3C74C3; --c-berry:#E1339C;
+  --hl:#FFF1B8; --line-dark:#1A1008; --danger:#7A1E0E; --focus:#1F5FBF;
 }
 *{box-sizing:border-box}
 .bg-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
@@ -25,7 +28,24 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 
 /* Powierzchnia robocza = cały ekran targetu */
 .bg-surface{position:relative;overflow:hidden;font-family:var(--font);color:var(--ink);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;
-  background:url(garden-border.svg) repeat-x left bottom / 480px 160px, linear-gradient(180deg,var(--sky-1),var(--sky-2) 70%);}
+  background:#24301F center bottom / cover no-repeat;}
+/* Tło sceny (Q104): jedno z trzech; kadr pionowy 9:16 dla powierzchni wyższej niż szeroka, poziomy 16:9 dla pozostałych.
+   Obraz pokrywa całą powierzchnię (cover), zakotwiczony u dołu (trawa), nadmiar przycięty od góry albo po bokach. Tło nie przewija się z ekranem. */
+.bg-surface.is-portrait[data-background=blossom-wall]{background-image:url(img/bg-blossom-wall-phone.webp)}
+.bg-surface.is-portrait[data-background=garden-dusk]{background-image:url(img/bg-garden-dusk-phone.webp)}
+.bg-surface.is-portrait[data-background=hedge]{background-image:url(img/bg-hedge-phone.webp)}
+.bg-surface.is-landscape[data-background=blossom-wall]{background-image:url(img/bg-blossom-wall-desktop.webp)}
+.bg-surface.is-landscape[data-background=garden-dusk]{background-image:url(img/bg-garden-dusk-desktop.webp)}
+.bg-surface.is-landscape[data-background=hedge]{background-image:url(img/bg-hedge-desktop.webp)}
+/* Tabliczka pod tekstem na tle sceny (nagłówek, wynik, punkty ruchu, znak): nie zmienia układu (pseudo-element poza przepływem). */
+.bg-score,.bg-mode,.bg-points,.bg-wordmark{position:relative;isolation:isolate}
+.bg-score::before,.bg-mode::before,.bg-points::before,.bg-wordmark::before{content:"";position:absolute;inset:-4px -12px;z-index:-1;border-radius:14px;background:var(--plaque);box-shadow:0 2px 0 rgba(90,60,30,.25),0 6px 16px rgba(20,12,4,.25)}
+.bg-wordmark::before{inset:-10px -14px;border-radius:20px}
+/* mac-wide: wynik zajmuje całą kolumnę (380 px), więc tabliczka leży pod cyframi i sięga w górę pod etykietę. */
+/* Tabliczka należy do kontekstu .bg-score (izolowanego), więc leży pod etykietą i cyframi, nie nad etykietą. */
+.bg-wide .bg-score[data-variant=score]::before{display:none}
+.bg-wide .bg-score[data-variant=score] .bg-score-value{position:relative}
+.bg-wide .bg-score[data-variant=score] .bg-score-value::before{content:"";position:absolute;inset:-21px -14px -4px -12px;z-index:-1;border-radius:14px;background:var(--plaque);box-shadow:0 2px 0 rgba(90,60,30,.25),0 6px 16px rgba(20,12,4,.25)}
 /* Reguła układu (r2): przewijany obszar na całą powierzchnię; ekran telefonu to kolumna do 440 px wyśrodkowana,
    o wysokości co najmniej 800 px (niższe okno, np. telefon w poziomie, przewija stronę). Tło zostaje na całej szerokości. */
 .bg-scroll{position:absolute;inset:0;overflow-x:hidden;overflow-y:auto}
@@ -34,32 +54,47 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-wide .bg-screen{padding:32px 40px}
 
 /* component.board */
-.bg-board{position:relative;flex:none;padding:var(--pad);border-radius:calc(var(--pad) * 2.2);background:linear-gradient(180deg,var(--wood),var(--wood-d));box-shadow:0 2px 0 rgba(255,255,255,.25) inset,0 10px 24px rgba(60,38,18,.22);touch-action:none}
-.bg-grid{display:grid;grid-template-columns:repeat(8,var(--cell));grid-auto-rows:var(--cell);gap:var(--gap);padding:var(--gap);border-radius:calc(var(--pad) * 1.4);background:var(--soil)}
+/* Rama: drewniana skrzynia z obrazu (border-image). Ramka rysowana jest od --pad + --frame-out na zewnątrz (border-image-outset),
+   więc pola, odstępy i rozmiar planszy są jak w r2; rama wychodzi poza planszę o --frame-out (telefony 8 px, mac-wide 10 px). */
+.bg-board{--frame-out:8px;position:relative;flex:none;padding:var(--pad);border-radius:calc(var(--pad) * 2.2);background:none;
+  border:0 solid transparent;border-image:url(img/board-frame.webp) 22 / calc(var(--pad) + var(--frame-out)) / var(--frame-out) stretch;
+  border-image-repeat:round;filter:drop-shadow(0 10px 14px rgba(20,10,2,.45));touch-action:none}
+.bg-wide .bg-board{--frame-out:10px}
+/* Wyzwanie dnia (Q108): złota listwa na środku ramy i złote słońca w narożnikach. Leżą tylko na ramie
+   (od −frame-out do 0 px od krawędzi planszy); pierwsze pole zaczyna się 9 / 12 px od krawędzi. */
+[data-game-mode=daily] .bg-board{--cap:22px}
+.bg-wide[data-game-mode=daily] .bg-board{--cap:30px}
+[data-game-mode=daily] .bg-board::before{content:"";position:absolute;inset:-3px;z-index:1;pointer-events:none;border:2px solid #F7C948;border-radius:calc(var(--pad) * 2.4);box-shadow:0 0 0 1px rgba(74,40,6,.85),inset 0 0 0 1px rgba(74,40,6,.85)}
+[data-game-mode=daily] .bg-board::after{content:"";position:absolute;inset:calc(-2px - var(--cap) / 2);z-index:2;pointer-events:none;
+  background:url(img/daily-sun-cap.webp) left top / var(--cap) var(--cap) no-repeat,url(img/daily-sun-cap.webp) right top / var(--cap) var(--cap) no-repeat,
+    url(img/daily-sun-cap.webp) left bottom / var(--cap) var(--cap) no-repeat,url(img/daily-sun-cap.webp) right bottom / var(--cap) var(--cap) no-repeat}
+.bg-grid{display:grid;grid-template-columns:repeat(8,var(--cell));grid-auto-rows:var(--cell);gap:var(--gap);padding:var(--gap);border-radius:calc(var(--pad) * 1.4);background:var(--soil);box-shadow:inset 0 3px 8px rgba(0,0,0,.45)}
 .bg-badges{position:absolute;inset:0;pointer-events:none}
 
 /* component.board-cell (także pola klocka) */
-.bg-cell{position:relative;width:var(--cell);height:var(--cell);border-radius:22%;background:var(--empty);box-shadow:inset 0 2px 3px rgba(0,0,0,.28)}
-.bg-cell[data-variant=filled]{background:var(--c);box-shadow:inset 0 2px 0 rgba(255,255,255,.38),inset 0 -3px 0 rgba(0,0,0,.2)}
-.bg-cell[data-color=poppy]{--c:var(--c-poppy);--sym:url(symbol-poppy.svg)}
-.bg-cell[data-color=sun]{--c:var(--c-sun);--sym:url(symbol-sun.svg)}
-.bg-cell[data-color=leaf]{--c:var(--c-leaf);--sym:url(symbol-leaf.svg)}
-.bg-cell[data-color=drop]{--c:var(--c-drop);--sym:url(symbol-drop.svg)}
-.bg-cell[data-color=berry]{--c:var(--c-berry);--sym:url(symbol-berry.svg)}
-.bg-cell[data-variant=filled]::after,.bg-cell[data-preview=place]::after{content:"";position:absolute;inset:20%;background:var(--sym) center/contain no-repeat}
-.bg-cell[data-preview=place]{background:color-mix(in srgb,var(--c) 62%,var(--empty));box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
-.bg-cell[data-preview=place]::after{opacity:.75}
-.bg-cell[data-line=clear]::before,.bg-cell[data-line=bonus]::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:1}
-.bg-cell[data-line=clear]::before{background:rgba(255,248,214,.30);box-shadow:inset 0 0 0 2px var(--hl)}
-.bg-cell[data-line=bonus]::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 3px,rgba(255,255,255,0) 3px 7px);outline:2px dashed var(--hl);outline-offset:-3px}
-.bg-cell[data-clearing=true]{background:#FFF8E0;box-shadow:0 0 0 2px var(--hl);transform:scale(.86)}
-.bg-cell[data-clearing=true]::after{opacity:.35}
+/* Puste pole: wgłębienie w ziemi z obrazu, przyciemnione do 62% (warstwa 38% czerni), żeby każde lico klocka miało ≥ 3:1 (Q99). */
+.bg-cell{position:relative;width:var(--cell);height:var(--cell);border-radius:20%;background:linear-gradient(rgba(0,0,0,.38),rgba(0,0,0,.38)),url(img/cell-empty.webp) center/100% 100%}
+/* Pole zajęte: kafel z kwiatem (obraz), symbol koloru jest częścią obrazu (R-1.9, Q103). Narożniki kafla są przezroczyste. */
+.bg-cell[data-variant=filled]{background:var(--tile) center/100% 100% no-repeat;border-radius:0}
+.bg-cell[data-color=poppy]{--c:var(--c-poppy);--tile:url(img/tile-poppy.webp)}
+.bg-cell[data-color=sun]{--c:var(--c-sun);--tile:url(img/tile-sun.webp)}
+.bg-cell[data-color=leaf]{--c:var(--c-leaf);--tile:url(img/tile-leaf.webp)}
+.bg-cell[data-color=drop]{--c:var(--c-drop);--tile:url(img/tile-drop.webp)}
+.bg-cell[data-color=berry]{--c:var(--c-berry);--tile:url(img/tile-berry.webp)}
+/* Podgląd położenia (R-1.4): kafel przykryty 45% koloru pustego pola, biały obrys 2 px (znak poza kolorem). */
+.bg-cell[data-preview=place]{background:linear-gradient(rgba(47,20,11,.45),rgba(47,20,11,.45)),var(--tile) center/100% 100% no-repeat,linear-gradient(var(--empty),var(--empty));box-shadow:inset 0 0 0 2px #fff,0 0 8px rgba(255,255,255,.4)}
+/* Linia do wyczyszczenia: jasna zasłona i podwójny obrys ciągły (jasny 2 px + ciemny 1 px) — widoczny na każdym kolorze. */
+.bg-cell[data-line=clear]::before,.bg-cell[data-line=bonus]::before{content:"";position:absolute;inset:0;border-radius:20%;z-index:1}
+.bg-cell[data-line=clear]::before{background:rgba(255,241,184,.22);box-shadow:inset 0 0 0 2px var(--hl),inset 0 0 0 3px var(--line-dark)}
+/* Linia ×2: ukośne paski i obrys przerywany (jasne kreski 2 px na ciemnym pasie 4 px) + plakietka „×2” poza polami. */
+.bg-cell[data-line=bonus]::before{background:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 3px,rgba(255,255,255,0) 3px 7px);box-shadow:inset 0 0 0 4px rgba(26,16,8,.85);outline:2px dashed var(--hl);outline-offset:-3px}
+.bg-cell[data-clearing=true]{background:linear-gradient(rgba(255,248,224,.75),rgba(255,248,224,.75)),var(--tile) center/100% 100% no-repeat;border-radius:20%;box-shadow:0 0 0 2px var(--hl);transform:scale(.86)}
 .bg-anim .bg-cell[data-clearing=true]{animation:bg-clear .32s ease-in forwards}
-@keyframes bg-clear{0%{transform:scale(1);background:#FFF8E0}100%{transform:scale(.25);opacity:0}}
+@keyframes bg-clear{0%{transform:scale(1)}100%{transform:scale(.25);opacity:0}}
 
 /* znacznik linii ×2 (część component.board-cell, wariant bonus) */
 /* Plakietka „×2” leży poza polami (Q59): przy prawej krawędzi ramki na wysokości rzędu albo nad górną krawędzią ramki nad kolumną. */
-.bg-badge{position:absolute;display:inline-flex;align-items:center;justify-content:center;width:22px;height:18px;padding:0;border-radius:999px;background:var(--hl);color:var(--wood-d);border:2px solid var(--wood-d);font:900 11px/1 var(--font);letter-spacing:-.02em;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.25);z-index:3}
+.bg-badge{position:absolute;display:inline-flex;align-items:center;justify-content:center;width:22px;height:18px;padding:0;border-radius:999px;background:url(img/badge-coin.webp) center/100% 100% no-repeat;color:#3A2405;border:0;font:900 11px/1 var(--font);letter-spacing:-.02em;white-space:nowrap;filter:drop-shadow(0 2px 2px rgba(0,0,0,.45));z-index:3}
 .bg-badge.is-row{transform:translate(0,-50%)}
 .bg-badge.is-col{transform:translate(-50%,-100%)}
 .bg-badge svg{display:block}
@@ -67,16 +102,23 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 /* component.piece */
 .bg-piece{position:relative;display:grid;grid-template-columns:repeat(var(--w),var(--cell));grid-auto-rows:var(--cell);gap:var(--gap);touch-action:none;cursor:grab}
 .bg-piece .bg-cell.is-gap{background:transparent;box-shadow:none}
-.bg-piece[data-variant=lifted]{opacity:.22}
+/* Mały rozmiar (klocki w trójce, pole 15–20 px; Q102 warunek 1): uproszczony kafel — jeden duży kwiat z grubym konturem.
+   Przeciągany klocek i plansza mają pole ≥ 36 px i używają pełnego kafla. */
+.bg-slot .bg-cell[data-variant=filled],.bg-small-tiles .bg-cell[data-variant=filled]{background-image:var(--tile-s)}
+.bg-cell[data-color=poppy]{--tile-s:url(img/tile-poppy-s.webp)}
+.bg-cell[data-color=sun]{--tile-s:url(img/tile-sun-s.webp)}
+.bg-cell[data-color=leaf]{--tile-s:url(img/tile-leaf-s.webp)}
+.bg-cell[data-color=drop]{--tile-s:url(img/tile-drop-s.webp)}
+.bg-cell[data-color=berry]{--tile-s:url(img/tile-berry-s.webp)}.bg-piece[data-variant=lifted]{opacity:.22}
 .bg-piece[data-variant=dragging]{position:absolute;z-index:60;pointer-events:none;cursor:grabbing;filter:drop-shadow(0 10px 12px rgba(40,24,10,.32))}
 .bg-piece[data-variant=static]{cursor:default}
 @media (hover:hover){.bg-piece[data-variant=tray]:hover{filter:brightness(1.06) drop-shadow(0 4px 6px rgba(40,24,10,.25))}}
 
 /* component.piece-tray */
 .bg-tray{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--tray-gap,12px);width:100%}
-.bg-slot{position:relative;display:flex;align-items:center;justify-content:center;height:var(--slot-h);border-radius:18px;background:rgba(255,253,246,.9);box-shadow:inset 0 0 0 1.5px rgba(34,48,30,.10)}
-.bg-slot[data-variant=empty]{background:rgba(255,253,246,.6);box-shadow:inset 0 0 0 1.5px rgba(34,48,30,.10)}
-.bg-slot[data-variant=empty]::after{content:"";width:22%;aspect-ratio:1;border-radius:30%;border:2px dashed rgba(34,48,30,.22)}
+.bg-slot{position:relative;display:flex;align-items:center;justify-content:center;height:var(--slot-h);border-radius:18px;background:none;border:0 solid transparent;border-image:url(img/slot.webp) 40 fill / 20px stretch;filter:drop-shadow(0 4px 8px rgba(20,12,4,.35))}
+.bg-slot[data-variant=empty]{opacity:.62}
+.bg-slot[data-variant=empty]::after{content:"";width:22%;aspect-ratio:1;border-radius:30%;border:2px dashed rgba(42,28,16,.35)}
 
 /* component.score-display */
 .bg-score{display:flex;flex-direction:column;align-items:center;gap:0}
@@ -87,8 +129,9 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 .bg-score[data-variant=record] .bg-score-label{font-size:12px}
 
 /* component.combo-badge */
-.bg-combo{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 8px;border-radius:999px;background:var(--green-d);color:#fff;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bg-combo svg{display:block}
+/* Miodowa plakietka z kiełkiem (obraz); kiełek jest w lewym kapslu obrazu, ikona w DOM zostaje niewidoczna i zachowuje miejsce. */
+.bg-combo{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 12px 0 8px;border-radius:999px;background:none;border:0 solid transparent;border-image:url(img/badge-combo.webp) 29 30 29 58 fill / 16px 16px 16px 32px stretch;color:#3A2405;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap;filter:drop-shadow(0 3px 4px rgba(20,12,4,.35))}
+.bg-combo svg{display:block;visibility:hidden}
 .bg-anim .bg-combo.is-bump{animation:bg-bump .28s ease-out}
 @keyframes bg-bump{0%{transform:scale(1)}40%{transform:scale(1.14)}100%{transform:scale(1)}}
 
@@ -101,36 +144,49 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 @keyframes bg-rise{0%{opacity:0;transform:translateY(6px)}12%{opacity:1;transform:none}80%{opacity:1}100%{opacity:0}}
 
 /* component.icon-button */
-.bg-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:14px;border:1.5px solid rgba(34,48,30,.16);background:rgba(255,255,255,.82);color:var(--ink);cursor:pointer}
-.bg-icon-btn:hover{background:#fff;border-color:rgba(34,48,30,.32)}
-.bg-icon-btn:active,.bg-icon-btn[data-demo=pressed]{transform:translateY(1px);background:var(--green-l)}
-.bg-icon-btn[data-demo=hover]{background:#fff;border-color:rgba(34,48,30,.32)}
+/* Kremowy przycisk z domkiem (obraz zawiera ikonę domu); ikona SVG w DOM zostaje niewidoczna (nazwa dostępna bez zmian). */
+.bg-icon-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border-radius:14px;border:0;background:url(img/icon-home.webp) center/100% 100% no-repeat;color:var(--ink);cursor:pointer;filter:drop-shadow(0 3px 4px rgba(20,12,4,.35))}
+.bg-icon-btn svg{visibility:hidden}
+.bg-icon-btn:hover,.bg-icon-btn[data-demo=hover]{filter:brightness(1.06) drop-shadow(0 3px 4px rgba(20,12,4,.35))}
+.bg-icon-btn:active,.bg-icon-btn[data-demo=pressed]{transform:translateY(1px);filter:brightness(.95)}
 
 /* component.mode-label */
 .bg-mode{display:flex;flex-direction:column;align-items:center;text-align:center;font-weight:800;font-size:16px;line-height:1.15;min-width:0}
 .bg-mode-sub{font-weight:700;font-size:12.5px;color:var(--ink-2)}
+/* Wariant daily (Q108): śliwkowa wstęga ze złotymi lamówkami zamiast tabliczki; tekst kremowy, data złota.
+   Wstęga wystaje 5 px w górę, 16 px w dół (dolna lamówka pod datą, nie przez nią) i 22 px w bok (telefony 11 px, żeby na
+   mobile-compact nie zachodziła na tabliczkę rekordu) — bez wpływu na układ. */
+.bg-mode[data-variant=daily]{color:#FFF6E2;text-shadow:0 1px 0 rgba(40,6,24,.6)}
+.bg-mode[data-variant=daily] .bg-mode-sub{color:#FFD978}
+.bg-phone .bg-mode[data-variant=daily]::before{left:-11px;right:-11px}
+.bg-mode[data-variant=daily]::before{inset:-5px -22px -16px;border-radius:0;background:url(img/daily-ribbon.webp) center / 100% 100% no-repeat;box-shadow:none;filter:drop-shadow(0 3px 4px rgba(20,6,14,.4))}
+/* Q107: w grze klasycznej środek nagłówka jest pusty — rekord zostaje w prawej kolumnie siatki. */
+.bg-game-head > .bg-score[data-variant=record]{grid-column:3}
 
 /* component.menu-button */
 .bg-menu-btn{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:12px 18px;border-radius:20px;border:2px solid transparent;font:inherit;text-align:left;cursor:pointer}
-.bg-menu-btn[data-variant=primary]{background:var(--green);color:#fff;box-shadow:0 4px 0 var(--green-d)}
-.bg-menu-btn[data-variant=secondary]{background:var(--card);color:var(--ink);border-color:rgba(46,107,58,.28);box-shadow:0 3px 0 rgba(46,107,58,.18)}
-.bg-menu-btn-ic{flex:none;display:flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.18)}
-.bg-menu-btn[data-variant=secondary] .bg-menu-btn-ic{background:var(--green-l);color:var(--green)}
+/* Przyciski z obrazów (pigułki: zielona główna, kremowa drugorzędna, kremowa z ceglaną obwódką ostrzegawcza), rozciągane border-image. */
+.bg-menu-btn,.bg-btn{border-image-slice:38 38 38 38 fill;border-image-repeat:stretch;filter:drop-shadow(0 4px 6px rgba(20,12,4,.35))}
+.bg-menu-btn{border-image-width:50% 34px}
+.bg-btn{border-image-width:50% 26px}
+.bg-menu-btn[data-variant=primary],.bg-btn[data-variant=primary]{border-image-source:url(img/btn-primary.webp)}
+.bg-menu-btn[data-variant=secondary],.bg-btn[data-variant=secondary]{border-image-source:url(img/btn-secondary.webp)}
+.bg-btn[data-variant=danger]{border-image-source:url(img/btn-danger.webp)}
+.bg-menu-btn[data-variant=primary]{background:none;color:var(--green-d)}
+.bg-menu-btn[data-variant=secondary]{background:none;color:var(--ink)}
+.bg-menu-btn-ic{flex:none;display:flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:12px;background:rgba(255,255,255,.4)}
+.bg-menu-btn[data-variant=secondary] .bg-menu-btn-ic{background:rgba(46,107,58,.14);color:var(--green)}
 .bg-menu-btn-text{display:flex;flex-direction:column;gap:2px;min-width:0}
 .bg-menu-btn-label{font-weight:800;font-size:19px;line-height:1.15}
 .bg-menu-btn-meta{font-weight:600;font-size:14px;line-height:1.25;opacity:.88;font-variant-numeric:tabular-nums}
-.bg-menu-btn[data-variant=primary]:hover,.bg-menu-btn[data-variant=primary][data-demo=hover]{background:#347A42}
-.bg-menu-btn[data-variant=secondary]:hover,.bg-menu-btn[data-variant=secondary][data-demo=hover]{border-color:rgba(46,107,58,.55)}
-.bg-menu-btn:active,.bg-menu-btn[data-demo=pressed]{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+.bg-menu-btn:hover,.bg-menu-btn[data-demo=hover],.bg-btn:hover,.bg-btn[data-demo=hover]{filter:brightness(1.05) drop-shadow(0 5px 7px rgba(20,12,4,.35))}
+.bg-menu-btn:active,.bg-menu-btn[data-demo=pressed]{transform:translateY(3px);filter:brightness(.96) drop-shadow(0 1px 2px rgba(20,12,4,.35))}
 
 /* component.button */
-.bg-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 20px;border-radius:16px;border:2px solid transparent;font:800 17px/1.2 var(--font);cursor:pointer;text-align:center}
-.bg-btn[data-variant=primary]{background:var(--green);color:#fff;box-shadow:0 3px 0 var(--green-d)}
-.bg-btn[data-variant=secondary]{background:var(--card);color:var(--ink);border-color:rgba(46,107,58,.3)}
-.bg-btn[data-variant=danger]{background:var(--card);color:var(--danger);border-color:rgba(163,52,27,.45)}
-.bg-btn[data-variant=primary]:hover,.bg-btn[data-variant=primary][data-demo=hover]{background:#347A42}
-.bg-btn[data-variant=secondary]:hover,.bg-btn[data-variant=secondary][data-demo=hover]{border-color:rgba(46,107,58,.6)}
-.bg-btn[data-variant=danger]:hover,.bg-btn[data-variant=danger][data-demo=hover]{border-color:var(--danger);background:#FFF5F2}
+.bg-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:10px 20px;border-radius:16px;border-width:2px;border-style:solid;border-color:transparent;font:800 17px/1.2 var(--font);cursor:pointer;text-align:center}
+.bg-btn[data-variant=primary]{background:none;color:var(--green-d)}
+.bg-btn[data-variant=secondary]{background:none;color:var(--ink)}
+.bg-btn[data-variant=danger]{background:none;color:var(--danger)}
 .bg-btn:active,.bg-btn[data-demo=pressed]{transform:translateY(2px)}
 
 :is(.bg-btn,.bg-menu-btn,.bg-icon-btn):focus-visible,:is(.bg-btn,.bg-menu-btn,.bg-icon-btn)[data-demo=focus]{outline:3px solid var(--focus);outline-offset:3px}
@@ -144,7 +200,9 @@ body.bg-capture{margin:0;background:#fff;overflow:hidden}
 
 /* component.dialog i component.game-over-panel */
 .bg-scrim{position:absolute;inset:0;z-index:40;display:flex;align-items:safe center;justify-content:center;padding:16px;overflow-y:auto;background:rgba(28,22,14,.46)}
-.bg-card{width:min(100%,380px);padding:24px 22px 22px;border-radius:24px;background:var(--paper);box-shadow:0 18px 50px rgba(28,20,10,.35);display:flex;flex-direction:column;gap:14px}
+.bg-card{width:min(100%,380px);padding:24px 22px 22px;border-radius:24px;background:none;border:0 solid transparent;border-image:url(img/card.webp) 40 fill / 28px round;filter:drop-shadow(0 18px 30px rgba(28,20,10,.45));display:flex;flex-direction:column;gap:14px}
+/* Wyzwanie dnia (Q108): dialog wyjścia i panel końca na karcie ze złotą listwą i słońcami w narożnikach. */
+[data-game-mode=daily] .bg-card{border-image:url(img/daily-card.webp) 42 fill / 22px / 6px round}
 .bg-card h2{margin:0;font-size:23px;font-weight:800;line-height:1.2}
 .bg-card p{margin:0;font-size:16px;line-height:1.4;color:var(--ink-2)}
 .bg-actions{display:flex;flex-direction:column;gap:10px;margin-top:6px}

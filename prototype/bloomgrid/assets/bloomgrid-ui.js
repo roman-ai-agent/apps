@@ -57,7 +57,20 @@
     if (size) { w.firstChild.setAttribute('width', size); w.firstChild.setAttribute('height', size); }
     return w;
   };
-  BG.assets = ['assets/home-hero.svg', 'assets/symbol-poppy.svg','assets/symbol-sun.svg', 'assets/symbol-leaf.svg', 'assets/symbol-drop.svg', 'assets/symbol-berry.svg', 'assets/garden-border.svg', 'assets/bloomgrid-mark.svg'];
+  /* r3 (Q105): wszystkie obrazy ładowane na starcie, przed gotowością renderu; potem gra działa bez sieci. */
+  BG.BACKGROUNDS = ['blossom-wall', 'garden-dusk', 'hedge'];
+  BG.HOME_BACKGROUND = 'blossom-wall';
+  BG.assets = ['assets/bloomgrid-mark.svg', 'assets/img/home-hero.webp', 'assets/img/board-frame.webp', 'assets/img/cell-empty.webp', 'assets/img/slot.webp', 'assets/img/card.webp',
+    'assets/img/btn-primary.webp', 'assets/img/btn-secondary.webp', 'assets/img/btn-danger.webp', 'assets/img/icon-home.webp', 'assets/img/badge-combo.webp', 'assets/img/badge-coin.webp',
+    'assets/img/daily-ribbon.webp', 'assets/img/daily-sun-cap.webp', 'assets/img/daily-card.webp']
+    .concat(['poppy', 'sun', 'leaf', 'drop', 'berry'].reduce(function (a, c) { return a.concat(['assets/img/tile-' + c + '.webp', 'assets/img/tile-' + c + '-s.webp']); }, []))
+    .concat(BG.BACKGROUNDS.reduce(function (a, b) { return a.concat(['assets/img/bg-' + b + '-phone.webp', 'assets/img/bg-' + b + '-desktop.webp']); }, []));
+  /* Tło wyzwania dnia (Q104): wyliczane z daty ciągu (RRRR-MM-DD): numer dnia od 1970-01-01 modulo 3 w kolejności BG.BACKGROUNDS. */
+  BG.dailyBackground = function (iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!m) return null;
+    return BG.BACKGROUNDS[Math.floor(Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000) % BG.BACKGROUNDS.length];
+  };
   BG.preload = function () {
     return Promise.all(BG.assets.map(function (src) { var i = new Image(); i.src = src; return i.decode().catch(function () {}); }));
   };

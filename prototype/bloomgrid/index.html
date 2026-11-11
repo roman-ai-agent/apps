@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>Bloomgrid — prototyp r1</title>
+<title>Bloomgrid — prototyp r3</title>
 <link rel="stylesheet" href="assets/bloomgrid.css">
 <script src="assets/bloomgrid-rules.js"></script>
 <script src="assets/bloomgrid-ui.js"></script>
@@ -65,8 +65,14 @@
   document.documentElement.lang = fx.locale;
 
   var geo = BG.geometry(tg);
+  /* Tło sceny (Q104): ekran startowy — stałe; wyzwanie dnia — z daty ciągu (fixture daily_date_iso);
+     gra klasyczna — losowane przy każdej grze, w prototypie wynik losowania zapisany w scenariuszu stanu (pole background). */
+  var background = sc.screen === 'home' ? BG.HOME_BACKGROUND : sc.mode === 'daily' ? BG.dailyBackground(fx.daily_date_iso) : sc.background;
+  if (BG.BACKGROUNDS.indexOf(background) < 0) fail('brak albo nieznane tło sceny dla stanu „' + key + '” (' + background + ')');
   var surface = h('div', {
-    'class': 'bg-surface ' + (geo.wide ? 'bg-wide' : 'bg-phone') + (mode === 'user_preview' ? ' bg-anim' : ''),
+    'class': 'bg-surface ' + (geo.wide ? 'bg-wide' : 'bg-phone') + (tg.height > tg.width ? ' is-portrait' : ' is-landscape') + (mode === 'user_preview' ? ' bg-anim' : ''),
+    'data-background': background,
+    'data-game-mode': sc.screen === 'game' ? sc.mode : null,
     'data-element-id': 'element.product-work-surface',
     'data-screen-id': SCREEN[sc.screen],
     'data-state-id': stateId,
@@ -89,7 +95,7 @@
     go: function (s) {
       if (mode !== 'user_preview') return;
       var target = en && known.indexOf(s + '.en') >= 0 ? s + '.en' : s;
-      if (known.indexOf(target) < 0) { say('Akcja → ' + s + ' (stan poza paczką r1)'); return; }
+      if (known.indexOf(target) < 0) { say('Akcja → ' + s + ' (stan poza paczką)'); return; }
       location.search = urlFor(target, targetId);
     },
     say: function (m) { if (mode === 'user_preview') say(m); }
@@ -146,7 +152,7 @@
     var metaDaily = BG.fmt(S.meta_daily, { date: S.daily_date, n: BG.num(rec.daily, loc) });
     screen.append(h('div', { 'class': 'bg-home-top' },
       BG.wordmark({ elementId: 'element.home.wordmark', S: S, style: wide ? { '--wm-fs': '48px', '--mark': '60px' } : null }),
-      h('img', { 'class': 'bg-home-hero', src: 'assets/home-hero.svg', alt: '', draggable: 'false', width: '320', height: '160' })));
+      h('img', { 'class': 'bg-home-hero', src: 'assets/img/home-hero.webp', alt: '', draggable: 'false', width: '320', height: '160' })));
     var actions = h('div', { 'class': 'bg-home-actions' });
     if (sc.notice === 'read-error') actions.append(BG.alert({ variant: 'read-error', S: S, elementId: 'element.home.read-error' }));
     if (sc.saved) actions.append(BG.menuButton({ elementId: 'element.home.continue', variant: 'primary', icon: 'resume', label: S.continue, meta: BG.fmt(S.meta_saved, { n: BG.num(sc.saved.score, loc) }),
@@ -192,7 +198,8 @@
     var record = BG.scoreDisplay({ variant: 'record', label: daily ? S.record_daily : S.record, value: daily ? sc.records.daily : sc.records.classic, loc: loc, elementId: 'element.game.record' });
     var score = BG.scoreDisplay({ variant: 'score', label: S.score, value: sc.score, loc: loc, elementId: 'element.game.score' });
     score.el.style.setProperty('--score-fs', geo.wide ? '60px' : '40px');
-    screen.append(h('header', { 'class': 'bg-game-head' }, exit, BG.modeLabel({ variant: daily ? 'daily' : 'classic', S: S, elementId: 'element.game.mode' }), record.el));
+    /* r3 (Q107): gra klasyczna to tryb domyślny — bez nazwy trybu w nagłówku; nazwa i data tylko w wyzwaniu dnia (wariant daily, Q108). */
+    screen.append(h('header', { 'class': 'bg-game-head' }, exit, daily ? BG.modeLabel({ variant: 'daily', S: S, elementId: 'element.game.mode' }) : null, record.el));
     var board = BG.board({ geo: geo, S: S, elementId: 'element.game.board', elementPrefix: 'element.game.board.' });
     var tray = BG.tray({ geo: geo, S: S, elementId: 'element.game.tray' });
     var strip = h('div', { 'class': 'bg-strip', style: { '--board-w': geo.boardW + 'px' } });

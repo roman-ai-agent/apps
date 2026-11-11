@@ -1,4 +1,6 @@
-# Bloomgrid r2 — specyfikacja responsywności
+# Bloomgrid r3 — specyfikacja responsywności
+
+r3 zmienia wygląd (Q96, Q102): geometria, kolejność, widoczność i scroll są jak w r2. Jedyny wyjątek: w grze klasycznej nie ma nazwy trybu w nagłówku (Q107); pozostałe elementy zostają na swoich miejscach. Nowe są sekcje „Tło i grafiki” i „Tła na targetach” na końcu.
 
 Targety: `mac-wide` 1440×900, `iphone-standard` 393×852, `android-standard` 412×915, `mobile-compact` 360×800, `mobile-large` 440×956, `tablet-narrow` 820×1180, `phone-landscape` 852×393. `element.product-work-surface` obejmuje cały ekran targetu.
 
@@ -42,7 +44,7 @@ O układzie decyduje wyłącznie szerokość okna:
 
 Kolejność od góry:
 
-1. Nagłówek (min. 48 px), siatka `1fr auto 1fr`: `component.icon-button` 44 px po lewej, `component.mode-label` w środku (zawija się do 2 wierszy), `component.score-display` `record` po prawej.
+1. Nagłówek (min. 48 px), siatka `1fr auto 1fr`: `component.icon-button` 44 px po lewej, `component.mode-label` w środku tylko w wyzwaniu dnia (zawija się do 2 wierszy; r3, Q107: w grze klasycznej środek pusty), `component.score-display` `record` po prawej (zawsze trzecia kolumna siatki).
 2. Grupa gry wyśrodkowana pionowo w miejscu między nagłówkiem a trójką:
    - `component.score-display` `score` (etykieta 13 px, cyfry 40 px), 8 px pod nagłówkiem;
    - pasek 44 px o szerokości planszy: `component.combo-badge` po lewej, `component.move-points` po prawej; pasek ma stałą wysokość także bez obu elementów, więc plansza nie skacze;
@@ -63,7 +65,7 @@ Nadmiar wysokości dzieli się po równo nad i pod grupą gry.
 
 ## screen.game — mac-wide
 
-- Nagłówek na szerokość 1040 px: przycisk wyjścia, nazwa trybu w środku, rekord po prawej.
+- Nagłówek na szerokość 1040 px: przycisk wyjścia, nazwa trybu w środku (tylko wyzwanie dnia, Q107), rekord po prawej.
 - Pod nim siatka `564px 380px` z odstępem 72 px, wyśrodkowana w poziomie i w pionie:
   - lewa kolumna: plansza 564 px (pole 64 px);
   - prawa kolumna, od góry: wynik (etykieta 13 px, cyfry 60 px, do lewej), pasek 52 px (seria, punkty ruchu), trójka 380 px (slot 116 px); w `game.save-error` pod trójką komunikat zapisu 380 px (kolumna wyśrodkowana pionowo: trójka 460–576, komunikat 596–660).
@@ -79,14 +81,35 @@ Nadmiar wysokości dzieli się po równo nad i pod grupą gry.
 
 ## screen.home
 
-- Telefony, od góry: `component.wordmark` (nazwa 34 px, znak 44 px) 24 px pod marginesem, pod nim ilustracja grządki `assets/home-hero.svg` (320×160, dekoracja). Kolumna menu przy dolnym marginesie (zasięg kciuka), odstęp 12 px: [`component.alert` `read-error` — tylko `home.read-error`], [„Kontynuuj” primary — tylko przy zapisie], „Nowa gra” (primary bez zapisu, secondary z zapisem), „Wyzwanie dnia” secondary. `component.menu-button` min. 68 px, pełna szerokość treści.
+- Telefony, od góry: `component.wordmark` (nazwa 34 px, znak 44 px) 24 px pod marginesem, pod nim ilustracja skrzyni z kwiatami `assets/img/home-hero.webp` (320×160, obraz 640×320, dekoracja). Kolumna menu przy dolnym marginesie (zasięg kciuka), odstęp 12 px: [`component.alert` `read-error` — tylko `home.read-error`], [„Kontynuuj” primary — tylko przy zapisie], „Nowa gra” (primary bez zapisu, secondary z zapisem), „Wyzwanie dnia” secondary. `component.menu-button` min. 68 px, pełna szerokość treści.
 - Zmierzone (iphone-standard, `home.resume-available`): nazwa i ilustracja 83–329 px, kolumna menu 586–818 px. Na mobile-compact menu 534–766 px; wolne miejsce zostaje między ilustracją a menu.
 - `mac-wide`: nazwa 48 px, znak 60 px, ilustracja 380 px, wyśrodkowane u góry (72–370 px). Kolumna menu 400 px wyśrodkowana w poziomie i w pionie w pozostałym miejscu (503–735 px przy 3 przyciskach).
 
 ## Tło i grafiki
 
-- Tło: gradient ciepłego nieba (`#FFF3D6` → `#EDF3D6`) i pas ogrodu `assets/garden-border.svg` (kafel 480×160, `repeat-x`, przyklejony do dołu). Kafel łączy się na krawędziach. Na telefonach trójka leży nad pasem ogrodu; pas jest dekoracją, nie zawiera informacji.
-- Symbole kolorów: `assets/symbol-*.svg` (24×24) w środkowych 60% pola; czytelne od pola 15 px.
+- Tło sceny (Q98, Q104): jedna z trzech ilustracji `blossom-wall`, `garden-dusk`, `hedge`, każda w dwóch kadrach: pionowym 9:16 (`assets/img/bg-<tło>-phone.webp`, 768×1376) i poziomym 16:9 (`bg-<tło>-desktop.webp`, 1376×768). Ekran startowy ma zawsze `blossom-wall`; gra klasyczna — tło losowane przy nowej grze; wyzwanie dnia — tło z daty ciągu (numer dnia od 1970-01-01 modulo 3). Tło jest dekoracją, nie zawiera informacji, nie przewija się z ekranem.
+- Kafle kolorów (R-1.9, Q103): `assets/img/tile-<color>.webp` (128×128) wypełniają pole planszy i przeciągany klocek (pole 36–64 px); klocki w trójce (pole 15–20 px) mają uproszczony kafel `tile-<color>-s.webp` (64×64): jeden duży kwiat z grubym konturem, czytelny przy 15 px.
+- Rama planszy: `assets/img/board-frame.webp` jako border-image o szerokości rama + wysunięcie: telefony 6 + 8 px, mac-wide 8 + 10 px. Wysunięcie (border-image-outset) nie zmienia układu; na telefonach mieści się w bocznym marginesie 16 px.
+- Wyzwanie dnia (Q108): nazwa trybu na śliwkowej wstędze (`assets/img/daily-ribbon.webp`, pseudo-element wystający 5 px w górę, 16 px w dół i w bok 22 px na mac-wide, 11 px na telefonach); na ramie planszy złota listwa 2 px (−3…−1 px od krawędzi planszy) i złote słońca w narożnikach (22 px telefony, 30 px mac-wide, środek w narożniku ramy); dialog i panel końca na karcie `daily-card.webp`. Układ bez zmian.
+- Rama planszy i ramy kart powtarzają boki obrazu (`border-image-repeat: round`), gładkie pigułki przycisków i plakietki są rozciągane (`stretch`).
+- Tekst na tle sceny (rekord, wynik, punkty ruchu, znak z hasłem) leży na kremowej tabliczce rysowanej pseudo-elementem wystającym 4 px w pionie i 12 px w poziomie (znak: 10 / 14 px); nie zmienia rozmiaru elementów. Na mac-wide wynik zajmuje kolumnę 380 px, więc tabliczka leży tylko pod cyframi i etykietą.
+
+## Tła na targetach
+
+Kadr wybiera proporcja powierzchni, nie układ: powierzchnia wyższa niż szeroka → kadr 9:16, pozostałe → 16:9. Obraz pokrywa całą powierzchnię (cover), zakotwiczony u dołu i wyśrodkowany w poziomie.
+
+| Target | Powierzchnia | Kadr | Skala | Przycięcie |
+|---|---|---|---|---|
+| mac-wide | 1440×900 | 16:9 | 1,172 (1612×900) | po 86 px z boków |
+| iphone-standard | 393×852 | 9:16 | 0,619 (476×852) | po 41 px z boków |
+| android-standard | 412×915 | 9:16 | 0,665 (511×915) | po 49 px z boków |
+| mobile-compact | 360×800 | 9:16 | 0,581 (447×800) | po 43 px z boków |
+| mobile-large | 440×956 | 9:16 | 0,695 (534×956) | po 47 px z boków |
+| tablet-narrow | 820×1180 | 9:16 | 1,068 (820×1469) | 289 px od góry (gałęzie, niebo) |
+| phone-landscape | 852×393 | 16:9 | 0,619 (852×475) | 82 px od góry |
+
+- `tablet-narrow`: układ telefonu (kolumna 440 px), ale tło na całą szerokość okna z kadru pionowego; obraz powiększony o 7%, przycięta górna część nieba.
+- `phone-landscape`: układ telefonu z przewijaniem (ekran 800 px w oknie 393 px), tło z kadru poziomego, stałe pod przewijanym ekranem.
 
 ## Pasek narzędzi podglądu (tylko user_preview i katalog)
 

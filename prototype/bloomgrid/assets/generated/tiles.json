@@ -1,0 +1,14 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Game asset sheet for a cozy garden block-puzzle game. Five square game tiles with rounded corners, arranged in one horizontal row, evenly spaced with wide gaps between them, each tile the same size, front view, no perspective, on a plain flat pure white background.\n\nEach tile is a glossy, juicy, candy-like tile with a thick darker outline, a bright highlight band across the top, a small sparkle in the top-left corner and a darker bevel along the bottom edge.\n\nOn each tile sits one big, bold, stylized flower that fills most of the tile: semi-realistic shapes but exaggerated, extra saturated and multicolored, with strong color gradients in every petal, a contrasting glowing center, crisp dark outlines and small bright highlights, so it reads clearly even at very small size. Each flower has a clearly different silhouette. Cheerful, lush and colorful, in the style of a polished casual mobile game:\n1. red-orange tile with a red poppy: four broad round cupped petals, petals shading from orange to deep red, dark violet center\n2. yellow tile with a sunflower: many narrow pointed petals in a ring, golden petals shading to orange, big brown center\n3. green tile with a four-leaf clover in lime to emerald shades with a tiny white flower\n4. blue tile with a cornflower: spiky fringed petals like a star, shading from turquoise to deep violet-blue\n5. magenta tile with a cherry blossom cluster: five-petal blossoms with a small notch at each petal tip, in pink to white shades with yellow centers\n\nThe five tiles must look like one consistent set: identical tile shape, outline, lighting and gloss; only color and flower differ. No text, no letters, no numbers, no watermark, no shadows outside the tiles.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/tiles.txt",
+  "references": [],
+  "aspect": "16:9",
+  "seconds": 23.197,
+  "cost_usd": 0.13883,
+  "at": "2026-11-11T12:21:40+01:00",
+  "images": [
+    "prototype/assets/generated/tiles.png"
+  ],
+  "text": null
+}

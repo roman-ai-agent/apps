@@ -1,0 +1,5 @@
+The attached image shows the UI kit of a cozy garden block-puzzle game, including a rounded card panel for dialogs in warm cream with a wooden border. Create a festive variant of exactly that card panel for a special "daily challenge" mode, in exactly the same art style.
+
+The card is a wide rounded rectangle, about one and a half times wider than tall, with the same warm cream, completely plain and empty center and the same honey wooden border of even thickness; add a thin bright golden inlay line along the middle of the wooden border on all sides, and a small shiny golden sun-shaped corner cap with a dark outline on each of the four corners. Keep the border thickness even on all four sides.
+
+One single card, centered, front view, no perspective, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no icons in the center, no watermark, no shadow on the background.

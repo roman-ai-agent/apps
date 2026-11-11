@@ -1,0 +1,23 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached images show the tiles and the UI kit of a cozy garden block-puzzle game. Paint one matching illustration in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outlines, bright highlights, small sparkles, saturated cheerful colors, crisp clean edges.\n\nSubject: a long, low wooden garden planter box in the same honey-colored wood with small brass corner fittings as the game board frame, seen from the front, slightly from above, filled with dark rich soil. Out of the soil grow a few cheerful flowers on green stems with leaves, spaced along the whole box: a red poppy, a tall sunflower, a four-leaf clover, a blue cornflower and a small twig of pink cherry blossoms, plus two small green sprouts. The planter fills the lower half of the picture and is about four times wider than it is tall; the flowers rise above it.\n\nCentered, the whole object fully visible with a wide empty margin around it, on a plain flat pure white background, no ground, no shadow on the background. No tiles, no squares on the planter, no text, no letters, no numbers, no watermark.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/home-hero.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "16:9",
+  "seconds": 22.334,
+  "cost_usd": 0.14083,
+  "at": "2026-11-11T12:29:51+01:00",
+  "images": [
+    "prototype/assets/generated/home-hero.png"
+  ],
+  "text": null
+}

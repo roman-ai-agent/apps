@@ -1,10 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <!-- Znak Bloomgrid: grządka 2×2 z kiełkiem w polu prawym górnym. -->
-  <rect x="2" y="2" width="44" height="44" rx="11" fill="#7A4E2E"/>
-  <rect x="6" y="6" width="17" height="17" rx="4.5" fill="#E8692A"/>
-  <rect x="25" y="6" width="17" height="17" rx="4.5" fill="#3F2D21"/>
-  <rect x="6" y="25" width="17" height="17" rx="4.5" fill="#5DB8EC"/>
-  <rect x="25" y="25" width="17" height="17" rx="4.5" fill="#179870"/>
-  <path d="M33.5 20.5v-6" stroke="#9FD47F" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M33.5 15.2c-.4-3.1-2.6-4.6-5.4-4.5.2 3 2.5 4.6 5.4 4.5ZM33.6 14.4c.6-2.9 2.8-4.3 5.5-4-.4 2.9-2.7 4.3-5.5 4Z" fill="#9FD47F"/>
+  <!-- Znak Bloomgrid (r3): drewniana grządka 2×2 w kolorach kafli r3 (mak, chaber, koniczyna) z kiełkiem w polu prawym górnym. -->
+  <defs>
+    <linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2B65A"/><stop offset="1" stop-color="#B9772E"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="11" fill="url(#w)" stroke="#6A3A14" stroke-width="2"/>
+  <rect x="6" y="6" width="17" height="17" rx="4.5" fill="#D44624" stroke="#6E1508" stroke-width="1.2"/>
+  <rect x="25" y="6" width="17" height="17" rx="4.5" fill="#3A1A0E"/>
+  <rect x="6" y="25" width="17" height="17" rx="4.5" fill="#3C74C3" stroke="#14286E" stroke-width="1.2"/>
+  <rect x="25" y="25" width="17" height="17" rx="4.5" fill="#22A663" stroke="#0B4A2C" stroke-width="1.2"/>
+  <rect x="6" y="6" width="17" height="17" rx="4.5" fill="url(#g)"/>
+  <rect x="6" y="25" width="17" height="17" rx="4.5" fill="url(#g)"/>
+  <rect x="25" y="25" width="17" height="17" rx="4.5" fill="url(#g)"/>
+  <path d="M33.5 20.5v-6" stroke="#8FD86A" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M33.5 15.2c-.4-3.1-2.6-4.6-5.4-4.5.2 3 2.5 4.6 5.4 4.5ZM33.6 14.4c.6-2.9 2.8-4.3 5.5-4-.4 2.9-2.7 4.3-5.5 4Z" fill="#8FD86A"/>
 </svg>

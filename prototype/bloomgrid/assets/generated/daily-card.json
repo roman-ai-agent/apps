@@ -1,0 +1,19 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "The attached image shows the UI kit of a cozy garden block-puzzle game, including a rounded card panel for dialogs in warm cream with a wooden border. Create a festive variant of exactly that card panel for a special \"daily challenge\" mode, in exactly the same art style.\n\nThe card is a wide rounded rectangle, about one and a half times wider than tall, with the same warm cream, completely plain and empty center and the same honey wooden border of even thickness; add a thin bright golden inlay line along the middle of the wooden border on all sides, and a small shiny golden sun-shaped corner cap with a dark outline on each of the four corners. Keep the border thickness even on all four sides.\n\nOne single card, centered, front view, no perspective, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no icons in the center, no watermark, no shadow on the background.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/daily-card.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "4:3",
+  "seconds": 20.142,
+  "cost_usd": 0.138918,
+  "at": "2026-11-11T13:18:56+01:00",
+  "images": [
+    "prototype/assets/generated/daily-card.png"
+  ],
+  "text": null
+}

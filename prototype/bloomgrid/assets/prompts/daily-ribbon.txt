@@ -1,0 +1,5 @@
+The attached image shows the UI kit of a cozy garden block-puzzle game. Create one matching UI element in exactly the same art style: polished casual mobile game, glossy and juicy, thick darker outlines, bright highlight band across the top, small sparkles, crisp clean edges.
+
+Element: a festive horizontal title ribbon banner for a special "daily challenge" mode. A wide, flat-fronted ribbon in deep royal plum purple with a soft glossy highlight along the top, a thin bright gold trim line along the top and bottom edges, and folded ribbon tails at both ends that are a slightly darker plum. Tiny golden sparkles and a small golden sun emblem at each end near the tails. The central area of the ribbon must stay completely plain, flat and evenly colored plum, wide and empty, ready for text placed on top of it later. The ribbon is about five times wider than it is tall.
+
+One single ribbon, centered, front view, no perspective, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no watermark, no shadow on the background.

@@ -1,0 +1,5 @@
+The attached image shows the UI kit of a cozy garden block-puzzle game, including the game board frame: a wooden garden planter box with honey-colored wood grain and small brass corner fittings. Create a festive variant of exactly that board frame for a special "daily challenge" mode, in exactly the same art style, same shape, same proportions and same frame thickness.
+
+Changes against the original frame: each of the four corners gets an ornate, shiny golden corner cap shaped like a small sun with short rays, with a dark outline; a thin bright golden inlay line runs along the middle of all four wooden sides. The wood stays the same warm honey color. Inside the frame there is a plain flat dark rich soil brown surface, completely empty, with no cells, no grid and no squares.
+
+One single square frame, centered, front view, no perspective, with a wide empty margin around it, on a plain flat pure white background. No text, no letters, no numbers, no watermark, no shadow on the background.

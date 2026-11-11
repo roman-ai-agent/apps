@@ -1,0 +1,23 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Background illustration for a cozy garden block-puzzle game; the attached images show the game's tiles and UI kit, so match their cheerful palette, but paint the background in a richer, softer, painterly style with depth.\n\nScene: an old garden wall of mint-green and sage bricks with warm rusty and sandy patches, softly lit by morning sun; flowering branches with pink blossoms and fresh light-green leaves climb along the top and the side edges of the image; a few petals drift; at the bottom, a soft strip of grass and small wildflowers.\n\nComposition: the central area must stay calm, simple and slightly darker and less saturated (only plain softly lit brick wall there), because the game board and pieces are placed on top of it; keep the busy detail (branches, flowers) near the edges and corners. Gentle vignette. Soft depth of field, lush, high quality digital painting.\n\nThe attached images are only a style and palette reference: do not copy or draw any of their objects. Do not draw any game tiles, rounded squares, square flower icons, buttons, boards or frames anywhere in the picture, including the bottom edge and the corners; flowers in the scene grow naturally on stems, branches or bushes. The picture must work when cropped from the sides to a narrower frame, so keep the most important detail near the top and bottom edges as well.\n\nNo text, no letters, no UI elements, no game board, no tiles, no watermark.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/prompts/bg-blossom-wall.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "16:9",
+  "seconds": 21.579,
+  "cost_usd": 0.140432,
+  "at": "2026-11-11T12:23:31+01:00",
+  "images": [
+    "prototype/assets/generated/bg-blossom-wall-desktop.png"
+  ],
+  "text": null
+}
