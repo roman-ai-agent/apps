@@ -1,0 +1,7 @@
+Background illustration for a cozy garden block-puzzle game. The attached images are a style and palette reference only (existing backgrounds, the game's glossy flower tiles and UI kit): match their cheerful, polished casual-game quality, but do not copy or draw any of their objects.
+
+Theme: "Meadow at Dawn" — a wide wildflower meadow at sunrise, painted in a soft gouache / storybook style with flat layered shapes and visible brush texture: rolling hills in several pale layers fading into morning mist, a warm peach and golden sunrise glow low on the horizon, long soft light rays. Tall grasses glistening with dew, daisies, buttercups, poppies, lupines and dandelion clocks along the bottom and side edges; a couple of small butterflies and a bird or two near the top corners.
+
+Composition: the large central area must stay calm, simple and slightly darker and less saturated — only soft misty hills and gentle sky there, darker towards the center so bright game pieces stand out — because the game board and glossy pieces are placed on top of it. Keep all the detail (flowers, grasses, butterflies) near the edges and corners. The picture must also work when cropped from the sides to a narrower frame, so put detail near the top and bottom edges as well. Gentle vignette.
+
+Do not draw any game tiles, rounded squares, square flower icons, buttons, boards, frames or grids anywhere; flowers grow naturally on stems. No text, no letters, no UI elements, no watermark.

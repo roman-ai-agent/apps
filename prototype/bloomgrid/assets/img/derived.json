@@ -36,6 +36,12 @@
     "bg-garden-dusk-desktop.webp": { "source": "bg-garden-dusk-desktop", "rect": [0, 0, 1376, 768], "size": [1376, 768], "key": false, "q": 90 },
     "bg-garden-dusk-phone.webp": { "source": "bg-garden-dusk-phone", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90 },
     "bg-hedge-desktop.webp": { "source": "bg-hedge-desktop", "rect": [0, 0, 1376, 768], "size": [1376, 768], "key": false, "q": 90 },
-    "bg-hedge-phone.webp": { "source": "bg-hedge-phone", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90 }
+    "bg-hedge-phone.webp": { "source": "bg-hedge-phone", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90 },
+    "bg-lily-pond-desktop.webp": { "source": "bg-lily-pond-desktop-v2", "rect": [72, 92, 1274, 768], "size": [1202, 676], "key": false, "q": 90, "why_rect": "r6: wariant v2 ma przy krawędziach brzeg papieru; wycinek 16:9 bez brzegu (sprawdzony wzrokowo i wykrywaniem krawędzi)" },
+    "bg-lily-pond-phone.webp": { "source": "bg-lily-pond-phone", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90 },
+    "bg-dawn-meadow-desktop.webp": { "source": "bg-dawn-meadow-desktop", "rect": [0, 0, 1376, 768], "size": [1376, 768], "key": false, "q": 90 },
+    "bg-dawn-meadow-phone.webp": { "source": "bg-dawn-meadow-phone-v2", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90, "why_source": "r6: wariant v1 ma namalowaną białą ramkę (u góry do 459 px, po bokach do 256 px), v2 jest pełnym kadrem" },
+    "bg-firefly-night-desktop.webp": { "source": "bg-firefly-night-desktop", "rect": [0, 0, 1376, 768], "size": [1376, 768], "key": false, "q": 90 },
+    "bg-firefly-night-phone.webp": { "source": "bg-firefly-night-phone", "rect": [0, 0, 768, 1376], "size": [768, 1376], "key": false, "q": 90 }
   }
 }

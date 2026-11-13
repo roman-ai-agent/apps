@@ -15,6 +15,8 @@
         "combo": "Seria ×{c}",
         "move_combo": "seria +{n}",
         "move_mono": "jeden kolor +{n}",
+        "praise_empty": "Pusta grządka! +{n}",
+        "save_error_short": "Nie zapisano",
         "move_points_sr": "Ruch: +{n} pkt",
         "new_game": "Nowa gra",
         "continue": "Kontynuuj",
@@ -23,7 +25,7 @@
         "meta_saved": "Zapisana gra · wynik {n}",
         "meta_daily": "Rekord dnia {n}",
         "play_again": "Zagraj ponownie",
-        "to_home": "Do startu",
+        "to_home": "Ekran startowy",
         "game_over": "Koniec gry",
         "new_record": "Nowy rekord!",
         "daily_until_midnight": "Ten sam ciąg klocków obowiązuje do północy.",
@@ -55,6 +57,11 @@
         "sound": "Dźwięk",
         "praise_2": "Świetnie!",
         "praise_3": "Wspaniale!",
+        "level": "Poziom {n}",
+        "level_up": "Poziom {n}!",
+        "level_up_sr": "Nowy poziom {n}: {name}",
+        "over_level": "Poziom {n} · {name}",
+        "motifs": { "blossom-wall": "Kwietna ściana", "lily-pond": "Staw z liliami", "garden-dusk": "Ogród o zmroku", "dawn-meadow": "Łąka o świcie", "hedge": "Żywopłot", "firefly-night": "Noc świetlików" },
         "colors": { "poppy": "mak", "sun": "słonecznik", "leaf": "koniczyna", "drop": "chaber", "berry": "kwiat wiśni" }
       },
       "scenarios": {
@@ -106,6 +113,13 @@
           "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spd.bpd.", ".......d"],
           "tray": [{ "shape": "single", "color": "leaf" }, { "shape": "line3-h", "color": "sun" }, { "shape": "square2", "color": "berry" }],
           "score": 3120, "combo": 0, "dry": 0,
+          "move": { "slot": 0, "row": 5, "col": 7 }
+        },
+        "game.combo-color": {
+          "screen": "game", "mode": "classic", "background": "hedge", "records": { "classic": 18420, "daily": 2980 }, "seed": 32,
+          "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spd.bpd.", ".......d"],
+          "tray": [{ "shape": "single", "color": "leaf" }, { "shape": "line3-h", "color": "sun" }, { "shape": "square2", "color": "berry" }],
+          "score": 2240, "combo": 2, "dry": 0,
           "move": { "slot": 0, "row": 5, "col": 7 }
         },
         "game.combo": {
@@ -185,6 +199,41 @@
           "tray": [{ "shape": "square3", "color": "berry" }, { "shape": "line5-h", "color": "sun" }, null],
           "score": 18420, "combo": 0, "dry": 2,
           "over": { "record": 18420, "newRecord": false }
+        },
+        "game.level-up": {
+          "screen": "game", "mode": "classic", "background": "dawn-meadow", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [null, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 860, "combo": 2, "dry": 1,
+          "levelUp": true
+        },
+        "game.level-up-praise": {
+          "screen": "game", "mode": "classic", "background": "hedge", "records": { "classic": 18420, "daily": 2980 }, "seed": 7,
+          "board": ["........", "........", "..b.....", "..b.....", "dd.bb...", "lllllll.", "spdsbpd.", ".......d"],
+          "tray": [{ "shape": "line2-v", "color": "leaf" }, { "shape": "square2", "color": "sun" }, { "shape": "corner5-tl", "color": "berry" }],
+          "score": 1580, "combo": 0, "dry": 0,
+          "move": { "slot": 0, "row": 5, "col": 7 },
+          "levelUp": true, "praise": 2
+        },
+        "game.empty-garden": {
+          "screen": "game", "mode": "classic", "background": "garden-dusk", "records": { "classic": 18420, "daily": 2980 }, "seed": 11,
+          "board": ["........", "........", "........", "........", "........", "........", "........", "spdsbpd."],
+          "tray": [{ "shape": "single", "color": "leaf" }, { "shape": "square2", "color": "sun" }, { "shape": "line3-h", "color": "drop" }],
+          "score": 2100, "combo": 0, "dry": 0,
+          "move": { "slot": 0, "row": 7, "col": 7, "emptyBonus": 300 },
+          "emptyGarden": true
+        },
+        "game.level-5": {
+          "screen": "game", "mode": "classic", "background": "lily-pond", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [{ "shape": "square2", "color": "berry" }, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 5940, "combo": 0, "dry": 0
+        },
+        "game.level-6": {
+          "screen": "game", "mode": "classic", "background": "firefly-night", "records": { "classic": 18420, "daily": 2980 }, "seed": 4471,
+          "board": ["........", ".....ss.", "b....s..", "bb..ddd.", "ll.pp...", "llpp.bb.", "dsl.lbbl", "pdsl.bsd"],
+          "tray": [{ "shape": "line3-h", "color": "drop" }, { "shape": "l4-b", "color": "leaf" }, { "shape": "corner3-tl", "color": "sun" }],
+          "score": 6480, "combo": 0, "dry": 0
         }
       },
       "catalog": {
@@ -213,6 +262,8 @@
         "combo": "Streak ×{c}",
         "move_combo": "streak +{n}",
         "move_mono": "single colour +{n}",
+        "praise_empty": "Clear garden! +{n}",
+        "save_error_short": "Not saved",
         "move_points_sr": "Move: +{n} points",
         "new_game": "New game",
         "continue": "Continue",
@@ -253,6 +304,11 @@
         "sound": "Sound",
         "praise_2": "Great!",
         "praise_3": "Wonderful!",
+        "level": "Level {n}",
+        "level_up": "Level {n}!",
+        "level_up_sr": "New level {n}: {name}",
+        "over_level": "Level {n} · {name}",
+        "motifs": { "blossom-wall": "Flower wall", "lily-pond": "Lily pond", "garden-dusk": "Dusk garden", "dawn-meadow": "Dawn meadow", "hedge": "Hedge", "firefly-night": "Firefly night" },
         "colors": { "poppy": "poppy", "sun": "sunflower", "leaf": "clover", "drop": "cornflower", "berry": "cherry blossom" }
       },
       "scenarios": {

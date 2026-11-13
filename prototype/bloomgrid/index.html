@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>Bloomgrid — prototyp r5</title>
+<title>Bloomgrid — prototyp r6</title>
 <link rel="stylesheet" href="assets/bloomgrid.css">
 <script src="assets/bloomgrid-rules.js"></script>
 <script src="assets/bloomgrid-ui.js"></script>
@@ -68,17 +68,20 @@
   /* Tło sceny (Q104): ekran startowy — stałe; wyzwanie dnia — z daty ciągu (fixture daily_date_iso);
      gra klasyczna — losowane przy każdej grze, w prototypie wynik losowania zapisany w scenariuszu stanu (pole background). */
   var background = sc.screen === 'home' ? BG.HOME_BACKGROUND : sc.mode === 'daily' ? BG.dailyBackground(fx.daily_date_iso) : sc.background;
-  if (BG.BACKGROUNDS.indexOf(background) < 0) fail('brak albo nieznane tło sceny dla stanu „' + key + '” (' + background + ')');
+  if (BG.CIRCLE.indexOf(background) < 0) fail('brak albo nieznane tło sceny dla stanu „' + key + '” (' + background + ')');
   var surface = h('div', {
-    'class': 'bg-surface ' + (geo.wide ? 'bg-wide' : 'bg-phone') + (tg.height > tg.width ? ' is-portrait' : ' is-landscape') + (mode === 'user_preview' ? ' bg-anim' : ''),
+    'class': 'bg-surface ' + (geo.wide ? 'bg-wide' : 'bg-phone') + (geo.layout === 'landscape' ? ' bg-land' : '') + (tg.height > tg.width ? ' is-portrait' : ' is-landscape') + (mode === 'user_preview' ? ' bg-anim' : ''),
     'data-background': background,
+    /* r6 (Q177–Q181): układ dopasowany do wysokości okna (phone | phone-merged | landscape | wide) i jego odstępy. */
+    'data-layout': geo.layout,
     'data-game-mode': sc.screen === 'game' ? sc.mode : null,
     'data-element-id': 'element.product-work-surface',
     'data-screen-id': SCREEN[sc.screen],
     'data-state-id': stateId,
     'data-target-id': targetId,
     'data-fixture-id': st.fixture_id,
-    style: { width: tg.width + 'px', height: tg.height + 'px' }
+    style: { width: tg.width + 'px', height: tg.height + 'px', '--pad-t': geo.sp.t + 'px', '--pad-b': geo.sp.b + 'px', '--pad-x': geo.padX + 'px',
+      '--score-gap': (geo.sp.s || 0) + 'px', '--tray-gap': (geo.sp.g || 0) + 'px', '--min-h': geo.minH + 'px', '--board-w': geo.boardW + 'px', '--side-w': (geo.sideW || 380) + 'px', '--content-w': (geo.wide ? 380 : geo.colW - 2 * geo.padX) + 'px' }
   });
 
   function urlFor(s, t) { var u = new URLSearchParams(); u.set('mode', 'user_preview'); u.set('state', s); u.set('target', t); return '?' + u.toString(); }
@@ -180,11 +183,11 @@
   function renderGame(surface, ctx) {
     var S = ctx.S, loc = ctx.loc, geo = ctx.geo, sc = ctx.sc, daily = sc.mode === 'daily';
     var screen = h('div', { 'class': 'bg-screen' });
-    var overlay = null, crash = null;
+    var overlay = null, crash = null, levelApi = null;
     function closeOverlay() { if (overlay) { overlay.remove(); overlay = null; } }
     function openConfirm(focus) {
       closeOverlay();
-      overlay = BG.dialog({ elementId: 'element.game.confirm', prefix: 'element.game.confirm.', S: S, row: geo.wide,
+      overlay = BG.dialog({ elementId: 'element.game.confirm', prefix: 'element.game.confirm.', S: S, row: geo.wide || geo.layout === 'landscape',
         onKeep: function () { closeOverlay(); }, onEnd: function () { ctx.nav.go('home.with-records'); } });
       surface.append(overlay);
       if (focus) overlay.querySelector('[data-element-id="element.game.confirm.keep"]').focus();
@@ -193,7 +196,8 @@
     function openOver(o, focus, live) {
       closeOverlay();
       endMarks();
-      overlay = BG.gameOverPanel({ elementId: 'element.game.over', prefix: 'element.game.over.', S: S, loc: loc, mode: sc.mode, score: o.score, record: o.record, recordBefore: recordBefore, newRecord: o.newRecord, dailyInfo: o.dailyInfo, row: geo.wide,
+      overlay = BG.gameOverPanel({ elementId: 'element.game.over', prefix: 'element.game.over.', S: S, loc: loc, mode: sc.mode, score: o.score, record: o.record, recordBefore: recordBefore, newRecord: o.newRecord, dailyInfo: o.dailyInfo, row: geo.wide || geo.layout === 'landscape',
+        level: daily ? null : BG.levelOf(o.score), motif: daily ? null : BG.motifOf(circleStart, BG.levelOf(o.score)),
         onAgain: function () { ctx.nav.go(daily ? 'game.daily-start' : 'game.classic-start'); }, onHome: function () { ctx.nav.go('home.with-records'); } });
       surface.append(overlay);
       /* Nagłówek pod panelem zgadza się z panelem: po nowym rekordzie pokazuje nowy rekord (R-4.1, R-3.4);
@@ -263,23 +267,34 @@
     score.el.style.setProperty('--score-fs', geo.wide ? '60px' : '40px');
     /* r3 (Q107): gra klasyczna to tryb domyślny — bez nazwy trybu w nagłówku; nazwa i data tylko w wyzwaniu dnia (wariant daily, Q108). */
     /* r5 (Q143): przełącznik dźwięku obok przycisku wyjścia (lewa grupa nagłówka; na mac-wide w siatce Q112). */
-    screen.append(h('header', { 'class': 'bg-game-head' }, h('div', { 'class': 'bg-head-left' }, exit, soundToggle(ctx, 'element.game.sound', 'interaction.game.sound-toggle')),
-      daily ? BG.modeLabel({ variant: 'daily', S: S, elementId: 'element.game.mode' }) : null, record.el));
+    var head = h('header', { 'class': 'bg-game-head' }, h('div', { 'class': 'bg-head-left' }, exit, soundToggle(ctx, 'element.game.sound', 'interaction.game.sound-toggle')),
+      daily ? BG.modeLabel({ variant: 'daily', S: S, elementId: 'element.game.mode' }) : (levelApi = BG.levelLabel({ S: S, elementId: 'element.game.level', level: 1, motif: surface.getAttribute('data-background') })).el,
+      record.el);
     var board = BG.board({ geo: geo, S: S, elementId: 'element.game.board', elementPrefix: 'element.game.board.' });
     var tray = BG.tray({ geo: geo, S: S, elementId: 'element.game.tray' });
     var strip = h('div', { 'class': 'bg-strip', style: { '--board-w': geo.boardW + 'px' } });
     var saveWrap = null;
+    var scoreWrap = h('div', { 'class': 'bg-score-wrap' }, score.el);
     if (sc.alert === 'save-error') {
-      saveWrap = h('div', { 'class': 'bg-save-wrap' }, BG.alert({ variant: 'save-error', S: S, elementId: 'element.game.save-error', interactionId: 'interaction.game.save-retry',
+      /* r6 (Q201): gdy komunikat (76 px) się nie mieści, leży na wierszu wyniku w wariancie jednowierszowym — nigdy na przyciskach
+         nagłówka, planszy ani trójce. */
+      saveWrap = h('div', { 'class': 'bg-save-wrap' + (geo.saveOver ? ' is-over' : '') }, BG.alert({ variant: 'save-error', S: S, line: geo.saveOver, elementId: 'element.game.save-error', interactionId: 'interaction.game.save-retry',
         onAction: function () { if (!ctx.nav.live) return; saveWrap.remove(); ctx.nav.say('Symulacja: ponowny zapis udany — komunikat znika (R-4.5)'); } }));
+      if (geo.saveOver) { scoreWrap.append(saveWrap); saveWrap = null; }
     }
     var main;
     if (geo.wide) {
+      screen.append(head);
       main = h('div', { 'class': 'bg-game-main', style: { '--board-w': geo.boardW + 'px' } },
-        board.el, h('div', { 'class': 'bg-side' }, score.el, strip, tray.el, saveWrap));
+        board.el, h('div', { 'class': 'bg-side' }, scoreWrap, strip, tray.el, saveWrap));
+    } else if (geo.layout === 'landscape') {
+      /* Q180, Q200: telefon w poziomie — plansza po lewej, po prawej kolumna: nagłówek, wynik, pasek serii i punktów, trójka. */
+      main = h('div', { 'class': 'bg-game-main', style: { '--board-w': geo.boardW + 'px' } },
+        board.el, h('div', { 'class': 'bg-side' }, head, scoreWrap, strip, h('div', { 'class': 'bg-tray-wrap' }, tray.el), saveWrap));
     } else {
+      screen.append(head);
       main = h('div', { 'class': 'bg-game-main', style: { '--board-w': geo.boardW + 'px' } },
-        h('div', { 'class': 'bg-play' }, h('div', { 'class': 'bg-score-wrap' }, score.el), strip, board.el),
+        h('div', { 'class': 'bg-play' }, scoreWrap, strip, board.el),
         saveWrap, h('div', { 'class': 'bg-tray-wrap' }, tray.el));
     }
     screen.append(main);
@@ -288,26 +303,69 @@
     /* Stan gry z fixture; klatka ruchu (move) liczona regułami z położenia przed ruchem. */
     var state = { board: BGRules.parseBoard(sc.board), tray: sc.tray.slice(), score: sc.score, combo: sc.combo, dry: sc.dry };
     var view = {};
+    /* r6 (Q175): stany z ruchem (line-clear, color-bonus, combo) pokazują stan PO ruchu — plansza po czyszczeniu, punkty ruchu, seria;
+       rozkwit jest tylko w katalogu (foundation.motion) i na żywo. */
     if (sc.move) {
       var res = BGRules.play(state, sc.move.slot, sc.move.row, sc.move.col, BGRules.rng(sc.seed));
       state = res.state;
-      view.frame = { placedBoard: res.move.placedBoard, clearing: res.move.clearedCells, lines: res.move.lines };
       view.points = res.move.points;
+      /* r6 (Q189, Q203): premia „Pusta grządka” z danych scenariusza (move.emptyBonus) — w sumie punktów ruchu, bez osobnego dopisku
+         (premię pokazuje pochwała „Pusta grządka! +300”); punktacji prototyp nie liczy. */
+      if (sc.move.emptyBonus) {
+        view.points = Object.assign({}, res.move.points, { total: res.move.points.total + sc.move.emptyBonus });
+        state.score += sc.move.emptyBonus;
+      }
     }
     if (sc.drag) view.drag = sc.drag;
+    /* Poziomy (Q147–Q153, tylko gra klasyczna): poziom z wyniku, motyw tła = tło stanu; początek kręgu wyliczony tak, żeby motyw poziomu był tłem stanu. */
+    var level = BG.levelOf(state.score), circleStart = 0;
+    if (!daily) {
+      circleStart = ((BG.CIRCLE.indexOf(surface.getAttribute('data-background')) - (level - 1)) % 6 + 6) % 6;
+      levelApi.set(level, BG.motifOf(circleStart, level));
+    }
+    function onLevelChange(newLevel) {
+      var motif = BG.motifOf(circleStart, newLevel), red = BG.fx.reduced();
+      levelApi.set(newLevel, motif);
+      BG.fx.crossfade(surface, function () { surface.setAttribute('data-background', motif); }, red);                       /* (11) */
+      BG.fx.levelUp(score.el.parentElement, BG.levelUpBadge({ S: S, level: newLevel, motif: motif, elementId: 'element.game.level-up' }), red); /* (10) na wyniku */
+      if (red) BG.fx.fade(levelApi.el); else BG.fx.play(levelApi.el, 'fx-pop', BG.MOTION.pop);
+    }
     var game = BG.play({
       /* Warstwą przeciąganego klocka jest ekran (przewija się razem z planszą), nie cała powierzchnia. */
       geo: geo, S: S, loc: loc, state: state, seed: sc.seed, surface: screen, interactive: true, view: view,
       board: board, tray: tray, score: score, strip: strip,
       ids: { piece: 'element.game.piece-', drag: 'interaction.game.drag-piece-', combo: 'element.game.combo', points: 'element.game.move-points', praise: 'element.game.praise' },
-      animate: ctx.nav.live,
+      animate: ctx.nav.live, levels: !daily,
       blocked: function () { return !ctx.nav.live || !!overlay || !!crash || !!step; },
+      onMove: function (s, before) {
+        if (!daily && BG.levelOf(s.score) > BG.levelOf(before)) onLevelChange(BG.levelOf(s.score));
+      },
       onOver: function (s) {
         openNoMoves({ score: s.score, record: Math.max(recordBefore, s.score), newRecord: s.score > recordBefore, dailyInfo: 'until-midnight' }, true);
       }
     });
     if (sc.overlay === 'confirm') openConfirm(false);
     if (sc.over) openOver({ score: sc.score, record: sc.over.record, newRecord: sc.over.newRecord, dailyInfo: sc.over.dailyInfo }, false, false);
+    /* game.level-up, game.level-up-praise: stała klatka awansu — nowe tło, etykieta poziomu i plakietka na wyniku (Q188: nie na planszy
+       ani trójce); na żywo plakietka znika po 1,5 s. */
+    if (sc.levelUp) {
+      var lub = BG.levelUpBadge({ S: S, level: level, motif: BG.motifOf(circleStart, level), elementId: 'element.game.level-up' });
+      score.el.parentElement.append(lub);
+      if (ctx.nav.live) setTimeout(function () { lub.remove(); }, BG.MOTION.levelUp);
+    }
+    /* game.level-up-praise: pochwała z tego samego ruchu nad środkiem planszy (inne miejsce niż plakietka awansu); na żywo 800 ms. */
+    if (sc.praise) {
+      var pr = BG.praise({ S: S, lines: sc.praise, elementId: 'element.game.praise' });
+      board.el.append(pr);
+      if (ctx.nav.live) setTimeout(function () { pr.remove(); }, BG.MOTION.praise);
+    }
+    /* game.empty-garden (Q189, Q203): stan po ruchu, który opróżnił planszę — rozkwit na całej planszy i pochwała „Pusta grządka! +300”
+       (pierwszeństwo przed „Świetnie!”/„Wspaniale!”); capture: stała klatka; user_preview: animacja (12) przy otwarciu stanu. */
+    if (sc.emptyGarden) {
+      var eg = BG.emptyGarden({ S: S, loc: loc, n: sc.move && sc.move.emptyBonus, elementId: 'element.game.praise' });
+      if (ctx.nav.live) BG.fx.emptyGarden(board, eg, BG.fx.reduced());
+      else { board.fx.append(BG.emptyBloomFrame(board)); board.el.append(eg); }
+    }
     /* Stany game.no-moves-*: krok końca; w user_preview po 1,5 s (albo po stuknięciu) panel końca. */
     if (sc.noMoves) openNoMoves({ score: sc.score, record: Math.max(recordBefore, sc.score), newRecord: sc.score > recordBefore, dailyInfo: 'until-midnight' }, ctx.nav.live);
     if (sc.alert === 'crash') {

@@ -1,0 +1,27 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Background illustration for a cozy garden block-puzzle game. The attached images are a style and palette reference only (existing backgrounds, the game's glossy flower tiles and UI kit): match their cheerful, polished casual-game quality, but do not copy or draw any of their objects.\n\nTheme: \"Firefly Garden at Night\" — a magical garden deep in the night, clearly different from a dusk scene: no sunset, no pink or orange sky, no lanterns. Painted in a luminous, slightly stylized style with rich deep indigo, midnight blue and dark emerald tones and glowing accents. A large silvery full moon behind tree branches in one top corner, many twinkling stars. Hundreds of small glowing yellow-green fireflies drifting in soft trails near the edges. Moonflowers and white night-blooming jasmine glowing softly on vines along the sides, bioluminescent blue-teal mushrooms and ferns at the bottom corners, dew drops catching the moonlight.\n\nComposition: the large central area must stay calm, simple and dark — only soft deep night air with a few faint distant fireflies there — because the game board and bright glossy pieces are placed on top of it. Keep the detail (moon, flowers, mushrooms, firefly swarms) near the edges and corners. The picture must also work when cropped from the sides to a narrower frame, so put detail near the top and bottom edges as well. Gentle vignette.\n\nDo not draw any game tiles, rounded squares, square flower icons, buttons, boards, frames or grids anywhere; flowers grow naturally on stems and vines. No text, no letters, no UI elements, no watermark.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/tmp/r6-backgrounds/prompts/bg-firefly-night.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/img/bg-garden-dusk-phone.webp",
+      "sha256": "cd1e06a275df2cd5b4640d40db85f1859c525c4cbd6e832be020efe08b4f7ef2"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "9:16",
+  "seconds": 20.528,
+  "cost_usd": 0.142856,
+  "at": "2026-11-11T16:15:36+01:00",
+  "images": [
+    "tmp/r6-backgrounds/out/bg-firefly-night-phone.png"
+  ],
+  "text": null
+}

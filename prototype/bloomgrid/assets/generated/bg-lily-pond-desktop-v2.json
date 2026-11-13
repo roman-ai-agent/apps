@@ -1,0 +1,27 @@
+{
+  "model": "google/gemini-3-pro-image",
+  "prompt": "Background illustration for a cozy garden block-puzzle game. The attached images are a style and palette reference only (existing backgrounds, the game's glossy flower tiles and UI kit): match their cheerful, polished casual-game quality, but do not copy or draw any of their objects.\n\nTheme: \"Lily Pond\" — a quiet garden pond in soft, airy watercolor style: transparent washes, gentle wet-edge blooms of color, light paper texture, cool aqua, jade and soft lilac tones with small warm accents. Pink and white water lilies with round green lily pads float near the edges; reeds, cattails and a few irises frame the left and right sides; a small arched wooden footbridge is hinted at one top corner; a dragonfly or two near the edges; gentle ripples.\n\nComposition: the large central area must stay calm, simple, slightly darker and less saturated — only still, deep teal water with soft faint reflections there — because the game board and bright glossy pieces are placed on top of it. Keep all the detail (lilies, pads, reeds, bridge, dragonflies) near the edges and corners. The picture must also work when cropped from the sides to a narrower frame, so put detail near the top and bottom edges as well. Gentle vignette, soft depth.\n\nDo not draw any game tiles, rounded squares, square flower icons, buttons, boards, frames or grids anywhere; lily pads are round leaves, flowers grow naturally on water or stems. No text, no letters, no UI elements, no watermark.\n\nThe painting must be full-bleed: it fills the whole picture edge to edge, with no white or paper margin, no painted border, no frame and no blank corners.\n",
+  "prompt_file": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/tmp/r6-backgrounds/prompts/bg-lily-pond-v2.txt",
+  "references": [
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/img/bg-blossom-wall-desktop.webp",
+      "sha256": "e0b555b0a7b8bcf418c67ad5173997eb9a670c40b803363539a00669d057dca1"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/tiles.png",
+      "sha256": "1f57cc9a23f50253e18c0e4e3a4a27fea222471366a0f76d0f7dbf9456ddb962"
+    },
+    {
+      "path": "/Users/tomab/Projects/ClosedLoopDevelopmentV4/Projects/Bloomgrid/prototype/assets/generated/ui-kit.png",
+      "sha256": "3588305d5be6600658033a69a1ecf5af1941092ead60f37683d237989926bec4"
+    }
+  ],
+  "aspect": "16:9",
+  "seconds": 21.094,
+  "cost_usd": 0.142536,
+  "at": "2026-11-11T16:16:35+01:00",
+  "images": [
+    "tmp/r6-backgrounds/out/bg-lily-pond-desktop-v2.png"
+  ],
+  "text": null
+}

@@ -1,5 +1,107 @@
 # Changelog
 
+## r6
+
+- Rewizja bazowa: `r5` (zaakceptowana, wdrożona w BLG-13, commit 0615a4f)
+- Rewizja docelowa: `r6`
+- Migracje ID: brak (`id_migrations: []`); wszystkie ID r5 zachowane, żadne nie zmienia znaczenia. Kontrakt `interaction.game.drag-piece-1…3` jak w r5.
+- Wejście: decyzje Q147–Q153 (poziomy), Q175 (stany po ruchu), Q176 (deszcz płatków), Q184 (napis „Ekran startowy”), Q185 (stuknij-stuknij Q154–Q160 wycofane), Q177–Q181 i Q199–Q202 (mieszczenie się w oknie), Q188, Q189, Q197 (progi, plakietka awansu, pusta grządka), Q203 (pochwała pustej grządki, dopiski punktów). Q182, Q186, Q187 — poza zakresem prototypu (niżej).
+- Nowy target `iphone-se` 375×667 (Q178): 8 targetów, 34 stany, 272 pary stan × target. Pomiary bez par: 390×660, 375×548, 1280×680, 852×340, 320×449 (README, Raport kontroli).
+- Obrazy: bez nowych wywołań generatora w tej rewizji. Trzy nowe tła pochodzą z obrazów wygenerowanych wcześniej na zlecenie Lidera (`tmp/r6-backgrounds`, `process image generate`, model google/gemini-3-pro-image, 0,14 USD za obraz); do paczki weszło 6 z nich (oryginały i pliki pochodzenia w `assets/generated/`, prompty skopiowane do `assets/prompts/` — pole `prompt_file` w plikach pochodzenia wskazuje ich pierwotne miejsce w `tmp/r6-backgrounds/prompts/`):
+  - `bg-lily-pond-desktop-v2` → `assets/img/bg-lily-pond-desktop.webp`: wycinek `[72, 92, 1274, 768]` (1202×676, 16:9), bo wariant v2 ma przy krawędziach brzeg papieru; brak brzegu w wycinku sprawdzony wzrokowo i wykrywaniem krawędzi (`tmp/r6-build/edges.cjs`, receipty 741, 756, 758). Prompt `bg-lily-pond-v2.txt`.
+  - `bg-lily-pond-phone` → `bg-lily-pond-phone.webp` (pełny kadr). Prompt `bg-lily-pond.txt`.
+  - `bg-dawn-meadow-desktop` → `bg-dawn-meadow-desktop.webp` (pełny kadr). Prompt `bg-dawn-meadow.txt`.
+  - `bg-dawn-meadow-phone-v2` → `bg-dawn-meadow-phone.webp` (pełny kadr). Wybór v2, nie v1: wariant v1 ma namalowaną białą ramkę (u góry do 459 px, po bokach do 256 px), której wycinek 9:16 nie usuwa bez utraty łąki; v2 jest pełnym kadrem w tym samym stylu i porze dnia. Prompt `bg-dawn-meadow-v2.txt`.
+  - `bg-firefly-night-desktop`, `bg-firefly-night-phone` → `bg-firefly-night-desktop.webp`, `bg-firefly-night-phone.webp` (pełne kadry). Prompt `bg-firefly-night.txt`.
+  - Kopie oryginałów i promptów do paczki (receipty 742, 743), wycinki i WebP q90 (`slice.cjs`, `cwebp` przez `process command run`, receipty 744–759; 741 i 756–758 to wykrywanie brzegu); pochodzenie każdego pliku w `assets/img/derived.json`. Obrazy ładowane przez grę: 41 plików, 1,83 MB (limit 3 MB).
+
+### Dodane stany (6)
+
+| Stan | Fixture | Targety | Opis |
+|---|---|---|---|
+| `game.level-up` | default | wszystkie | chwila awansu na poziom 3 (wynik 860): nowe tło `dawn-meadow`, etykieta „Poziom 3 · Łąka o świcie”, plakietka „Poziom 3!” na wyniku (stała w capture; w user_preview znika po 1,5 s) |
+| `game.level-5` | default | wszystkie | poziom 5, tło `lily-pond`, wynik 5940; w user_preview kwadrat 2×2 w lewym górnym rogu czyści kolumnę i daje awans na poziom 6 (`garden-dusk`, 6024) z plakietką i przenikaniem |
+| `game.level-6` | default | wszystkie | poziom 6, tło `firefly-night`, wynik 6480 (inna gra, inny początek kręgu) |
+| `game.level-up-praise` | default | wszystkie | Q188: stan po ruchu, który czyści 2 linie i daje awans na poziom 4 (1580 → 2062, tło `hedge`): plakietka „Poziom 4!” na wyniku i „Świetnie!” nad planszą — naraz, w różnych miejscach |
+| `game.empty-garden` | default | wszystkie | Q189, Q203: stan po ruchu, który opróżnia planszę (2100 → 2481, w tym premia +300 z danych stanu; poziom 4 bez awansu): rozkwit na całej planszy, pochwała „Pusta grządka! +300”, punkty ruchu z sumą (bez dopisku premii) |
+| `game.combo-color` | default | wszystkie | Q203: ruch w serii czyszczący linię jednego koloru (2240 → 2551): dopiski „seria +150” i „jeden kolor +…”; gdzie się nie mieszczą (mobile-compact, niskie okno w pionie) zostaje dopisek o większej wartości |
+
+Razem 34 stany; z nowym targetem `iphone-se` 272 pary stan × target.
+
+### Usunięte w trakcie r6 (Q185) — ID kandydata r6, nie r5
+
+Stuknij-stuknij (Q154–Q160) było w kandydacie r6 i zostało wycofane decyzją Q185 przed przyjęciem rewizji. Żadne z tych ID nie istniało w r5, więc nie ma migracji:
+
+- stany `game.tap-selected`, `game.tap-preview`, `game.tap-hint`;
+- `component.tap-hint`, `element.game.tap-hint`, `element.game.tap-hint.close`, `interaction.game.tap-hint-close`;
+- `interaction.game.board-tap` (kontrakt stuknięcia na `element.game.board`; element zostaje, bez interakcji jak w r5);
+- wariant klocka `selected`, atrybut slotu `data-selected`, znacznik pola `data-tap="target"`;
+- teksty fixture `tap_hint`, `tap_hint_close`, `piece_selected_sr`; pola scenariusza `tap`, `tapHint`;
+- runtime: `BG.tapHint`, `BG.centerCell`, ikona `tap`, logika `TAP_PX` / `TAP_MS` (zaznaczanie, podgląd pod stukniętym polem, anulowanie zaznaczenia).
+- Q203 (też kandydat r6): `component.empty-garden`, `element.game.empty-garden` (pusta grządka jest teraz wariantem pochwały `component.praise` / `element.game.praise`, `data-variant="empty-garden"`), dopisek punktów `data-note="empty"`, teksty `move_empty`, `empty_garden`, `empty_garden_sr` (zastępuje je `praise_empty` „Pusta grządka! +{n}”).
+
+### Dodane komponenty i ID
+
+- `component.level-label` (Q147, Q151): `element.game.level` — środek nagłówka gry klasycznej, „Poziom n” i nazwa motywu; zwykły tekst (bez `aria-live`).
+- `component.level-up-badge` (Q150, Q188): `element.game.level-up` — plakietka awansu na wyniku (nie na planszy ani trójce), `role="status"`, 1,5 s.
+- `component.praise`: nowy wariant `data-variant="empty-garden"` (Q189, Q203) — „Pusta grządka! +300” / „Clear garden! +300” nad środkiem pustej planszy, z rozkwitem na całej planszy (warstwa efektów, bez ID); tekst `praise_empty`; pola scenariusza `move.emptyBonus`, `emptyGarden`, `praise`.
+- `component.combo-badge`: wariant skrócony w wierszu wyniku (Q199) — ikona i „×c”, pełny tekst dla czytnika (`.bg-combo-full`, `.bg-combo-short`, `.bg-sr`).
+- `component.alert`: wariant jednowierszowy `is-line` błędu zapisu (Q201), tekst `save_error_short` „Nie zapisano” / „Not saved”, pełny tekst dla czytnika.
+- Runtime: `BG.fitHeight` (dopasowanie do wysokości okna), `BG.MIN_CELL` (32), `data-layout` na powierzchni (`phone`, `phone-merged`, `landscape`, `wide`).
+- `element.game.over.level` (Q152): w panelu końca gry klasycznej „Poziom n · nazwa motywu”; w wyzwaniu dnia brak.
+- Teksty fixture (pl / en): `level`, `level_up`, `level_up_sr`, `over_level`, `motifs` (nazwy sześciu motywów). Pole scenariusza: `levelUp`.
+- Runtime: `BG.CIRCLE`, `BG.levelThreshold`, `BG.levelOf`, `BG.motifOf`, `BG.fx.levelUp`, `BG.fx.crossfade`, `BG.MOTION.levelUp` (1500), `BG.MOTION.crossfade` (800).
+- Katalog: sekcje `component.level-label`, `component.level-up-badge` (z „Odtwórz”); krąg sześciu motywów w `foundation.palette`; wiersze 10 i 11 z demo „Odtwórz awans” w `foundation.motion`; poziom w okazach panelu końca; zdanie o interakcji w `component.piece`; plan stanów r6.
+
+### Zmienione stany (bez zmiany ID)
+
+- `game.line-clear`, `game.color-bonus`, `game.combo` (Q175): stan po ruchu — plansza po czyszczeniu (bez bladej ramki i pomniejszonych pól czyszczenia), wynik po ruchu, punkty ruchu, seria. Rozkwit tylko w katalogu (`foundation.motion`) i na żywo.
+- Wszystkie stany gry klasycznej: etykieta poziomu w środku nagłówka (był pusty). Poziom wynika z wyniku stanu (Q153), motyw = tło stanu.
+- `game.over-classic`, `game.over-classic.en`, `game.over-classic-new-record`, `game.over-classic-tied`: linia poziomu w panelu (panel +28 px, elementy panelu przesunięte).
+- Stany wyzwania dnia: bez zmian (bez poziomów, Q147).
+
+### Zmiana: poziomy (Q147–Q153)
+
+- Krąg sześciu motywów w kolejności `blossom-wall`, `lily-pond`, `garden-dusk`, `dawn-meadow`, `hedge`, `firefly-night` — tła dzienne i wieczorne na przemian, żeby kolejne awanse wyraźnie zmieniały scenę (decyzja Designera o kolejności; brief jej nie ustala). Gra klasyczna zaczyna na losowym motywie kręgu; poziom n ma motyw `CIRCLE[(start + n − 1) mod 6]`.
+- Progi (Q197; zastępują 300/800/1500/2500/4000/6000/co 2500 z Q188 i 2000/5000/9000/14 000/20 000/co 8000 z Q149): 300, 800, 2000, 3500, 6000, 9000, dalej co 4000. Wyniki stanów poziomów dopasowane (`game.level-up` 860, `game.level-5` 5940, `game.level-6` 6480, `game.level-up-praise` 1580 → 2062); `levels.cjs` sprawdza, że żaden stan z ruchem nie przekracza progu bez pokazania awansu (`game.combo` 4210 → 4682 zostaje na poziomie 5, wynik jak w r5). Pozostałe stany gry klasycznej mają przy nowych progach wyższe poziomy (np. `game.over-classic` 6842 — poziom 6), motyw = tło stanu. Poziom = 1 + liczba osiągniętych progów; nie jest osobno zapisywany (Q153) — wznowiona gra liczy go z wyniku, a początek kręgu jest częścią zapisu gry jak tło w r5 (interpretacja Designera: zapis gry r5 już przechowuje tło, więc start kręgu nie jest nowym stanem).
+- Awans: plakietka 1,5 s na wyniku (Q188: nie zasłania planszy ani trójki; telefony — w wierszu wyniku, mac-wide — na wyniku w kolumnie trójki; wysokość jak wynik), przenikanie tła 800 ms, etykieta wyskakuje. Pochwała z tego samego ruchu stoi jak dotąd nad planszą — oba elementy naraz, w różnych miejscach (wcześniej w kandydacie r6 pochwała była w ruchu z awansem tłumiona). Wynik na mac-wide dostał opakowanie `.bg-score-wrap` jak na telefonach (miejsce plakietki; geometria bez zmian). reduced-motion: tylko przezroczystość, przenikanie 150 ms, plakietka pojawia się i znika po 150 ms.
+- Ekran startowy (`blossom-wall`) i tło wyzwania dnia (data modulo 3 z trzech pierwotnych teł, R-5.4) bez zmian — interpretacja Designera: brief zmienia tylko grę klasyczną, a zmiana reguły tła wyzwania zmieniłaby tło zapisanych podejść.
+- Nazwy motywów mają najwyżej 14 znaków (PL), żeby etykieta mieściła się w nagłówku mobile-compact bez zawijania i bez zmiany wysokości nagłówka.
+
+### Interakcja klocka (Q182, Q185, Q186, Q187 — poza zakresem prototypu)
+
+Na polecenie Tomasza Designer projektuje wygląd, a logiki gestów nie wdraża. Kod przeciągania w prototypie jest taki jak w r5 (funkcje `start`, `move`, `up`, `cancel` i kontrakt `interaction.game.drag-piece-1…3` bez zmian względem r5; sprawdzone porównaniem z eksportem r5). Katalog (`component.piece`) opisuje interakcję jednym zdaniem: „dotknięcie lub wciśnięcie w slocie podnosi klocek; tylko przeciąganie (dotyk) albo przeciąganie i niesienie (mysz)”. Moment podniesienia (Q182), chwyt całym slotem i `touch-action` (Q186), niesienie myszą (R-1.10, R-1.11) i blokadę przewijania (Q187) wdraża Wykonawca w aplikacji według decyzji Reprezentanta. Robocze wdrożenie chwytu slotem i niesienia w trakcie r6 zostało cofnięte.
+
+### Pusta grządka (Q189, Q203)
+
+Ruch, po którym plansza jest pusta, daje premię +300 (punktację wdraża Wykonawca; w prototypie premia jest daną stanu `move.emptyBonus`). Wygląd: rozkwit na całej planszy — płatki pięciu kolorów na polach, falą od środka (pierścień co 60 ms, płatek 600 ms) — i pochwała „Pusta grządka! +300” nad środkiem pustej planszy, 1200 ms; ma pierwszeństwo przed „Świetnie!” i „Wspaniale!” (jedna pochwała na ruch). Tekst 26 px (mac-wide 40 px), zawija się wyśrodkowany w planszy. reduced-motion: bez fali i skali, płatki i pochwała tylko przezroczystość 150 ms. W `mode=capture` stała klatka (płatki na 24 polach, pochwała). Tabliczka punktów ruchu pokazuje sumę (z premią) bez dopisku „pusta grządka”. Animacja (12) w `foundation.motion` z „Odtwórz”; wiersz 12 w tabeli „Ruch” w `responsive-spec.md`.
+
+### Dopiski punktów ruchu (Q203)
+
+Tabliczka punktów pokazuje sumę oraz dopiski serii i koloru, gdy się mieszczą. Gdy nie (tabliczka wychodzi poza pasek albo wiersz wyniku, wchodzi na wskaźnik serii albo wynik), zostaje jeden dopisek — ten o większej wartości (przy równych: seria). Na szerszych ekranach oba. Stan `game.combo-color`: iphone-standard i szersze — oba dopiski; mobile-compact i 375×548 — „seria +150”.
+
+### Wysokość okna (Q177–Q181, Q199–Q202)
+
+- Zasada r2 „ekran telefonu ma co najmniej 800 px, niższe okno przewija” usunięta. Ekran ma wysokość okna (w aplikacji `100dvh`); każdy ekran — start, gra, krok końca, panel końca, dialog, komunikaty — mieści się bez przewijania do 375×548 w pionie i 852×340 w poziomie (Q181). Mniejsze okna przewijają się, pole planszy nigdy < 32 px.
+- Pion: najpierw odstępy (góra 59 → 8, dół 34 → 8, wynik 8 → 4, trójka 16 → 12 px), potem plansza i trójka proporcjonalnie do pola 32 px, potem (Q199) seria i punkty w wierszu wyniku (`phone-merged`; przy szerokości 375 px okno < 578 px). Margines boczny 12 px, gdy przy 16 px pole byłoby < 32 px (okno < 344 px).
+- Poziom (Q180, Q200): plansza po lewej na całą wysokość okna, po prawej kolumna 380 px z nagłówkiem (dom, dźwięk, poziom/nazwa trybu, rekord), wynikiem, paskiem i trójką. Ekran startowy w dwóch kolumnach (Q202). Panel końca i dialog z przyciskami obok siebie i mniejszymi odstępami.
+- Laptop i mac-wide: plansza od wysokości okna (1280×680: pole 59 px), nagłówek = plansza + 72 + 380 px (siatka Q112); 1440×900 bez zmian.
+- Komunikat błędu zapisu (Q201): gdy jego 76 px nie mieści się w kolumnie, leży na wierszu wyniku w wariancie jednowierszowym (ikona, „Nie zapisano”, „Spróbuj ponownie”, 56 px); zasłania wynik, serię i punkty, nigdy przycisków nagłówka, planszy ani trójki.
+- Ekran startowy: te same odstępy, potem zmniejsza się obrazek (do 48 px).
+- Zmierzone pola planszy: `iphone-se` 38 px (odstępy zmniejszone), 390×660 39 px, 375×548 32 px (`phone-merged`), 852×393 39 px i 852×340 32 px (`landscape`), 1280×680 59 px; 320×449 32 px, ekran przewija się o 87 px (poniżej granicy). Pozostałe targety bez zmian.
+
+### Napis „Ekran startowy” (Q184)
+
+Przycisk `element.game.over.to-home` po polsku: „Ekran startowy” (było „Do startu”); angielski bez zmian („Home”). Mieści się w jednym wierszu, wyśrodkowany, bez przycięcia na każdym targecie i przy 375×667 (pomiar w Raporcie kontroli).
+
+### Poprawka: deszcz płatków (Q176)
+
+Droga spadku płatka = wysokość karty + 48 px (było stałe 520 px). Na mac-wide karta ma 325 px, więc w r5 płatki opuszczały kartę po ok. 60% sekundy; teraz w 250 / 500 / 750 ms na karcie jest 14 / 18 / 18 z 18 płatków na mac-wide i iphone-standard.
+
+### Zmienione geometrie względem r5 (zmierzone, 196 par stanów r5)
+
+2187 różnic. `phone-landscape` (1713): nowy układ obok siebie (Q180, Q200) — zmienione położenia wszystkich elementów ekranu gry i startowego. Pozostałe 6 targetów po 79 (474), wszystkie z tej listy: nowy `element.game.level`; nowy `element.game.over.level` i przesunięte elementy panelu końca gry klasycznej; pola planszy w `game.line-clear`, `game.color-bonus`, `game.combo` (stan po ruchu bez pomniejszenia pól czyszczenia). Na tych targetach nagłówek, przycisk wyjścia, przełącznik dźwięku, rekord, wynik, plansza, trójka, panel wyzwania dnia i ekran startowy bez zmian — dopasowanie do wysokości (Q177) ich nie zmienia, bo mieszczą się w układzie naturalnym.
+
 ## r5
 
 - Rewizja bazowa: `r4` (zaakceptowana, wdrożona w BLG-11, commit 1fcf7ab)

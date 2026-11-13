@@ -62,13 +62,20 @@
     return w;
   };
   /* r3 (Q105): wszystkie obrazy ładowane na starcie, przed gotowością renderu; potem gra działa bez sieci. */
+  /* Tła z R-5.4: ekran startowy i wyzwanie dnia (data modulo 3). */
   BG.BACKGROUNDS = ['blossom-wall', 'garden-dusk', 'hedge'];
   BG.HOME_BACKGROUND = 'blossom-wall';
+  /* r6 (Q147, Q148): krąg 6 motywów poziomów gry klasycznej — tła dzienne i wieczorne na przemian. Poziom n ma motyw CIRCLE[(start + n − 1) mod 6]. */
+  BG.CIRCLE = ['blossom-wall', 'lily-pond', 'garden-dusk', 'dawn-meadow', 'hedge', 'firefly-night'];
+  /* Q197 (zastępuje Q188 i Q149): progi awansu 300, 800, 2000, 3500, 6000, 9000, potem co 4000. Poziom = 1 + liczba osiągniętych progów. */
+  BG.levelThreshold = function (k) { var t = [300, 800, 2000, 3500, 6000, 9000]; return k <= t.length ? t[k - 1] : 9000 + 4000 * (k - t.length); };
+  BG.levelOf = function (score) { var n = 1; while (score >= BG.levelThreshold(n)) n++; return n; };
+  BG.motifOf = function (start, level) { return BG.CIRCLE[(start + level - 1) % BG.CIRCLE.length]; };
   BG.assets = ['assets/bloomgrid-mark.svg', 'assets/img/home-hero.webp', 'assets/img/board-frame.webp', 'assets/img/cell-empty.webp', 'assets/img/slot.webp', 'assets/img/card.webp',
     'assets/img/btn-primary.webp', 'assets/img/btn-secondary.webp', 'assets/img/btn-danger.webp', 'assets/img/icon-home.webp', 'assets/img/badge-combo.webp', 'assets/img/badge-coin.webp',
     'assets/img/daily-ribbon.webp', 'assets/img/daily-sun-cap.webp', 'assets/img/daily-card.webp']
     .concat(['poppy', 'sun', 'leaf', 'drop', 'berry'].reduce(function (a, c) { return a.concat(['assets/img/tile-' + c + '.webp', 'assets/img/tile-' + c + '-s.webp', 'assets/img/petal-' + c + '.webp']); }, []))
-    .concat(BG.BACKGROUNDS.reduce(function (a, b) { return a.concat(['assets/img/bg-' + b + '-phone.webp', 'assets/img/bg-' + b + '-desktop.webp']); }, []));
+    .concat(BG.CIRCLE.reduce(function (a, b) { return a.concat(['assets/img/bg-' + b + '-phone.webp', 'assets/img/bg-' + b + '-desktop.webp']); }, []));
   /* Tło wyzwania dnia (Q104): wyliczane z daty ciągu (RRRR-MM-DD): numer dnia od 1970-01-01 modulo 3 w kolejności BG.BACKGROUNDS. */
   BG.dailyBackground = function (iso) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
@@ -87,7 +94,10 @@
   BG.geometry = function (tg) {
     var wide = tg.width >= BG.WIDE_MIN, pad = wide ? 8 : 6, gap = wide ? 4 : 3;
     var colW = wide ? 1040 : Math.min(tg.width, BG.PHONE_COL_MAX);
-    var contentW = wide ? 1040 : colW - 32;
+    /* r6 (Q181): margines boczny telefonu 16 px; gdy przy nim pole planszy wyszłoby < 32 px (okno węższe niż 344 px), margines 12 px. */
+    var padX = 16;
+    if (!wide && Math.floor((colW - 32 - 9 * gap - 2 * pad) / 8) < BG.MIN_CELL) padX = 12;
+    var contentW = wide ? 1040 : colW - 2 * padX;
     var cell = wide ? 64 : Math.floor((Math.min(contentW, 420) - 9 * gap - 2 * pad) / 8);
     var boardW = 8 * cell + 9 * gap + 2 * pad;
     var trayW = wide ? 380 : contentW, trayGap = 12, slotW = (trayW - 2 * trayGap) / 3, pg = 2;
@@ -97,7 +107,55 @@
        mobile-large, tablet-narrow i phone-landscape 128 / 12. Pole klocka w trójce bez zmian; klocek 5×5 dalej się mieści. */
     var slotPx = Math.floor(slotW);
     if ((trayW - 3 * slotPx) % 2) slotPx -= 1;
-    return { wide: wide, colW: colW, pad: pad, gap: gap, cell: cell, boardW: boardW, pc: pc, pg: pg, slotH: 5 * pc + 4 * pg + 18, trayGap: trayGap, slotPx: slotPx, slotGap: (trayW - 3 * slotPx) / 2, lift: Math.max(44, cell + 8) };
+    var base = { wide: wide, colW: colW, padX: padX, pad: pad, gap: gap, cell: cell, boardW: boardW, pc: pc, pg: pg, slotH: 5 * pc + 4 * pg + 18, trayGap: trayGap, slotPx: slotPx, slotGap: (trayW - 3 * slotPx) / 2, lift: Math.max(44, cell + 8) };
+    return tg.height ? BG.fitHeight(base, tg) : base;
+  };
+
+  /* r6 (Q177–Q181, Q199–Q202): dopasowanie do wysokości okna — ekran mieści się bez przewijania do 375×548 (pion) i 852×340 (poziom).
+     Kolejność (Q179): najpierw odstępy i ozdobne marginesy, potem (pion, Q199) seria i punkty w wierszu wyniku, potem plansza i trójka
+     proporcjonalnie. Pole planszy nigdy < 32 px — niższe okno przewija ekran (minH). Wynik: layout, odstępy (sp), cell, pc, minH. */
+  BG.MIN_CELL = 32;
+  BG.fitHeight = function (g, tg) {
+    var W = tg.width, H = tg.height, MIN = BG.MIN_CELL;
+    var B = function (c) { return 8 * c + 9 * g.gap + 2 * g.pad; }, S = function (p) { return 5 * p + 4 * g.pg + 18; };
+    function withSizes(c, p, extra) {
+      var o = {}; for (var k in g) o[k] = g[k];
+      o.cell = c; o.boardW = B(c); o.pc = p; o.slotH = S(p); o.lift = Math.max(44, c + 8);
+      for (var e in extra) o[e] = extra[e];
+      return o;
+    }
+    if (g.wide) {
+      /* mac-wide i laptop: siatka Q112; plansza od wysokości: 32 + nagłówek 56 + 16 + plansza z ramą (2 × 10) + 32 ≤ H. */
+      var cw = Math.max(MIN, Math.min(g.cell, Math.floor((H - 156 - 9 * g.gap - 2 * g.pad) / 8)));
+      return withSizes(cw, g.pc, { layout: 'wide', sp: { t: 32, b: 32 }, minH: B(cw) + 156 });
+    }
+    if (W > H) {
+      /* Telefon w poziomie (Q180, Q200): plansza po lewej na całą wysokość, po prawej kolumna 380 px: nagłówek, wynik, pasek, trójka. */
+      var cl = Math.floor((H - 24 - 16 - 9 * g.gap - 2 * g.pad) / 8);
+      cl = Math.max(MIN, Math.min(46, cl, Math.floor((W - 460 - 9 * g.gap - 2 * g.pad) / 8)));
+      var sideW = 380, slotWl = (sideW - 24) / 3, pl = Math.floor((slotWl - 16 - 4 * g.pg) / 5), spx = Math.floor(slotWl);
+      if ((sideW - 3 * spx) % 2) spx -= 1;
+      var side = 48 + 8 + 58 + 44 + 8 + S(pl);
+      return withSizes(cl, pl, { layout: 'landscape', sideW: sideW, slotPx: spx, slotGap: (sideW - 3 * spx) / 2, sp: { t: 12, b: 12 }, minH: Math.max(B(cl) + 40, side + 24), saveOver: true });
+    }
+    /* Telefon w pionie. Wysokości: nagłówek 48, wynik 58, pasek 2 + 44, rama planszy wystaje 8 px. */
+    var NAT = { t: 59, b: 34, s: 8, g: 16 }, MINSP = { t: 8, b: 8, s: 4, g: 12 };
+    var need = function (sp, c, p, merged) { return sp.t + 48 + sp.s + 58 + (merged ? 12 : 46) + B(c) + sp.g + S(p) + sp.b; };
+    var c0 = g.cell, p0 = g.pc, alert = 76;
+    if (H >= need(NAT, c0, p0)) return withSizes(c0, p0, { layout: 'phone', sp: NAT, minH: need(NAT, c0, p0), saveOver: H < need(NAT, c0, p0) + alert });
+    var slack = H - need(MINSP, c0, p0);
+    if (slack >= 0) {
+      var k = slack / (need(NAT, c0, p0) - need(MINSP, c0, p0)), sp = {};
+      for (var key in NAT) sp[key] = Math.round(MINSP[key] + (NAT[key] - MINSP[key]) * k);
+      return withSizes(c0, p0, { layout: 'phone', sp: sp, minH: need(sp, c0, p0), saveOver: true });
+    }
+    for (var c = c0 - 1; c >= MIN; c--) {
+      var p = Math.floor(p0 * c / c0);
+      if (need(MINSP, c, p) <= H) return withSizes(c, p, { layout: 'phone', sp: MINSP, minH: need(MINSP, c, p), saveOver: true });
+    }
+    /* Q199: seria i punkty ruchu w wierszu wyniku; pole 32 px; okno niższe niż ten układ przewija ekran (Q181: granica 375×548). */
+    var pm = Math.floor(p0 * MIN / c0);
+    return withSizes(MIN, pm, { layout: 'phone-merged', sp: MINSP, minH: need(MINSP, MIN, pm, true), saveOver: true });
   };
 
   /* component.board-cell */
@@ -204,7 +262,10 @@
   /* component.combo-badge — tylko przy c ≥ 2 (R-2.7) */
   BG.comboBadge = function (o) {
     if (o.c < 2) return null;
-    return h('div', { 'class': 'bg-combo', 'data-component-id': 'component.combo-badge', 'data-element-id': o.elementId }, BG.icon('sprout', 20), BG.fmt(o.S.combo, { c: o.c }));
+    /* r6 (Q199): w wierszu wyniku (niskie okno) plakietka pokazuje tylko „×c” przy ikonie kiełka; nazwa dostępna zawsze pełna. */
+    var full = BG.fmt(o.S.combo, { c: o.c });
+    return h('div', { 'class': 'bg-combo', 'data-component-id': 'component.combo-badge', 'data-element-id': o.elementId },
+      BG.icon('sprout', 20), h('span', { 'class': 'bg-combo-full', 'aria-hidden': 'true' }, full), h('span', { 'class': 'bg-combo-short', 'aria-hidden': 'true' }, '×' + o.c), h('span', { 'class': 'bg-sr' }, full));
   };
 
   /* component.move-points — tylko po ruchu z czyszczeniem (R-2.6) */
@@ -246,9 +307,48 @@
     el._msg = msg;
     return el;
   };
+  /* component.empty-garden (r6, Q189) — „Pusta grządka!” po ruchu, który opróżnia planszę: duża miodowa plakietka nad środkiem
+     pustej planszy i rozkwit na wszystkich polach; zastępuje pochwałę w tym ruchu (jedna plakietka nad planszą). */
+  /* Q203: to wariant pochwały (component.praise, data-variant="empty-garden") z premią w tekście; ma pierwszeństwo przed
+     „Świetnie!” i „Wspaniale!” — jedna pochwała na ruch. */
+  BG.emptyGarden = function (o) {
+    return h('div', { 'class': 'bg-praise bg-empty-garden', 'data-component-id': 'component.praise', 'data-element-id': o.elementId, 'data-variant': 'empty-garden', role: 'status', 'aria-live': 'polite' },
+      BG.fmt(o.S.praise_empty, { n: BG.num(o.n || 300, o.loc) }));
+  };
+  /* Stała klatka rozkwitu na całej planszy (capture i koniec animacji): płatki pięciu kolorów na polach w stałym wzorze. */
+  BG.emptyBloomFrame = function (board) {
+    var layer = h('div', { 'class': 'bg-empty-bloom', 'aria-hidden': 'true' });
+    var cols = ['poppy', 'sun', 'leaf', 'drop', 'berry'];
+    for (var i = 0; i < 64; i++) {
+      if ((i * 7 + Math.floor(i / 8)) % 3) continue;
+      var b = board.cellBox(i);
+      layer.append(h('img', { 'class': 'bg-empty-petal', src: 'assets/img/petal-' + cols[(i * 3) % 5] + '.webp', alt: '',
+        style: { left: (b.x + b.s * 0.2) + 'px', top: (b.y + b.s * 0.2) + 'px', width: (b.s * 0.6) + 'px', height: (b.s * 0.6) + 'px', transform: 'rotate(' + ((i * 47) % 360) + 'deg)' } }));
+    }
+    return layer;
+  };
   /* component.praise (r5, Q139) — pochwała po ruchu z 2 albo 3+ liniami; chwilowa (800 ms), bez interakcji. */
   BG.praise = function (o) {
     return h('div', { 'class': 'bg-praise', 'data-component-id': 'component.praise', 'data-element-id': o.elementId, 'data-variant': o.lines >= 3 ? 'three' : 'two', role: 'status', 'aria-live': 'polite' }, o.lines >= 3 ? o.S.praise_3 : o.S.praise_2);
+  };
+  /* component.level-label (r6, Q147, Q152) — środek nagłówka gry klasycznej: „Poziom n” i nazwa motywu; ta sama budowa co nazwa trybu wyzwania. */
+  BG.levelLabel = function (o) {
+    var num = h('span', { 'class': 'bg-level-num' }), name = h('span', { 'class': 'bg-level-name' });
+    /* Zwykły tekst czytany „Poziom n: nazwa” (separator tylko dla czytnika); awans ogłasza plakietka awansu (role=status), etykieta nie ogłasza drugi raz. */
+    var sep = h('span', { 'class': 'bg-sr' }, ': ');
+    var el = h('div', { 'class': 'bg-level', 'data-component-id': 'component.level-label', 'data-element-id': o.elementId }, num, sep, name);
+    var api = { el: el, set: function (n, motif) {
+      num.textContent = BG.fmt(o.S.level, { n: n }); name.textContent = o.S.motifs[motif];
+      el.setAttribute('data-level', n); el.setAttribute('data-motif', motif);
+    } };
+    api.set(o.level, o.motif);
+    return api;
+  };
+  /* component.level-up-badge (r6, Q150) — plakietka awansu nad środkiem planszy, 1,5 s; w stanie capture game.level-up stała. */
+  BG.levelUpBadge = function (o) {
+    return h('div', { 'class': 'bg-levelup', 'data-component-id': 'component.level-up-badge', 'data-element-id': o.elementId, role: 'status', 'aria-live': 'polite', 'aria-label': BG.fmt(o.S.level_up_sr, { n: o.level, name: o.S.motifs[o.motif] }) },
+      h('span', { 'class': 'bg-levelup-num', 'aria-hidden': 'true' }, BG.fmt(o.S.level_up, { n: o.level })),
+      h('span', { 'class': 'bg-levelup-name', 'aria-hidden': 'true' }, o.S.motifs[o.motif]));
   };
   /* component.mode-label */
   BG.modeLabel = function (o) {
@@ -306,6 +406,8 @@
       h('div', { 'class': 'bg-over-score', 'data-element-id': p + 'score' }, BG.num(o.score, loc)),
       newDay ? null : h('div', { 'class': 'bg-over-record', 'data-element-id': p + 'record' }, (o.mode === 'daily' ? S.record_daily : S.record) + ' ' + BG.num(o.record, loc)),
       gap,
+      /* r6 (sugestia do Q151): osiągnięty poziom w panelu końca gry klasycznej. */
+      o.mode !== 'daily' && o.level ? h('div', { 'class': 'bg-over-level', 'data-element-id': p + 'level' }, BG.fmt(S.over_level, { n: o.level, name: S.motifs[o.motif] })) : null,
       o.mode === 'daily' ? h('div', { 'class': 'bg-daily-info', 'data-element-id': p + 'daily-info', 'data-variant': o.dailyInfo }, BG.icon('calendar', 20), o.dailyInfo === 'new-available' ? S.daily_new_available : S.daily_until_midnight) : null,
       h('div', { 'class': 'bg-actions' }, again, home));
     return o.scrim === false ? card : h('div', { 'class': 'bg-scrim' }, card);
@@ -315,17 +417,20 @@
   BG.alert = function (o) {
     var S = o.S, v = o.variant;
     var text = { 'save-error': S.save_error, 'read-error': S.read_error, crash: S.crash }[v];
+    /* r6 (Q201): wariant w jednym wierszu (krótki tekst) — na niskich oknach komunikat zapisu leży na wierszu wyniku. */
+    if (o.line && v === 'save-error') text = S.save_error_short;
     var action = null;
     if (v === 'save-error') action = BG.button({ elementId: o.elementId + '.retry', variant: 'secondary', label: S.retry, interactionId: o.interactionId, action: 'tap', expected: 'ponawia zapis gry; po udanym zapisie komunikat znika, po nieudanym zostaje; gra trwa', onClick: o.onAction, demo: o.demo });
     if (v === 'crash') action = BG.button({ elementId: o.elementId + '.restart', variant: 'light', label: S.restart, interactionId: o.interactionId, action: 'tap', expected: 'przeładowuje grę z ostatnim zapisem: ekran startowy (home.resume-available, gdy zapis gry klasycznej istnieje)', onClick: o.onAction, demo: o.demo });
-    return h('div', { 'class': 'bg-alert' + (action ? '' : ' is-plain'), 'data-component-id': 'component.alert', 'data-element-id': o.elementId, 'data-variant': v, role: 'alert' },
-      h('span', { 'class': 'bg-alert-ic' }, BG.icon('warn', 20)), h('span', { 'class': 'bg-alert-text' }, text), action);
+    return h('div', { 'class': 'bg-alert' + (action ? '' : ' is-plain') + (o.line ? ' is-line' : ''), 'data-component-id': 'component.alert', 'data-element-id': o.elementId, 'data-variant': v, role: 'alert' },
+      h('span', { 'class': 'bg-alert-ic' }, BG.icon('warn', 20)), h('span', { 'class': 'bg-alert-text', 'aria-hidden': o.line ? 'true' : null }, text),
+      o.line ? h('span', { 'class': 'bg-sr' }, S.save_error) : null, action);
   };
 
   /* r5 (Q135–Q139): animacje. Czasy i krzywe: responsive-spec.md, sekcja „Ruch”. Każda animacja leży na warstwie efektów
      albo na klasie elementu, którą zdejmuje timer — stan gry jest już końcowy, więc animacje nie blokują gry (Q136).
      reduced = prefers-reduced-motion: wyłącznie zmiana przezroczystości do 150 ms. mode=capture: animacji nie ma. */
-  BG.MOTION = { settle: 150, bloom: 450, mono: 600, pop: 250, countUp: 400, deal: 240, dealStep: 80, praise: 800, rain: 1000, dim: 300, step: 1500, fade: 150 };
+  BG.MOTION = { settle: 150, bloom: 450, mono: 600, pop: 250, countUp: 400, deal: 240, dealStep: 80, praise: 800, rain: 1000, dim: 300, step: 1500, fade: 150, levelUp: 1500, crossfade: 800, emptyGarden: 1200, emptyWave: 60 };
   BG.fx = {
     reduced: function () { return !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches); },
     /* Klasa animacji na elemencie, zdejmowana po czasie (restart przy powtórzeniu). */
@@ -394,10 +499,44 @@
       el.classList.add(reduced ? 'fx-praise-reduced' : 'fx-praise');
       setTimeout(function () { el.remove(); }, BG.MOTION.praise + 40);
     },
-    /* (8) Nowy rekord: deszcz płatków na panelu, 1 s. */
+    /* (12) Pusta grządka (Q189): rozkwit falą od środka planszy na wszystkie 64 pola (pierścień co 60 ms, każdy płatek 600 ms)
+       i plakietka „Pusta grządka!” 1200 ms. reduced-motion: bez fali, płatki i plakietka tylko przezroczystość 150 ms. */
+    emptyGarden: function (board, pill, reduced) {
+      var layer = BG.emptyBloomFrame(board);
+      [].forEach.call(layer.children, function (p) {
+        var x = parseFloat(p.style.left), y = parseFloat(p.style.top), c = board.geo.boardW / 2;
+        var ring = Math.round(Math.max(Math.abs(x - c), Math.abs(y - c)) / (board.geo.cell + board.geo.gap));
+        p.style.animationDelay = reduced ? '0ms' : (ring * BG.MOTION.emptyWave) + 'ms';
+        p.classList.add(reduced ? 'fx-fade' : 'fx-empty-petal');
+      });
+      board.fx.append(layer);
+      board.el.append(pill);
+      pill.classList.add(reduced ? 'fx-empty-reduced' : 'fx-empty');
+      setTimeout(function () { layer.remove(); pill.remove(); }, BG.MOTION.emptyGarden + 40);
+    },
+    /* (10) Awans (Q150, Q188): plakietka poziomu na wyniku (nie na planszy ani trójce), 1,5 s. */
+    levelUp: function (host, el, reduced) {
+      host.append(el);
+      el.classList.add(reduced ? 'fx-levelup-reduced' : 'fx-levelup');
+      setTimeout(function () { el.remove(); }, BG.MOTION.levelUp + 40);
+    },
+    /* (11) Przenikanie tła przy awansie (Q150): stare tło na warstwie nad tłem powierzchni gaśnie w 800 ms (reduced: 150 ms). */
+    crossfade: function (surface, setNew, reduced) {
+      var old = h('div', { 'class': 'bg-bgfade', 'aria-hidden': 'true' });
+      var cs = getComputedStyle(surface);
+      old.style.backgroundImage = cs.backgroundImage; old.style.backgroundSize = cs.backgroundSize; old.style.backgroundPosition = cs.backgroundPosition; old.style.backgroundColor = cs.backgroundColor;
+      surface.insertBefore(old, surface.firstChild);
+      setNew();
+      var ms = reduced ? BG.MOTION.fade : BG.MOTION.crossfade;
+      old.style.animationDuration = ms + 'ms';
+      old.classList.add('fx-bgfade');
+      setTimeout(function () { old.remove(); }, ms + 40);
+    },
+    /* (8) Nowy rekord: deszcz płatków na panelu, 1 s. r6 (Q176): droga spadku = wysokość karty + 48 px, więc płatki są widoczne
+       na karcie przez cały czas animacji na każdym targecie (w r5 stała droga 520 px przechodziła przez niską kartę mac-wide w ~60% czasu). */
     rain: function (card, reduced) {
       if (reduced) return;
-      var layer = h('div', { 'class': 'fx-rain', 'aria-hidden': 'true' });
+      var layer = h('div', { 'class': 'fx-rain', 'aria-hidden': 'true', style: { '--fall': (card.offsetHeight + 48) + 'px' } });
       var cols = ['berry', 'poppy', 'sun', 'drop', 'leaf'];
       for (var i = 0; i < 18; i++) {
         layer.append(h('img', { 'class': 'fx-rain-petal', src: 'assets/img/petal-' + cols[i % 5] + '.webp', alt: '', style: { left: ((i * 53) % 100) + '%', animationDelay: ((i * 37) % 400) + 'ms', animationDuration: (600 - (i * 37) % 400 + 400) + 'ms', '--rot': ((i % 2 ? 1 : -1) * (120 + i * 17 % 160)) + 'deg' } }));
@@ -453,12 +592,31 @@
       tray.render(st.tray, makePiece);
     }
     /* (5) Punkty ruchu unoszą się i zostają widoczne do następnego położenia (r5; w r4 znikały po 1,4 s). */
+    var shownPoints = null;
     function showPoints(p, live) {
       pointsHost.replaceChildren();
+      shownPoints = p;
       var mp = BG.movePoints({ points: p, S: S, loc: loc, elementId: ids.points });
       if (!mp) return;
       pointsHost.append(mp);
+      fitPoints();
       if (live) { if (reduced) BG.fx.fade(mp); else BG.fx.play(mp, 'fx-rise', 300); }
+    }
+    /* r6 (Q203): tabliczka punktów pokazuje sumę i dopiski serii i koloru, gdy się mieszczą; gdy nie — zostaje jeden dopisek,
+       ten o większej wartości. Miejsce: pasek pod wynikiem (telefony), połowa wiersza wyniku (niskie okno, Q199). */
+    function fitPoints() {
+      var mp = pointsHost.firstChild, p = shownPoints;
+      if (!mp || !p || !p.combo || !p.mono || !mp.getClientRects().length) return;
+      var r = mp.getBoundingClientRect(), merged = !!surface.closest('[data-layout=phone-merged]');
+      var row = (merged ? strip.parentNode : strip).getBoundingClientRect();
+      var cb = comboHost.firstChild && comboHost.firstChild.getBoundingClientRect();
+      var scEl = merged && strip.parentNode.querySelector('.bg-score'), scr = scEl && scEl.getBoundingClientRect();
+      var hit = function (a, b, m) { return b && a.left < b.right + m && a.right > b.left - m && a.top < b.bottom && a.bottom > b.top; };
+      var bad = r.right > row.right + 0.5 || r.left < row.left - 0.5 || hit(r, cb, 8) || hit(r, scr, 14) || (!g.wide && !merged && r.height > 36.5) || (merged && r.height > 58.5);
+      if (!bad) return;
+      var q = {}; for (var k in p) q[k] = p[k];
+      if (p.combo >= p.mono) q.mono = 0; else q.combo = 0;
+      pointsHost.replaceChildren(BG.movePoints({ points: q, S: S, loc: loc, elementId: ids.points }));
     }
 
     function local(e) {
@@ -561,12 +719,13 @@
         if (mv.clearedCells.length) BG.fx.bloom(board, mv.clearedCells, function (i) { return mv.placedBoard[i]; }, reduced, monoLines.length ? BG.MOTION.mono : BG.MOTION.bloom); /* (2) */
         monoLines.forEach(function (l) { BG.fx.sweep(board, l, S, reduced); });                                                   /* (3) */
         if (mv.dealt) BG.fx.deal(tray.pieces, reduced);                                                                          /* (7) */
+        /* r6 (Q188): plakietka awansu stoi na wyniku, pochwała nad planszą — przy awansie i pochwale w jednym ruchu obie naraz, w różnych miejscach. */
         if (mv.points.cleared >= 2) BG.fx.praise(board.el, BG.praise({ S: S, lines: mv.points.cleared, elementId: ids.praise || 'element.game.praise' }), reduced);
         BG.fx.countUp(scoreApi, before, st.score, reduced);                                                                      /* (6) */
       } else scoreApi.set(st.score);
       paintCombo(anim && st.combo > prevCombo);
       if (mv.points.cleared > 0) showPoints(mv.points, anim); else pointsHost.replaceChildren();
-      if (o.onMove) o.onMove(st);
+      if (o.onMove) o.onMove(st, before);
       /* Koniec gry (Q128): krok końca zaczyna się po animacji ruchu. */
       if (st.over && o.onOver) {
         var wait = !anim ? 0 : reduced ? BG.MOTION.fade : !mv.clearedCells.length ? BG.MOTION.settle : mv.lines.some(function (l) { return l.mono; }) ? BG.MOTION.mono : BG.MOTION.bloom;
@@ -575,7 +734,7 @@
       }
     }
     paintAll();
-    return { get state() { return st; }, layout: function () { if (o.afterLayout) o.afterLayout(); } };
+    return { get state() { return st; }, layout: function () { fitPoints(); if (o.afterLayout) o.afterLayout(); } };
   };
 
   /* Pasek narzędzi podglądu (standard paczki) — narzędzie prototypu poza element.product-work-surface; tylko user_preview i katalog. */
